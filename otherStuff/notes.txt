@@ -1,0 +1,3 @@
+ssh -v -i monikosTest.pem ubuntu@ec2-54-208-240-211.compute-1.amazonaws.com
+
+where ubuntu@ec2-54-208-240-211.compute-1.amazonaws.comis your ec2 instance with a key value pair
