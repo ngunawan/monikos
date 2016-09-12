@@ -8,14 +8,16 @@ $pass = "monikosdbpw";
 $dbname = "monikosdb";
 $conn = new mysqli($host, $dbuser, $pass, $dbname);
 
-$result = $conn->query("SELECT * FROM Drug");
+$result = $conn->query("SELECT * FROM users");
 
 $outp = "";
 while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
     if ($outp != "") {$outp .= ",";}
-    $outp .= '{"Generic":"'  . $rs["Generic"] . '",';
-    $outp .= '"Brand":"'   . $rs["Brand"]        . '",';
-    $outp .= '"Indication":"'. $rs["Indication"]     . '"}'; 
+    //$outp .= '{"Generic":"'  . $rs["Generic"] . '",';
+    //$outp .= '"Brand":"'   . $rs["Brand"]        . '",';
+    //$outp .= '"Indication":"'. $rs["Indiciation"]     . '"}';
+     $outp .= '{"username":"'. $rs["username"] . '",';
+     $outp .= '"email":"'. $rs["email"]     . '"}';
 }
 $outp ='{"records":['.$outp.']}';
 $conn->close();
