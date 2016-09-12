@@ -1,6 +1,14 @@
 <?php 
 
 class Home extends Controller {
+
+	protected $user;
+
+	public function __construct(){
+		$this->user = $this->model('User');
+	}
+
+
 	public function index($name = '', $otherName = ''){
 		
 		//refers to user model
@@ -18,6 +26,14 @@ class Home extends Controller {
 
 	public function test($param){
 		echo " : " . $param . " : ";
+	}
+
+	public function create($username = '', $email = ''){
+		//$this->user->create([
+		User::create([
+			'username' => $username,
+			'email' => $email
+		]);
 	}
 
 

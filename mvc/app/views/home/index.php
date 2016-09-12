@@ -8,8 +8,13 @@ Hello <?=$data['name']?>
 	<script>
     var app = angular.module('myApp', []);
     app.controller('customersCtrl', function($scope, $http) {
-        $http.get("http://testmonikos.us-east-1.elasticbeanstalk.com/sql_result.php")
+        //var url = "http://testmonikos.us-east-1.elasticbeanstalk.com/sql_result.php"
+        //var url = "http://danilachenchik.com/sql_result.php";
+        var url = "http://monikos.xpyapvzutk.us-east-1.elasticbeanstalk.com/sql_result.php";
+        $http.get(url)
         .then(function (response) {
+            console.log(response);
+            //console.log(response);
             $scope.names = response.data.records;
             console.log($scope.names);
             //alert($scope.names);
@@ -22,7 +27,8 @@ Hello <?=$data['name']?>
 	      <tr ng-repeat="x in names">
 	        <td>{{ x.Generic }}</td>
 	        <td>{{ x.Brand }}</td>
-	        <td>{{ x.Indication }}</td>
+	        <td>{{ x.Class }}</td>
+            <!--<td>{{ x.HintLikes }}</td>-->
 	      </tr>
 	    </table>
 

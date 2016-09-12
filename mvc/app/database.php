@@ -1,4 +1,5 @@
 <?php  
+//namespacing
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 $capsule = new Capsule();
@@ -13,6 +14,8 @@ $capsule->addConnection([
 	'collation' => 'utf8_unicode_ci',
 	'prefix' => '',
 ]);
+
+$capsule->setAsGlobal();
 
 $capsule->bootEloquent();
 
