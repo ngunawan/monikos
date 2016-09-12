@@ -13,7 +13,7 @@ $result = $conn->query("SELECT * FROM Drug2");
 $outp = "";
 while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
     if ($outp != "") {$outp .= ",";}
-    $outp .= '{"Generic":"'  . $rs["Generic"] . '",';
+    $outp .= '{"name":"'  . $rs["name"] . '",';
     $outp .= '"Brand":"'   . $rs["Brand"]        . '",';
     $outp .= '"Indication":"'. $rs["Indication"]     . '"}';
      //$outp .= '{"username":"'. $rs["username"] . '",';
