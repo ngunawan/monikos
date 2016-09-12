@@ -8,12 +8,12 @@ $pass = "monikosdbpw";
 $dbname = "monikosdb";
 $conn = new mysqli($host, $dbuser, $pass, $dbname);
 
-$result = $conn->query("SELECT * FROM Drug2");
+$result = $conn->query("SELECT * FROM Drug");
 
 $outp = "";
 while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
     if ($outp != "") {$outp .= ",";}
-    $outp .= '{"name":"'  . $rs["name"] . '",';
+    $outp .= '{"Generic":"'  . $rs["Generic"] . '",';
     $outp .= '"Brand":"'   . $rs["Brand"]        . '",';
     $outp .= '"Indication":"'. $rs["Indication"]     . '"}';
      //$outp .= '{"username":"'. $rs["username"] . '",';
