@@ -8,7 +8,7 @@ $pass = "monikosdbpw";
 $dbname = "monikosdb";
 $conn = new mysqli($host, $dbuser, $pass, $dbname);
 
-$result = $conn->query("SELECT * FROM Drug");
+$result = $conn->query("SELECT * FROM Drug2");
 
 $outp = "";
 while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
