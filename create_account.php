@@ -10,7 +10,28 @@ $conn = new mysqli($host, $dbuser, $pass, $dbname);
 
 //$result = $conn->query("SELECT Generic,Brand FROM Dr);
 //$result = $conn->query("INSERT INTO Users (id, username, email, password) VALUES (NULL, ".$username.",". $email .",". $password .");");
-$result = $conn->query("INSERT INTO Users (id, username, email, password) VALUES (NULL, wow, wow@wow.com, dawg);");
+//$result = $conn->query("INSERT INTO Users (id, username, email, password) VALUES (NULL, wow, wow@wow.com, dawg);");
+
+// Create connection
+//$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+
+$sql = "INSERT INTO Users (id, username, email, password)
+VALUES (NULL, 'wowee', 'wowee@example.com', 'testpw')";
+
+if ($conn->query($sql) === TRUE) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+$conn->close();
+
+
+
 /*$outp = "";
 while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
     if ($outp != "") {$outp .= ",";}
@@ -23,7 +44,7 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
      //$outp .= '"email":"'. $rs["email"]     . '"}';
 }
 $outp ='{"records":['.$outp.']}';*/
-$conn->close();
+//$conn->close();
 
 echo($result);
 ?>
