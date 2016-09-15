@@ -18,6 +18,8 @@ $conn = new mysqli($host, $dbuser, $pass, $dbname);
 
 $result = $conn->query("SELECT Generic,Brand, Class, Indication, HintLikes, HintDislikes FROM Drug");
 
+echo "here";
+
 $outp = "";
 while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
     if ($outp != "") {$outp .= ",";}
@@ -32,6 +34,9 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
      //$outp .= '"email":"'. $rs["email"]     . '"}';
 }
 $outp ='{"records":['.$outp.']}';
+
+echo $outp;
+
 $conn->close();
 
 echo($outp);
