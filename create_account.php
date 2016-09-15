@@ -5,6 +5,11 @@ header("Content-Type: application/json; charset=UTF-8");
 $posts = var_dump($_POST);
 echo $posts;
 
+$username = $_POST['username'];
+echo $username;
+
+
+
 $host = "monikosdb.ci7ganrx1sxe.us-east-1.rds.amazonaws.com:3306";
 $dbuser = "monikosdbun";
 $pass = "monikosdbpw";
