@@ -13,8 +13,8 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-/*$sql = "INSERT INTO Users (id, username, email, password)
-VALUES (NULL, '".$_POST["username"]."', '".$_POST["email"]."', '".$_POST["password"]."')";
+$sql = "SELECT * FROM 'Users' WHERE (
+'username'=  '".$_POST["username"]."' AND 'password'= '".$_POST["password"]."')";
 
 if ($conn->query($sql) === TRUE) {
     echo '[{
