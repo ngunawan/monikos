@@ -25,9 +25,12 @@ Hello <?=$data['name']?>
 
 	    <table>
 	      <tr ng-repeat="x in names">
-	        <td>{{ x.Generic }}</td>
-	        <td>{{ x.Brand }}</td>
-	        <td>{{ x.Class }}</td>
+	        <td>Generic: {{ x.Generic }}</td>
+	        <td>Brand: {{ x.Brand }}</td>
+	        <td>Class: {{ x.Class }}</td>
+            <td>Indication: {{ x.Indication }}</td>
+            <td>HintLikes: {{ x.HintLikes }}</td>
+            <td>HintDislikes: {{ x.HintDislikes }}</td>
             <!--<td>{{ x.HintLikes }}</td>-->
 	      </tr>
 	    </table>
