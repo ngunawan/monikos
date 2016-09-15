@@ -2,11 +2,11 @@
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
-$posts = var_dump($_POST);
+$posts = var_dump($_REQUEST);
 echo $posts;
 
-$username = $_POST['username'];
-echo $username;
+$username = $_REQUEST['username'];
+echo "username is " . $username;
 
 
 
