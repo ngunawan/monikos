@@ -51,7 +51,7 @@ if ($conn->connect_error) {
 $sql = "SELECT * FROM Users WHERE (
 'username'='".$_POST["username"]."' AND 'password'='".$_POST["password"]."')";
 
-echo $sql;
+//echo $sql;
 
 if ($conn->query($sql) === TRUE) {
     echo '[{
@@ -60,9 +60,10 @@ if ($conn->query($sql) === TRUE) {
     "username": "'.$_POST["username"].'",
     "password": "'.$_POST["password"].'"}]';
 } else {
-    echo '[{"response":"'.$conn->error.'"}]';
+    echo '[{"response":"'.$conn->error.'",
+		"error":"'.mysqli_connect_errno() . PHP_EOL.'",}]';
 }
 
 $conn->close();
-echo($result);
+//echo($result);
 ?>
