@@ -48,7 +48,7 @@ if ($conn->connect_error) {
 //$sql = "INSERT INTO Users (id, username, email, password)
 //VALUES (NULL, '".$_POST["username"]."', '".$_POST["email"]."', '".$_POST["password"]."')";
 
-$sql = "SELECT * FROM 'Users' WHERE (
+$sql = "SELECT * FROM Users WHERE (
 'username'='".$_POST["username"]."' AND 'password'='".$_POST["password"]."')";
 
 echo $sql;
