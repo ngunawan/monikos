@@ -18,7 +18,7 @@ $conn = new mysqli($host, $dbuser, $pass, $dbname);
 
 $result = $conn->query("SELECT Generic,Brand, Class, Indication, HintLikes, HintDislikes FROM Drug");
 
-echo "here";
+//echo "here";
 
 $outp = "";
 while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
@@ -35,7 +35,7 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
 }
 $outp ='{"records":['.$outp.']}';
 
-echo $outp;
+//echo $outp;
 
 $conn->close();
 
