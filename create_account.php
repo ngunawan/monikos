@@ -20,10 +20,14 @@ if ($conn->connect_error) {
 } 
 
 $sql = "INSERT INTO Users (id, username, email, password)
-VALUES (NULL, 'wowee', 'wowee@example.com', 'testpw')";
+VALUES (NULL, 'woweeee', 'woweeee@example.com', 'testpw')";
 
 if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
+    echo '[{
+    "response": 200,
+    "username": "john",
+    "email": "john@john.com",
+    "password": "kkkjnkd"}]';
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
