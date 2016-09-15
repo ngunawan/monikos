@@ -49,8 +49,9 @@ if ($conn->connect_error) {
 //VALUES (NULL, '".$_POST["username"]."', '".$_POST["email"]."', '".$_POST["password"]."')";
 
 $sql = "SELECT * FROM 'Users' WHERE (
-'username'=  '".$_POST["username"]."' AND 'password'= '".$_POST["password"]."')";
+'username'='".$_POST["username"]."' AND 'password'='".$_POST["password"]."')";
 
+echo $sql;
 
 if ($conn->query($sql) === TRUE) {
     echo '[{
