@@ -20,7 +20,7 @@ if ($conn->connect_error) {
 } 
 
 $sql = "INSERT INTO Users (id, username, email, password)
-VALUES (NULL, 'woweeee', 'woweeee@example.com', 'testpw')";
+VALUES (NULL, '".$_POST["username"]."', '".$_POST["email"]."', '".$_POST["password"]."')";
 
 if ($conn->query($sql) === TRUE) {
     echo '[{
