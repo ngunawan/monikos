@@ -61,7 +61,7 @@ if ($conn->query($sql) === TRUE) {
     "password": "'.$_POST["password"].'"}]';
 } else {
     echo '[{"response":"'.$conn->error.'",
-		"error":"'.mysqli_connect_errno() . PHP_EOL.'",}]';
+		"error":"'.mysqli_connect_errno() . PHP_EOL.'"}]';
 }
 
 $conn->close();
