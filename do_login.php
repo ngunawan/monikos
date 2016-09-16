@@ -75,17 +75,19 @@ AND  `password` LIKE  'testpw'";
     echo '[{"response":"'.$conn->error.'",
 		"error":"'.mysqli_connect_errno() . PHP_EOL.'"}]';
 }*/
-
+$numRows = 0;
 $sql = "SELECT * FROM Users WHERE username LIKE '".$_POST["username"]."' AND password LIKE '".$_POST["password"]."'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     // output data of each row
-    while($row = $result->fetch_assoc()) {
-        echo "id: " . $row["id"]. " - Username: " . $row["username"]. " Email: " . $row["email"]. "<br>";
-    }
+    echo '[{
+	"response": 200,
+    "login-status": "logged-in",
+    "username": "'.$_POST["username"].'",
+    "password": "'.$_POST["password"].'"}]';
 } else {
-    echo "0 results";
+    echo '[{"response": 400}]';
 }
 
 $conn->close();
