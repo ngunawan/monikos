@@ -76,7 +76,7 @@ AND  `password` LIKE  'testpw'";
 		"error":"'.mysqli_connect_errno() . PHP_EOL.'"}]';
 }*/
 
-$sql = "SELECT * FROM Users WHERE username LIKE 'wowee' AND password LIKE 'testpw'";
+$sql = "SELECT * FROM Users WHERE username LIKE '".$_POST["username"]."' AND password LIKE '".$_POST["password"]."'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
