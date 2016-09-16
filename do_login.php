@@ -55,6 +55,8 @@ FROM Users
 WHERE  `username` LIKE  'wowee'
 AND  `password` LIKE  'testpw'";
 
+$sql = sprintf('SELECT * FROM `Users` WHERE (`username`) LIKE ("wowee")');
+
 echo $sql;
 
 if ($conn->query($sql) === TRUE) {
