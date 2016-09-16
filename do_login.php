@@ -55,20 +55,26 @@ FROM Users
 WHERE  `username` LIKE  'wowee'
 AND  `password` LIKE  'testpw'";
 
-$sql = sprintf('SELECT * FROM `Users` WHERE (`username`) LIKE ("wowee")');
+//$sql = sprintf('SELECT * FROM `Users` WHERE (`username`) LIKE ("wowee")');
+$sql = mysql_query('SELECT * FROM `Users` WHERE (`username`) LIKE ("wowee")');
 
 echo $sql;
 
-if ($conn->query($sql) === TRUE) {
+//if ($conn->query($sql) === TRUE) {
+if(!$sql){
+	echo '[{"response":"'.$conn->error.'",
+		"error":"'.mysqli_connect_errno() . PHP_EOL.'"}]';
+}else{
     echo '[{
     "response": 200,
     "login-status": "logged-in",
     "username": "'.$_POST["username"].'",
     "password": "'.$_POST["password"].'"}]';
-} else {
+}
+/*} else {
     echo '[{"response":"'.$conn->error.'",
 		"error":"'.mysqli_connect_errno() . PHP_EOL.'"}]';
-}
+}*/
 
 $conn->close();
 //echo($result);
