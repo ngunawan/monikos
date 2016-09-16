@@ -51,7 +51,7 @@ if ($conn->connect_error) {
 $sql = "SELECT * FROM Users WHERE (
 'username' LIKE '".$_POST["username"]."' AND 'password' LIKE '".$_POST["password"]."')";
 
-//echo $sql;
+echo $sql;
 
 if ($conn->query($sql) === TRUE) {
     echo '[{
