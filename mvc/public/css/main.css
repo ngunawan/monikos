@@ -1,0 +1,132 @@
+body#usr_mng_module {
+    /*    background: #888;*/
+    background: #FF3D39;
+    font-family: sans-serif;
+}
+
+body#usr_mng_module .wrapper {
+    background: #FFF;
+    width:50vw;
+    margin: 10vh auto auto auto;
+    text-align: center;
+    box-shadow: 0vw 0vw 3vw #888888;
+    padding:2vw 0.5vw 5vw 0.5vw;
+}
+
+body#usr_mng_module .wrapper h1 {
+    font-size:4vw;
+}
+
+body#usr_mng_module .wrapper input[type=text], body#usr_mng_module .wrapper input[type=password] {
+    width:80%;
+    font-size:3vw;
+    padding:2vw 2vw 2vw 2vw;
+    margin: 2vw 0 2vw 0;
+    border: 0;
+    background:#f2f2f2;
+}
+
+body#usr_mng_module .wrapper input[type=text]:focus, body#usr_mng_module .wrapper input[type=password]:focus {
+    outline:none;
+}
+
+body#usr_mng_module .wrapper button {
+    background: #FF0018;
+    color:#fff;
+    width:87%;
+    border:0;
+    font-size:3vw;
+    margin: 3vw 0 2vw 0;
+    padding: 2vw 1vw 2vw 1vw;
+
+}
+
+body#main_app_module {
+    margin:0;
+}
+
+#app_header {
+    display: block;
+    position:absolute;
+    top:0;
+    width:100vw;
+    height:10vh;
+    margin:0;
+    background:transparent;
+    text-align: center;
+}
+
+#app_footer {
+    display: block;
+    position:absolute;
+    bottom:0;
+    width:100vw;
+    height:10vh;
+    margin:0;
+    background:transparent;
+    text-align: center;
+}
+
+#app_content {
+    display:block;
+    position:absolute;
+    height:80vh;
+    width:100vw;
+    margin-top:10vh;
+    text-align: center;
+}
+
+.drug-block {
+    margin:3vh 0 3vh 0;
+}
+
+.drug-brand {
+    font-weight: 600;
+}
+
+.side-effect {
+    display: inline-block;
+}
+
+label.field-name {
+    display:block;
+    font-weight: 600;
+    margin-top:5vh;
+}
+
+
+@media only screen and (max-width:518px) {
+    body#usr_mng_module .wrapper {
+        width:85vw;
+        margin: 25vh auto auto auto;
+        box-shadow: 0vw 0vw 3vw #888888;
+        padding:4vw 1vw 4vw 1vw;
+    }
+
+    body#usr_mng_module .wrapper h1 {
+        font-size:8vw;
+    }
+
+    body#usr_mng_module .wrapper input[type=text], body#usr_mng_module .wrapper input[type=password] {
+        font-size:6vw;
+        padding:4vw 3vw 4vw 3vw;
+        margin: 2vw 0 2vw 0;
+    }
+
+    body#usr_mng_module .wrapper input[type=text]:focus, body#usr_mng_module .wrapper input[type=password]:focus {
+        outline:none;
+    }
+
+    body#usr_mng_module .wrapper button {
+        font-size:6vw;
+        margin: 5vw 0 5vw 0;
+        padding: 4vw 2vw 4vw 2vw;
+
+    }
+}
+
+
+
+
+
+

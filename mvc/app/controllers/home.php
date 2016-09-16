@@ -17,7 +17,7 @@ class Home extends Controller {
 		//creates the user
 		$user = $this->model('User');
 		$user->name = $name;
-		echo "\n echoing user name " . $user->name;
+		//echo "\n echoing user name " . $user->name;
 
 
 		//directory path
@@ -34,6 +34,14 @@ class Home extends Controller {
 			'username' => $username,
 			'email' => $email
 		]);
+	}
+
+	public function drugDatabase(){
+		$this->view('drugDatabase/index');	
+	}
+
+	public function listManager(){
+		$this->view('listManager/index');
 	}
 
 

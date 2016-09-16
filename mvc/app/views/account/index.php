@@ -48,5 +48,6 @@ Hello <?=$data['name']?>
             <p>username: {{response.data[0].username}}</p>
             <p>email: {{response.data[0].email}}</p>
         </div>
+        <a href="../../mvc/public">login</a>
     </div>
 </body>

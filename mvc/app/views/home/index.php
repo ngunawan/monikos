@@ -1,9 +1,8 @@
-Hello <?=$data['name']?>
+<!--Hello <?=$data['name']?>-->
 
 
 
-<body>
-	<p>helo world to <?=$data['name']?></p>
+<body id="main_app_module">
 
 	<script>
     var app = angular.module('myApp', []);
@@ -19,10 +18,45 @@ Hello <?=$data['name']?>
             console.log($scope.names);
             //alert($scope.names);
         });
+
+        $scope.drugDatabase = function(){
+            //create new database controller
+            window.location = window.location.origin + "/mvc/public/home/drugDatabase";
+        }
+
+        $scope.listManager = function(){
+            //create list manager controller
+            window.location = window.location.origin + "/mvc/public/home/listManager";   
+        }
+        $scope.logout = function(){
+            //create list manager controller
+            window.location = window.location.origin + "/mvc/public/account/login";   
+        }
     });
     </script>
-    <div ng-app="myApp" ng-controller="customersCtrl"> 
-
+    <div id=app_header>header</div>
+    <div id=app_content ng-app="myApp" ng-controller="customersCtrl">
+        <div class="top-block">
+            <div class="database-block">
+                <!--<a href=database.html>Database</a>-->
+                <button ng-click="drugDatabase()">Database</button>
+            </div>
+        </div>
+        <div class="bottom-block">
+            <div class=study-block>
+                <button ng-click="listManager()">List Manager</button>
+            </div>
+        </div>
+        <div class="bottom-block">
+            <div class=logout-block>
+                <button ng-click="logout()">Logout</button>
+            </div>
+        </div>
+    </div>
+    <div id=app_footer>footer</div>
+    <!--<div ng-app="myApp" ng-controller="customersCtrl">-->
+    
+    <!--
 	    <table>
 	      <tr ng-repeat="x in names">
 	        <td>Generic: {{ x.Generic }}</td>
@@ -31,10 +65,9 @@ Hello <?=$data['name']?>
             <td>Indication: {{ x.Indication }}</td>
             <td>HintLikes: {{ x.HintLikes }}</td>
             <td>HintDislikes: {{ x.HintDislikes }}</td>
-            <!--<td>{{ x.HintLikes }}</td>-->
 	      </tr>
 	    </table>
-
+    -->
     </div>
 
 

@@ -39,17 +39,25 @@ class Account extends Controller {
 
 		$result = $conn->query("INSERT INTO Users (id, username, email, password) VALUES (NULL, ".$username.",". $email .",". $password .");");
 		*/
-		$this->view('account/index', ['name' => $user->name, 
+		$this->view('account/create', ['name' => $user->name, 
 									'username' => $username,
 									'email' => $email,
 									'password' => $password]);	
 
 		//$this->user->create([
-		//User::create([
+		//User::create([c
 		//	'username' => $username,
 		//	'email' => $email
 		//]);
 	}
+	public function login(){
+		$this->view('account/login');
+	}
+
+	public function loginSuccess(){
+		$this->view('home/index');
+	}
+
 
 
 }
