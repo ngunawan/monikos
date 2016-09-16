@@ -48,8 +48,12 @@ if ($conn->connect_error) {
 //$sql = "INSERT INTO Users (id, username, email, password)
 //VALUES (NULL, '".$_POST["username"]."', '".$_POST["email"]."', '".$_POST["password"]."')";
 
-$sql = "SELECT * FROM Users WHERE (
-'username' LIKE '".$_POST["username"]."' AND 'password' LIKE '".$_POST["password"]."')";
+/*$sql = "SELECT * FROM Users WHERE 
+'username' LIKE '".$_POST["username"]."' AND 'password' LIKE '".$_POST["password"]."'";*/
+$sql = "SELECT * 
+FROM Users
+WHERE  `username` LIKE  'wowee'
+AND  `password` LIKE  'testpw'";
 
 echo $sql;
 
