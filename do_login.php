@@ -50,11 +50,11 @@ if ($conn->connect_error) {
 
 /*$sql = "SELECT * FROM Users WHERE 
 'username' LIKE '".$_POST["username"]."' AND 'password' LIKE '".$_POST["password"]."'";*/
-$sql = "SELECT * 
+/*$sql = "SELECT * 
 FROM Users
 WHERE  `username` LIKE  'wowee'
 AND  `password` LIKE  'testpw'";
-
+*/
 //$sql = sprintf('SELECT * FROM `Users` WHERE (`username`) LIKE ("wowee")');
 //$sql = mysql_query('SELECT * FROM `Users` WHERE (`username`) LIKE ("wowee")');
 
@@ -76,15 +76,16 @@ AND  `password` LIKE  'testpw'";
 		"error":"'.mysqli_connect_errno() . PHP_EOL.'"}]';
 }*/
 
-if ($result = $mysqli->query('SELECT * FROM Users WHERE "username" LIKE "wowee"')) {
+$sql = "SELECT * FROM Users";
+$result = $conn->query($sql);
 
-    /* determine number of rows result set */
-    $row_cnt = $result->num_rows;
-
-    printf("Result set has %d rows.\n", $row_cnt);
-
-    /* close result set */
-    $result->close();
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+    }
+} else {
+    echo "0 results";
 }
 
 $conn->close();
