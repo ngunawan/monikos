@@ -20,7 +20,7 @@ foreach($_POST["drugs"] as $vals){
 }
 
 $sql = "INSERT INTO Lists (lid, uid, name, drugids, drugnames)
-VALUES (NULL, '".$_COOKIE["user_id"]."', '".$_POST["name"]."', '11', '".$_POST["drugs"]."')";
+VALUES (NULL, '".$_COOKIE["user_id"]."', '".$_POST["name"]."', '11', '".$drugs."')";
 
 if ($conn->query($sql) === TRUE) {
     echo '[{
