@@ -24,12 +24,12 @@ if ($result->num_rows > 0) {
 	setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/mvc/public/");
     //setcookie("cookietest");
     // output data of each row
-    echo '[{
+    /*echo '[{
 	"response": 200,
     "login-status": "logged-in",
     "username": "'.$POST_["username"].'",
     "uid": "'.$rs["id"].'",
-    "password": "'.$_POST["password"].'"}]';
+    "password": "'.$_POST["password"].'"}]';*/
 } else {
     echo '[{"response": 400}]';
 }
