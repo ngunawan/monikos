@@ -21,8 +21,8 @@ if ($result->num_rows > 0) {
 
 	$cookie_name = "user";
 	$cookie_value = "John Doe";
-	//setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
-    setcookie("cookietest");
+	setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/mvc/public/");
+    //setcookie("cookietest");
     // output data of each row
     echo '[{
 	"response": 200,
