@@ -15,12 +15,18 @@ if ($conn->connect_error) {
 
 //var_dump($_POST);
 $drugs = "";
+$i = 0;
+$numItems = count($_POST["drugs"]);
 foreach($_POST["drugs"] as $vals){
-	$drugs .= $vals . ",";
+	if(++$i === $numItems) {
+    	$drugs .= $vals;
+  	}else{
+	  	$drugs .= $vals . ",";	
+  	}
 }
 
 $sql = "INSERT INTO Lists (lid, uid, name, drugids, drugnames)
-VALUES (NULL, '".$_COOKIE["user_id"]."', '".$_POST["name"]."', '11', '".$drugs."')";
+VALUES (NULL, '".$_POST["user_id"]."', '".$_POST["name"]."', '11', '".$drugs."')";
 
 if ($conn->query($sql) === TRUE) {
     echo '[{
