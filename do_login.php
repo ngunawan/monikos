@@ -19,16 +19,17 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 	$rs = $result->fetch_array(MYSQLI_ASSOC);
 
-	$cookie_name = "user";
-	$cookie_value = "Johnnnn Doe";
-	setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "http://danilachenchik.com/mvc/public/");
+	$cookie_name = "user_id";
+	$cookie_value = $rs["id"];
+	setcookie("user_id", $rs["id"], time() + (86400 * 30), "/");
+	setcookie("username", $rs["username"], time() + (86400 * 30), "/");
     //setcookie("cookietest");
     // output data of each row
     echo '[{
 	"response": 200,
     "login-status": "logged-in",
     "username": "'.$POST_["username"].'",
-    "uid": "'.$rs["id"].'",
+    "user_id": "'.$rs["id"].'",
     "password": "'.$_POST["password"].'"}]';
 } else {
     echo '[{"response": 400}]';
