@@ -17,11 +17,17 @@ $sql = "SELECT * FROM Users WHERE username LIKE '".$_POST["username"]."' AND pas
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
+	$rs = $result->fetch_array(MYSQLI_ASSOC);
+
+	$cookie_name = "user";
+	$cookie_value = "John Doe";
+	setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
     // output data of each row
     echo '[{
 	"response": 200,
     "login-status": "logged-in",
-    "username": "'.$_POST["username"].'",
+    "username": "'.$POST_["username"].'",
+    "uid": "'.$rs["id"].'",
     "password": "'.$_POST["password"].'"}]';
 } else {
     echo '[{"response": 400}]';
