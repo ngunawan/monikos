@@ -16,8 +16,29 @@ if ($conn->connect_error) {
 $sql = "SELECT * FROM Lists WHERE uid LIKE '".$_POST["user_id"]."'";
 $result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
-  $rs = $result->fetch_array(MYSQLI_ASSOC);
+$outp = "";
+while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
+    if ($outp != "") {$outp .= ",";}
+    /*$rs["Generic"] = clean($rs["Generic"]);
+    $rs["Brand"] = clean($rs["Brand"]);
+    $rs["Class"] = clean($rs["Class"]);
+    $rs["Indication"] = clean($rs["Indication"]);
+    */
+    $outp .= '{"list_id":"'  . $rs["lid"] . '",';
+    $outp .= '"list_name":"'   . $rs["name"]        . '",';
+    //$outp .= '"drugnames":"'   . $rs["drugnames"]        . '",';
+    //$outp .= '"Indication":"'   . $rs["Indication"]        . '",';
+    //$outp .= '"HintLikes":"'   . $rs["HintLikes"]        . '",';
+    //$outp .= '"Indication":"'. $rs["Indication"]     . '"}';
+    $outp .= '"drugnames":"'. $rs["drugnames"]     . '"}';
+     //$outp .= '{"username":"'. $rs["username"] . '",';
+     //$outp .= '"email":"'. $rs["email"]     . '"}';
+}
+$outp ='{"records":['.$outp.']}';
+echo($outp);
+/*
+if (!$result->num_rows > 0) {
+  //$rs = $result->fetch_array(MYSQLI_ASSOC);
   //setcookie("cookietest");
     // output data of each row
     echo '[{
@@ -25,9 +46,12 @@ if ($result->num_rows > 0) {
     "user_id": "'.$rs["uid"].'",
     "list_id": "'.$rs["lid"].'",
     "drugnames": "'.$rs["drugnames"].'"}]';
-} else {
     echo '[{"response": 400}]';
-}
+}else{
+  echo($outp);
+}*/
+
+
 
 $conn->close();
 //echo($result);
