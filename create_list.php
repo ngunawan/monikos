@@ -14,6 +14,10 @@ if ($conn->connect_error) {
 } 
 
 //var_dump($_POST);
+$drugs = "";
+foreach($_POST["drugs"] as $vals){
+	$drugs .= $vals . ",";
+}
 
 $sql = "INSERT INTO Lists (lid, uid, name, drugids, drugnames)
 VALUES (NULL, '".$_COOKIE["user_id"]."', '".$_POST["name"]."', '11', '".$_POST["drugs"]."')";
