@@ -13,15 +13,15 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
+var_dump($_POST);
+
 $sql = "INSERT INTO Lists (lid, uid, name, drugids, drugnames)
 VALUES (NULL, '".$_COOKIE["user_id"]."', '".$_POST["name"]."', 'nkjnkjn', 'kjkjkj')";
 
 if ($conn->query($sql) === TRUE) {
     echo '[{
     "response": 200,
-    "username": "'.$_POST["username"].'",
-    "email": "'.$_POST["email"].'",
-    "password": "'.$_POST["password"].'"}]';
+    "name": "'.$_POST["name"].'"}]';
 } else {
     echo '[{"response":"'.$conn->error.'"}]';
 }
