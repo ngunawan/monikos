@@ -1,31 +1,13 @@
 var app = angular.module('myApp', ['checklist-model']);
 app.controller('myCtrl', function($scope, $http) {
 
-    var url = "http://monikos.xpyapvzutk.us-east-1.elasticbeanstalk.com/sql_result.php";
-    $http.get(url)
-        .then(function (response) {
-        console.log(response);
-        //console.log(response);
-        $scope.drugs = response.data.records;
-        //console.log($scope.names);
-        //alert($scope.names);
-    });
-    
-    /*$scope.tempdrugs = [{Brand: "tylenol",
-                        Generic: "tylenolgeneric"},
-                       {Brand: "advil",
-                        Generic: "advilgeneric"}];
-    */
-     $scope.listform = {name: "",
-                               drugs: []};
-    
-     $scope.lists = [
-                {name: "List1",
+    $scope.lists = [
+                /*{name: "List1",
                  drugs: ["tylenol"]},
                 {name: "List2",
-                 drugs: ["advil", "tylenol"]}
-            ]
-
+                 drugs: ["advil", "tylenol"]}*/
+            ];
+    
     $scope.getCookie = function(cname) {
         var name = cname + "=";
         var ca = document.cookie.split(';');
@@ -40,6 +22,57 @@ app.controller('myCtrl', function($scope, $http) {
         }
         return "";
     }
+
+    var url = "http://monikos.xpyapvzutk.us-east-1.elasticbeanstalk.com/sql_result.php";
+    $http.get(url)
+        .then(function (response) {
+        console.log(response);
+        //console.log(response);
+        $scope.drugs = response.data.records;
+        //console.log($scope.names);
+        //alert($scope.names);
+    });
+
+    var getListsUrl = "http://monikos.xpyapvzutk.us-east-1.elasticbeanstalk.com/get_lists.php";
+    var getListsConfig = {
+                headers : {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                }
+    };
+
+    
+    var getListsData = $.param({
+            user_id: $scope.getCookie("user_id")
+    });
+
+    $http.post(getListsUrl, getListsData, getListsConfig)
+        .then(function (response) {
+        console.log(response);
+        //console.log(response);
+        if(response.data.records.length < 1){
+            $(".list-collection-block").append('<p id="noListsMessage">Please create a list</p>');
+        }else{
+            for(var i in response.data.records){
+                $scope.lists.push({
+                    name: response.data.records[i].list_name.toString(),
+                    drugs: response.data.records[i].drugnames.toString().split(",")
+                });
+            }
+        }
+        //$scope.drugs = response.data.records;
+        //console.log($scope.names);
+        //alert($scope.names);
+    });
+
+    
+    /*$scope.tempdrugs = [{Brand: "tylenol",
+                        Generic: "tylenolgeneric"},
+                       {Brand: "advil",
+                        Generic: "advilgeneric"}];
+    */
+     $scope.listform = {name: "",
+                               drugs: []};
+    
      
        $scope.addList = function() {
            console.log($scope.listform);
@@ -51,26 +84,28 @@ app.controller('myCtrl', function($scope, $http) {
                         headers : {
                             'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
                         }
-                    };
+            };
 
             
             var listData = $.param({
                     name: $scope.listform.name,
                     drugs: $scope.listform.drugs,
                     user_id: $scope.getCookie("user_id")
-                });
+            });
 
 
             $scope.listform.drugs;
             $http.post(createListUrl, listData, config)
             .then(function (response) {
                 console.log(response);
+
                 //console.log(response);
                 //$scope.names = response.data.records;
                 //$scope.response = response;
-                //if(response.data[0].response == 200){
+                if(response.data[0].response == 200){
                 //    window.location = window.location.origin + "/mvc/public/account/login";
-                //}else{
+                    $("#noListsMessage").remove();
+                }
                 //    alert("error in creating account");
                 //}
                 //console.log($scope.names);
