@@ -34,9 +34,17 @@
             .then(function (response) {
                 console.log(response);
                 $scope.response = response;
-                //change to check for set cookie
                 if(response.data[0].response == 200){
                     window.location = window.location.origin + "/mvc/public/home";
+                    if(document.cookie.indexOf("user_id") < 0){
+                        document.cookie = "user_id="+response.data[0].user_id+"; expires="+(Date.now()+(86400 * 30))+"; path=/";
+                    }
+
+                    if(document.cookie.indexOf("username") < 0){
+                        document.cookie = "username="+response.data[0].username+"; expires="+(Date.now()+(86400 * 30))+"; path=/";
+                    }
+                }else{
+                    alert("incorrect password or username");
                 }
             });    
         }

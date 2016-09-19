@@ -25,12 +25,59 @@ app.controller('myCtrl', function($scope, $http) {
                 {name: "List2",
                  drugs: ["advil", "tylenol"]}
             ]
+
+    $scope.getCookie = function(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length,c.length);
+            }
+        }
+        return "";
+    }
      
        $scope.addList = function() {
            console.log($scope.listform);
             $scope.lists.push($scope.listform);
+            
+
+            var createListUrl = "http://monikos.xpyapvzutk.us-east-1.elasticbeanstalk.com/create_list.php";
+            var config = {
+                        headers : {
+                            'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                        }
+                    };
+
+            
+            var listData = $.param({
+                    name: $scope.listform.name,
+                    drugs: $scope.listform.drugs,
+                    user_id: $scope.getCookie("user_id")
+                });
+
+
+            $scope.listform.drugs;
+            $http.post(createListUrl, listData, config)
+            .then(function (response) {
+                console.log(response);
+                //console.log(response);
+                //$scope.names = response.data.records;
+                //$scope.response = response;
+                //if(response.data[0].response == 200){
+                //    window.location = window.location.origin + "/mvc/public/account/login";
+                //}else{
+                //    alert("error in creating account");
+                //}
+                //console.log($scope.names);
+                //alert($scope.names);
+            });
             $scope.listform = {name: "",
-                               drugs: []};
+                               drugs: []};    
         }
         $scope.home = function(){
             //create new database controller

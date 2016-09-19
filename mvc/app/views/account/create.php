@@ -40,7 +40,7 @@
 	        }
 	    });
     </script>
-     <div ng-app="myApp" ng-controller="accountCtrl"> 
+     <div ng-app="myApp" ng-controller="accountCtrl" id="usr_mng_module"> 
         <div class="wrapper">
             <input id="un" type="text" name="username" placeholder="username">
             <input id="email" type="text" name="email" placeholder="email">
