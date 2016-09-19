@@ -28,9 +28,9 @@ if ($result->num_rows > 0) {
     echo '[{
 	"response": 200,
     "login-status": "logged-in",
-    "username": "'.$_POST_["username"].'",
+    "username": "'.$rs["username"].'",
     "user_id": "'.$rs["id"].'",
-    "password": "'.$_POST["password"].'"}]';
+    "password": "'.$rs["password"].'"}]';
 } else {
     echo '[{"response": 400}]';
 }
