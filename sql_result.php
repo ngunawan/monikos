@@ -30,7 +30,7 @@ $outp = "";
 while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
     if ($outp != "") {$outp .= ",";}
 	$rs["Generic"] = clean($rs["Generic"]);
-	$rs["DrugId"] = clean($rs["DrugId"]);
+	//$rs["DrugId"] = clean($rs["DrugId"]);
 	$rs["Brand"] = clean($rs["Brand"]);
 	$rs["Class"] = clean($rs["Class"]);
 	$rs["Indication"] = clean($rs["Indication"]);
