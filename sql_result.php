@@ -16,7 +16,7 @@ $pass = "monikosdbpw";
 $dbname = "monikosdb";
 $conn = new mysqli($host, $dbuser, $pass, $dbname);
 
-$result = $conn->query("SELECT Generic,Brand, Class, Indication, HintLikes, HintDislikes FROM Drug");
+$result = $conn->query("SELECT DrugId, Generic,Brand, Class, Indication, HintLikes, HintDislikes FROM Drug");
 
 //echo "here";
 
@@ -30,7 +30,7 @@ $outp = "";
 while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
     if ($outp != "") {$outp .= ",";}
 	$rs["Generic"] = clean($rs["Generic"]);
-	//$rs["DrugId"] = clean($rs["DrugId"]);
+	$rs["DrugId"] = clean($rs["DrugId"]);
 	$rs["Brand"] = clean($rs["Brand"]);
 	$rs["Class"] = clean($rs["Class"]);
 	$rs["Indication"] = clean($rs["Indication"]);
