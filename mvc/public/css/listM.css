@@ -1,0 +1,142 @@
+@import 'https://fonts.googleapis.com/css?family=Raleway:300,400';
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+h1 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin: 3px;
+    
+}
+
+button {
+    border:none;
+    background: transparent;
+	margin-top: 10px;
+}
+
+
+a {
+    text-decoration: none;
+}
+
+#app_header {
+    display: block;
+    position:fixed;
+    top:0;
+    width:100vw;
+    height:10vh;
+    background:#777;
+    text-align: center;
+    box-shadow: 0 0 5px #444;
+}
+
+#app_header button{
+    background: transparent;
+    font-family: 'Raleway',sans-serif;
+    font-weight: 300;
+    font-size: 30px;
+
+    color:white;
+    border: 1px lightblue solid;
+    border-radius: 4px;
+}
+
+.add-list-block button {
+    padding:10px;
+	margin: 12px;
+    font-size:12px;
+    letter-spacing: 5px;
+    border: 2px #ccc solid;
+    border-radius: 10px;
+}
+
+.add-list-block label {
+    color:#8d99ae;
+}
+
+.list-creator {
+    font-family: 'Raleway',sans-serif;
+    font-weight: 300;
+    letter-spacing: 1px;
+	 margin: 10px;
+}
+
+.list-creator #listName {
+    background: transparent;
+    height: 4vh;
+    width: 25vh;
+    border:none;
+    border-bottom: 1px gray solid;
+    text-align: center;
+    font-family: 'Raleway',sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+#listName:focus {
+	outline: none;
+}
+
+#drugList{
+	display:inline-block;
+	margin: 10px;
+}
+
+.list-creator button {
+    font-family: 'Raleway',sans-serif;
+	color:#8d99ae;
+    font-size: 14px;
+    margin: 5px;
+    padding: 5px;
+    letter-spacing: 1px;
+    border: 2px #ccc solid;
+    border-radius: 5px;
+}
+
+.list-collection-block {
+    margin: 0 12px 0 12px;
+    padding:5px;
+    border-top:  2px solid #8d99ae;
+    border-bottom: 2px solid #8d99ae;
+    
+}
+
+.list-block {
+    margin: 0 5px 0 5px;
+    padding:5px;
+    border-top:  2px solid #ccc;
+    border-bottom: 2px solid #ccc;
+}
+
+.list-drugs label{
+    display: none;
+    
+}
+
+.list-info-block{
+    letter-spacing: 1px;
+    display:none;
+    padding: 3px;
+    color: #8d99ae;
+    font-size: 14px;
+    font-family: 'Raleway', sans-serif;
+}
+
+#app_content {
+    display:block;
+    position:absolute;
+    height:auto;
+    width:100vw;
+    text-align: center;
+    margin-top:70px;
+
+}
+
+

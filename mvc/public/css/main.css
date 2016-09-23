@@ -45,6 +45,9 @@ body#main_app_module {
     margin:0;
 }
 
+
+/*START NIKS CODE************/
+/*
 #app_header {
     display: block;
     position:absolute;
@@ -93,7 +96,191 @@ label.field-name {
     font-weight: 600;
     margin-top:5vh;
 }
+*/
 
+body#database_module {
+    background: #F8F8F8;
+}
+
+#app_header {
+    display: block;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100vw;
+    height:50px;
+    margin:0;
+    background:#FF3D39;
+    color: #FFF;
+    text-align: center;
+    border-bottom: 1px solid #CCC;
+    box-shadow: 0vw 0vw 5px #888888;
+}
+
+#app_header button.back-btn {
+    display:inline-block;
+    background: #B21816;
+    position: absolute;
+    left:8px;
+    top:8px;
+    color:#FFF;
+    font-size: 14px;
+    border-radius: 4px;
+    border:0;
+    height:35px;
+    padding:0 10px;
+    width: 55px;
+}
+
+#app_header h1 {
+    display:inline-block;
+    font-family: sans-serif;
+    margin:15px auto auto auto;
+    font-weight:500;
+    font-size: 20px; 
+    letter-spacing: 1px;
+}
+
+#app_header .search-btn {
+    display:inline-block;
+    position: absolute;
+    right:11px;
+    top:11px;
+    background: transparent;
+    border:none;
+}
+
+#app_header .search-btn img {
+    width:25px;
+    height:25px;
+}
+
+#app_footer {
+    display: block;
+    position:absolute;
+    bottom:0;
+    width:100vw;
+    height:10vh;
+    margin:0;
+    background:transparent;
+    text-align: center;
+}
+
+#app_content {
+    display:block;
+    position:absolute;
+    height:80vh;
+    width:100vw;
+    margin-top:10vh;
+    text-align: center;
+}
+
+#content_wrapper {
+    /*for database*/
+    margin-top: 65px;
+}
+
+.search-bar {
+    box-sizing:border-box;
+    background: #FFF;
+    height:40px;
+    display: block;
+    margin: 15px auto 15px auto;
+    padding:0 10px 0 10px;
+    border: 0;
+    border-radius:4px;
+    border-bottom: 1px solid #CCC;
+    box-shadow: 0vw 0vw 3px #888888;
+    font-size: 18px;
+    width:100%;
+}
+
+.search-bar:focus {
+    outline: none;
+}
+
+.drug-block {
+    font-family: sans-serif;
+    display:block;
+    border: 1px solid #CCC;
+/*    box-shadow: 0vw 0vw 8px #888888;*/
+    margin: 15px auto 15px auto;
+    background:#FFF;
+    width:100%;
+    transition: background 0.5s;
+}
+
+.drug-block:active {
+/*    background: #F7FF62;*/
+}
+
+.visible-info {
+    font-size:18px;
+    font-weight:600;
+}
+
+.hint-info {
+    display:inline-block;
+    float:right;
+}
+
+.hint-info button{
+    background: #FF3D39;
+    border:1px solid #FF3D39;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #FFF;
+    font-size:14px;
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
+
+.expand-info {
+    font-size: 14px;
+    margin-top:12px;
+    transition: all 0.3s ease;
+}
+
+
+.expand-info.ng-hide {
+    margin-top:-10px;
+    opacity:0;
+}
+
+.expand-info label {
+    font-weight:600;
+}
+
+.drug-info-wrap {
+    display:block;
+    margin-top: 6px;
+}
+
+.drug-content {
+    margin:20px;
+}
+
+.drug-brand {
+    font-weight: 600;
+}
+
+.side-effect {
+    display: inline-block;
+}
+
+label.field-name {
+    display:block;
+    font-weight: 600;
+    margin-top:5vh;
+}
+
+/*END NIKS CODE************/
 
 @media only screen and (max-width:518px) {
     body#usr_mng_module .wrapper {

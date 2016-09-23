@@ -1,0 +1,63 @@
+@import 'https://fonts.googleapis.com/css?family=Raleway:300,400';
+
+body {
+    margin: 0;
+    padding: 0;    
+}
+
+#app_header {
+    display: block;
+    position:fixed;
+    top:0;
+    width:100vw;
+    height:10vh;
+    background:#777;
+    text-align: center;
+    box-shadow: 0 0 10px #444;
+}
+
+#app_header button{
+    background: transparent;
+    font-family: 'Raleway',sans-serif;
+    font-weight: 300;
+    font-size: 30px;
+    margin-top: 10px;
+    color:white;
+    border: 1px lightblue solid;
+    border-radius: 4px;
+}
+
+.back{
+	position: fixed;
+	left:10px;
+}
+
+
+a {
+    text-decoration: none;
+}
+
+.game-wrapper {
+    display: block;
+    margin-top: 10vh;
+    text-align: center;
+    font-family: 'Raleway',sans-serif;
+    font-size: 25px;
+    letter-spacing: 3px;
+}
+
+.game-block{
+    margin:0;
+    padding: 53px;
+}
+
+#game_0, #game_2 {
+    background: #ff3333;
+    color:white;
+    
+}
+
+#game_1, #game_3{
+    color: #8d99ae;
+
+}

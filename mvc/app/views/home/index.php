@@ -1,7 +1,7 @@
 <!--Hello <?=$data['name']?>-->
 
 
-
+<link rel="stylesheet" type="text/css" href="/mvc/public/css/home_style.css"/>
 <body id="main_app_module">
 
 	<script>
@@ -36,17 +36,22 @@
     </script>
     <div id=app_header>header</div>
     <div id=app_content ng-app="myApp" ng-controller="customersCtrl">
-        <div class="top-block">
-            <div class="database-block">
-                <!--<a href=database.html>Database</a>-->
-                <button ng-click="drugDatabase()">Database</button>
+        <a href="#" ng-click="drugDatabase()">
+            <div class="top-block">
+                <div class="database-block">
+                    <!--<a href=database.html>Database</a>-->
+                    <!--<button ng-click="drugDatabase()">Database</button>-->
+                    DATA<br>BASE
+                </div>
             </div>
-        </div>
-        <div class="bottom-block">
-            <div class=study-block>
-                <button ng-click="listManager()">List Manager</button>
+        </a>
+        <a href="#" ng-click="listManager()">
+            <div class="bottom-block">
+                <div class=study-block>
+                    STUDY
+                </div>
             </div>
-        </div>
+        </a>
         <div class="bottom-block">
             <div class=logout-block>
                 <button ng-click="logout()">Logout</button>
