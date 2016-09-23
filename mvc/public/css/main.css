@@ -210,6 +210,10 @@ body#database_module {
     transition: background 0.5s;
 }
 
+.drug-block:hover{
+    cursor:pointer;
+}
+
 .drug-block:active {
 /*    background: #F7FF62;*/
 }
@@ -231,6 +235,10 @@ body#database_module {
     text-decoration: none;
     color: #FFF;
     font-size:14px;
+}
+
+.hine-info-button button:hover{
+    cursor:help;
 }
 
 .hidden {

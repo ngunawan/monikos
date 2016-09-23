@@ -1,3 +1,5 @@
+<link rel="stylesheet" type="text/css" href="/mvc/public/css/names.css">
+
 <body>
     <script>
 

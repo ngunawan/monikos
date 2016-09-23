@@ -58,7 +58,7 @@
             </div>
         </div>
     </div>
-    <div id=app_footer>footer</div>
+    <!--<div id=app_footer>footer</div>-->
     <!--<div ng-app="myApp" ng-controller="customersCtrl">-->
     
     <!--
