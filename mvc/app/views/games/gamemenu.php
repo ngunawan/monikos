@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="/mvc/public/css/game.css"/>
 <body id="main_app_module">
     <div id = app_header>
 		<a href = '#'><button class = 'back'>&#x25c1;</button></a>

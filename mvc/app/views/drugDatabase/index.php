@@ -26,7 +26,7 @@
         <div id="app_header">
             <button class=back-btn ng-click="home()">Back</button>
             <h1>Database</h1>
-            <button ng-model="showSearch" ng-click="showSearch=!showSearch" class=search-btn><img src="images/searchicon_white.png"></button>
+            <button ng-model="showSearch" ng-click="showSearch=!showSearch" class=search-btn><img src="/mvc/public/images/searchicon_white.png"></button>
         </div>
         <div id="content_wrapper">
             <input ng-show="showSearch" class="search-bar" type=text placeholder="Search" ng-model=searchText>

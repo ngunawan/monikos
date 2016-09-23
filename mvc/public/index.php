@@ -4,8 +4,8 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
 	<link rel="stylesheet" type="text/css" href="/mvc/public/css/main.css">
     <link rel="stylesheet" type="text/css" href="/mvc/public/css/stylepage.css">
-    <link rel="stylesheet" type="text/css" href="/mvc/public/css/listM.css">
-    <link rel="stylesheet" type="text/css" href="/mvc/public/css/game.css"/>
+    <!--<link rel="stylesheet" type="text/css" href="/mvc/public/css/listM.css">-->
+    <!--<link rel="stylesheet" type="text/css" href="/mvc/public/css/game.css"/>-->
 
 	<script src="/mvc/public/js/myCtrl.js"></script>
     <script src="/mvc/public/js/checklist-model.js"></script>

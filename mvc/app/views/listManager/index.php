@@ -1,4 +1,4 @@
-
+<link rel="stylesheet" type="text/css" href="/mvc/public/css/listM.css">
 
 
 <body ng-app="myApp" ng-controller="myCtrl" id="main_app_module">
