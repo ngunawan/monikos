@@ -4,6 +4,7 @@
             <h1>Login</h1>
             <input id="un" type="text" placeholder="username">
             <input id="pw" type="password" placeholder="password">
+            <div class="fb-login-button" data-scope="public_profile,email" onlogin="checkLoginState();"></div>
             <button ng-click="login()">login</button>
             <button ng-click="create()">Create Account</button>
         </div>

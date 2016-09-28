@@ -58,6 +58,10 @@ class Account extends Controller {
 		$this->view('home/index');
 	}
 
+	public function loginCallback(){
+		$this->view('account/login-callback');
+	}
+
 
 
 }
