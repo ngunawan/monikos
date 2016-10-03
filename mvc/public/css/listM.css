@@ -142,4 +142,16 @@ a {
 
 }
 
+/*DCEDITS           *******/
+button.launcherButton {
+    border: 1px solid #8d99ae;
+    color: #8d99ae;
+    border-radius: 3px;
+}
+button.launcherButton:hover {
+    cursor:pointer;
+    background: #8d99ae;
+    color: white;
+}
+
 

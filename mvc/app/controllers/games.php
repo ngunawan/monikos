@@ -20,7 +20,8 @@ class Games extends Controller {
 
 
 		//directory path
-		$this->view('games/names', ['name' => $user->name]);
+		//$this->view('games/names', ['name' => $user->name]);
+		$this->view('games/gamemenu');
 	}
 
 	public function names(){
@@ -30,6 +31,10 @@ class Games extends Controller {
 	public function menu(){
 		$this->view('games/gamemenu');	
 	} 
+
+	public function game1(){
+		$this->view('games/game1');
+	}
 }
 
 ?>

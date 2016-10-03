@@ -41,7 +41,10 @@
                 <h1 class="list-name-header">{{list.name}}</h1>
                 <div class=list-info-block>
                     <div class=list-drugs>
-                        <label>Drugs:</label>{{list.drugs}}           
+                        <label>Drugs:</label>{{list.drugs}} 
+                        <div class="launchButtonContainer">
+                            <button class="launcherButton" ng-click="launchGame()">Launch</button>
+                        </div>          
                     </div>
                 </div>
             </div>

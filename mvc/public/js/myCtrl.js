@@ -119,6 +119,10 @@ app.controller('myCtrl', function($scope, $http) {
             window.location = window.location.origin + "/mvc/public/home/";
         }
 
+        $scope.launchGame = function(){
+            window.location = window.location.origin + "/mvc/public/games";
+        }
+
 //    $scope.drugs = [
 //        {brand: "Lipitor",
 //         generic: "atorvastatin",
