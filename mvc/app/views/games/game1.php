@@ -22,7 +22,7 @@
 
 </head>
 
-<link rel="stylesheet" type="text/css" href="/mvc/public/css/games/game1.css">
+<link rel="stylesheet" type="text/css" href="/mvc/public/css/games/game1/style.css">
 
 <body>
 
