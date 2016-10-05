@@ -15,15 +15,15 @@
     <div id = app_content>
         <div class = "game-wrapper">
             
-            <a href="#"><div class = "game-block" id ='game_0'>FLASHCARD</div></a>
+            <a href="#"><div class = "game-block game-red" id ='game_0'>FLASHCARD</div></a>
         
-            <a href='#'><div class = "game-block" id ='game_1'>MATCHING</div></a>
+            <a href='#'><div class = "game-block game-white" id ='game_1'>MATCHING</div></a>
             
-            <a href='#'><div class = "game-block" id ='game_2'>PILL GAME</div></a>
+            <a href='#'><div class = "game-block game-red" id ='game_2'>PILL GAME</div></a>
             
-            <a href='#'><div class = "game-block" id ='game_3'>MULTIPLE CHOICE<br> QUIZ</div></a>
+            <a href='#'><div class = "game-block game-white" id ='game_3'>MULTIPLE CHOICE<br> QUIZ</div></a>
 
-            <a onclick="gotoGame1()"><div class = "game-block" id ='game_3'>GAME 1</div></a>
+            <a onclick="gotoGame1()"><div class = "game-block game-red" id ='game_4'>GAME 1</div></a>
         
         </div>
     </div>

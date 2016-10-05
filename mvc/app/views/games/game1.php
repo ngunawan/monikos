@@ -1,6 +1,7 @@
 <link rel="stylesheet" type="text/css" href="/mvc/public/css/listM.css">
-
-<html>
+<script src="/mvc/public/js/checklist-model.js"></script>
+<link rel="stylesheet" type="text/css" href="/mvc/public/css/style.css">
+<!--<html>
 
 <head>
 	<meta charset="utf-8">
@@ -12,17 +13,17 @@
 	<link rel="stylesheet" href="css/style.css">
 
 
-	<!--<script src="http://www.danilachenchik.com/mvc/public/js/myCtrl.js"></script>
-    <script src="http://www.danilachenchik.com/mvc/public/js/checklist-model.js"></script>-->
+	<script src="http://www.danilachenchik.com/mvc/public/js/myCtrl.js"></script>
+    <script src="http://www.danilachenchik.com/mvc/public/js/checklist-model.js"></script>
     	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
 
 
-</head>
+</head>-->
 
-<link rel="stylesheet" type="text/css" href="/mvc/public/css/games/game1/style.css">
+
 
 <body>
 
@@ -295,4 +296,4 @@
 
 </body>
 
-</html>
+<!--</html>-->

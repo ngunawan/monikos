@@ -11,6 +11,7 @@ body {
     top:0;
     width:100vw;
     height:10vh;
+    z-index:100;
     background:#777;
     text-align: center;
     box-shadow: 0 0 10px #444;
@@ -50,8 +51,10 @@ a {
     margin:0;
     padding: 53px;
 }
-
-#game_0, #game_2 {
+.game-block:hover{
+    cursor:pointer;
+}
+/*#game_0, #game_2 {
     background: #ff3333;
     color:white;
     
@@ -60,4 +63,12 @@ a {
 #game_1, #game_3{
     color: #8d99ae;
 
+}*/
+
+.game-red{
+    background: #ff3333;
+    color:white;
+}
+.game-white{
+    color: #8d99ae;
 }
