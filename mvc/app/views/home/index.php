@@ -50,7 +50,7 @@
         <a href="#" ng-click="listManager()">
             <div class="bottom-block">
                 <div class=study-block>
-                    STUDY
+                    STUDYSYY
                 </div>
             </div>
         </a>
