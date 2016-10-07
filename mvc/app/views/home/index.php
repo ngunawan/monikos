@@ -2,6 +2,7 @@
 
 
 <link rel="stylesheet" type="text/css" href="/mvc/public/css/home_style.css"/>
+
 <body id="main_app_module">
 
 	<script>
@@ -34,7 +35,8 @@
         }
     });
     </script>
-    <div id=app_header>header</div>
+    <div id=app_header></div>
+	
     <div id=app_content ng-app="myApp" ng-controller="customersCtrl">
         <a href="#" ng-click="drugDatabase()">
             <div class="top-block">
@@ -52,11 +54,13 @@
                 </div>
             </div>
         </a>
-        <div class="bottom-block">
-            <div class=logout-block>
-                <button ng-click="logout()">Logout</button>
-            </div>
+		
+		<a href="#"  ng-click="logout()">
+        <div class=logout-block>
+			<div class = 'logout'>LOGOUT</div> 
         </div>
+		</a>
+       
     </div>
     <!--<div id=app_footer>footer</div>-->
     <!--<div ng-app="myApp" ng-controller="customersCtrl">-->
@@ -73,7 +77,7 @@
 	      </tr>
 	    </table>
     -->
-    </div>
+   
 
 
 </body>
