@@ -1,10 +1,19 @@
 <link rel="stylesheet" type="text/css" href="/mvc/public/css/listM.css">
 
+<!-- ///////////////BOOTSTRAP///////////// -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- ///////////////BOOTSTRAP///////////// -->
+
 
 <body ng-app="myApp" ng-controller="myCtrl" id="main_app_module">
+	
     <div id=app_header>
-        <a href ="home.html"><button>M</button></a>
+		<a href = '#' ng-click='home()'><button class = 'back'>&#x25c1;</button></a>
+        <a href ="#" ng-click="home()"><button>M</button></a>
     </div>
+	
     <div id=app_content>
 
         <div class=add-list-block>
@@ -12,57 +21,78 @@
                 <label>CREATE NEW LIST</label>
             </button>
         </div>
-        <button ng-click="home()">Home</button>
-
-        <div ng-show="showCreator" class=list-creator>
-            <label class=field-name>Name: </label>
-            <br>
-            <input id = 'listName' ng-model=listform.name type=text>
-            <br>
-            <label id='drugList' class=field-name>Drugs: </label>
-            <div ng-repeat="drug in drugs">
-                <input type=checkbox checklist-model="listform.drugs" checklist-value="drug.Brand"> <label>{{drug.Brand}}</label>
-            </div>
-            <br>
-            <button ng-click=addList()>Add List</button>
-        </div>
-
-        <!--<div class=list-collection-block>
-            <div class=list-block ng-repeat="list in lists"><a href=#>{{list.name}}</a>
-            <div class=list-info-block>
-                <div class=list-name><label>Name: {{list.name}}</label></div>
-                <div class=list-drugs><label>Drugs: {{list.drugs}}</label></div>
-                <div class=list-ids><label>ids: {{list.ids}}</label></div>
-            </div>
-            </div>
-            </div>-->
-        <div class=list-collection-block>   
+       
+		<div class=list-collection-block>   
             <div class=list-block ng-repeat="list in lists">
                 <h1 class="list-name-header">{{list.name}}</h1>
                 <div class=list-info-block>
                     <div class=list-drugs>
-                        <label>Drugs:</label>{{list.drugs}} 
-                        <div class="launchButtonContainer">
-                            <button class="launcherButton" ng-click="launchGame()">Launch</button>
-                        </div>          
+        				{{list.drugs}}
+						<br>
+						<button class = 'select' ng-click = 'select()'>SELECT</button>
                     </div>
                 </div>
             </div>
         </div>
-        <!--<div class=add-list-block><button ng-click="showCreator = true">+</button></div>
--->
-        <!--<div ng-show="showCreator" class=list-creator>
-            <label class=field-name>Name: </label><input ng-model=listform.name type=text>
-            <label class=field-name>Drugs: </label>
-            <div ng-repeat="drug in drugs">
-                <input type=checkbox checklist-model="listform.drugs" checklist-value="drug.Brand"> <label>{{drug.DrugId}},{{drug.Brand}}</label>
-            </div>
-            <button ng-click=addList()>Add List</button>
-        </div>-->
-    </div>
-    <div id=app_footer></div>
 
+        <div ng-show="showCreator" class=list-creator>
+            <div class ='container'>
+			<label class=field-name>LIST TITLE: </label>
+            <br>
+            <input id = 'listName' ng-model=listform.name type=text>
+		 <button ng-click=addList()>Add List</button>
+            </div>
+			
+<!-------LIST CREATOR--------->			
+<div class="container">		
+	<div class="row">
+		<div class="form-group">
+            <div class="col-xs-8 col-sm-8 col-xs-offset-2 col-sm-offset-2">
+                <input type="search" class="form-control" id="search" placeholder="Search for your drug..">
+            </div>
+        </div>
+	</div>
+	<div class = 'drug-container'>	
+	<div class="row">
+        <div class="form-group">
+            <div class="searchable-container">
+            
+				<div ng-repeat="drug in drugs">
+                <div class="item col-xs-6 col-sm-6">
+                    <div class="info-block block-info clearfix">
+
+                        <div data-toggle="buttons" class="btn-group bizmoduleselect">
+							
+							<label class="drug-wrap">                           	<div class="bizcontent">
+                                    <input type="checkbox" name="var_id[]" autocomplete="off" 
+									checklist-model="listform.drugs" checklist-value="drug.Generic">
+									<label>{{drug.Generic}}</label>
+                                </div>
+								
+							</label>
+                        </div>
+                    </div>
+                </div>
+				</div>
+                
+            </div>
+        </div>
+		</div>
+	</div>	
+	
+	
+	</div>
+			
+        </div>
+    </div>		
+		
+	<div class = 'play' ng-click="game()">
+		<p>PLAY</p>
+	</div>
+	
 </body>
+
+
 
 <script> 
     $(document).ready(function () {
@@ -78,13 +108,21 @@
             //console.log(brands.text);
             brands.slideToggle("fast");
         });
-
         //$('body').on('click', function(){
         //    alert("hello");
         //});
+		
     });
-
-    
+	
+	$(function() {
+    	$('#search').on('keyup', function() {
+        	var pattern = $(this).val();
+        	$('.searchable-container .item').hide();
+        	$('.searchable-container .item').filter(function() {
+            return $(this).text().match(new RegExp(pattern, 'i'));
+        }).show();
+    });
+});
 
 </script>
 
