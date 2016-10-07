@@ -29,6 +29,6 @@ if ($conn->query($sql) === TRUE) {
     echo '[{"response":"'.$conn->error.'"}]';
 }*/
 
-$conn->close();
-echo($result);
+//$conn->close();
+//echo($result);
 ?>
