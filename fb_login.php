@@ -34,6 +34,7 @@ if ($result->num_rows > 0) {
 		    echo '[{
 		    "response": 200,
 		    "username": "'.$_POST["un"].'",
+		    "test": "whaa",
 		    "id": "'.$_POST["id"].'"}]';
 		} else {
 		    //echo '[{"response":"'.$conn->error.'"}]';
