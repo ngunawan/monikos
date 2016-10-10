@@ -29,7 +29,9 @@
                     <div class=list-drugs>
         				{{list.drugs}}
 						<br>
-						<button class = 'select' ng-click = 'select()'>SELECT</button>
+						<button class = 'select' ng-click = 'selectlist()'>SELECT</button>
+						
+						<button class = 'delete' ng-click = '#'>DELETE LIST</button>
                     </div>
                 </div>
             </div>

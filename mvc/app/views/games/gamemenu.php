@@ -10,7 +10,7 @@
     <div id = app_header>
 		<a href = '#'><button class = 'back'>&#x25c1;</button></a>
 		
-        <a href ="home.html"><button>M</button></a>
+        <a href ="#" ng-click = 'home()'><button>M</button></a>
     </div>
     <div id = app_content>
         <div class = "game-wrapper">
