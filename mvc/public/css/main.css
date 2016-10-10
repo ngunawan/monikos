@@ -45,58 +45,12 @@ body#main_app_module {
     margin:0;
 }
 
+/** START NIK'S CODE--------------------------------------------------------------------- **/
+/**-------------------------------------------------------------------------------------- **/
+/**-------------------------------------------------------------------------------------- **/
+/**-------------------------------------------------------------------------------------- **/
+/**-------------------------------------------------------------------------------------- **/
 
-/*START NIKS CODE************/
-/*
-#app_header {
-    display: block;
-    position:absolute;
-    top:0;
-    width:100vw;
-    height:10vh;
-    margin:0;
-    background:transparent;
-    text-align: center;
-}
-
-#app_footer {
-    display: block;
-    position:absolute;
-    bottom:0;
-    width:100vw;
-    height:10vh;
-    margin:0;
-    background:transparent;
-    text-align: center;
-}
-
-#app_content {
-    display:block;
-    position:absolute;
-    height:80vh;
-    width:100vw;
-    margin-top:10vh;
-    text-align: center;
-}
-
-.drug-block {
-    margin:3vh 0 3vh 0;
-}
-
-.drug-brand {
-    font-weight: 600;
-}
-
-.side-effect {
-    display: inline-block;
-}
-
-label.field-name {
-    display:block;
-    font-weight: 600;
-    margin-top:5vh;
-}
-*/
 
 body#database_module {
     background: #F8F8F8;
@@ -203,19 +157,15 @@ body#database_module {
     font-family: sans-serif;
     display:block;
     border: 1px solid #CCC;
-/*    box-shadow: 0vw 0vw 8px #888888;*/
+    /*    box-shadow: 0vw 0vw 8px #888888;*/
     margin: 15px auto 15px auto;
     background:#FFF;
     width:100%;
     transition: background 0.5s;
 }
 
-.drug-block:hover{
-    cursor:pointer;
-}
-
 .drug-block:active {
-/*    background: #F7FF62;*/
+    /*    background: #F7FF62;*/
 }
 
 .visible-info {
@@ -231,14 +181,11 @@ body#database_module {
 .hint-info button{
     background: #FF3D39;
     border:1px solid #FF3D39;
+/*    border:1px solid #B21816;*/
     border-radius: 4px;
     text-decoration: none;
     color: #FFF;
     font-size:14px;
-}
-
-.hine-info-button button:hover{
-    cursor:help;
 }
 
 .hidden {
@@ -288,7 +235,136 @@ label.field-name {
     margin-top:5vh;
 }
 
-/*END NIKS CODE************/
+
+/**-------------------------------------------------------------------------------------- **/
+/**-------------------------------------------------------------------------------------- **/
+/**-------------------------------------------------------------------------------------- **/
+/**-------------------------------------------------------------------------------------- **/
+/** END NIK'S CODE----------------------------------------------------------------------- **/
+
+
+.speaker-icon-wrapper {
+    display:inline-block;
+    padding:0;
+}
+
+.speaker-icon-wrapper img {
+    width:20px;
+    height:20px;
+}
+
+
+/** MODAL CODE----------------------------------------------------------------------- **/
+
+.ng-modal-overlay {
+    /* A dark translucent div that covers the whole screen */
+    position:fixed;
+    z-index:999;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    background-color:#000000;
+    opacity: 0.2;
+}
+.ng-modal-dialog {
+    /* A centered div above the overlay with a box shadow. */
+    z-index:1000;
+    position: fixed;
+    width: 50%; /* Default */
+
+    /* Center the dialog */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 4px 4px 80px #000;
+}
+.ng-modal-dialog-content {
+    text-align: center;
+}
+.ng-modal-close {
+    position: absolute;
+    top: 3px;
+    right: 8px;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 100%;
+    display: inline-block;
+    font-weight: bold;
+    font-family: 'Arial','sans-serif';
+
+/*
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    background: #eaeaea;
+    border:2px solid #CCC;
+*/
+    color: #CCC;
+    
+}
+
+.ng-modal-content-head {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom: 1px solid #CCC;
+    background: #eaeaea;
+    padding: 10px 0;
+
+}
+
+.ng-modal-content-middle {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    background:#FFF;
+    padding: 40px 10px;
+}
+
+.ng-modal-content-footer {
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+
+}
+
+.ng-modal-content-footer .like-btn {
+    display:inline-block;
+    width:50%;
+    background:#2F3F73;
+    color:#FFF;
+    padding:15px 0px;
+    margin:0;
+    border:0;
+    font-size:16px;
+    font-weight: 600;
+        border-bottom-left-radius: 4px;
+
+}
+
+.ng-modal-content-footer .dislike-btn {
+     display:inline-block;
+    width:50%;
+    background:#FF3D39;
+    color:#FFF;
+        padding:15px 0px;
+        border-bottom-right-radius: 4px;
+
+
+    height:100%;
+     margin:0;
+    border:0;
+    font-size:16px;
+    font-weight: 600;
+}
+
+
+
+/** MODAL CODE----------------------------------------------------------------------- **/
+
 
 @media only screen and (max-width:518px) {
     body#usr_mng_module .wrapper {
