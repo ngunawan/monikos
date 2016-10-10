@@ -18,7 +18,10 @@ if ($conn->connect_error) {
     "fbid": "'.$_POST["id"].'"}]';
 */
 $sql = "SELECT * FROM Users WHERE fbid LIKE ".$profile["id"];
-if ($conn->query($sql) === TRUE) {
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+//if ($conn->query($sql) === TRUE) {
 	echo '[{
 	"response": 200,
 	"username": "'.$_POST["un"].'",
