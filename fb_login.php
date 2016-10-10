@@ -17,9 +17,9 @@ if ($conn->connect_error) {
     "username": "'.$_POST["un"].'",
     "fbid": "'.$_POST["id"].'"}]';
 */
-echo "echoing id ". $_POST["id"];
+//echo "echoing id ". $_POST["id"];
 $sql = "SELECT * FROM Users WHERE fbid LIKE '".$_POST["id"]."'";
-echo "sql state looks like " . $sql;
+//echo "sql state looks like " . $sql;
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -31,7 +31,7 @@ if ($result->num_rows > 0) {
 	"id": "'.$_POST["id"].'"}]';
 } else {
 	$createSql = "INSERT INTO Users (id, fbid, username, email, password)
-	VALUES (NULL, ".$_POST["id"].", '".$_POST["un"]."', 'NULL', 'NULL')";
+	VALUES (NULL, '".$_POST["id"]."', '".$_POST["un"]."', 'NULL', 'NULL')";
 		if ($conn->query($createSql) === TRUE) {
 		    echo '[{
 		    "response": 200,
