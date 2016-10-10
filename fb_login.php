@@ -21,11 +21,19 @@ $sql = "SELECT * FROM Users WHERE id LIKE '".$profile["id"]."'";
 if ($conn->query($sql) === TRUE) {
 	echo '[{
 	"response": 200,
-	"username": "'.$_POST["username"].'",
-	"email": "'.$_POST["email"].'",
-	"password": "'.$_POST["password"].'"}]';
+	"username": "'.$_POST["un"].'",
+	"id": "'.$_POST["id"].'"}]';
 } else {
-	echo '[{"response":"'.$conn->error.'"}]';
+	$createSql = "INSERT INTO Users (id, username, email, password)
+	VALUES (NULL, '".$_POST["un"]."', NULL, NULL)";
+		if ($conn->query($createSql) === TRUE) {
+		    echo '[{
+		    "response": 200,
+		    "username": "'.$_POST["un"].'",
+		    "id": "'.$_POST["id"].'"}]';
+		} else {
+		    echo '[{"response":"'.$conn->error.'"}]';
+		}
 }
 /*$sql = "INSERT INTO Users (id, username, email, password)
 VALUES (NULL, '".$_POST["username"]."', '".$_POST["email"]."', '".$_POST["password"]."')";
