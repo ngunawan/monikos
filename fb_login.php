@@ -24,25 +24,25 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
 //if ($conn->query($sql) === TRUE) {
-	echo '[{
+	echo '{
 	"response": 200,
 	"username": "'.$_POST["un"].'",
-	"test": "user already exists",
-	"id": "'.$_POST["id"].'"}]';
+	"exists": true,
+	"id": "'.$_POST["id"].'"}';
 } else {
 	$createSql = "INSERT INTO Users (id, fbid, username, email, password)
 	VALUES (NULL, '".$_POST["id"]."', '".$_POST["un"]."', 'NULL', 'NULL')";
 		if ($conn->query($createSql) === TRUE) {
-		    echo '[{
+		    echo '{
 		    "response": 200,
 		    "username": "'.$_POST["un"].'",
-		    "test": "whaa",
-		    "id": "'.$_POST["id"].'"}]';
+		    "exists": "false",
+		    "id": "'.$_POST["id"].'"}';
 		} else {
 		    //echo '[{"response":"'.$conn->error.'"}]';
-		    echo '[{
+		    echo '{
 			"response": 400,
-			"why": "'.$conn->error.'"}]';
+			"error": "'.$conn->error.'"}';
 		}
 }
 /*$sql = "INSERT INTO Users (id, username, email, password)
@@ -58,6 +58,6 @@ if ($conn->query($sql) === TRUE) {
     echo '[{"response":"'.$conn->error.'"}]';
 }*/
 
-//$conn->close();
+$conn->close();
 //echo($result);
 ?>
