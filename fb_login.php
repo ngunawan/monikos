@@ -17,15 +17,15 @@ if ($conn->connect_error) {
     "username": "'.$_POST["un"].'",
     "fbid": "'.$_POST["id"].'"}]';
 */
-$sql = "SELECT * FROM Users WHERE id LIKE '".$profile["id"]."'";
+$sql = "SELECT * FROM Users WHERE fbid LIKE '".$profile["id"]."'";
 if ($conn->query($sql) === TRUE) {
 	echo '[{
 	"response": 200,
 	"username": "'.$_POST["un"].'",
 	"id": "'.$_POST["id"].'"}]';
 } else {
-	$createSql = "INSERT INTO Users (id, username, email, password)
-	VALUES (".$_POST["id"].", '".$_POST["un"]."', 'NULL', 'NULL')";
+	$createSql = "INSERT INTO Users (id, fbid, username, email, password)
+	VALUES (NULL, ".$_POST["id"].", '".$_POST["un"]."', 'NULL', 'NULL')";
 		if ($conn->query($createSql) === TRUE) {
 		    echo '[{
 		    "response": 200,
