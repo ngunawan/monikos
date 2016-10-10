@@ -25,6 +25,7 @@ if ($result->num_rows > 0) {
 	echo '[{
 	"response": 200,
 	"username": "'.$_POST["un"].'",
+	"test": "whaa",
 	"id": "'.$_POST["id"].'"}]';
 } else {
 	$createSql = "INSERT INTO Users (id, fbid, username, email, password)
