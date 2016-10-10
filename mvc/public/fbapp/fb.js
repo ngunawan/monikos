@@ -8,8 +8,7 @@ function statusChangeCallback(response) {
     if (response.status === 'connected') {
     	// Logged into your app and Facebook.
       	
-        //var fbid = "";
-        //var fbname = "";
+       
         /*FB.api('/me', function(response) {
           alert('Your name is ' + response.name +'id: '+ response.id + ':email:' + response.email);
           response.id;
@@ -60,50 +59,125 @@ function statusChangeCallback(response) {
             console.log("oyoyoy");
             $scope.fblogin();
         });*/
-        console.log("fbname before :"+ fbname + "fbid : " + fbid);  
+        //console.log("fbname before :"+ fbname + "fbid : " + fbid);  
         angular.module('fbapp.app', []).factory('fbService', ['$http', function ($http) {
           return new function () {
-            this.fblogin = function (fbid, fbname) {
-              console.log("fbname after :"+ fbname + "fbid : " + fbid);
-              var url = "http://monikos.xpyapvzutk.us-east-1.elasticbeanstalk.com/fb_login.php";
+            this.fblogin = function () {
+              //console.log("fbname after :"+ fbname + "fbid : " + fbid);
+              //var url = "http://monikos.xpyapvzutk.us-east-1.elasticbeanstalk.com/fb_login.php";
+              var url = window.location.origin + "/mvc/fbapp/login-callback.php";
               //var fbyes "true";
+              //$http.post(url, data, config)
+              var name;
+              var id;
+              $http.get(url)
+              .then(function (response) {
+                  console.log(response);
+                  if(response.status == 200){
+                    var fbname = response.data['fbname'];
+                    var fbid = response.data['fbid'];
+                    console.log("fbid is " + fbid + "fbname is " + fbname);
+                     var config = {
+                      headers : {
+                          'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                      }
+                    };   
+                    var data = $.param({
+                      id: fbid,
+                      un: fbname,
+                      fb: true
+                    }); 
+                    console.log("here fbid is " + fbid + "fbname is " + fbname + " data is: "+data);
+                    //url = window.location.origin + "/fb_login.php";
+                    url = "http://monikos.xpyapvzutk.us-east-1.elasticbeanstalk.com/fb_login.php";
+
+                    $http.post(url, data, config)
+                    .then(function (response) {
+                        console.log(response);
+
+                        if(response.data.response == 200){
+                          if(document.cookie.indexOf("user_id") < 0){
+                                document.cookie = "user_id="+response.data.id+"; expires="+(Date.now()+(86400 * 30))+"; path=/";
+                            }
+                            
+                            if(document.cookie.indexOf("username") < 0){
+                                document.cookie = "username="+response.data.username+"; expires="+(Date.now()+(86400 * 30))+"; path=/";
+                            }
+                            window.location = window.location.origin + "/mvc/public/home";
+                        }
+                        
+                        //$scope.response = response;
+                        /*if(response.status == 200){
+                            //window.location = window.location.origin + "/mvc/public/home";
+                            if(document.cookie.indexOf("user_id") < 0){
+                                document.cookie = "user_id="+response.data[0].user_id+"; expires="+(Date.now()+(86400 * 30))+"; path=/";
+                            }
+                            
+                            if(document.cookie.indexOf("username") < 0){
+                                document.cookie = "username="+response.data[0].username+"; expires="+(Date.now()+(86400 * 30))+"; path=/";
+                            }
+                        }else{
+                            alert("incorrect password or username");
+                        }*/
+                    });
+                  }
+                  //$scope.response = response;
+                  /*if(response.status == 200){
+                      //window.location = window.location.origin + "/mvc/public/home";
+                      if(document.cookie.indexOf("user_id") < 0){
+                          document.cookie = "user_id="+response.data[0].user_id+"; expires="+(Date.now()+(86400 * 30))+"; path=/";
+                      }
+                      
+                      if(document.cookie.indexOf("username") < 0){
+                          document.cookie = "username="+response.data[0].username+"; expires="+(Date.now()+(86400 * 30))+"; path=/";
+                      }
+                  }else{
+                      alert("incorrect password or username");
+                  }*/
+              });
+              /*var config = {
+                      headers : {
+                          'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                      }
+              };   
               var data = $.param({
                 id: fbid,
                 un: fbname,
                 fb: true
-              });
-              var config = {
-                      headers : {
-                          'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-                      }
-              };
+              }); 
+              console.log("fbid is " + id + "fbname is " + name);
+              //url = window.location.origin + "/fb_login.php";
+              url = "http://monikos.xpyapvzutk.us-east-1.elasticbeanstalk.com/fb_login.php";
+
               $http.post(url, data, config)
               .then(function (response) {
                   console.log(response);
+                  
                   //$scope.response = response;
                   if(response.status == 200){
                       //window.location = window.location.origin + "/mvc/public/home";
                       if(document.cookie.indexOf("user_id") < 0){
                           document.cookie = "user_id="+response.data[0].user_id+"; expires="+(Date.now()+(86400 * 30))+"; path=/";
                       }
-
+                      
                       if(document.cookie.indexOf("username") < 0){
                           document.cookie = "username="+response.data[0].username+"; expires="+(Date.now()+(86400 * 30))+"; path=/";
                       }
                   }else{
                       alert("incorrect password or username");
                   }
-              });    
+              });*/
               
             };
           };
         }]);
+        angular.injector(['ng', 'fbapp.app']).get("fbService").fblogin();
 
         FB.api('/me', function(response) {
           //alert('Your name is ' + response.name +'id: '+ response.id + ':email:' + response.email);
           //response.id;
           //response.name;
-          angular.injector(['ng', 'fbapp.app']).get("fbService").fblogin(response.id, response.name);
+          //var angular.injector(['ng', 'fbapp.app']).get("fbService").fblogin();
           /*if(document.cookie.indexOf("fbid") < 0){
             //document.cookie = "fbid="+response.id+"; expires="+(Date.now()+(86400 * 30))+"; path=/";
             fbid = response.id;

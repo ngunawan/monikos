@@ -1,4 +1,5 @@
-@import 'https://fonts.googleapis.com/css?family=Raleway:300,400';
+@import 'https://fonts.googleapis.com/css?family=Raleway:300,500,900';
+
 
 body {
     margin: 0;
@@ -6,50 +7,55 @@ body {
     overflow-x: hidden;
 }
 
-h1 {
-    font-family: 'Raleway', sans-serif;
-    font-weight: 300;
-    font-size: 20px;
-    letter-spacing: 2px;
-    margin: 3px;
-    
-}
-h1:hover{
-    cursor:pointer;
-}
-
 button {
     border:none;
     background: transparent;
-	margin-top: 10px;
 }
 
+h1 {
+	font-size: 20px !important;
+	margin-top: 5px !important;
+	margin-bottom: 5px !important;
+}
 
 a {
     text-decoration: none;
 }
 
+label {
+	font-weight: 300 !important;
+	margin-bottom: 0 !important;
+}
+
+		
 #app_header {
     display: block;
     position:fixed;
     top:0;
-    width:100vw;
-    height:10vh;
-    z-index:100;
+    width:100%;
+    height:65px;
     background:#777;
     text-align: center;
     box-shadow: 0 0 5px #444;
+	z-index: 10;
+}
+
+.back{
+	position: fixed;
+	left:10px;
 }
 
 #app_header button{
     background: transparent;
     font-family: 'Raleway',sans-serif;
-    font-weight: 300;
+    font-weight: 500;
     font-size: 30px;
-
+	margin: 7px 0 0 0;
     color:white;
     border: 1px lightblue solid;
+	width: 45px;
     border-radius: 4px;
+	padding: 2px;
 }
 
 .add-list-block button {
@@ -65,63 +71,59 @@ a {
     color:#8d99ae;
 }
 
+.h1, h1 .list-name-header{
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 2px;
+    margin: 0px;
+	font-size: 20px !important;;
+    
+}
+
 .list-creator {
     font-family: 'Raleway',sans-serif;
-    font-weight: 300;
     letter-spacing: 1px;
-	 margin: 10px;
+	margin: 10px;
+	font-weight: 500;
 }
 
 .list-creator #listName {
     background: transparent;
-    height: 4vh;
-    width: 25vh;
+    height: 24px;
+    width: 150px;
     border:none;
     border-bottom: 1px gray solid;
     text-align: center;
     font-family: 'Raleway',sans-serif;
-    font-size: 12px;
+    font-size: 16px;
     letter-spacing: 2px;
+	font-weight: 500;
 }
 
 #listName:focus {
 	outline: none;
 }
 
-#drugList{
-	display:inline-block;
-	margin: 10px;
-}
-
-.list-creator button {
-    font-family: 'Raleway',sans-serif;
-	color:#8d99ae;
-    font-size: 14px;
-    margin: 5px;
-    padding: 5px;
-    letter-spacing: 1px;
-    border: 2px #ccc solid;
-    border-radius: 5px;
-}
-
 .list-collection-block {
-    margin: 0 12px 0 12px;
+    margin: 12px;
     padding:5px;
     border-top:  2px solid #8d99ae;
     border-bottom: 2px solid #8d99ae;
-    
+	font-family: 'Raleway',sans-serif;
+	line-height: normal;
+	color: #464a53;
 }
 
 .list-block {
     margin: 0 5px 0 5px;
-    padding:5px;
     border-top:  2px solid #ccc;
     border-bottom: 2px solid #ccc;
+	font-weight: 500;	
+	font-size: 12px;
 }
 
-.list-drugs label{
-    display: none;
-    
+.list-drugs {
+    word-wrap: normal;
+	white-space: normal;
 }
 
 .list-info-block{
@@ -129,30 +131,157 @@ a {
     display:none;
     padding: 3px;
     color: #8d99ae;
-    font-size: 14px;
+    font-size: 16px;
     font-family: 'Raleway', sans-serif;
+	font-weight: 300;
 }
 
 #app_content {
     display:block;
     position:absolute;
-    height:auto;
+    height:625px;
     width:100vw;
     text-align: center;
     margin-top:70px;
-
-}
-
-/*DCEDITS           *******/
-button.launcherButton {
-    border: 1px solid #8d99ae;
-    color: #8d99ae;
-    border-radius: 3px;
-}
-button.launcherButton:hover {
-    cursor:pointer;
-    background: #8d99ae;
-    color: white;
+	margin-bottom: 50px;
+	overflow-y: scroll;
 }
 
 
+/*****CREATE DRUG LIST*****/
+.list-creator button {
+    font-family: 'Raleway',sans-serif;
+	color:#8d99ae;
+    font-size: 15px;
+    margin: 5px;
+    padding: 5px;
+    letter-spacing: 1px;
+    border: 2px #ccc solid;
+    border-radius: 5px;
+	font-weight: 500;
+}
+
+.add-list-block button {
+    font-family: 'Raleway',sans-serif;
+	color:#8d99ae;
+    font-size: 13px;
+    margin: 10px;
+    padding: 10px;
+	width:auto;
+	line-height: 15px;
+    letter-spacing: 1px;
+    border: 2px #ccc solid;
+    border-radius: 10px;
+	font-weight: 300;
+}
+
+.form-group input{ margin: 20px 0 0 0;}
+
+.searchable-container {
+	margin:5px 0 0 0
+}
+.searchable-container label.drug-wrap:active {
+	background-color:#ff3333;
+	color:#FFF;
+	background-image: none;
+	outline: 0;
+}
+.searchable-container label.drug-wrap{
+	border:1px solid #efefef;
+	margin:8px; 
+	box-shadow:2px 4px 4px 0 #ccc;
+	font-size: 12px;
+	width: 150px;
+	color:#8d99ae;
+}
+
+.searchable-container label .bizcontent{
+	width:90%; 
+	text-align: center; 
+	max-width: 145px;
+	word-wrap: break-word;
+	white-space: normal;
+	vertical-align: middle;
+}
+
+label.drug-wrap {
+	margin-left: 0;
+	z-index: 2;
+	position: relative;
+    float: left;
+	display: inline-block;
+    padding: 6px 12px;
+	line-height:2;
+    text-align: center;
+    vertical-align: middle;
+	border-radius: 4px;
+	max-width: 100%;
+}
+
+.play {
+	text-align: center;
+	position: fixed;
+	bottom:0;
+	width: 100%;
+	height:50px;
+	background-color: #ff3333;
+	color:white;
+	font-family: 'Raleway',sans-serif;
+	font-size: 30px;
+	letter-spacing: 5px;
+	padding: 5px;
+	z-index: 5;
+	font-weight: 900;
+	box-shadow: 0 0 5px #444;
+}
+
+/********IPHONE 6**********/
+
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) { 
+	
+	#app_header {
+    	height:10%;
+    	background:#777;
+    	box-shadow: 0 0 5px #444;
+	  }
+	  
+	  #app_header button{
+		font-weight: 300;
+		font-size: 80px;
+		margin: 20px 0 0 0;
+		padding: 5px;
+		width: 130px;
+		border-radius: 10px;
+		border: 2px lightblue solid;
+	}
+	  
+	  #app_content {
+		  margin-top: 220px;
+		  padding-bottom: 80px;
+	  }
+	  
+	  .play {
+		  height: 10%;
+	  }
+
+	  
+}
+
+/********IPHONE 6PLUS**********/
+
+@media only screen 
+  and (min-device-width: 414px) 
+  and (max-device-width: 736px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: portrait) { 
+	 
+
+	#app_header {
+    	height:10%;
+    	background:#777;
+    	box-shadow: 0 0 5px #444;
+	  }

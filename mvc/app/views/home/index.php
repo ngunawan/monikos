@@ -30,8 +30,18 @@
             window.location = window.location.origin + "/mvc/public/home/listManager";   
         }
         $scope.logout = function(){
-            //create list manager controller
+            if(document.cookie.indexOf("user_id") < 0){
+                document.cookie = "user_id="+response.data.id+"; expires="+(Date.now()-(86400 * 30))+"; path=/";
+            }
+            
+            if(document.cookie.indexOf("username") < 0){
+                document.cookie = "username="+response.data.username+"; expires="+(Date.now()-(86400 * 30))+"; path=/";
+            }
             window.location = window.location.origin + "/mvc/public/account/login";   
+        }
+
+        $scope.deleteCookie = function(name){
+            document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
         }
     });
     </script>

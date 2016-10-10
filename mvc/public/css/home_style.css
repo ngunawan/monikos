@@ -68,3 +68,113 @@ label.field-name {
        font-weight: 900;
         
     }
+
+.logout-block {
+	position: fixed;
+	bottom: 0;
+	z-index: 5;
+	width: 100%;
+	height:50px;
+	background-color: #8d99ae;
+	
+}
+
+.logout{
+	color:white;
+	font-size: 25px;
+	font-family: 'Raleway',sans-serif;
+	font-weight: 400;
+	letter-spacing: 3px;
+	margin-top: 15px;
+}
+
+/********IPHONE 6**********/
+
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) { 
+	  
+	 .top-block  {
+        height:45%;
+        display: block;
+    }
+    
+    .bottom-block {
+        display: block;
+        height: 45%;
+        background: white;
+    }
+	  
+	.database-block{padding:200px 0 0 0}
+    
+    
+    a .database-block {
+        font-size: 150px;
+		letter-spacing: 40px;
+
+    }
+    
+    .study-block{padding:300px 0 0 0}
+    
+	  a .study-block {
+        font-size: 150px;
+	  }
+	  
+	  .logout-block {
+		  	height:10%;
+	  }
+	  
+	  .logout{
+		  color:white;
+		  font-size: 90px;
+		  padding-top: 20px;
+	  }
+
+}
+
+/********IPHONE 6PLUS**********/
+
+@media only screen 
+  and (min-device-width: 414px) 
+  and (max-device-width: 736px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: portrait) { 
+	  
+	   .top-block  {
+        height:45%;
+        display: block;
+    }
+    
+    .bottom-block {
+        display: block;
+        height: 45%;
+        background: white;
+    }
+	  
+	.database-block{padding:200px 0 0 0}
+    
+    
+    a .database-block {
+        font-size: 150px;
+		letter-spacing: 40px;
+
+    }
+    
+    .study-block{padding:300px 0 0 0}
+    
+	  a .study-block {
+        font-size: 150px;
+	  }
+	  
+	  .logout-block {
+		  	height:10%;
+	  }
+	  
+	  .logout{
+		  color:white;
+		  font-size: 90px;
+		  padding-top: 20px;
+	  }
+}
