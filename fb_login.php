@@ -25,7 +25,7 @@ if ($conn->query($sql) === TRUE) {
 	"id": "'.$_POST["id"].'"}]';
 } else {
 	$createSql = "INSERT INTO Users (id, username, email, password)
-	VALUES (NULL, '".$_POST["un"]."', NULL, NULL)";
+	VALUES (NULL, '".$_POST["un"]."', 'NULL', 'NULL')";
 		if ($conn->query($createSql) === TRUE) {
 		    echo '[{
 		    "response": 200,
