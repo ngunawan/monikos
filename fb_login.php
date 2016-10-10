@@ -17,7 +17,9 @@ if ($conn->connect_error) {
     "username": "'.$_POST["un"].'",
     "fbid": "'.$_POST["id"].'"}]';
 */
+echo "echoing id ". $_POST["id"];
 $sql = "SELECT * FROM Users WHERE fbid LIKE '".$_POST["id"]."'";
+echo "sql state looks like " . $sql;
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
