@@ -32,8 +32,8 @@ class Games extends Controller {
 		$this->view('games/gamemenu', ['lid'=> $lid]);	
 	} 
 
-	public function game1(){
-		$this->view('games/game1');
+	public function game1($lid = ''){
+		$this->view('games/game1',['lid'=> $lid]);
 	}
 }
 

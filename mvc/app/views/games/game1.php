@@ -184,11 +184,14 @@
 
 <div class="container-fullwidth">
      	<div id=app_header>
-       	 <a href ="#" ng-click='home()'><button>M</button></a>
+		
+		<a href = '' ng-click='listManager()'><button class = 'back'>&#x25c1;</button></a>
+        <a href ="" ng-click="home()"><button>M</button></a>
+			
        	 <input type="button" class="btn pull-right" value="Play New Round!" style = "margin-right:12px" onClick="window.location.reload()">
 		</div>
-
-
+		
+		
       </div>
 
        <div id=app_content>
@@ -196,7 +199,7 @@
            <div ng-app="myApp" ng-controller="customersCtrl">
 
          		<div id=app_body>
-
+<p>LID: <?=$data['lid']?></p>
   <!--  <div id=app_body>
      <div ng-if="numClicked < 2;">
         <div ng-repeat="(index, value) in names" class="row">
