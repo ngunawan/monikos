@@ -184,7 +184,7 @@
 
 <div class="container-fullwidth">
      	<div id=app_header>
-       	 <a href ="#" ng-click = 'home()'><button>M</button></a>
+       	 <a href ="#" ng-click='home()'><button>M</button></a>
        	 <input type="button" class="btn pull-right" value="Play New Round!" style = "margin-right:12px" onClick="window.location.reload()">
 		</div>
 

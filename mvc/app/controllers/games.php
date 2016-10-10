@@ -28,8 +28,8 @@ class Games extends Controller {
 		$this->view('games/names');	
 	}
 
-	public function menu(){
-		$this->view('games/gamemenu');	
+	public function menu($lid = ''){
+		$this->view('games/gamemenu', ['lid'=> $lid]);	
 	} 
 
 	public function game1(){

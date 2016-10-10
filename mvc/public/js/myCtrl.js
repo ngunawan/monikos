@@ -1,6 +1,13 @@
 var app = angular.module('myApp', ['checklist-model']);
 app.controller('myCtrl', function($scope, $http) {
-
+	$scope.listId = [];
+	
+	$scope.list_num_pos = 0;
+	
+	$scope.increment_list_num_pos = function(){
+		$scope.list_num_pos = $scope.list_num_pos + 1;
+	}
+	
     $scope.lists = [
                 /*{name: "List1",
                  drugs: ["tylenol"]},
@@ -45,10 +52,12 @@ app.controller('myCtrl', function($scope, $http) {
             user_id: $scope.getCookie("user_id")
     });
 
-    $http.post(getListsUrl, getListsData, getListsConfig)
+     $http.post(getListsUrl, getListsData, getListsConfig)
         .then(function (response) {
-        console.log(response);
-        //console.log(response);
+        console.log(response); 
+		
+		 $scope.listId = response.data.records
+		 
         if(response.data.records.length < 1){
             $(".list-collection-block").append('<p id="noListsMessage">Please create a list</p>');
         }else{
@@ -111,18 +120,32 @@ app.controller('myCtrl', function($scope, $http) {
                 //console.log($scope.names);
                 //alert($scope.names);
             });
+		   
             $scope.listform = {name: "",
                                drugs: []};    
         }
+	   
         $scope.home = function(){
             //create new database controller
             window.location = window.location.origin + "/mvc/public/home/";
         }
 
         $scope.launchGame = function(){
-            window.location = window.location.origin + "/mvc/public/games";
+            window.location = window.location.origin + "/mvc/public/games/";
         }
+		 
+		$scope.listMangaer = function(){
+            window.location = window.location.origin + "/mvc/public/home/listManager/";
+        }
+		
+/***SELECT LIST ID*********/
+		$scope.selectlist = function(){
+			console.log($scope.listId)	
+			
+			window.location = window.location.origin + "/mvc/public/games/" + $scope.listId;
+			}
 
+	
 //    $scope.drugs = [
 //        {brand: "Lipitor",
 //         generic: "atorvastatin",
@@ -137,4 +160,5 @@ app.controller('myCtrl', function($scope, $http) {
 //         side: ["fever", "nausea"]}
 //
 //    ]
+	
 });
