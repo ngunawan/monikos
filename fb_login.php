@@ -17,7 +17,7 @@ if ($conn->connect_error) {
     "username": "'.$_POST["un"].'",
     "fbid": "'.$_POST["id"].'"}]';
 */
-$sql = "SELECT * FROM Users WHERE fbid LIKE ".$profile["id"];
+$sql = "SELECT * FROM Users WHERE fbid LIKE '".$profile["id"]."'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -25,7 +25,7 @@ if ($result->num_rows > 0) {
 	echo '[{
 	"response": 200,
 	"username": "'.$_POST["un"].'",
-	"test": "whaa",
+	"test": "user already exists",
 	"id": "'.$_POST["id"].'"}]';
 } else {
 	$createSql = "INSERT INTO Users (id, fbid, username, email, password)
