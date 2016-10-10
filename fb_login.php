@@ -25,14 +25,17 @@ if ($conn->query($sql) === TRUE) {
 	"id": "'.$_POST["id"].'"}]';
 } else {
 	$createSql = "INSERT INTO Users (id, username, email, password)
-	VALUES (NULL, '".$_POST["un"]."', 'NULL', 'NULL')";
+	VALUES (".$_POST["id"].", '".$_POST["un"]."', 'NULL', 'NULL')";
 		if ($conn->query($createSql) === TRUE) {
 		    echo '[{
 		    "response": 200,
 		    "username": "'.$_POST["un"].'",
 		    "id": "'.$_POST["id"].'"}]';
 		} else {
-		    echo '[{"response":"'.$conn->error.'"}]';
+		    //echo '[{"response":"'.$conn->error.'"}]';
+		    echo '[{
+			"response": 400,
+			"why": "'.$conn->error.'"}]';
 		}
 }
 /*$sql = "INSERT INTO Users (id, username, email, password)
