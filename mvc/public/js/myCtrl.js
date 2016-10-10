@@ -142,8 +142,8 @@ app.controller('myCtrl', function($scope, $http) {
 		$scope.selectlist = function(){
 			console.log($scope.listId)	
 			
-			window.location = window.location.origin + "/mvc/public/games/" + $scope.listId;
-			}
+			window.location = window.location.origin + "/mvc/public/games/menu/" + $scope.listId;
+		}
 
 	
 //    $scope.drugs = [

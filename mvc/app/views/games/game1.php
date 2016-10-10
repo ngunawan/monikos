@@ -3,11 +3,11 @@
 <link rel="stylesheet" type="text/css" href="/mvc/public/css/style.css">
 <!--<html>
 
-<!-- ///////////////BOOTSTRAP///////////// -->
+ ///////////////BOOTSTRAP///////////// 
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!-- ///////////////BOOTSTRAP///////////// -->
+ ///////////////BOOTSTRAP///////////// 
 
 <head>
 	<meta charset="utf-8">
@@ -42,6 +42,35 @@
         $scope.firstCard = null;
         $scope.secondCard = null;
         $scope.correct = "N";
+
+
+
+        //dcedits
+        $scope.firstLoad = true;
+        $scope.getlid = function(lid){
+          var config = {
+          headers : {
+              'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+            }
+          };   
+          var data = $.param({
+            lid: lid
+          }); 
+          
+          //url = window.location.origin + "/fb_login.php";
+          var listurl = "http://monikos.xpyapvzutk.us-east-1.elasticbeanstalk.com/get_specific_list.php";
+
+          $http.post(listurl, data, config)
+          .then(function (response) {
+              console.log(response);
+          });
+          $scope.firstLoad = false;
+        }
+        //end dcedits
+
+
+
+
 
         
             var url = "http://monikos.xpyapvzutk.us-east-1.elasticbeanstalk.com/sql_result.php";
@@ -199,7 +228,10 @@
            <div ng-app="myApp" ng-controller="customersCtrl">
 
          		<div id=app_body>
-<p>LID: <?=$data['lid']?></p>
+            <!--<button ng-click="getlid(<?=$data['lid']?>)">get list</button>-->
+            <div ng-if="firstLoad">{{getlid(<?=$data['lid']?>)}}</div>
+              <!--{{getlid();}}-->
+            
   <!--  <div id=app_body>
      <div ng-if="numClicked < 2;">
         <div ng-repeat="(index, value) in names" class="row">
