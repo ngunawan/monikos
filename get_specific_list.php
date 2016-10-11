@@ -34,7 +34,7 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
      //$outp .= '{"username":"'. $rs["username"] . '",';
      //$outp .= '"email":"'. $rs["email"]     . '"}';
 }
-$outp ='{"records":['.$outp.']}';
+//$outp ='{"records":['.$outp.']}';
 echo($outp);
 /*
 if (!$result->num_rows > 0) {
