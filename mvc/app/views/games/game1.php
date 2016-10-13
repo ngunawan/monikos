@@ -1,4 +1,3 @@
-<link rel="stylesheet" type="text/css" href="/mvc/public/css/listM.css">
 <script src="/mvc/public/js/checklist-model.js"></script>
 <link rel="stylesheet" type="text/css" href="/mvc/public/css/style.css">
 <!--<html>

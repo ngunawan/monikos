@@ -11,7 +11,7 @@
             
             <a href="#"><div class = "game-block game-red" id ='game_0'>FLASHCARD</div></a>
 			
-            <a onclick="gotoGame1()"><div class = "game-block game-white" id ='game_1'>MATCHING
+            <a ng-click="gotoGame1()"><div class = "game-block game-white" id ='game_1'>MATCHING
 				<p>MY LID: <?=$data['lid']?></p>
 				</div></a>
             

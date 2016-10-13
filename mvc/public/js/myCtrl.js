@@ -1,7 +1,7 @@
 var app = angular.module('myApp', ['checklist-model']);
 app.controller('myCtrl', function($scope, $http) {
-//	$scope.listId = [];
-//	
+
+	$scope.listId_number = 0;
 //	$scope.list_num_pos = 0;
 //	
 //	$scope.increment_list_num_pos = function(){
@@ -125,13 +125,14 @@ app.controller('myCtrl', function($scope, $http) {
                                drugs: []};    
         }
 	   
+    
         $scope.home = function(){
             //create new database controller
             window.location = window.location.origin + "/mvc/public/home/";
         }
 
         $scope.launchGame = function(){
-            window.location = window.location.origin + "/mvc/public/games/";
+            window.location = window.location.origin + "/mvc/public/games/gamemenu/" + $scope.listId_number;
         }
 		 
 		$scope.listMangaer = function(){
