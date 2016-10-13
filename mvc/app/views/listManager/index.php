@@ -1,34 +1,27 @@
 <link rel="stylesheet" type="text/css" href="/mvc/public/css/listM.css">
 
-<!-- ///////////////BOOTSTRAP///////////// -->
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!-- ///////////////BOOTSTRAP///////////// -->
-
-
 <body ng-app="myApp" ng-controller="myCtrl" id="main_app_module">
 	
-    <div id=app_header>
+    <div id='app_header'>
 		<a href = '#' ng-click='home()'><button class = 'back'>&#x25c1;</button></a>
         <a href ="#" ng-click="home()"><button>M</button></a>
     </div>
 	
-    <div id=app_content>
+    <div id='app_content'>
 
-        <div class=add-list-block>
+        <div class='add-list-block'>
             <button ng-click="showCreator = true">
                 <label>CREATE NEW LIST</label>
             </button>
         </div>
        
-		<div class=list-collection-block>   
-            <div class=list-block ng-repeat="list in lists">
+		<div class='list-collection-block'>   
+            <div class='list-block' ng-repeat="list in lists">
                 <h1 class="list-name-header">{{list.name}}</h1>
 				
-                <div class=list-info-block id="{{list_num_pos}}" >
-                    <div class=list-drugs>
-        				{{list_num_pos}}{{list.drugs}}
+                <div class='list-info-block' >
+                    <div class='list-drugs'>
+        				{{list.drugs}}
 						<br>
 						<button class = 'select' ng-click = 'selectlist()'>SELECT</button>
 						

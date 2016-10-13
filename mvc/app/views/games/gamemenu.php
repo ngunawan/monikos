@@ -1,17 +1,5 @@
 <link rel="stylesheet" type="text/css" href="/mvc/public/css/game.css"/>
 
-<script type="text/javascript">
-    function gotoGame1(){
-        window.location = window.location.origin + "/mvc/public/games/game1/" +<?=$data['lid']?>;
-    }
-		 
-	function back(){
-         window.location = window.location.origin + "/mvc/public/home/listManager/";
-	}
-		
-
-</script>
-
 <body id="main_app_module">
   <div id=app_header>
 		<a onclick = 'back()'><button class = 'back'>&#x25c1;</button></a>

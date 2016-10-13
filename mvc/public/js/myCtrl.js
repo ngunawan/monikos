@@ -1,12 +1,12 @@
 var app = angular.module('myApp', ['checklist-model']);
 app.controller('myCtrl', function($scope, $http) {
-	$scope.listId = [];
-	
-	$scope.list_num_pos = 0;
-	
-	$scope.increment_list_num_pos = function(){
-		$scope.list_num_pos = $scope.list_num_pos + 1;
-	}
+//	$scope.listId = [];
+//	
+//	$scope.list_num_pos = 0;
+//	
+//	$scope.increment_list_num_pos = function(){
+//		$scope.list_num_pos = $scope.list_num_pos + 1;
+//	}
 	
     $scope.lists = [
                 /*{name: "List1",
@@ -140,9 +140,9 @@ app.controller('myCtrl', function($scope, $http) {
 		
 /***SELECT LIST ID*********/
 		$scope.selectlist = function(){
-			console.log($scope.listId)	
-			
-			window.location = window.location.origin + "/mvc/public/games/menu/" + $scope.listId;
+//			console.log($scope.listId)	
+//			
+//			window.location = window.location.origin + "/mvc/public/games/menu/" + $scope.listId;
 		}
 
 	
