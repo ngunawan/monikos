@@ -4,8 +4,8 @@ header("Content-Type: application/json; charset=UTF-8");
 
 //alt database
 $host = "metis.ci7ganrx1sxe.us-east-1.rds.amazonaws.com:3306";
-$dbuser = "chenchik";
-$pass = "Legendary55";
+$dbuser = "Metis";
+$pass = "Metis200";
 $dbname = "Metis";
 $conn = new mysqli($host, $dbuser, $pass, $dbname);
 
