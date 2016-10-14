@@ -9,6 +9,9 @@ $pass = "Legendary55";
 $dbname = "Metis";
 $conn = new mysqli($host, $dbuser, $pass, $dbname);
 
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
 
 /*
 $host = "monikosdb.ci7ganrx1sxe.us-east-1.rds.amazonaws.com:3306";
