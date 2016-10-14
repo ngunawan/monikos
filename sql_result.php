@@ -2,16 +2,12 @@
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
-//alt database
+//Metis database
 $host = "metis.ci7ganrx1sxe.us-east-1.rds.amazonaws.com:3306";
 $dbuser = "Metis";
 $pass = "Metis200";
 $dbname = "Metis";
 $conn = new mysqli($host, $dbuser, $pass, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
 
 /*
 $host = "monikosdb.ci7ganrx1sxe.us-east-1.rds.amazonaws.com:3306";
@@ -20,6 +16,10 @@ $pass = "monikosdbpw";
 $dbname = "monikosdb";
 $conn = new mysqli($host, $dbuser, $pass, $dbname);
 */
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
 
 //$result = $conn->query("SELECT DrugId, Generic,Brand, Class, Indication, HintLikes, HintDislikes FROM Drug");
 $result = $conn->query("SELECT * FROM Drug");
