@@ -1,34 +1,4 @@
-<script src="/mvc/public/js/checklist-model.js"></script>
 <link rel="stylesheet" type="text/css" href="/mvc/public/css/style.css">
-<!--<html>
-
- ///////////////BOOTSTRAP///////////// 
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- ///////////////BOOTSTRAP///////////// 
-
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<title></title>
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="css/style.css">
-
-
-	<script src="http://www.danilachenchik.com/mvc/public/js/myCtrl.js"></script>
-    <script src="http://www.danilachenchik.com/mvc/public/js/checklist-model.js"></script>
-    	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
-
-
-</head>-->
-
-
 
 <body>
 

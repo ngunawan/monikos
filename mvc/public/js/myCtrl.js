@@ -2,13 +2,9 @@ var app = angular.module('myApp', ['checklist-model']);
 app.controller('myCtrl', function($scope, $http) {
 
 	$scope.listId_number = 0;
-//	$scope.list_num_pos = 0;
-//	
-//	$scope.increment_list_num_pos = function(){
-//		$scope.list_num_pos = $scope.list_num_pos + 1;
-//	}
+	$scope.list_num_pos = 0;
 	
-    $scope.lists = [
+	$scope.lists = [
                 /*{name: "List1",
                  drugs: ["tylenol"]},
                 {name: "List2",
@@ -55,17 +51,18 @@ app.controller('myCtrl', function($scope, $http) {
      $http.post(getListsUrl, getListsData, getListsConfig)
         .then(function (response) {
         console.log(response); 
-		
-		 $scope.listId = response.data.records
 		 
         if(response.data.records.length < 1){
             $(".list-collection-block").append('<p id="noListsMessage">Please create a list</p>');
+            $(".list-collection-block").append('<p id="noListsMessage">Please create a list</p>');
         }else{
+			var j = 0;
             for(var i in response.data.records){
                 $scope.lists.push({
                     name: response.data.records[i].list_name.toString(),
-                    drugs: response.data.records[i].drugnames.toString().split(",")
+                    drugs: response.data.records[i].drugnames.toString().split(","),pos: j
                 });
+				j++;
             }
         }
         //$scope.drugs = response.data.records;
@@ -79,8 +76,7 @@ app.controller('myCtrl', function($scope, $http) {
                        {Brand: "advil",
                         Generic: "advilgeneric"}];
     */
-     $scope.listform = {name: "",
-                               drugs: []};
+     $scope.listform = {name: "",drugs: [], pos:0};
     
      
        $scope.addList = function() {
@@ -122,7 +118,7 @@ app.controller('myCtrl', function($scope, $http) {
             });
 		   
             $scope.listform = {name: "",
-                               drugs: []};    
+                               drugs: [], pos: 0};    
         }
 	   
     
@@ -132,34 +128,32 @@ app.controller('myCtrl', function($scope, $http) {
         }
 
         $scope.launchGame = function(){
-            window.location = window.location.origin + "/mvc/public/games/gamemenu/" + $scope.listId_number;
-        }
+		
+			$http.post(getListsUrl, getListsData, getListsConfig)
+        
+				.then(function (response) {
+				
+				$scope.listId_number = response.data.records[$scope.list_num_pos].list_id;
+				console.log(response.data.records[$scope.list_num_pos].list_id);
+				
+				console.log ("id = " + $scope.listId_number);
+				
+				window.location = window.location.origin + "/mvc/public/games/menu/" + $scope.listId_number;
+				
+			});
+			
+   }
 		 
-		$scope.listMangaer = function(){
-            window.location = window.location.origin + "/mvc/public/home/listManager/";
+		$scope.listManager = function(){
+            window.location = window.location.origin + "/mvc/public/home/listManager";
         }
 		
 /***SELECT LIST ID*********/
-		$scope.selectlist = function(){
-//			console.log($scope.listId)	
-//			
-//			window.location = window.location.origin + "/mvc/public/games/menu/" + $scope.listId;
+		$scope.selectlist = function(num){
+			console.log("number: " + num);
+			$scope.list_num_pos = num;			
 		}
 
-	
-//    $scope.drugs = [
-//        {brand: "Lipitor",
-//         generic: "atorvastatin",
-//         class: "Lipid/cholesterol lowering",
-//         blackbox: "Some Blackbox Warning",
-//         side: ["fever", "nausea"]},
-//
-//        {brand: "Nexium",
-//         generic: "esomeprazole",
-//         class: "Ulcers",
-//         blackbox: "Some Blackbox Warning",
-//         side: ["fever", "nausea"]}
-//
-//    ]
+
 	
 });

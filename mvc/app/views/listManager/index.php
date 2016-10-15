@@ -14,22 +14,21 @@
                 <label>CREATE NEW LIST</label>
             </button>
         </div>
-       
+		
 		<div class='list-collection-block'>   
             <div class='list-block' ng-repeat="list in lists">
-                <h1 class="list-name-header">{{list.name}}</h1>
+                <h1 class="list-name-header">{{list.pos}} <br> {{list.name}}</h1>
 				
                 <div class='list-info-block' >
                     <div class='list-drugs'>
         				{{list.drugs}}
 						<br>
-						<button class = 'select' ng-click = 'selectlist()'>SELECT</button>
+						<button class = 'select' ng-click = 'selectlist(list.pos)'>SELECT</button>
 						
 						<button class = 'delete' ng-click = '#'>DELETE LIST</button>
                     </div>
 					
                 </div>
-				{{increment_list_num_pos()}}
             </div>
         </div>
 
