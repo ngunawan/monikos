@@ -20,6 +20,8 @@
             //alert($scope.names);
         });
 
+        console.log("what");
+
         $scope.drugDatabase = function(){
             //create new database controller
             window.location = window.location.origin + "/mvc/public/home/drugDatabase";
@@ -30,12 +32,20 @@
             window.location = window.location.origin + "/mvc/public/home/listManager";   
         }
         $scope.logout = function(){
-            if(document.cookie.indexOf("user_id") < 0){
-                document.cookie = "user_id="+response.data.id+"; expires="+(Date.now()-(86400 * 30))+"; path=/";
+            //alert('yoooooo');
+            //alert("cookie is: " + getCookie('user_id'));
+            if(document.cookie.indexOf("user_id") > 0){
+                
+                var userIdCookie = getCookie('user_id')
+                console.log("user id cookie "+userIdCookie);
+                document.cookie = "user_id=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/";
             }
             
-            if(document.cookie.indexOf("username") < 0){
-                document.cookie = "username="+response.data.username+"; expires="+(Date.now()-(86400 * 30))+"; path=/";
+            if(document.cookie.indexOf("username") > 0){
+                var usernameCookie = getCookie('username');
+                console.log("username cookie: " + usernameCookie);
+                //document.cookie = "user_id="+usernameCookie.toString()+"; expires="+(Date.now()-(1000))+"; path=/";
+                document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/";
             }
             window.location = window.location.origin + "/mvc/public/account/login";   
         }
@@ -43,6 +53,13 @@
         $scope.deleteCookie = function(name){
             document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
         }
+
+        function getCookie(name) {
+          var value = "; " + document.cookie;
+          var parts = value.split("; " + name + "=");
+          if (parts.length == 2) return parts.pop().split(";").shift();
+        }
+
     });
     </script>
     <div id=app_header></div>
