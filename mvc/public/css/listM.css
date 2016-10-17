@@ -99,18 +99,27 @@ label {
 	font-weight: 500;
 }
 
+.list-creator .list-container {
+	position: absolute; !important
+	top: 300px; !important
+	width: 400px; !important
+	left:10px;
+}
+
 #listName:focus {
 	outline: none;
 }
 
 .list-collection-block {
-    margin: 12px;
+    margin: 5px;
     padding:5px;
     border-top:  2px solid #8d99ae;
     border-bottom: 2px solid #8d99ae;
 	font-family: 'Raleway',sans-serif;
 	line-height: normal;
 	color: #464a53;
+	height: 160px;
+	overflow-y: scroll;
 }
 
 .list-block {
@@ -138,17 +147,26 @@ label {
 
 #app_content {
     display:block;
-    position:absolute;
+    position:fixed;
     height:625px;
     width:100vw;
     text-align: center;
     margin-top:70px;
 	margin-bottom: 50px;
-	overflow-y: scroll;
+	overflow-y: hidden;
 }
 
 
 /*****CREATE DRUG LIST*****/
+.list-creator {
+	height: 200px;
+	top:320px;
+	right:0;
+	left: 0;
+	bottom:100px;
+	position: fixed;
+}
+
 .list-creator button {
     font-family: 'Raleway',sans-serif;
 	color:#8d99ae;
@@ -159,13 +177,17 @@ label {
     border: 2px #ccc solid;
     border-radius: 5px;
 	font-weight: 500;
+	position: fixed;
+	bottom: 53px;
+	display: block;
+	left: 40%;
 }
 
 .add-list-block button {
     font-family: 'Raleway',sans-serif;
 	color:#8d99ae;
     font-size: 13px;
-    margin: 10px;
+    margin: 5px;
     padding: 10px;
 	width:auto;
 	line-height: 15px;
@@ -175,11 +197,28 @@ label {
 	font-weight: 300;
 }
 
-.form-group input{ margin: 20px 0 0 0;}
+.text-container{
+	position: fixed;
+	width: auto;
+	top:300px;
+	left: 130px;
+	line-height: 2px;
+}
+
+.form-group input{     
+	margin: 10px 0 0 0;
+}
 
 .searchable-container {
-	margin:5px 0 0 0
+	margin: 5px 0 0 0;
 }
+
+#search {
+	width:300px;
+	position: fixed;
+	left:60px;
+}
+
 .searchable-container label.drug-wrap:active {
 	background-color:#ff3333;
 	color:#FFF;
@@ -216,6 +255,24 @@ label.drug-wrap {
     vertical-align: middle;
 	border-radius: 4px;
 	max-width: 100%;
+}
+
+.list-containter . row {
+	position: fixed;
+	top:100px; 
+	left: 50px;
+}
+
+.drug-container .row {
+    height: 200px;
+    width: 400px;
+    overflow-y: scroll;
+    overflow-wrap: normal;
+    border: solid aliceblue 2px;
+	position: fixed;
+	bottom:100px;
+	left:30px;
+	padding: 5px 0px 10px 0;
 }
 
 .play {

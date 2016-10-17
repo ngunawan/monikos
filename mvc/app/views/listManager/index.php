@@ -17,7 +17,7 @@
 		
 		<div class='list-collection-block'>   
             <div class='list-block' ng-repeat="list in lists">
-                <h1 class="list-name-header">{{list.pos}} <br> {{list.name}}</h1>
+                <h1 class="list-name-header">{{list.name}}</h1>
 				
                 <div class='list-info-block' >
                     <div class='list-drugs'>
@@ -33,15 +33,14 @@
         </div>
 
         <div ng-show="showCreator" class=list-creator>
-            <div class ='container'>
-			<label class=field-name>LIST TITLE: </label>
-            <br>
-            <input id = 'listName' ng-model=listform.name type=text>
-		 <button ng-click=addList()>Add List</button>
+            <div class ='text-container'>
+				<div class=field-name>LIST TITLE: </div>
+				<br>
+				<input id = 'listName' ng-model=listform.name type=text>
             </div>
 			
 <!-------LIST CREATOR--------->			
-<div class="container">		
+<div class="list-container">		
 	<div class="row">
 		<div class="form-group">
             <div class="col-xs-8 col-sm-8 col-xs-offset-2 col-sm-offset-2">
@@ -76,10 +75,8 @@
         </div>
 		</div>
 	</div>	
-	
-	
 	</div>
-			
+		 <button ng-click=addList()>Add List</button>
         </div>
     </div>		
 		

@@ -3,7 +3,7 @@
 <script type = 'text/javascript'>
 
     function gotoGame1(){
-        window.location = window.location.origin + "/mvc/public/games/game1";
+        window.location = window.location.origin + "/mvc/public/games/game1/" + <?=$data['lid']?>;
     }
 
 </script>
