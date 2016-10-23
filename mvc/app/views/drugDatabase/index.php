@@ -1,10 +1,11 @@
 <body id="database_module">
     <script>
         var app = angular.module('myApp', ['ngAnimate']);
-        app.controller('customersCtrl', function($scope, $http) {
+        app.controller('drugsCtrl', function($scope, $http) {
             //var url = "http://testmonikos.us-east-1.elasticbeanstalk.com/sql_result.php"
             //var url = "http://danilachenchik.com/sql_result.php";
-            var url = "http://monikos.xpyapvzutk.us-east-1.elasticbeanstalk.com/sql_result.php";
+            //var url = "http://monikos.xpyapvzutk.us-east-1.elasticbeanstalk.com/sql_result.php";
+            var url = "/db/get_drugs.php";
             $http.get(url)
             .then(function (response) {
                 console.log(response);
@@ -21,7 +22,7 @@
         });
     </script>
 
-    <div ng-app="myApp" ng-controller="customersCtrl">
+    <div ng-app="myApp" ng-controller="drugsCtrl">
 
         <div id="app_header">
             <button class=back-btn ng-click="home()">Back</button>

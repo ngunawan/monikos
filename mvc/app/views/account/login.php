@@ -1,13 +1,19 @@
 
     <body ng-app="loginApp" ng-controller="loginCtrl"  id="usr_mng_module">
+        <div id="loginIconContainer">
+            <img id="loginIcon" src="/mvc/public/images/monikos_login_icon.png">
+        </div>
         <div class="wrapper">
-            <h1>Login</h1>
             <input id="un" type="text" placeholder="username">
             <input id="pw" type="password" placeholder="password">
-            <div class="fb-login-button" data-scope="public_profile,email" onlogin="checkLoginState();"></div>
+            <div class="fb-login-button" size="large" data-scope="public_profile,email" onlogin="checkLoginState();"></div>
             <button ng-click="login()">login</button>
             <button ng-click="create()">Create Account</button>
         </div>
+        <div class="loadingDiv" ng-show="loading">
+            <p class="loadingText">LOADING...</p>
+            <img class="loadingGif" src="/mvc/public/images/loading.gif">
+
         </div>
 
     </body>
@@ -20,8 +26,8 @@
             var un = document.getElementById('un').value;
             var pw = document.getElementById('pw').value;
 
-            var url = "http://monikos.xpyapvzutk.us-east-1.elasticbeanstalk.com/do_login.php";
-        
+            //var url = "http://monikos.xpyapvzutk.us-east-1.elasticbeanstalk.com/do_login.php";
+            var url = "/db/do_login.php";
             var data = $.param({
                 username: un,
                 password: pw,
@@ -31,8 +37,11 @@
                         'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
                     }
             };
+            $scope.loading = true;
+
             $http.post(url, data, config)
             .then(function (response) {
+
                 console.log(response);
                 $scope.response = response;
                 if(response.data[0].response == 200){
@@ -47,6 +56,7 @@
                 }else{
                     alert("incorrect password or username");
                 }
+                $scope.loading = false;
             });    
         }
         $scope.create = function(){

@@ -23,7 +23,8 @@ app.controller('myCtrl', function($scope, $http) {
         return "";
     }
 
-    var url = "http://monikos.xpyapvzutk.us-east-1.elasticbeanstalk.com/sql_result.php";
+    //var url = "http://monikos.xpyapvzutk.us-east-1.elasticbeanstalk.com/sql_result.php";
+    var url = "/db/get_drugs.php";
     $http.get(url)
         .then(function (response) {
         console.log(response);
@@ -33,7 +34,9 @@ app.controller('myCtrl', function($scope, $http) {
         //alert($scope.names);
     });
 
-    var getListsUrl = "http://monikos.xpyapvzutk.us-east-1.elasticbeanstalk.com/get_lists.php";
+    //var getListsUrl = "http://monikos.xpyapvzutk.us-east-1.elasticbeanstalk.com/get_lists.php";
+    var getListsUrl = "/db/get_lists.php";
+    
     var getListsConfig = {
                 headers : {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
@@ -79,7 +82,8 @@ app.controller('myCtrl', function($scope, $http) {
             $scope.lists.push($scope.listform);
             
 
-            var createListUrl = "http://monikos.xpyapvzutk.us-east-1.elasticbeanstalk.com/create_list.php";
+            //var createListUrl = "http://monikos.xpyapvzutk.us-east-1.elasticbeanstalk.com/create_list.php";
+            var createListUrl = "/db/create_list.php";
             var config = {
                         headers : {
                             'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
