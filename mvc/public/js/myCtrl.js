@@ -1,8 +1,16 @@
 var app = angular.module('myApp', ['checklist-model']);
+
 app.controller('myCtrl', function($scope, $http) {
 
 	$scope.listId_number = 0;
 	$scope.list_num_pos = 0;
+	
+//	$scope.box_num = 0;
+//	
+//	$scope.box_num_increment = function() {
+//		$scope.box_num = $scope.box_num + 1; 
+//		console.log($scope.box_num);
+//	}	
 	
 	$scope.lists = [
                 /*{name: "List1",
@@ -146,14 +154,19 @@ app.controller('myCtrl', function($scope, $http) {
 		 
 		$scope.listManager = function(){
             window.location = window.location.origin + "/mvc/public/home/listManager";
-        }
+        };
 		
 /***SELECT LIST ID*********/
+		$scope.list_class = "list-block";
+		
 		$scope.selectlist = function(num){
 			console.log("number: " + num);
-			$scope.list_num_pos = num;			
-		}
-
-
+			$scope.list_num_pos = num;	
+			
+		if ($scope.list_class === "list-block")
+			$scope.class = "selected";
+    		else
+      		$scope.list_class = "list-block";
+		};
 	
 });

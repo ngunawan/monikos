@@ -219,21 +219,38 @@ label {
 	left:60px;
 }
 
-.searchable-container label.drug-wrap:active {
-	background-color:#ff3333;
-	color:#FFF;
-	background-image: none;
-	outline: 0;
-}
-.searchable-container label.drug-wrap{
+.searchable-container label.drug_name{
 	border:1px solid #efefef;
 	margin:8px; 
 	box-shadow:2px 4px 4px 0 #ccc;
 	font-size: 12px;
 	width: 150px;
 	color:#8d99ae;
+	line-height: 12px;
+	width:90%; 
+	text-align: center; 
+	max-width: 145px;
+	word-wrap: break-word;
+	white-space: normal;
+	vertical-align: middle;
+	padding: 10px;
 }
 
+input[type=checkbox]{
+    display:none; !important
+}
+
+.checkboxes input[type=checkbox]:checked + .drug_name {
+    background-color: #ff3333; !important
+	color: white; !importa
+	box-shadow:2px 4px 4px 0 #ccc;
+	font-size: 12px;
+	width: 150px;
+	border:1px solid #efefef;
+	border-radius: 5px;
+}
+
+/*
 .searchable-container label .bizcontent{
 	width:90%; 
 	text-align: center; 
@@ -256,6 +273,7 @@ label.drug-wrap {
 	border-radius: 4px;
 	max-width: 100%;
 }
+*/
 
 .list-containter . row {
 	position: fixed;
