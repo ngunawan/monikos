@@ -55,19 +55,21 @@
             
 				<div ng-repeat="drug in drugs">
                 <div class="item col-xs-6 col-sm-6">
-                    <div class="info-block block-info clearfix">
-
-                        <div data-toggle="buttons" class="btn-group bizmoduleselect">
-							
-							<label class="drug-wrap">                           	<div class="bizcontent">
-                                    <input type="checkbox" name="var_id[]" autocomplete="off" 
-									checklist-model="listform.drugs" checklist-value="drug.Generic">
-									<label>{{drug.Generic}}</label>
-                                </div>
+<!--
+                    <div class="info-block block-info clearfix">							
+					<label class="drug-wrap">
+-->
+						  <div class = 'checkboxes'>
 								
-							</label>
-                        </div>
+							  <input type="checkbox" name="var_id[]" autocomplete="off" checklist-model="listform.drugs" checklist-value="drug.Generic" id='drug-{{$index}}'>
+							  
+							<label class = 'drug_name' for = 'drug-{{$index}}'>{{drug.Generic}}</label>
+						</div>
+<!--
+					</label>
+                       
                     </div>
+-->
                 </div>
 				</div>
                 
@@ -102,9 +104,7 @@
             //console.log(brands.text);
             brands.slideToggle("fast");
         });
-        //$('body').on('click', function(){
-        //    alert("hello");
-        //});
+
 		
     });
 	
