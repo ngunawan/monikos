@@ -4,8 +4,7 @@ app.controller('myCtrl', function($scope, $http) {
 	$scope.listId = [];
 	$scope.passedId = 0;
 	
-	$scope.list =[
-            ];
+    $scope.lists = [];
     
     $scope.getCookie = function(cname) {
         var name = cname + "=";
@@ -124,19 +123,20 @@ app.controller('myCtrl', function($scope, $http) {
             //create new database controller
             window.location = window.location.origin + "/mvc/public/home/";
         }
-		 
-		$scope.listManager = function(){
-			window.location = window.location.origin + "/mvc/public/home/listManager/";
-		}
 		
         $scope.launchGame = function(){  
 			window.location = window.location.origin + "/mvc/public/games/menu/" + $scope.passedId;
+
+		$scope.listManager = function(){
+            window.location = window.location.origin + "/mvc/public/home/listManager/";
         }
 		
 /***SELECT LIST ID*********/
 		$scope.selectlist = function(index){
 			console.log(index);   
-            $scope.passedId = $scope.listId[index]['list_id'];	
+            var passedId = $scope.listId[index]['list_id'];	
+			
+			window.location = window.location.origin + "/mvc/public/games/menu/" + passedId;
 		}
 
 });
