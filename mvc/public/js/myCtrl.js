@@ -5,27 +5,12 @@ app.controller('myCtrl', function($scope, $http) {
 	
 	$scope.list_num_pos = 0;
 	
-<<<<<<< HEAD
-//	$scope.box_num = 0;
-//	
-//	$scope.box_num_increment = function() {
-//		$scope.box_num = $scope.box_num + 1; 
-//		console.log($scope.box_num);
-//	}	
-	
-	$scope.lists = [
-=======
-	$scope.increment_list_num_pos = function(theIndex){
-		$scope.list_num_pos = $scope.list_num_pos + 1;
-	   //$scope.list_num_pos = theIndex;
-    }
 	
     $scope.lists = [
->>>>>>> 1f9d09d82491402b32b518a769ffd1ae9f9b156f
-                /*{name: "List1",
+                {name: "List1",
                  drugs: ["tylenol"]},
                 {name: "List2",
-                 drugs: ["advil", "tylenol"]}*/
+                 drugs: ["advil", "tylenol"]}
             ];
     
     $scope.getCookie = function(cname) {
@@ -150,24 +135,6 @@ app.controller('myCtrl', function($scope, $http) {
             window.location = window.location.origin + "/mvc/public/games/";
         }
 		 
-<<<<<<< HEAD
-		$scope.listManager = function(){
-            window.location = window.location.origin + "/mvc/public/home/listManager";
-        };
-		
-/***SELECT LIST ID*********/
-		$scope.list_class = "list-block";
-		
-		$scope.selectlist = function(num){
-			console.log("number: " + num);
-			$scope.list_num_pos = num;	
-			
-		if ($scope.list_class === "list-block")
-			$scope.class = "selected";
-    		else
-      		$scope.list_class = "list-block";
-		};
-=======
 		$scope.listMangaer = function(){
             window.location = window.location.origin + "/mvc/public/home/listManager/";
         }
@@ -180,24 +147,4 @@ app.controller('myCtrl', function($scope, $http) {
 			window.location = window.location.origin + "/mvc/public/games/menu/" + passedId;
 		}
 
-	
-<<<<<<< HEAD
-=======
-//    $scope.drugs = [
-//        {brand: "Lipitor",
-//         generic: "atorvastatin",
-//         class: "Lipid/cholesterol lowering",
-//         blackbox: "Some Blackbox Warning",
-//         side: ["fever", "nausea"]},
-//
-//        {brand: "Nexium",
-//         generic: "esomeprazole",
-//         class: "Ulcers",
-//         blackbox: "Some Blackbox Warning",
-//         side: ["fever", "nausea"]}
-//
-//    ]
->>>>>>> 1f9d09d82491402b32b518a769ffd1ae9f9b156f
-	
->>>>>>> 709a6dcfcf584571e9db77084bbd57fa14536172
 });
