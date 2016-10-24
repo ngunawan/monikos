@@ -16,14 +16,14 @@
         </div>
 		
 		<div class='list-collection-block'>   
-            <div class='list-block' ng-repeat="list in lists">
+            <div class='list-block' ng-repeat="list in lists track by $index">
                 <h1 class="list-name-header">{{list.name}}</h1>
 				
                 <div class='list-info-block' >
                     <div class='list-drugs'>
         				{{list.drugs}}
 						<br>
-						<button class = 'select' ng-click = 'selectlist(list.pos)'>SELECT</button>
+						<button class = 'select' ng-click='selectlist($index)'>SELECT</button>
 						
 						<button class = 'delete'>DELETE LIST</button>
                     </div>

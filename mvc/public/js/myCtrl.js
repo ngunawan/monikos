@@ -143,26 +143,12 @@ app.controller('myCtrl', function($scope, $http) {
         }
 		
 /***SELECT LIST ID*********/
-		$scope.selectlist = function(){
-			console.log($scope.listId)	
+		$scope.selectlist = function(index){
+			console.log(index);   
+            var passedId = $scope.listId[index]['list_id'];	
 			
-			window.location = window.location.origin + "/mvc/public/games/menu/" + $scope.listId;
+			window.location = window.location.origin + "/mvc/public/games/menu/" + passedId;
 		}
 
-	
-//    $scope.drugs = [
-//        {brand: "Lipitor",
-//         generic: "atorvastatin",
-//         class: "Lipid/cholesterol lowering",
-//         blackbox: "Some Blackbox Warning",
-//         side: ["fever", "nausea"]},
-//
-//        {brand: "Nexium",
-//         generic: "esomeprazole",
-//         class: "Ulcers",
-//         blackbox: "Some Blackbox Warning",
-//         side: ["fever", "nausea"]}
-//
-//    ]
 	
 });
