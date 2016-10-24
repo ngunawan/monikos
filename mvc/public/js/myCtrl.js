@@ -141,8 +141,10 @@ app.controller('myCtrl', function($scope, $http) {
 		
 /***SELECT LIST ID*********/
 		$scope.selectlist = function(index){
-			console.log(index);
-			$scope.passedId = $scope.listId[index]["list_id"];
+			console.log(index);   
+            var passedId = $scope.listId[index]['list_id'];	
+			
+			window.location = window.location.origin + "/mvc/public/games/menu/" + passedId;
 		}
 
 });
