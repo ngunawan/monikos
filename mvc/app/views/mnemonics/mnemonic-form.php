@@ -44,7 +44,7 @@
                 //var url = "http://testmonikos.us-east-1.elasticbeanstalk.com/sql_result.php"
                 //var url = "http://danilachenchik.com/sql_result.php";
                 //var url = "http://monikos.xpyapvzutk.us-east-1.elasticbeanstalk.com/sql_result.php";
-                var_url = "/db/get_drugs.php"
+                var url = "/db/get_drugs.php"
                 $http.get(url)
                     .then(function (response) {
                     console.log(response);
