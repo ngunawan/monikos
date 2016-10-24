@@ -23,7 +23,7 @@
                     <div class='list-drugs'>
         				{{list.drugs}}
 						<br>
-						<button class = 'select' ng-click = 'selectlist(list.pos)'>SELECT</button>
+						<button class = 'select' ng-click = 'selectlist($index)'>SELECT</button>
 						
 						<button class = 'delete'>DELETE LIST</button>
                     </div>
