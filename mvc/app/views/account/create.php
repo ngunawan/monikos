@@ -8,7 +8,7 @@
 	            var email = document.getElementById('email').value;
 	            var pw = document.getElementById('pw').value;
 
-	            var url = "http://monikos.xpyapvzutk.us-east-1.elasticbeanstalk.com/create_account.php";
+	            var url = "/db/create_account.php";
 	        
 	            var data = $.param({
 	                username: un,

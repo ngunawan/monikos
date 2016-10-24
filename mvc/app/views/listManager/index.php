@@ -25,7 +25,7 @@
 						<br>
 						<button class = 'select' ng-click = 'selectlist(list.pos)'>SELECT</button>
 						
-						<button class = 'delete' ng-click = '#'>DELETE LIST</button>
+						<button class = 'delete'>DELETE LIST</button>
                     </div>
 					
                 </div>

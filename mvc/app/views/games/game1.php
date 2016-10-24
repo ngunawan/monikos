@@ -27,7 +27,8 @@
           }); 
           
           //url = window.location.origin + "/fb_login.php";
-          var listurl = "http://monikos.xpyapvzutk.us-east-1.elasticbeanstalk.com/get_specific_list.php";
+          //var listurl = "http://monikos.xpyapvzutk.us-east-1.elasticbeanstalk.com/get_specific_list.php";
+          var listurl = "/db/get_specific_list.php";
 
           $http.post(listurl, data, config)
           .then(function (response) {
@@ -42,7 +43,7 @@
 
 
         
-            var url = "http://monikos.xpyapvzutk.us-east-1.elasticbeanstalk.com/sql_result.php";
+            var url = "/db/get_drugs.php";
             $http.get(url)
             .then(function (response) {
                 console.log(response);

@@ -7,7 +7,7 @@ body#usr_mng_module {
 body#usr_mng_module .wrapper {
     background: #FFF;
     width:50vw;
-    margin: 10vh auto auto auto;
+    margin: 5vh auto auto auto;
     text-align: center;
     box-shadow: 0vw 0vw 3vw #888888;
     padding:2vw 0.5vw 5vw 0.5vw;
@@ -369,7 +369,7 @@ label.field-name {
 @media only screen and (max-width:518px) {
     body#usr_mng_module .wrapper {
         width:85vw;
-        margin: 25vh auto auto auto;
+        margin: 5vw auto auto auto;
         box-shadow: 0vw 0vw 3vw #888888;
         padding:4vw 1vw 4vw 1vw;
     }
@@ -394,9 +394,38 @@ label.field-name {
         padding: 4vw 2vw 4vw 2vw;
 
     }
+    div#loginIconContainer {
+        text-align: center;
+        margin-bottom: 15px;
+        margin-top: 15px;
+    }
 }
 
 
+/*DC EDITS */
+
+div#loginIconContainer {
+    text-align: center;
+    margin-bottom: 0px;
+    margin-top: 20px;
+}
+
+.fb-login-button.fb_iframe_widget {
+    display: block;
+}
+
+.loadingDiv {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: 100%;
+    height: 100%;
+    padding-top:150px;
+    background-color: rgba(102,102,102,0.6);
+    text-align: center;
+    z-index: 10;
+    filter: alpha(opacity=40);
+}
 
 
 
