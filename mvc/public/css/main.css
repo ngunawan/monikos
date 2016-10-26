@@ -1,3 +1,5 @@
+@import 'https://fonts.googleapis.com/css?family=Raleway:300,500,900';
+
 body#usr_mng_module {
     /*    background: #888;*/
     background: #FF3D39;
@@ -7,7 +9,7 @@ body#usr_mng_module {
 body#usr_mng_module .wrapper {
     background: #FFF;
     width:50vw;
-    margin: 5vh auto auto auto;
+    margin: 10vh auto auto auto;
     text-align: center;
     box-shadow: 0vw 0vw 3vw #888888;
     padding:2vw 0.5vw 5vw 0.5vw;
@@ -53,7 +55,8 @@ body#main_app_module {
 
 
 body#database_module {
-    background: #F8F8F8;
+    /*    background: #F8F8F8;*/
+    background: #BD0707;
 }
 
 #app_header {
@@ -64,11 +67,12 @@ body#database_module {
     width:100vw;
     height:50px;
     margin:0;
-    background:#FF3D39;
+    /*    background:#FF3D39;*/
+    background: #D10000;
     color: #FFF;
     text-align: center;
-    border-bottom: 1px solid #CCC;
-    box-shadow: 0vw 0vw 5px #888888;
+    /*    border-bottom: 1px solid #CCC;*/
+    box-shadow: 0vw 0vw 20px #7D0208;
 }
 
 #app_header button.back-btn {
@@ -88,9 +92,11 @@ body#database_module {
 
 #app_header h1 {
     display:inline-block;
-    font-family: sans-serif;
+    /*    font-family: sans-serif;*/
+    font-family: 'Raleway';
     margin:15px auto auto auto;
-    font-weight:500;
+    font-weight:600;
+    text-transform: uppercase;
     font-size: 20px; 
     letter-spacing: 1px;
 }
@@ -134,10 +140,14 @@ body#database_module {
     margin-top: 65px;
 }
 
+.showSearch {
+    font-family:'Raleway';
+}
+
 .search-bar {
     box-sizing:border-box;
     background: #FFF;
-    height:40px;
+    height:35px;
     display: block;
     margin: 15px auto 15px auto;
     padding:0 10px 0 10px;
@@ -145,12 +155,19 @@ body#database_module {
     border-radius:4px;
     border-bottom: 1px solid #CCC;
     box-shadow: 0vw 0vw 3px #888888;
-    font-size: 18px;
+    font-size: 14px;
     width:100%;
 }
 
 .search-bar:focus {
     outline: none;
+}
+
+.search-by-bar {
+    margin-top:-8px;
+    color:#FFF;
+    font-family: 'Raleway';
+    font-size:12px;
 }
 
 .drug-block {
@@ -162,6 +179,7 @@ body#database_module {
     background:#FFF;
     width:100%;
     transition: background 0.5s;
+    border-radius: 5px;
 }
 
 .drug-block:active {
@@ -179,14 +197,34 @@ body#database_module {
 }
 
 .hint-info button{
-    background: #FF3D39;
-    border:1px solid #FF3D39;
-/*    border:1px solid #B21816;*/
+    /*    background: #FF3D39;*/
+    background: #D10000;
+    border:0;
+    /*    border:1px solid #FF3D39;*/
+    /*    border:1px solid #B21816;*/
     border-radius: 4px;
     text-decoration: none;
     color: #FFF;
     font-size:14px;
+    /*    text-transform: uppercase;*/
+    font-family: 'Raleway'; 
+    font-weight: 600;
+    /*    padding:5px 10px;*/
+    width:60px;
+    height:25px;
+    margin-top:-10px;
 }
+
+.hint-info .button-shadow {
+    background: #930000;
+    border-radius: 4px;
+    display:block;
+    width:60px;
+    height:25px;;
+    margin-top:-22px;
+}
+
+
 
 .hidden {
     display: none;
@@ -218,11 +256,15 @@ body#database_module {
 }
 
 .drug-content {
-    margin:20px;
+    font-family: 'Raleway';
+    margin:15px;
+
 }
 
-.drug-brand {
-    font-weight: 600;
+.drug-generic {
+    display:inline-block;
+    width:70%;
+    word-break: break-all;
 }
 
 .side-effect {
@@ -249,8 +291,13 @@ label.field-name {
 }
 
 .speaker-icon-wrapper img {
-    width:20px;
-    height:20px;
+    width:15px;
+    height:15px;
+}
+
+.speaker-icon-wrapper button {
+    background:none;
+    border:0;
 }
 
 
@@ -258,19 +305,21 @@ label.field-name {
 
 .ng-modal-overlay {
     /* A dark translucent div that covers the whole screen */
-    position:fixed;
-    z-index:999;
+    position:absolute;
+    z-index:9999;
     top:0;
     left:0;
     width:100vw;
     height:100vh;
     background-color:#000000;
-    opacity: 0.2;
+    opacity: 0.85;
+
+
 }
 .ng-modal-dialog {
     /* A centered div above the overlay with a box shadow. */
-    z-index:1000;
-    position: fixed;
+    z-index:10000;
+    position: absolute;
     width: 50%; /* Default */
 
     /* Center the dialog */
@@ -280,10 +329,16 @@ label.field-name {
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
 
-    border-radius: 4px;
+    border-radius: 5px;
     background-color: #fff;
     box-shadow: 4px 4px 80px #000;
+    -webkit-box-shadow: 4px 4px 80px #000;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+    -moz-box-shadow:    4px 4px 80px #000;  /* Firefox 3.5 - 3.6 */
+    box-shadow:         4px 4px 80px #000;
+
 }
+
+
 .ng-modal-dialog-content {
     text-align: center;
 }
@@ -298,78 +353,205 @@ label.field-name {
     font-weight: bold;
     font-family: 'Arial','sans-serif';
 
-/*
+    /*
     border-radius: 50%;
     width: 10px;
     height: 10px;
     background: #eaeaea;
     border:2px solid #CCC;
-*/
+    */
     color: #CCC;
-    
+
 }
 
+/*
 .ng-modal-content-head {
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    border-bottom: 1px solid #CCC;
-    background: #eaeaea;
-    padding: 10px 0;
+border-top-left-radius: 4px;
+border-top-right-radius: 4px;
+border-bottom: 1px solid #CCC;
+background: #eaeaea;
+padding: 10px 0;
 
 }
+*/
 
-.ng-modal-content-middle {
+.hint-message {
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     background:#FFF;
-    padding: 40px 10px;
+    padding: 40px 5px 20px 5px;
+    font-weight:600;
+
 }
+
+.sub-message {
+    font-size:12px;
+    font-weight:400;
+}
+
+.sub-message a {
+    text-decoration: none;
+    color: #D00001;
+    display:block;
+}
+
+.key-terms {
+    color: #D00001;
+    display:inline-block;
+}
+
+.like-btn {
+    display:inline-block;
+    background:#1A396E;
+    border:0;
+    border-radius: 4px;
+    height:40px;
+    width:70px;
+    margin:0 10px;
+    
+}
+
+.like-btn img {
+    width:20px;
+    height:20px;
+}
+
+.like-btn-shadow {
+    display:inline-block;
+    background:#122C67;
+    border-radius: 4px;
+    height:40px;
+    width:70px;
+     margin-left:-80px;
+    z-index:-999;
+    position:relative;
+    margin-bottom:-17px;
+
+}
+
+.dislike-btn {
+    display:inline-block;
+    background:#D00001;
+    border:0;
+    border-radius: 4px;
+    height:40px;
+    width:70px;
+        margin:0 10px;
+
+}
+
+.dislike-btn img {
+    width:20px;
+    height:20px;
+}
+
+.dislike-btn-shadow {
+    display:inline-block;
+    background:#930000;
+    border-radius: 4px;
+    height:40px;
+    width:70px; 
+    margin-left:-80px;
+    z-index:-999;
+    position:relative;
+        margin-bottom:-17px;
+
+}
+
+
 
 .ng-modal-content-footer {
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
+    margin-bottom:32px;
+    margin-top:20px;
 
 }
 
+/*
 .ng-modal-content-footer .like-btn {
-    display:inline-block;
-    width:50%;
-    background:#2F3F73;
-    color:#FFF;
-    padding:15px 0px;
-    margin:0;
-    border:0;
-    font-size:16px;
-    font-weight: 600;
-        border-bottom-left-radius: 4px;
+display:inline-block;
+width:50%;
+background:#2F3F73;
+color:#FFF;
+padding:15px 0px;
+margin:0;
+border:0;
+font-size:16px;
+font-weight: 600;
+border-bottom-left-radius: 4px;
 
 }
+*/
 
+/*
 .ng-modal-content-footer .dislike-btn {
-     display:inline-block;
-    width:50%;
-    background:#FF3D39;
-    color:#FFF;
-        padding:15px 0px;
-        border-bottom-right-radius: 4px;
+display:inline-block;
+width:50%;
+background:#FF3D39;
+color:#FFF;
+padding:15px 0px;
+border-bottom-right-radius: 4px;
 
 
-    height:100%;
-     margin:0;
-    border:0;
-    font-size:16px;
-    font-weight: 600;
+height:100%;
+margin:0;
+border:0;
+font-size:16px;
+font-weight: 600;
 }
-
-
+*/
 
 /** MODAL CODE----------------------------------------------------------------------- **/
+
+/**MNEMONIC FORM**/
+
+#mnemonic-form {
+    font-family: 'Raleway';
+    font-size:20px;
+}
+
+#mnemonic-form label {
+    display:block;
+    margin-top:20px;
+}
+
+#mnemonic-form input[type="text"] {
+    font-family: 'Raleway';
+    font-size:20px;
+}
+
+#mnemonic-form select {
+    font-family: 'Raleway';
+    font-size:24px;
+}
+
+#mnemonic-form button {
+    display:block;
+    margin-top:40px;
+    font-family: 'Raleway';
+    font-size:24px;
+}
+
+#mnemonic-form textarea {
+    display:block;
+    margin-top:15px;
+    width: 100%;
+    height:100px;
+    font-family: 'Raleway';
+    font-size:24px;
+}
+
+
+
+/**END MNEMONIC FORM**/
+
 
 
 @media only screen and (max-width:518px) {
     body#usr_mng_module .wrapper {
         width:85vw;
-        margin: 5vw auto auto auto;
+        margin: 25vh auto auto auto;
         box-shadow: 0vw 0vw 3vw #888888;
         padding:4vw 1vw 4vw 1vw;
     }
@@ -394,38 +576,9 @@ label.field-name {
         padding: 4vw 2vw 4vw 2vw;
 
     }
-    div#loginIconContainer {
-        text-align: center;
-        margin-bottom: 15px;
-        margin-top: 15px;
-    }
 }
 
 
-/*DC EDITS */
-
-div#loginIconContainer {
-    text-align: center;
-    margin-bottom: 0px;
-    margin-top: 20px;
-}
-
-.fb-login-button.fb_iframe_widget {
-    display: block;
-}
-
-.loadingDiv {
-    position: fixed;
-    top: 0px;
-    right: 0px;
-    width: 100%;
-    height: 100%;
-    padding-top:150px;
-    background-color: rgba(102,102,102,0.6);
-    text-align: center;
-    z-index: 10;
-    filter: alpha(opacity=40);
-}
 
 
 
