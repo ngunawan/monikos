@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href="/mvc/public/css/listM.css">
-   
-<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
 
+<meta name='viewport' content="width=device-width, initial-scale=1" />
+   
 <body ng-app="myApp" ng-controller="myCtrl" id="main_app_module">
 	
     <div id='app_header'>
@@ -20,7 +20,7 @@
 		<div class='list-collection-block'>   
             <div class= "list-block" ng-repeat="list in lists track by $index">
 				
-                <h1 ng-class='{ "list-name-header" : list_pos == -1,  ".selected" : $index == list_pos }'>{{list.name}}</h1>
+                <h1 class = "list-name-header">{{list.name}}</h1>
 				
                 <div class='list-info-block' >
                     <div class='list-drugs'>
@@ -29,7 +29,7 @@
                     </div>		
                 </div>
 					
-				<button class ='select'  ng-click='selectlist($index)'>SELECT</button>
+				<button class ='select' ng-click='selectlist($index)'>SELECT</button>
 						
 				<button class = 'delete'>DELETE LIST</button>
 			

@@ -133,13 +133,13 @@ app.controller('myCtrl', function($scope, $http) {
         }
 		
 /***SELECT LIST ID*********/
-		$scope.list_pos = -1;
-	
+
 		$scope.selectlist = function(index){
 			console.log(index);   
-            var passedId = $scope.listId[index]['list_id'];	
+             $scope.passedId = $scope.listId[index]['list_id'];	
 			
-			$scope.list_pos = index;
+			console.log($scope.passedId);
+	
 		}
 
 });
