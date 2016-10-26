@@ -1,6 +1,4 @@
 <link rel="stylesheet" type="text/css" href="/mvc/public/css/listM.css">
-   
-<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
 
 <body ng-app="myApp" ng-controller="myCtrl" id="main_app_module">
 	
@@ -18,22 +16,20 @@
         </div>
 		
 		<div class='list-collection-block'>   
-            <div class= "list-block" ng-repeat="list in lists track by $index">
-				
-                <h1 ng-class='{ "list-name-header" : list_pos == -1,  ".selected" : $index == list_pos }'>{{list.name}}</h1>
+            <div class='list-block' ng-repeat="list in lists">
+                <h1 class="list-name-header">{{list.name}}</h1>
 				
                 <div class='list-info-block' >
                     <div class='list-drugs'>
         				{{list.drugs}}
-						<br>		
-                    </div>		
-                </div>
-					
-				<button class ='select'  ng-click='selectlist($index)'>SELECT</button>
+						<br>
+						<button class = 'select' ng-click = 'selectlist(list.pos)'>SELECT</button>
 						
-				<button class = 'delete'>DELETE LIST</button>
-			
-			</div>
+						<button class = 'delete' ng-click = '#'>DELETE LIST</button>
+                    </div>
+					
+                </div>
+            </div>
         </div>
 
         <div ng-show="showCreator" class=list-creator>
@@ -63,11 +59,11 @@
                     <div class="info-block block-info clearfix">							
 					<label class="drug-wrap">
 -->
-						  <div class = 'checkboxes'>
+						  <div class = “checkboxes”>
 								
-							  <input type="checkbox" name="var_id[]" autocomplete="off" checklist-model="listform.drugs" checklist-value="drug.Generic" id='drug-{{$index}}'>
+							  <input type="checkbox" id ='b1' name="var_id[]" autocomplete="off" checklist-model="listform.drugs" checklist-value="drug.Generic" />
 							  
-							<label class = 'drug_name' for = 'drug-{{$index}}'>{{drug.Generic}}</label>
+							<label class = 'drug_name' for = ‘b1’>{{drug.Generic}}</label>
 						</div>
 <!--
 					</label>
@@ -108,7 +104,9 @@
             //console.log(brands.text);
             brands.slideToggle("fast");
         });
-
+        //$('body').on('click', function(){
+        //    alert("hello");
+        //});
 		
     });
 	

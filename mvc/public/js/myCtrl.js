@@ -126,17 +126,20 @@ app.controller('myCtrl', function($scope, $http) {
 		
         $scope.launchGame = function(){  
 			window.location = window.location.origin + "/mvc/public/games/menu/" + $scope.passedId;
+		}
 
 		$scope.listManager = function(){
             window.location = window.location.origin + "/mvc/public/home/listManager/";
         }
 		
 /***SELECT LIST ID*********/
+		$scope.list_pos = -1;
+	
 		$scope.selectlist = function(index){
 			console.log(index);   
             var passedId = $scope.listId[index]['list_id'];	
 			
-			window.location = window.location.origin + "/mvc/public/games/menu/" + passedId;
+			$scope.list_pos = index;
 		}
 
 });

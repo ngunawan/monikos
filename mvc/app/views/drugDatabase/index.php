@@ -1,5 +1,5 @@
-<body id="database_module">
-       <script>
+  <body id="database_module">
+        <script>
             var app = angular.module('myApp', ['ngAnimate']);
 
             app.directive('modalDialog', function() {
@@ -68,7 +68,6 @@
 
 
         </script>
-
 
         <div ng-app="myApp" ng-controller="customersCtrl">
             <audio id="myAudio">

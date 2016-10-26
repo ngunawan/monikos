@@ -11,6 +11,12 @@
         $scope.firstCard = null;
         $scope.secondCard = null;
         $scope.correct = "N";
+        $scope.brandNames = [];
+        $scope.allDrugs = [];
+        $scope.finalList = [];
+        
+        $scope.selected =[]
+        
 
 
 
@@ -32,9 +38,18 @@
 
           $http.post(listurl, data, config)
           .then(function (response) {
-              console.log(response);
+          	  console.log("HEREEEEEEEEEEEEEE")
+              console.log(response.data.drugnames);
+              $scope.select = response.data.drugnames.split(",");
+              console.log("SELCT " + $scope.select[0]);
+              //$scope.brandNames = JSON.parse("[" + response.data.drugnames + "]");
+              //$scope.brandNames.split();
+              //console.log("BRAND NAMES " + $scope.brandNames);
+
+              
           });
           $scope.firstLoad = false;
+          
         }
         //end dcedits
 
@@ -48,8 +63,54 @@
             .then(function (response) {
                 console.log(response);
                 //console.log(response);
+                console.log("IS SELECT STILL THE SAME " + $scope.select);
                 $scope.names = response.data.records.slice(1,30);
+                $scope.allDrugs = response.data.records;
                 console.log($scope.names);
+                console.log($scope.allDrugs);
+                console.log($scope.allDrugs[0].Brand)
+                
+                if($scope.select[0][0].toUpperCase() == $scope.select[0][0]) {
+  					var d;
+                	for (d=0; d < $scope.select.length; d++){
+                		console.log("before if statement " + $scope.select[d]);
+                		for(var x = 0; x < $scope.allDrugs.length; x++) {
+                			if ($scope.allDrugs[x].Brand == $scope.select[d]){
+                				console.log("after if statement " + $scope.allDrugs[x].Generic);
+                				var a = $scope.allDrugs[x];
+                	 			$scope.finalList.push($scope.allDrugs[x]);
+              					console.log("final list " + $scope.finalList.length);
+                			}
+
+                		}
+
+                } 
+				}
+				else {
+				for (d=0; d < $scope.select.length; d++){
+                	console.log("before if statement " + $scope.select[d]);
+                	for(var x = 0; x < $scope.allDrugs.length; x++) {
+                	if ($scope.allDrugs[x].Generic == $scope.select[d]){
+                	console.log("after if statement " + $scope.allDrugs[x].Generic);
+                	var a = $scope.allDrugs[x];
+                	 $scope.finalList.push($scope.allDrugs[x]);
+              		 console.log("final list " + $scope.finalList.length);
+                		}
+
+                		}
+
+                } 
+				}
+                
+
+                
+                console.log("final list " + $scope.finalList[0]);
+                
+                $scope.names = $scope.finalList;
+                
+                console.log("length of names " + $scope.names.length);
+
+                
 
                 //shuffles original list of just cards
                   var a, b, c;
@@ -60,8 +121,9 @@
         				  $scope.names[a] = b;
    					 }
 
+				if ($scope.names.length > 8) {
    			       $scope.names = $scope.names.slice(1,9);
-
+				}
 
                 
             var objects = [];
@@ -170,12 +232,7 @@
             
 
         });
-        
-      
 
-
-
-		
     </script>
 
 
@@ -183,10 +240,12 @@
 
 <div class="container-fullwidth">
      	<div id=app_header>
+
 		
 		<a href = '' ng-click='listManager()'><button class = 'back'>&#x25c1;</button></a>
         <a href ="" ng-click="home()"><button>M</button></a>
 			
+
        	 <input type="button" class="btn pull-right" value="Play New Round!" style = "margin-right:12px" onClick="window.location.reload()">
 		</div>
 		
@@ -295,6 +354,19 @@
 			</div>
  		</div>
 
+<!--<<<<<<< HEAD
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug 
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> 
+
+
+=======
+>>>>>>> a5c235513e4324ade795441496d289eb1746f8df -->
 </body>
 
 <!--</html>-->

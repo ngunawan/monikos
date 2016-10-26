@@ -1,0 +1,416 @@
+<link rel="stylesheet" type="text/css" href="/mvc/public/css/game2stylesheet.css">
+
+
+
+<body>
+
+
+ <script>
+    
+        var app = angular.module('myApp', []);
+        app.controller('customersCtrl', function($scope, $http) {
+        $scope.test = "Y";
+        $scope.index = 0;
+        $scope.word = null;
+        $scope.myVar= null;
+        $scope.finalList = [];
+        $scope.type = "Brand";
+        var nextIndex = 0;
+        $scope.result = "WRONG";
+        console.log(" HEREEE 3")
+        $scope.currentIndex = 1;
+		var cuIn = 1;
+
+
+        //dcedits
+        $scope.firstLoad = true;
+        $scope.getlid = function(lid){
+        console.log("HEREEEEEEEEEEEEEE    4")
+          var config = {
+          headers : {
+              'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+            }
+          };   
+          var data = $.param({
+            lid: lid
+          }); 
+          
+          var listurl = "/db/get_specific_list.php"; 
+          	  console.log("HEREEEEEEEEEEEEEE")
+          $http.post(listurl, data, config)
+          .then(function (response) {
+          	  console.log("HEREEEEEEEEEEEEEE")
+              console.log(response.data.drugnames);
+              $scope.select = response.data.drugnames.split(",");
+              console.log("SELCT " + $scope.select[0]);
+              console.log("select list " + $scope.select.length);
+              //$scope.brandNames = JSON.parse("[" + response.data.drugnames + "]");
+              //$scope.brandNames.split();
+              //console.log("BRAND NAMES " + $scope.brandNames);
+              
+          });
+          $scope.firstLoad = false;
+          
+        }
+        //end dcedits
+        
+        
+window.move = function() {
+    if($('#test').hasClass('moved')) {
+        $('#test').removeClass('moved');
+        $('#test2').removeClass('moved2');
+    }else{
+        $('#test').addClass('moved');
+         $('#test2').addClass('moved2');
+    }
+}
+
+window.move1 = function() {
+    if($('#test2').hasClass('moved2')) {
+        $('#test2').removeClass('moved2');
+    }else{
+        $('#test2').addClass('moved2');
+    }
+}
+
+
+        
+            var url = "/db/get_drugs.php";
+            $http.get(url)
+            .then(function (response) {
+//                 console.log(response);
+//                 //console.log(response);
+//                 $scope.names = response.data.records.slice(1,30);
+//                // console.log("select list " + $scope.select.length);
+//                 console.log("names " + $scope.names.length);
+
+                console.log(response);
+                //console.log(response);
+                console.log("IS SELECT STILL THE SAME " + $scope.select);
+                $scope.names = response.data.records.slice(1,30);
+                $scope.allDrugs = response.data.records;
+                console.log($scope.names);
+                console.log($scope.allDrugs);
+                console.log($scope.allDrugs[0].Brand)
+                
+                if($scope.select[0][0].toUpperCase() == $scope.select[0][0]) {
+  					var d;
+                	for (d=0; d < $scope.select.length; d++){
+                		console.log("before if statement " + $scope.select[d]);
+                		for(var x = 0; x < $scope.allDrugs.length; x++) {
+                			if ($scope.allDrugs[x].Brand == $scope.select[d]){
+                				console.log("after if statement " + $scope.allDrugs[x].Generic);
+                				var a = $scope.allDrugs[x];
+                	 			$scope.finalList.push($scope.allDrugs[x]);
+              					console.log("final list " + $scope.finalList.length);
+                			}
+
+                		}
+
+                } 
+				}
+				else {
+				for (d=0; d < $scope.select.length; d++){
+                	console.log("before if statement " + $scope.select[d]);
+                	for(var x = 0; x < $scope.allDrugs.length; x++) {
+                	if ($scope.allDrugs[x].Generic == $scope.select[d]){
+                	console.log("after if statement " + $scope.allDrugs[x].Generic);
+                	var a = $scope.allDrugs[x];
+                	 $scope.finalList.push($scope.allDrugs[x]);
+              		 console.log("final list " + $scope.finalList.length);
+                		}
+
+                		}
+
+                } 
+				}
+                
+
+                
+                console.log("final list generic " + $scope.finalList[0].Generic);
+                console.log("final list brand " + $scope.finalList[0].Brand);
+
+				document.getElementById("cid").innerHTML = cuIn + "/" + $scope.finalList.length;
+
+
+                $scope.names = $scope.finalList;
+                
+                console.log("length of names " + $scope.names.length);
+
+                //shuffles original list of just cards
+                  var a, b, c;
+    					for (c = $scope.names.length; c; c--) {
+      					  a = Math.floor(Math.random() * c);
+       					  b = $scope.names[c - 1];
+       					  $scope.names[c - 1] = $scope.names[a];
+        				  $scope.names[a] = b;
+   					 }
+
+
+					var shuffledObjects = $scope.names.slice();
+					
+					    var j, x, i;
+    					for (i = shuffledObjects.length; i; i--) {
+      					  j = Math.floor(Math.random() * i);
+       					  x = shuffledObjects[i - 1];
+       					  shuffledObjects[i - 1] = shuffledObjects[j];
+        				  shuffledObjects[j] = x;
+   					 }
+  					
+  					console.log("length of shuffled objects----- " + shuffledObjects.length);
+  					console.log(shuffledObjects);
+
+					$scope.names = shuffledObjects;
+					
+		function makeIterator(array){
+  		  
+    
+   		 return {
+       		next: function(){
+           		return nextIndex < array.length ?
+               		{value: array[nextIndex++], done: false} :
+               		{done: true};
+       			}
+    		}
+		}
+		
+		var it = makeIterator($scope.names);
+		var card = it.next().value;
+
+
+  
+
+		window.nextCard = function(){
+// 			$scope.currentIndex++;
+// 			console.log("current index " + $scope.currentIndex);
+			console.log("cuIn " + cuIn);
+			console.log(" names length " + $scope.names.length);
+			console.log(" final list length " + $scope.finalList.length);
+
+			if (cuIn == $scope.finalList.length){
+				window.move();
+			 	document.getElementById("finished").src = "/mvc/public/images/completed.png";
+
+			}
+			else{
+			cuIn++;
+			document.getElementById("cid").innerHTML = cuIn + "/" + $scope.finalList.length;
+
+			card = it.next().value;
+			console.log(card.Generic + "card");
+			 document.getElementById('f1').value = "";
+			 document.getElementById("result").src = "";
+			 document.getElementById("wrong").innerHTML = "";
+
+
+			 if ($scope.result == "RIGHT") {
+			 	    console.log("result " + $scope.result);
+ 					window.move();
+ 					$scope.result = "WRONG";
+ 				}
+			
+			 if ($scope.type == "Brand" ) {
+			
+ 			
+ 				console.log($scope.index + " index beforeeee"); 
+ 				console.log($scope.names[$scope.index].Brand + " drug"); 
+ 				console.log(card.Brand + " card drug"); 
+				document.getElementById("p1").innerHTML = card.Brand;
+				//document.getElementById("p2").innerHTML = card.Generic;
+
+
+ 				//return card.Brand;
+ 			}
+ 			
+ 			if ($scope.type == "Generic" ) {
+ 					document.getElementById("p1").innerHTML = card.Generic;
+ 					document.getElementById("p2").innerHTML = card.Brand;
+ 				return card.Generic;
+ 			}
+ 			
+ 			//window.move();
+ 			document.getElementById('f1').value = "";
+			document.getElementById("result").src = "";
+			 document.getElementById("wrong").innerHTML = "";
+			
+			}
+
+		}
+		
+		window.checkAnswer = function() {
+			var val= document.jojo.Answer.value;
+			console.log(val + " value of text box");
+			console.log(card.Generic + " generic");
+			console.log(val + " brand");
+			document.getElementById("wrong").innerHTML = "";
+		
+
+
+			
+			 if ($scope.type == "Brand" ) {
+ 				if (card.Generic == val) {
+ 					console.log("RIGHT");
+ 					$scope.result = "RIGHT";
+ 					
+ 					if (cuIn == $scope.finalList.length){
+						window.move();
+			 			document.getElementById("finished").src = "/mvc/public/images/completed.png";
+				 
+					}
+	
+	 				else{	
+ 						window.move();	
+						document.getElementById("result").src = "/mvc/public/images/rightanswer.jpg";
+ 						document.getElementById("nextBtn").disabled = false;
+					}
+ 				}
+ 				else {
+ 					console.log ("WRONG");
+ 					$scope.result = "WRONG";
+				document.getElementById("wrong").innerHTML = "Incorrect, please type: " + card.Generic;
+				document.getElementById("nextBtn").disabled = true;
+				$scope.names.push(card.value);
+
+ 				}
+ 			}
+ 			
+ 			if ($scope.type ==  "Generic" ) {
+ 				if (card.Brand == val) {
+ 					console.log("RIGHT");
+ 					$scope.result = "RIGHT";
+ 					 window.move();
+ 				document.getElementById("result").src = "/mvc/public/images/rightanswer.jpg";
+				document.getElementById("nextBtn").disabled = false;
+
+
+ 				}
+ 				else {
+ 					console.log("WRONG");
+ 					$scope.result = "WRONG";
+				document.getElementById("wrong").innerHTML = "Incorrect, please type: " + card.Generic;
+				document.getElementById("nextBtn").disabled = true;
+				$scope.names.push(card.value);
+ 				}
+ 			}
+		
+		}
+          
+        var ci = 1;
+//         $scope.currentIndex = function(){
+//         	if (ci == 1) {
+//         		return "1/" + $scope.names.length;
+//         		ci++;
+//         		console.log("CIIIIIIIIIIIIIII " + ci);
+//         	}
+//         	else {
+//         	  ci++;
+//         	  return "hi";
+//         	}
+//         }  
+//         
+        $scope.question = function(){
+ 		if ($scope.type == "Brand" ) {
+ 			
+ 			console.log($scope.index + " index beforeeee"); 
+ 			console.log($scope.names[$scope.index].Brand + " drug"); 
+ 			console.log(card.Brand + " card drug"); 
+
+ 			return card.Brand;
+ 			}
+ 			
+ 		if ($scope.type == "Generic" ) {
+ 			return card.Generic;
+ 			}
+	 	}
+	 	
+	 $scope.answer = function(){
+ 		if ($scope.type == "Brand" ) {
+ 			console.log($scope.index + " index beforeeee"); 
+ 			console.log($scope.names[$scope.index].Generic + " drug"); 
+ 			console.log(card.Generic + " card drug"); 
+ 			return card.Generic;
+ 			}
+ 			
+ 		if ($scope.type == "Generic" ) {
+ 			return card.Brand;
+ 			}
+	 	}
+	 	
+	 	
+	 	
+	 	
+
+ });
+   });
+ 
+ 
+        
+</script>
+
+
+<div class="container-fullwidth">
+     	<div id=app_header style="height:75px">
+
+		
+		<a href = '' ng-click='listManager()'><button class = 'back'>&#x25c1;</button></a>
+        <a href ="" ng-click="home()"><button>M</button></a>
+			
+
+       	 <input type="button" class="btn pull-right" value="Play New Round!" style = "margin-right:12px" onClick="window.location.reload()">
+		</div>
+		
+		
+</div>
+
+
+
+	<div class="container-fullwidth"> 
+
+
+           <div ng-app="myApp" ng-controller="customersCtrl">
+
+           <div id=app_body style="margin-top:15%;">
+
+            <div ng-if="firstLoad">{{getlid(<?=$data['lid']?>)}}</div>
+
+			<p2 id="p1" style="font-size:76px; margin-left: 10px"> {{question()}}</p2>
+			<p2 id = "cid" style="font-size:60px; margin-left: 250px"></p2>
+
+			<form name = "jojo">
+				<input type="text" id="f1" name="Answer" placeholder="Answer:" style="width: 90%; margin-left: 10px; height: 80px" ><br>
+			</form>
+
+			<img id="result" src="" style="margin-top: 25px; margin-left: 30%">
+		    <img id="finished" src="" style="margin-top: 25px; margin-left: 2%">
+		    
+			<p id="wrong" style="color:red; margin-top: 25px; margin-left: 10px; font-size:56px"></p>
+
+         		<div class="test" id="test"><img src="/mvc/public/images/red_half.png" alt="Smiley face" width="415" ></div>
+
+
+				<div class="test2" id="test2"><img src="/mvc/public/images/white_half.png" alt="Smiley face" width="385" ></div>
+
+
+<!--<div class="row">
+
+			<div class="col-xs-6 offset-md-3" style="top: 68.5%;"><button class = "button button5" onclick="checkAnswer();">Submit</button></div>
+			<div class="col-xs-6 offset-md-3" ><button class = "button button5" onclick="nextCard();">Skip</button></div>
+
+
+</div> -->
+			<div style="margin-top: 700px"><button class = "button button5" onclick="checkAnswer();" style="height:100px">Submit</button></div>
+			<div class="margin-top: 800px"><button id="nextBtn" class = "button button5" onclick="nextCard();" style="height:100px">Next</button></div>
+
+
+
+
+   				 </div> <!-- /container -->
+   				 
+			</div>
+ 		</div>
+
+<!--</script> -->
+</body>
+
+
+<!--</html>-->

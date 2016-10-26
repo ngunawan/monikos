@@ -24,7 +24,6 @@
         $scope.login = function(){
             var online = navigator.onLine;
             if(online){
-                setTimeout(handleOnlineLogin, 2000);
                 handleOnlineLogin();
             }else{
                 handleOfflineLogin();
@@ -56,12 +55,6 @@
             $scope.loading = true;
 
             $http.post(url, data, config)
-            /*$http({
-                method: "POST",
-                url: url,
-                data: data,
-                config: config
-            })*/
             .then(
                 function (response) {
                     //success
@@ -70,7 +63,6 @@
                     // failure
                     handleLoginFailure(response);
             });  
-            
         }
 
         function handleLoginResponse(response){
