@@ -163,7 +163,9 @@
  			 $(this).toggleClass('active');
   
   });
-  
+              $scope.gotolistManager = function(){
+                window.location = window.location.origin + "/mvc/public/home/listMananger";
+              }
               $scope.clicked = function(front){
                 console.log("before " + front);
                // console.log("before " +drug.drug.Brand);
@@ -242,7 +244,7 @@
      	<div id=app_header>
 
 		
-		<a href = '' ng-click='listManager()'><button class = 'back'>&#x25c1;</button></a>
+		<a href = '' ng-click='gotolistManager()'><button class = 'back'>&#x25c1;</button></a>
         <a href ="" ng-click="home()"><button>M</button></a>
 			
 

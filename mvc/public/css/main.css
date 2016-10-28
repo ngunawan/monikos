@@ -551,7 +551,7 @@ font-weight: 600;
 @media only screen and (max-width:518px) {
     body#usr_mng_module .wrapper {
         width:85vw;
-        margin: 25vh auto auto auto;
+        margin: 5vw auto auto auto;
         box-shadow: 0vw 0vw 3vw #888888;
         padding:4vw 1vw 4vw 1vw;
     }
@@ -578,6 +578,31 @@ font-weight: 600;
     }
 }
 
+
+/* DCCODE */
+
+div#loginIconContainer {
+   text-align: center;
+   margin-bottom: 0px;
+   margin-top: 20px;
+}
+
+.fb-login-button.fb_iframe_widget {
+   display: block;
+}
+
+.loadingDiv {
+   position: fixed;
+   top: 0px;
+   right: 0px;
+   width: 100%;
+   height: 100%;
+   padding-top:150px;
+   background-color: rgba(102,102,102,0.6);
+   text-align: center;
+   z-index: 10;
+   filter: alpha(opacity=40);
+}
 
 
 
