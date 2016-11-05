@@ -11,13 +11,22 @@
 	function gotoGame2(){
         window.location = window.location.origin + "/mvc/public/games/game2/" + <?=$data['lid']?>;
     }
+	
+	function gohome(){
+        window.location = window.location.origin + "/mvc/public/home/";
+    }
+	
+	function golistManager(){
+        window.location = window.location.origin + "/mvc/public/home/listManager";
+    }
 
 </script>
 
 <body id="main_app_module">
-  <div id=app_header>
-		<div ng-click='listManager()'><button class = 'back'>&#x25c1;</button></div>
-        <div ng-click="home()"><button>M</button></div>
+ <div id='app_header'>
+		<a onclick="golistManager()" ><button class = 'back'>&#x25c1;</button></a>
+	 
+        <a onclick="gohome()"><button>M</button></a>
     </div>
 	
     <div id = app_content>

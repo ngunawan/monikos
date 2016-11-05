@@ -343,6 +343,13 @@ window.move1 = function() {
  });
    });
  
+	 function gohome(){
+        window.location = window.location.origin + "/mvc/public/home/";
+    }
+	
+	function gotoGamelist(){
+        window.location = window.location.origin + "/mvc/public/games/menu/" + <?=$data['lid']?>;
+    }
  
         
 </script>
@@ -352,9 +359,9 @@ window.move1 = function() {
      	<div id=app_header style="height:75px">
 
 		
-		<a href = '' ng-click='listManager()'><button class = 'back'>&#x25c1;</button></a>
-        <a href ="" ng-click="home()"><button>M</button></a>
-			
+		<a onclick="gotoGamelist()" ><button class = 'back'>&#x25c1;</button></a>
+	 
+        <a onclick="gohome()"><button>M</button></a>
 
        	 <input type="button" class="btn pull-right" value="Play New Round!" style = "margin-right:12px" onClick="window.location.reload()">
 		</div>
