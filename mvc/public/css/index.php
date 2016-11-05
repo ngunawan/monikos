@@ -1,7 +1,5 @@
 <link rel="stylesheet" type="text/css" href="/mvc/public/css/listM.css">
 
-<meta name='viewport' content="width=device-width, initial-scale=1" />
-   
 <body ng-app="myApp" ng-controller="myCtrl" id="main_app_module">
 	
     <div id='app_header'>
@@ -18,23 +16,20 @@
         </div>
 		
 		<div class='list-collection-block'>   
-            <div ng-class= "list_block" ng-repeat="list in lists track by $index">
-				
-                <h1 class = "list_name_header">
-					{{list.name}}</h1>
+            <div class='list-block' ng-repeat="list in lists">
+                <h1 class="list-name-header">{{list.name}}</h1>
 				
                 <div class='list-info-block' >
                     <div class='list-drugs'>
         				{{list.drugs}}
-						<br>		
-                    </div>		
+						<br>
+						<button class = 'select' ng-click = 'selectlist(list.pos)'>SELECT</button>
+						
+						<button class = 'delete' ng-click = '#'>DELETE LIST</button>
+                    </div>
+					
                 </div>
-				
-				<button class ='select' ng-click='selectlist($index)'>SELECT</button>
-						
-				<button class = 'delete'>DELETE LIST</button>
-			</div>
-						
+            </div>
         </div>
 
         <div ng-show="showCreator" class=list-creator>
@@ -46,11 +41,13 @@
 			
 <!-------LIST CREATOR--------->			
 <div class="list-container">		
-	<div class="form-group">
-          <div class="col-xs-8 col-sm-8 col-xs-offset-2 col-sm-offset-2">
-               <input type="search" class="form-control" id="search" placeholder="Search for your drug..">
+	<div class="row">
+		<div class="form-group">
+            <div class="col-xs-8 col-sm-8 col-xs-offset-2 col-sm-offset-2">
+                <input type="search" class="form-control" id="search" placeholder="Search for your drug..">
             </div>
-		</div>
+        </div>
+	</div>
 	<div class = 'drug-container'>	
 	<div class="row">
         <div class="form-group">
@@ -58,13 +55,21 @@
             
 				<div ng-repeat="drug in drugs">
                 <div class="item col-xs-6 col-sm-6">
-				  <div class = 'checkboxes'>
+<!--
+                    <div class="info-block block-info clearfix">							
+					<label class="drug-wrap">
+-->
+						  <div class = “checkboxes”>
 								
-							  <input type="checkbox" name="var_id[]" autocomplete="off" checklist-model="listform.drugs" checklist-value="drug.Generic" id='drug-{{$index}}'>
+							  <input type="checkbox" id ='b1' name="var_id[]" autocomplete="off" checklist-model="listform.drugs" checklist-value="drug.Generic" />
 							  
-							<label class = 'drug_name' for = 'drug-{{$index}}'>{{drug.Generic}}</label>
+							<label class = 'drug_name' for = ‘b1’>{{drug.Generic}}</label>
 						</div>
-
+<!--
+					</label>
+                       
+                    </div>
+-->
                 </div>
 				</div>
                 
@@ -99,7 +104,9 @@
             //console.log(brands.text);
             brands.slideToggle("fast");
         });
-
+        //$('body').on('click', function(){
+        //    alert("hello");
+        //});
 		
     });
 	

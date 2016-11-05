@@ -71,12 +71,12 @@ label {
     color:#8d99ae;
 }
 
-.h1, h1 .list-name-header{
+.list-name-header{
     font-family: 'Raleway', sans-serif;
     letter-spacing: 2px;
     margin: 0px;
-	font-size: 20px !important;;
-    
+	font-size: 20px !important;
+    background: none;
 }
 
 .list-creator {
@@ -100,10 +100,8 @@ label {
 }
 
 .list-creator .list-container {
-	position: absolute; !important
-	top: 300px; !important
-	width: 400px; !important
-	left:10px;
+	background: black;
+	position: absolute;
 }
 
 #listName:focus {
@@ -128,10 +126,6 @@ label {
     border-bottom: 2px solid #ccc;
 	font-weight: 500;	
 	font-size: 12px;
-}
-
-h1 .selected {		
-	color: ""#ff3333"";
 }
 
 .select {
@@ -171,8 +165,8 @@ h1 .selected {
 
 /*****CREATE DRUG LIST*****/
 .list-creator {
-	height: 200px;
 	position: absolute;
+
 }
 
 .list-creator button {
@@ -286,6 +280,11 @@ label.drug-wrap {
 .list-containter . row {
 	position: absolute;
 	display: inline-block;
+}
+
+.red {
+	background: #ff3333;
+	color:white;
 }
 
 .drug-container .row {

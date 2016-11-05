@@ -134,12 +134,22 @@ app.controller('myCtrl', function($scope, $http) {
 		
 /***SELECT LIST ID*********/
 
+		$scope.list_block = "list-block";
+		
 		$scope.selectlist = function(index){
 			console.log(index);   
-             $scope.passedId = $scope.listId[index]['list_id'];	
+             $scope.passedId = $scope.listId[index]['list_id'];
 			
+			
+			if ($scope.list_block[0] === "list-block")
+				
+            $scope.list_block[0] = "red";
+			
+			else	
+            $scope.list_block[0] = "list-block";	
 			console.log($scope.passedId);
-	
+			console.log($scope.list_name_header);
+			
 		}
 
 });
