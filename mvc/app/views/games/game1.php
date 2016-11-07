@@ -17,6 +17,7 @@
         $scope.finalList = [];
         $scope.numCorrect = 0;
         
+
         $scope.selected =[]
         $scope.clear = false;
         
