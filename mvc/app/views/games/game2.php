@@ -186,11 +186,17 @@ window.move1 = function() {
 			console.log("cuIn " + cuIn);
 			console.log(" names length " + $scope.names.length);
 			console.log(" final list length " + $scope.finalList.length);
+			document.getElementById("plus2").innerHTML="";
+
+			//document.getElementById("plus2").remove();
+			//document.getElementById("finished").src = "/mvc/public/images/completed.png";
+
 
 			if (cuIn == $scope.finalList.length){
 				window.move();
+				document.getElementById("result").remove();
+				document.getElementById("wrong").remove();
 			 	document.getElementById("finished").src = "/mvc/public/images/completed.png";
-
 			}
 			else{
 			cuIn++;
@@ -199,13 +205,14 @@ window.move1 = function() {
 			card = it.next().value;
 			console.log(card.Generic + "card");
 			 document.getElementById('f1').value = "";
-			 document.getElementById("result").src = "";
+			//document.getElementById("result").src = "";
 			 document.getElementById("wrong").innerHTML = "";
 
 
 			 if ($scope.result == "RIGHT") {
 			 	    console.log("result " + $scope.result);
  					window.move();
+ 					document.getElementById("result").src = "/mvc/public/images/rightanswer.jpg";
  					$scope.result = "WRONG";
  				}
 			
@@ -230,8 +237,8 @@ window.move1 = function() {
  			
  			//window.move();
  			document.getElementById('f1').value = "";
-			document.getElementById("result").src = "";
-			 document.getElementById("wrong").innerHTML = "";
+			document.getElementById("result").src = "/mvc/public/images/white-save-256.jpg";
+			document.getElementById("wrong").innerHTML = "";
 			
 			}
 
@@ -244,11 +251,14 @@ window.move1 = function() {
 			console.log(val + " brand");
 			document.getElementById("wrong").innerHTML = "";
 		
+			card.Generic = card.Generic.replace(/-/g, ' ');
+			card.Brand = card.Brand.replace(/-/g, ' ');
 
 
 			
 			 if ($scope.type == "Brand" ) {
- 				if (card.Generic == val) {
+ 				if (card.Generic.toLowerCase() === val.toLowerCase()) {
+ 					document.getElementById("plus2").innerHTML="+2!";
  					console.log("RIGHT");
  					$scope.result = "RIGHT";
  					
@@ -260,7 +270,7 @@ window.move1 = function() {
 	
 	 				else{	
  						window.move();	
-						document.getElementById("result").src = "/mvc/public/images/rightanswer.jpg";
+						document.getElementById("result").src = "/mvc/public/images/correct.png";
  						document.getElementById("nextBtn").disabled = false;
 					}
  				}
@@ -275,11 +285,12 @@ window.move1 = function() {
  			}
  			
  			if ($scope.type ==  "Generic" ) {
- 				if (card.Brand == val) {
+ 				if (card.Brand.toLowerCase() === val.toLowerCase()) {
+ 				 	document.getElementById("plus2").innerHTML="+2!";
  					console.log("RIGHT");
  					$scope.result = "RIGHT";
  					 window.move();
- 				document.getElementById("result").src = "/mvc/public/images/rightanswer.jpg";
+ 				document.getElementById("result").src = "/mvc/public/images/correct.png";
 				document.getElementById("nextBtn").disabled = false;
 
 
@@ -343,20 +354,28 @@ window.move1 = function() {
  });
    });
  
+ function gohome(){
+       window.location = window.location.origin + "/mvc/public/home/";
+   	}
+    
+    function gotoGamelist(){
+       window.location = window.location.origin + "/mvc/public/games/menu/" + <?=$data['lid']?>;
+   	}
  
         
 </script>
 
 
 <div class="container-fullwidth">
-     	<div id=app_header style="height:75px">
+     	<div id=app_header style="height:75px;z-index:10">
 
 		
-		<a href = '' ng-click='listManager()'><button class = 'back'>&#x25c1;</button></a>
-        <a href ="" ng-click="home()"><button>M</button></a>
-			
+	    <a onclick="gotoGamelist()" class="btn pull-left" ><button class = 'back'>&#x25c1;</button></a>
+     
+       <a onclick="gohome()" class="btn pull-left"><button>M</button></a>
+		
 
-       	 <input type="button" class="btn pull-right" value="Play New Round!" style = "margin-right:12px" onClick="window.location.reload()">
+       	 <input type="button" class="btn pull-right" value="Play New Round!" style = "margin-right:12px; font-size:36px" onClick="window.location.reload()">
 		</div>
 		
 		
@@ -374,21 +393,33 @@ window.move1 = function() {
             <div ng-if="firstLoad">{{getlid(<?=$data['lid']?>)}}</div>
 
 			<p2 id="p1" style="font-size:76px; margin-left: 10px"> {{question()}}</p2>
-			<p2 id = "cid" style="font-size:60px; margin-left: 250px"></p2>
+			<p2 id = "cid" style="font-size:60px; margin-left: 240px"></p2>
+			<p2 id = "plus2" style="font-size:60px; margin-left: 250px"></p2>
 
 			<form name = "jojo">
-				<input type="text" id="f1" name="Answer" placeholder="Answer:" style="width: 90%; margin-left: 10px; height: 80px" ><br>
+				<input type="text" id="f1" name="Answer" placeholder="Answer:" style="width: 90%; margin-left: 30px; height: 80px" ><br>
 			</form>
 
-			<img id="result" src="" style="margin-top: 25px; margin-left: 30%">
-		    <img id="finished" src="" style="margin-top: 25px; margin-left: 2%">
-		    
+		
 			<p id="wrong" style="color:red; margin-top: 25px; margin-left: 10px; font-size:56px"></p>
+
+		
+		    <img id="finished" src="" style="margin-top: 25px; margin-left: 2%">
+	
+
+			<img id="result" src="" style="margin-top: 25px; margin-left: 10%">
+			
+			
+
+			<!--<img id="result" src="" style="margin-top: 25px; margin-left: 30%">-->
+			
+		    
 
          		<div class="test" id="test"><img src="/mvc/public/images/red_half.png" alt="Smiley face" width="415" ></div>
 
 
 				<div class="test2" id="test2"><img src="/mvc/public/images/white_half.png" alt="Smiley face" width="385" ></div>
+
 
 
 <!--<div class="row">
@@ -398,8 +429,8 @@ window.move1 = function() {
 
 
 </div> -->
-			<div style="margin-top: 700px"><button class = "button button5" onclick="checkAnswer();" style="height:100px">Submit</button></div>
-			<div class="margin-top: 800px"><button id="nextBtn" class = "button button5" onclick="nextCard();" style="height:100px">Next</button></div>
+			<div style="margin-top: 700px"><button class = "button button5" onclick="checkAnswer();" style="height:100px; font-size:36px">Submit</button></div>
+			<div class="margin-top: 800px"><button id="nextBtn" class = "button button5" onclick="nextCard();" style="height:100px; font-size:36px">Next</button></div>
 
 
 

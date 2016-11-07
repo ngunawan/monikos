@@ -5,6 +5,7 @@
 
     <script>
 
+		numOfCards = 0;
         var app = angular.module('myApp', []);
         app.controller('customersCtrl', function($scope, $http) {
         $scope.numClicked = 0;
@@ -14,8 +15,13 @@
         $scope.brandNames = [];
         $scope.allDrugs = [];
         $scope.finalList = [];
+        $scope.numCorrect = 0;
         
-        $scope.selected =[];
+
+        $scope.selected =[]
+        $scope.clear = false;
+        
+        document.getElementById("tryagain").style.visibility="hidden";
         
 
 
@@ -108,6 +114,7 @@
                 
                 $scope.names = $scope.finalList;
                 
+                
                 console.log("length of names " + $scope.names.length);
 
                 
@@ -156,6 +163,7 @@
   					console.log(shuffledObjects);
 
 					$scope.names = shuffledObjects;
+					numOfCards = shuffledObjects.length;
       		
 
         $('button.toggler').on("click",function(){  
@@ -163,10 +171,10 @@
  			 $(this).toggleClass('active');
   
   });
-              $scope.gotolistManager = function(){
-                window.location = window.location.origin + "/mvc/public/home/listMananger";
-              }
+  
               $scope.clicked = function(front){
+              $scope.clear = false;
+
                 console.log("before " + front);
                // console.log("before " +drug.drug.Brand);
                 console.log("numClicked before " + $scope.numClicked);
@@ -196,6 +204,8 @@
                 	}
                 	
                 	if ($scope.numClicked == 2){
+                	    document.getElementById("tryagain").style.visibility="visible";
+
                 	    for(var i = 0; i < shuffledObjects.length;i++){
                 	    	if (shuffledObjects[i].clicked == "Y" && shuffledObjects[i].front == front){
                 	    		$scope.firstCard = shuffledObjects[i];
@@ -213,13 +223,20 @@
                 	 	
                 	 	if ($scope.firstCard.front == $scope.secondCard.drug.Brand || $scope.firstCard.front == $scope.secondCard.drug.Generic){
                 	 	    $scope.correct = "Y";
+                	 	    $scope.numCorrect += 3;
                 	 	    $scope.firstCard.correct = 'Y';
                 	 	    $scope.secondCard.correct = 'Y';
                 	 	    $scope.firstCard.active = 'Y';
                 	 	    $scope.secondCard.active = 'Y';
+                	 	    
+                	 	    if($scope.numCorrect >= $scope.shuffledObjects.length){
+                	 	    	alert("done!");
+                	 	    	document.getElementById("finished").src =  "/mvc/public/images/completed.png";
+                	 	    }
                 	 	}
                 	 	else {
                 	 	  $scope.correct = "N";
+
 
                 	 	}
                 	}
@@ -229,11 +246,34 @@
 
 
             }
+            
+
+			 $scope.clearBoard = function(){
+			 	$scope.clear = true;
+			 }
 
             });
             
 
         });
+        
+        
+	function gohome(){
+       window.location = window.location.origin + "/mvc/public/home/";
+   	}
+    
+    function gotoGamelist(){
+       window.location = window.location.origin + "/mvc/public/games/menu/" + <?=$data['lid']?>;
+   	}
+
+    function tryAgain(){
+            	//alert("test");
+            	document.getElementById("tryagain").style.visibility="hidden";
+            	//document.getElementById("nextButton").click();
+				var x = document.getElementsByClassName("BtnBlue");
+				x[0].click();		
+
+    }
 
     </script>
 
@@ -241,24 +281,29 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
 
 <div class="container-fullwidth">
-     	<div id=app_header>
+     	<div id=app_header style="height:85px; z-index:10">
 
+	    <a onclick="gotoGamelist()" class="btn pull-left" ><button class = 'back'>&#x25c1;</button></a>
+     
+       <a onclick="gohome()" class="btn pull-left"><button>M</button></a>
 		
-		<a href = '' ng-click='gotolistManager()'><button class = 'back'>&#x25c1;</button></a>
-        <a href ="" ng-click="home()"><button>M</button></a>
-			
-
-       	 <input type="button" class="btn pull-right" value="Play New Round!" style = "margin-right:12px" onClick="window.location.reload()">
+		
+		
+       	<input onClick="tryAgain()" id = "tryagain" type= "button" value="Next" style = "margin-right:37px; font-size:24px; border: 5px solid lightgray; background-color: #0099ff; height: 70px; width: 150px" > </input>
+		
+       	 <input type="button" class="btn pull-right" value="Play New Round!" style = "margin-right:12px; font-size:24px; border: 1px solid lightblue;" onClick="window.location.reload()">
 		</div>
 		
 		
       </div>
 
-       <div id=app_content>
+       <div id=app_content style="background-image: url(http://mj.unc.edu/sites/default/files/landing-pages/images/apply_unc-1.png);background-repeat: no-repeat">
 
            <div ng-app="myApp" ng-controller="customersCtrl">
 
-         		<div id=app_body>
+
+
+         		<div id=app_body style="margin-top:-100px">
             <!--<button ng-click="getlid(<?=$data['lid']?>)">get list</button>-->
             <div ng-if="firstLoad">{{getlid(<?=$data['lid']?>)}}</div>
               <!--{{getlid();}}-->
@@ -279,8 +324,15 @@
 	</div>
 </div> -->
 
+       <!--	<input onClick="" id = "nextButton" type= "button" style = "visibility: hidden" > </input>-->
+			    <img id="finished" src="" style="margin-top: 25px; margin-left: 2%">
 
-      <div ng-if="numClicked < 2;">
+
+	 
+	 
+	
+
+      <div ng-if="numClicked < 2" >
      <div ng-repeat="product in names" ng-if="$index % 4 == 0" class="row">
     <div class="col-xs-3"><button class="btnBlue"  ng-click="clicked(names[$index].front);" ng-hide = "names[$index].correct == 'Y' "
           ng-style="{'background-color' : (names[$index].clicked == 'Y') && (numClicked <=2) ? '#0099ff' : '#550000'}"  >{{names[$index].front}}</button></div>
