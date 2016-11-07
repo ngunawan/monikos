@@ -15,7 +15,7 @@
         $scope.allDrugs = [];
         $scope.finalList = [];
         
-        $scope.selected =[]
+        $scope.selected =[];
         
 
 

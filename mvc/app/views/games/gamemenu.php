@@ -4,19 +4,63 @@
 
 <script type = 'text/javascript'>
 
-    function gotoGame1(){
-        window.location = window.location.origin + "/mvc/public/games/game1/" + <?=$data['lid']?>;
+    function gotoGame1(challenge){
+        //normal play, not challenge mode
+        if(challenge == undefined){
+            window.location = window.location.origin + "/mvc/public/games/game1/" + <?=$data['lid']?>;
+        }else{
+        //challenge mode
+            window.location = window.location.origin + "/mvc/public/games/game1/" + <?=$data['lid']?> + "/" + challenge;
+        }
     }
 	
-	function gotoGame2(){
-        window.location = window.location.origin + "/mvc/public/games/game2/" + <?=$data['lid']?>;
+	function gotoGame2(challenge){
+        //normal play, not challenge mode
+        if(challenge == undefined){
+            window.location = window.location.origin + "/mvc/public/games/game2/" + <?=$data['lid']?>;
+        }else{
+        //challenge mode
+            window.location = window.location.origin + "/mvc/public/games/game2/" + <?=$data['lid']?> + "/" + challenge;
+        }
     }
+
+    function listManager(){
+        window.location = window.location.origin + "/mvc/public/home/listManager";
+    }
+
+    function challenge(game){
+        //alert(game);
+        //$("#challenge-"+game).css({"background":"white","color":"#ff3333"});
+        if(game == 'matching'){
+            gotoGame1('challenge');
+        }else if(game == 'pill'){
+            gotoGame2('challenge');
+        }
+    }
+
+    $(document).ready(function () {
+        $('#challenge').on('click',function(){
+            var innerChallenge = $("#innerChallenge");
+            innerChallenge.slideDown("fast");
+
+            $('#challengeText').slideUp("fast");
+        });
+
+        $('.challengeButton').on('click', function(){
+            $(this).css({"background":"white","color":"#ff3333"});
+        });
+
+        
+    });
+
+
+
 
 </script>
 
 <body id="main_app_module">
   <div id=app_header>
-		<div ng-click='listManager()'><button class = 'back'>&#x25c1;</button></div>
+		<div onclick='listManager()'><button class = 'back'>&#x25c1;</button></div>
         <div ng-click="home()"><button>M</button></div>
     </div>
 	
@@ -29,7 +73,16 @@
             
             <a onclick ="gotoGame2()"><div class = "game-block game-red" id ='game_2'>PILL GAME</div></a>
             
-            <a href='#'><div class = "game-block game-white" id ='game_3'>MULTIPLE CHOICE<br> QUIZ</div></a>
+            <a href='#'><div class = "game-block game-white" id ='game_3'>MULTIPLE CHOICE<br>QUIZ</div></a>
+
+            <div class = "game-block game-red" id ='challenge'><span id='challengeText'>CHALLENGE A<br>FRIEND</span>
+                <div id="innerChallenge" style="display:none">
+                    <div id="#challenge-matching" class="challengeButton" onclick="challenge('matching')">MATCHING</div>
+                    <div id="#challenge-pill" class="challengeButton" onclick="challenge('pill')">PILL GAME</div>
+                    <div id="#challenge-quiz" class="challengeButton" onclick="challenge('quiz')">QUIZ</div>
+                </div>
+
+            </div>
         
         </div>
     </div>
