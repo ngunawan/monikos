@@ -21,6 +21,8 @@
         $scope.selected =[]
         $scope.clear = false;
         
+        $scope.select =[];
+        
         document.getElementById("tryagain").style.visibility="hidden";
         
 

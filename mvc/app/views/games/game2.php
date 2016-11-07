@@ -20,6 +20,7 @@
         console.log(" HEREEE 3")
         $scope.currentIndex = 1;
 		var cuIn = 1;
+		$scope.select = [];
 
 
         //dcedits

@@ -41,7 +41,7 @@
             <div class ='text-container'>
 				<div class=field-name>LIST TITLE: </div>
 				<br>
-				<input id = 'listName' ng-model=listform.name type=text>
+				<input id = 'listName' ng-model=listform.name type="text" required>
             </div>
 			
 <!-------LIST CREATOR--------->			
@@ -52,10 +52,10 @@
             </div>
 		</div>
 	<div class = 'drug-container'>	
-	<div class="row">
         <div class="form-group">
             <div class="searchable-container">
-            
+            	<div class="row">
+
 				<div ng-repeat="drug in drugs">
                 <div class="item col-xs-6 col-sm-6">
 				  <div class = 'checkboxes'>
@@ -64,7 +64,6 @@
 							  
 							<label class = 'drug_name' for = 'drug-{{$index}}'>{{drug.Generic}}</label>
 						</div>
-
                 </div>
 				</div>
                 
@@ -73,7 +72,7 @@
 		</div>
 	</div>	
 	</div>
-		 <button ng-click=addList()>Add List</button>
+		 <button class="col-xs-8 col-sm-8 col-xs-offset-2 col-sm-offset-2" ng-click=addList()>Add List</button>
         </div>
     </div>		
 		

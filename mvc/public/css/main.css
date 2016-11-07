@@ -1,5 +1,8 @@
+<<<<<<< HEAD
+=======
 @import 'https://fonts.googleapis.com/css?family=Raleway:300,500,700,900';
 
+>>>>>>> e12082da330f7eb8ecac8f3e281f3769561ac190
 body#usr_mng_module {
     /*    background: #888;*/
     background: #FF3D39;
@@ -9,7 +12,7 @@ body#usr_mng_module {
 body#usr_mng_module .wrapper {
     background: #FFF;
     width:50vw;
-    margin: 10vh auto auto auto;
+    margin: 5vh auto auto auto;
     text-align: center;
     box-shadow: 0vw 0vw 3vw #888888;
     padding:2vw 0.5vw 5vw 0.5vw;
@@ -55,9 +58,13 @@ body#main_app_module {
 
 
 body#database_module {
+<<<<<<< HEAD
+    background: #F8F8F8;
+=======
     /*    background: #F8F8F8;*/
     background: #BD0707;
     /*    background: #9e9e9e;*/
+>>>>>>> e12082da330f7eb8ecac8f3e281f3769561ac190
 }
 
 #app_header {
@@ -68,6 +75,13 @@ body#database_module {
     width:100vw;
     height:50px;
     margin:0;
+<<<<<<< HEAD
+    background:#FF3D39;
+    color: #FFF;
+    text-align: center;
+    border-bottom: 1px solid #CCC;
+    box-shadow: 0vw 0vw 5px #888888;
+=======
     /*    background:#FF3D39;*/
     background: #D10000;
     /*    background: #383838;*/
@@ -76,6 +90,7 @@ body#database_module {
     /*    border-bottom: 1px solid #CCC;*/
     box-shadow: 0vw 0vw 20px #7D0208;
     /*    box-shadow: 0vw 0vw 20px #262626;*/
+>>>>>>> e12082da330f7eb8ecac8f3e281f3769561ac190
 }
 
 #app_header button.back-btn {
@@ -96,11 +111,9 @@ body#database_module {
 
 #app_header h1 {
     display:inline-block;
-    /*    font-family: sans-serif;*/
-    font-family: 'Raleway';
+    font-family: sans-serif;
     margin:15px auto auto auto;
-    font-weight:600;
-    text-transform: uppercase;
+    font-weight:500;
     font-size: 20px; 
     letter-spacing: 1px;
 }
@@ -144,6 +157,20 @@ body#database_module {
     margin-top: 65px;
 }
 
+<<<<<<< HEAD
+.search-bar {
+    box-sizing:border-box;
+    background: #FFF;
+    height:40px;
+    display: block;
+    margin: 15px auto 15px auto;
+    padding:0 10px 0 10px;
+    border: 0;
+    border-radius:4px;
+    border-bottom: 1px solid #CCC;
+    box-shadow: 0vw 0vw 3px #888888;
+    font-size: 18px;
+=======
 .showSearch {
     font-family:'Raleway';
 }
@@ -167,6 +194,7 @@ width:100%;
 */
 
 .search-bar-wrapper {
+>>>>>>> e12082da330f7eb8ecac8f3e281f3769561ac190
     width:100%;
     margin:0;
     margin-top:-15px;
@@ -198,6 +226,8 @@ width:100%;
     outline: none;
 }
 
+<<<<<<< HEAD
+=======
 .search-by-wrapper {
     display: inline-block;
 }
@@ -225,6 +255,7 @@ font-size:12px;
 }
 */
 
+>>>>>>> e12082da330f7eb8ecac8f3e281f3769561ac190
 .drug-block {
     font-family: sans-serif;
     display:block;
@@ -234,7 +265,6 @@ font-size:12px;
     background:#FFF;
     width:100%;
     transition: background 0.5s;
-    border-radius: 5px;
 }
 
 .drug-block:active {
@@ -252,15 +282,15 @@ font-size:12px;
 }
 
 .hint-info button{
-    /*    background: #FF3D39;*/
-    background: #D10000;
-    border:0;
-    /*    border:1px solid #FF3D39;*/
-    /*    border:1px solid #B21816;*/
+    background: #FF3D39;
+    border:1px solid #FF3D39;
+/*    border:1px solid #B21816;*/
     border-radius: 4px;
     text-decoration: none;
     color: #FFF;
     font-size:14px;
+<<<<<<< HEAD
+=======
     /*    text-transform: uppercase;*/
     font-family: 'Raleway'; 
     font-weight: 600;
@@ -268,18 +298,8 @@ font-size:12px;
     width:60px;
     height:25px;
     margin-top:-3px;
+>>>>>>> e12082da330f7eb8ecac8f3e281f3769561ac190
 }
-
-.hint-info .button-shadow {
-    background: #930000;
-    border-radius: 4px;
-    display:block;
-    width:60px;
-    height:25px;;
-    margin-top:-22px;
-}
-
-
 
 .hidden {
     display: none;
@@ -311,15 +331,11 @@ font-size:12px;
 }
 
 .drug-content {
-    font-family: 'Raleway';
-    margin:15px;
-
+    margin:20px;
 }
 
-.drug-generic {
-    display:inline-block;
-    width:70%;
-    word-break: break-all;
+.drug-brand {
+    font-weight: 600;
 }
 
 .side-effect {
@@ -346,13 +362,8 @@ label.field-name {
 }
 
 .speaker-icon-wrapper img {
-    width:15px;
-    height:15px;
-}
-
-.speaker-icon-wrapper button {
-    background:none;
-    border:0;
+    width:20px;
+    height:20px;
 }
 
 
@@ -361,23 +372,35 @@ label.field-name {
 .ng-modal-overlay {
     /* A dark translucent div that covers the whole screen */
     position:fixed;
+<<<<<<< HEAD
+    z-index:999;
+=======
     z-index:9999;
+>>>>>>> e12082da330f7eb8ecac8f3e281f3769561ac190
     top:0;
     left:0;
     width:100vw;
     height:100vh;
     background-color:#000000;
+<<<<<<< HEAD
+    opacity: 0.2;
+=======
     opacity: 0.85;
 }
 
 .mnemonic-modal-overlay {
     opacity: 0.95;
+>>>>>>> e12082da330f7eb8ecac8f3e281f3769561ac190
 }
 
 
 .ng-modal-dialog {
     /* A centered div above the overlay with a box shadow. */
+<<<<<<< HEAD
+    z-index:1000;
+=======
     z-index:10000;
+>>>>>>> e12082da330f7eb8ecac8f3e281f3769561ac190
     position: fixed;
     width: 50%; /* Default */
 
@@ -388,14 +411,12 @@ label.field-name {
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
 
-    border-radius: 5px;
+    border-radius: 4px;
     background-color: #fff;
     box-shadow: 4px 4px 80px #000;
-    -webkit-box-shadow: 4px 4px 80px #000;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-    -moz-box-shadow:    4px 4px 80px #000;  /* Firefox 3.5 - 3.6 */
-    box-shadow:         4px 4px 80px #000;
-
 }
+<<<<<<< HEAD
+=======
 
 .ng-modal-dialog-two {
     /* A centered div above the overlay with a box shadow. */
@@ -421,6 +442,7 @@ label.field-name {
 }
 
 
+>>>>>>> e12082da330f7eb8ecac8f3e281f3769561ac190
 .ng-modal-dialog-content {
     text-align: center;
 }
@@ -435,17 +457,19 @@ label.field-name {
     font-weight: bold;
     font-family: 'Arial','sans-serif';
 
-    /*
+/*
     border-radius: 50%;
     width: 10px;
     height: 10px;
     background: #eaeaea;
     border:2px solid #CCC;
-    */
+*/
     color: #CCC;
-
+    
 }
 
+<<<<<<< HEAD
+=======
 .ng-modal-close-two {
     position: absolute;
     top: 3px;
@@ -469,20 +493,28 @@ label.field-name {
 }
 
 /*
+>>>>>>> e12082da330f7eb8ecac8f3e281f3769561ac190
 .ng-modal-content-head {
-border-top-left-radius: 4px;
-border-top-right-radius: 4px;
-border-bottom: 1px solid #CCC;
-background: #eaeaea;
-padding: 10px 0;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom: 1px solid #CCC;
+    background: #eaeaea;
+    padding: 10px 0;
 
 }
-*/
 
-.hint-message {
+.ng-modal-content-middle {
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     background:#FFF;
+<<<<<<< HEAD
+    padding: 40px 10px;
+}
+
+.ng-modal-content-footer {
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+=======
     padding: 30px 5px 0px 5px;
     font-weight:600;
 
@@ -683,30 +715,43 @@ padding: 10px 0;
     padding: 10px 0;
     margin-top:10px;
 }
+>>>>>>> e12082da330f7eb8ecac8f3e281f3769561ac190
 
 .ng-modal-content-footer-bar a {
     text-decoration: underline;
     color: #7D7D7D;
 }
 
-/*
 .ng-modal-content-footer .like-btn {
-display:inline-block;
-width:50%;
-background:#2F3F73;
-color:#FFF;
-padding:15px 0px;
-margin:0;
-border:0;
-font-size:16px;
-font-weight: 600;
-border-bottom-left-radius: 4px;
+    display:inline-block;
+    width:50%;
+    background:#2F3F73;
+    color:#FFF;
+    padding:15px 0px;
+    margin:0;
+    border:0;
+    font-size:16px;
+    font-weight: 600;
+        border-bottom-left-radius: 4px;
 
 }
-*/
 
-/*
 .ng-modal-content-footer .dislike-btn {
+<<<<<<< HEAD
+     display:inline-block;
+    width:50%;
+    background:#FF3D39;
+    color:#FFF;
+        padding:15px 0px;
+        border-bottom-right-radius: 4px;
+
+
+    height:100%;
+     margin:0;
+    border:0;
+    font-size:16px;
+    font-weight: 600;
+=======
 display:inline-block;
 width:50%;
 background:#FF3D39;
@@ -822,12 +867,12 @@ font-weight: 600;
     border: 1px solid #CCC;
     border-radius: 4px;
     padding: 5px 10px;
+>>>>>>> e12082da330f7eb8ecac8f3e281f3769561ac190
 }
 
 
 
-/**END MNEMONIC FORM**/
-
+/** MODAL CODE----------------------------------------------------------------------- **/
 
 
 @media only screen and (max-width:518px) {
@@ -858,8 +903,39 @@ font-weight: 600;
         padding: 4vw 2vw 4vw 2vw;
 
     }
+    div#loginIconContainer {
+        text-align: center;
+        margin-bottom: 15px;
+        margin-top: 15px;
+    }
 }
 
+<<<<<<< HEAD
+
+/*DC EDITS */
+
+div#loginIconContainer {
+    text-align: center;
+    margin-bottom: 0px;
+    margin-top: 20px;
+}
+
+.fb-login-button.fb_iframe_widget {
+    display: block;
+}
+
+.loadingDiv {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: 100%;
+    height: 100%;
+    padding-top:150px;
+    background-color: rgba(102,102,102,0.6);
+    text-align: center;
+    z-index: 10;
+    filter: alpha(opacity=40);
+=======
 body.email-page {
     background: #458f29;
     color:#FFF;
@@ -882,8 +958,8 @@ body.email-page .back-btn {
     font-size:20px;
     text-decoration: none;
     color: #FFF;
+>>>>>>> e12082da330f7eb8ecac8f3e281f3769561ac190
 }
-
 
 
 
