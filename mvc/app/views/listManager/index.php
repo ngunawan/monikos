@@ -52,10 +52,10 @@
             </div>
 		</div>
 	<div class = 'drug-container'>	
-	<div class="row">
         <div class="form-group">
             <div class="searchable-container">
-            
+            	<div class="row">
+
 				<div ng-repeat="drug in drugs">
                 <div class="item col-xs-6 col-sm-6">
 				  <div class = 'checkboxes'>
@@ -64,7 +64,6 @@
 							  
 							<label class = 'drug_name' for = 'drug-{{$index}}'>{{drug.Generic}}</label>
 						</div>
-
                 </div>
 				</div>
                 
