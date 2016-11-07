@@ -41,7 +41,7 @@
             <div class ='text-container'>
 				<div class=field-name>LIST TITLE: </div>
 				<br>
-				<input id = 'listName' ng-model=listform.name type=text>
+				<input id = 'listName' ng-model=listform.name type="text" required>
             </div>
 			
 <!-------LIST CREATOR--------->			

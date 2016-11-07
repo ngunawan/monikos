@@ -3,7 +3,7 @@ button.btnBlue {
     background: #3071A9;
     color:white;
     font-family: Sans-serif;
-    font-size: 14px;
+    font-size: 24px;
     width:26vw;
    height: 23vh; 
     text-align: center;   
@@ -46,7 +46,7 @@ p {
 
 
 #app_header {
-    /*display: block;
+    display: block;
     position:fixed;
     top:0;
     width:100vw;
@@ -56,7 +56,7 @@ p {
     box-shadow: 0 0 5px #444;
     margin-bottom:100px;
     padding-top:5px;
-*/
+
 
 }
 
