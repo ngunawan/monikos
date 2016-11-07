@@ -60,7 +60,7 @@
                 <div class="item col-xs-6 col-sm-6">
 				  <div class = 'checkboxes'>
 								
-							  <input type="checkbox" name="var_id[]" autocomplete="off" checklist-model="listform.drugs" checklist-value="drug.Generic" id='drug-{{$index}}'>
+							  <input type="checkbox" name="var_id[]" autocomplete="off" checklist-model="listform.drugs" checklist-value="drug.Generic" id='drug-{{$index}}' required>
 							  
 							<label class = 'drug_name' for = 'drug-{{$index}}'>{{drug.Generic}}</label>
 						</div>
@@ -72,7 +72,7 @@
 		</div>
 	</div>	
 	</div>
-		 <button class="col-xs-8 col-sm-8 col-xs-offset-2 col-sm-offset-2" ng-click=addList()>Add List</button>
+		 <button ng-click=addList()>Add List</button>
         </div>
     </div>		
 		
