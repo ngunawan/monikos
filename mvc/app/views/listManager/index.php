@@ -72,7 +72,7 @@
 		</div>
 	</div>	
 	</div>
-		 <button ng-click=addList()>Add List</button>
+		 <button class="col-xs-8 col-sm-8 col-xs-offset-2 col-sm-offset-2" ng-click=addList()>Add List</button>
         </div>
     </div>		
 		
