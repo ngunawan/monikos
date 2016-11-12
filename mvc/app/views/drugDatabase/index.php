@@ -355,7 +355,7 @@
                                 </div>
                             </div>
                             <div ng-controller="showCtrl2" class=ng-modal-content-footer-bar>
-                                Do you have a better hint? <a ng-click=toggleModal2()>Earn 200 Capsules</a>
+                                Do you have a better hint? <a class="earn200link" ng-click=toggleModal2()>Earn 200 Capsules</a>
 
                                 <modal-dialog-two ng-click='$event.stopPropagation()' show='modalShown2' width='90vw'>
 

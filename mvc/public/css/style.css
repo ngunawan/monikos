@@ -62,11 +62,6 @@ p {
 	z-index: 10;
 }
 
-.back{
-	position: fixed;
-	left:10px;
-}
-
 #app_header button{
     background: transparent;
     font-family: 'Raleway',sans-serif;

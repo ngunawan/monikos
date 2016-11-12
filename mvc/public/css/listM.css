@@ -114,8 +114,11 @@ label {
 	font-family: 'Raleway',sans-serif;
 	line-height: normal;
 	color: #464a53;
-	height: 110px;
 	overflow-y: scroll;
+}
+
+.list-collection-block-short{
+	height: 110px;
 }
 
 .list-block {

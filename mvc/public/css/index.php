@@ -1,7 +1,5 @@
 <link rel="stylesheet" type="text/css" href="/mvc/public/css/listM.css">
 
-<meta name='viewport' content="width=device-width, initial-scale=1" />
-   
 <body ng-app="myApp" ng-controller="myCtrl" id="main_app_module">
 	
     <div id='app_header'>
@@ -12,69 +10,76 @@
     <div id='app_content'>
 
         <div class='add-list-block'>
-            <button id="addListButton" ng-click="showCreator = true">
+            <button ng-click="showCreator = true">
                 <label>CREATE NEW LIST</label>
             </button>
         </div>
 		
 		<div class='list-collection-block'>   
-            <div ng-class="list_block" class="list_block" ng-repeat="list in lists track by $index">
-				
-                <h1 class = "list-name-header">
-					{{list.name}}</h1>
+            <div class='list-block' ng-repeat="list in lists">
+                <h1 class="list-name-header">{{list.name}}</h1>
 				
                 <div class='list-info-block' >
                     <div class='list-drugs'>
         				{{list.drugs}}
-						<br>		
-                    </div>		
+						<br>
+						<button class = 'select' ng-click = 'selectlist(list.pos)'>SELECT</button>
+						
+						<button class = 'delete' ng-click = '#'>DELETE LIST</button>
+                    </div>
+					
                 </div>
-				
-				<!--<button class ='select' ng-click='selectlist($index, this)'>SELECT</button>-->
-                <button class ='selectList' ng-click='selectlist($index)'>SELECT</button>
-						
-				<button class = 'deleteList'>DELETE LIST</button>
-			</div>
-						
+            </div>
         </div>
 
-        <div class=list-creator>
+        <div ng-show="showCreator" class=list-creator>
             <div class ='text-container'>
 				<div class=field-name>LIST TITLE: </div>
 				<br>
-				<input id = 'listName' ng-model=listform.name type="text" required>
+				<input id = 'listName' ng-model=listform.name type=text>
             </div>
 			
 <!-------LIST CREATOR--------->			
 <div class="list-container">		
-	<div class="form-group">
-          <div class="col-xs-8 col-sm-8 col-xs-offset-2 col-sm-offset-2">
-               <input type="search" class="form-control" id="search" placeholder="Search for your drug..">
+	<div class="row">
+		<div class="form-group">
+            <div class="col-xs-8 col-sm-8 col-xs-offset-2 col-sm-offset-2">
+                <input type="search" class="form-control" id="search" placeholder="Search for your drug..">
             </div>
-		</div>
-	
+        </div>
+	</div>
 	<div class = 'drug-container'>	
-	<div class="form-group">
-		<div class="searchable-container">
-            <div class="row">
-
+	<div class="row">
+        <div class="form-group">
+            <div class="searchable-container">
+            
 				<div ng-repeat="drug in drugs">
-					<div class="item col-xs-6 col-sm-6">
-					  <div class = 'checkboxes'>			
-						 <input type="checkbox" name="var_id[]" autocomplete="off" checklist-model="listform.drugs" checklist-value="drug.Generic" id='drug-{{$index}}' required>				  
-							<label class = 'drug_name' for = 'drug-{{$index}}'>		{{drug.Generic}}
-							</label>
+                <div class="item col-xs-6 col-sm-6">
+<!--
+                    <div class="info-block block-info clearfix">							
+					<label class="drug-wrap">
+-->
+						  <div class = “checkboxes”>
+								
+							  <input type="checkbox" id ='b1' name="var_id[]" autocomplete="off" checklist-model="listform.drugs" checklist-value="drug.Generic" />
+							  
+							<label class = 'drug_name' for = ‘b1’>{{drug.Generic}}</label>
 						</div>
-					</div>
+<!--
+					</label>
+                       
+                    </div>
+-->
+                </div>
 				</div>
                 
             </div>
         </div>
-	</div>
+		</div>
 	</div>	
-</div>
-	<button ng-click=addList()>Add List</button>
-  </div>
+	</div>
+		 <button ng-click=addList()>Add List</button>
+        </div>
     </div>		
 		
 	<div class = 'play' ng-click="launchGame()">
@@ -99,7 +104,9 @@
             //console.log(brands.text);
             brands.slideToggle("fast");
         });
-
+        //$('body').on('click', function(){
+        //    alert("hello");
+        //});
 		
     });
 	
