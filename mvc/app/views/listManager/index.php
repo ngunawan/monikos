@@ -12,13 +12,13 @@
     <div id='app_content'>
 
         <div class='add-list-block'>
-            <button ng-click="showCreator = true">
+            <button id="addListButton" ng-click="showCreator = true">
                 <label>CREATE NEW LIST</label>
             </button>
         </div>
 		
 		<div class='list-collection-block'>   
-            <div ng-class= "list_block" ng-repeat="list in lists track by $index">
+            <div ng-class="list_block" class="list_block" ng-repeat="list in lists track by $index">
 				
                 <h1 class = "list_name_header">
 					{{list.name}}</h1>
@@ -30,9 +30,10 @@
                     </div>		
                 </div>
 				
-				<button class ='select' ng-click='selectlist($index)'>SELECT</button>
+				<!--<button class ='select' ng-click='selectlist($index, this)'>SELECT</button>-->
+                <button class ='selectList' ng-click='selectlist($index)'>SELECT</button>
 						
-				<button class = 'delete'>DELETE LIST</button>
+				<button class = 'deleteList'>DELETE LIST</button>
 			</div>
 						
         </div>

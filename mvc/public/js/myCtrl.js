@@ -136,20 +136,26 @@ app.controller('myCtrl', function($scope, $http) {
 
 		$scope.list_block = "list-block";
 		
-		$scope.selectlist = function(index){
-			console.log(index);   
-             $scope.passedId = $scope.listId[index]['list_id'];
-			
-			
-			if ($scope.list_block === "list-block")
-				
-            $scope.list_block = "red";
-			
-			else	
-            $scope.list_block = "list-block";	
-			console.log($scope.passedId);
-			console.log($scope.list_name_header);
-			
+		$scope.selectlist = function(index, thisElem){
+            $scope.passedId = $scope.listId[index]['list_id'];
+	       	console.log($scope.passedId);
 		}
 
+});
+
+$( document ).ready(function() {
+    $('.list-collection-block').on('click', '.list_block .selectList',function(){
+        var parent = $(this).parent();
+        if(!parent.hasClass('red')){
+            parent.addClass('red');
+            $(this).siblings('.list-info-block').children().addClass('whiteTextClass');     
+        }else{
+            parent.removeClass('red');
+            $(this).siblings().removeClass('whiteTextClass');
+        }
+    });
+
+    $('#addListButton').on('click', function(){
+        $('.list-collection-block').addClass('list-collection-block-short');
+    });
 });
