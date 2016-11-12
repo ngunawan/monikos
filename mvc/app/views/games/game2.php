@@ -1,13 +1,11 @@
 <link rel="stylesheet" type="text/css" href="/mvc/public/css/game2stylesheet.css">
 
-
-
 <body>
 
-
- <script>
-    
-        var app = angular.module('myApp', []);
+ <script src = '/mvc/public/js/pill.js'></script>
+	
+	<script>
+	  var app = angular.module('myApp', []);
         app.controller('customersCtrl', function($scope, $http) {
         $scope.test = "Y";
         $scope.index = 0;
@@ -348,67 +346,52 @@ window.move1 = function() {
  			}
 	 	}
 	 	
-	 	
-	 	
-	 	
 
  });
    });
- 
- function gohome(){
-       window.location = window.location.origin + "/mvc/public/home/";
-   	}
-    
-    function gotoGamelist(){
-       window.location = window.location.origin + "/mvc/public/games/menu/" + <?=$data['lid']?>;
-   	}
- 
-        
-</script>
-
-
+	</script>
+	
+<!----------HTML STARTS----------->	
 <div class="container-fullwidth">
-     	<div id=app_header style="height:75px;z-index:10">
-
-		
-	    <a onclick="gotoGamelist()" class="btn pull-left" ><button class = 'back'>&#x25c1;</button></a>
+	<div id=app_header>
+	
+	   <a onclick="gotoGamelist()" ><button class = 'back'>&#x25c1;</button></a>
      
        <a onclick="gohome()" class="btn pull-left"><button>M</button></a>
-		
 
-       	 <input type="button" class="btn pull-right" value="Play New Round!" style = "margin-right:12px; font-size:36px" onClick="window.location.reload()">
-		</div>
-		
+       	<input id ='new_round' type="button" class="btn pull-right" value="Play New Round!" onClick="window.location.reload()">
+	</div>		
 		
 </div>
 
-
-
 	<div class="container-fullwidth"> 
 
+		<div ng-app="myApp" ng-controller="customersCtrl">
 
-           <div ng-app="myApp" ng-controller="customersCtrl">
+           <div id=app_body>
 
-           <div id=app_body style="margin-top:15%;">
+            <div ng-if="firstLoad">
+				{{getlid(<?=$data['lid']?>)}}
+			   </div>
 
-            <div ng-if="firstLoad">{{getlid(<?=$data['lid']?>)}}</div>
-
-			<p2 id="p1" style="font-size:76px; margin-left: 10px"> {{question()}}</p2>
-			<p2 id = "cid" style="font-size:60px; margin-left: 240px"></p2>
-			<p2 id = "plus2" style="font-size:60px; margin-left: 250px"></p2>
+			<p2 id="p1">{{question()}}</p2>
+			   
+			<p2 id = "cid"></p2>
+			   
+			<p2 id = "plus2"></p2>
 
 			<form name = "jojo">
-				<input type="text" id="f1" name="Answer" placeholder="Answer:" style="width: 90%; margin-left: 30px; height: 80px" ><br>
+				<input type="text" id="f1" name="Answer" placeholder="Answer:" ><br>
 			</form>
 
 		
-			<p id="wrong" style="color:red; margin-top: 25px; margin-left: 10px; font-size:56px"></p>
+			<p id="wrong"></p>
 
 		
-		    <img id="finished" src="" style="margin-top: 25px; margin-left: 2%">
+		    <img id="finished" src="" >
 	
 
-			<img id="result" src="" style="margin-top: 25px; margin-left: 10%">
+			<img id="result" src="">
 			
 			
 
@@ -430,11 +413,9 @@ window.move1 = function() {
 
 
 </div> -->
-			<div style="margin-top: 700px"><button class = "button button5" onclick="checkAnswer();" style="height:100px; font-size:36px">Submit</button></div>
-			<div class="margin-top: 800px"><button id="nextBtn" class = "button button5" onclick="nextCard();" style="height:100px; font-size:36px">Next</button></div>
-
-
-
+			<div class='submit_btn'><button class = "button button5" onclick="checkAnswer();" >Submit</button></div>
+			   
+			<div class='next_btn'><button id="nextBtn" class = "button button5" onclick="nextCard();">Next</button></div>
 
    				 </div> <!-- /container -->
    				 

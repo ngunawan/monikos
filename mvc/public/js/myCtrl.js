@@ -137,8 +137,8 @@ app.controller('myCtrl', function($scope, $http) {
 		$scope.list_block = "list-block";
 		
 		$scope.selectlist = function(index){
-			console.log(index);   
-             $scope.passedId = $scope.listId[index]['list_id'];
+			console.log(index);
+			$scope.selectedIndex = index;             $scope.passedId = $scope.listId[index]['list_id'];
 			
 			
 			if ($scope.list_block === "list-block")
@@ -148,8 +148,6 @@ app.controller('myCtrl', function($scope, $http) {
 			else	
             $scope.list_block = "list-block";	
 			console.log($scope.passedId);
-			console.log($scope.list_name_header);
-			
 		}
 
 });

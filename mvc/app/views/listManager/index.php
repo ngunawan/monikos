@@ -20,7 +20,7 @@
 		<div class='list-collection-block'>   
             <div ng-class= "list_block" ng-repeat="list in lists track by $index">
 				
-                <h1 class = "list_name_header">
+                <h1 class = "list-name-header">
 					{{list.name}}</h1>
 				
                 <div class='list-info-block' >
@@ -37,7 +37,7 @@
 						
         </div>
 
-        <div ng-show="showCreator" class=list-creator>
+        <div class=list-creator>
             <div class ='text-container'>
 				<div class=field-name>LIST TITLE: </div>
 				<br>
@@ -51,29 +51,29 @@
                <input type="search" class="form-control" id="search" placeholder="Search for your drug..">
             </div>
 		</div>
+	
 	<div class = 'drug-container'>	
-        <div class="form-group">
-            <div class="searchable-container">
-            	<div class="row">
+	<div class="form-group">
+		<div class="searchable-container">
+            <div class="row">
 
 				<div ng-repeat="drug in drugs">
-                <div class="item col-xs-6 col-sm-6">
-				  <div class = 'checkboxes'>
-								
-							  <input type="checkbox" name="var_id[]" autocomplete="off" checklist-model="listform.drugs" checklist-value="drug.Generic" id='drug-{{$index}}' required>
-							  
-							<label class = 'drug_name' for = 'drug-{{$index}}'>{{drug.Generic}}</label>
+					<div class="item col-xs-6 col-sm-6">
+					  <div class = 'checkboxes'>			
+						 <input type="checkbox" name="var_id[]" autocomplete="off" checklist-model="listform.drugs" checklist-value="drug.Generic" id='drug-{{$index}}' required>				  
+							<label class = 'drug_name' for = 'drug-{{$index}}'>		{{drug.Generic}}
+							</label>
 						</div>
-                </div>
+					</div>
 				</div>
                 
             </div>
         </div>
-		</div>
-	</div>	
 	</div>
-		 <button ng-click=addList()>Add List</button>
-        </div>
+	</div>	
+</div>
+	<button ng-click=addList()>Add List</button>
+  </div>
     </div>		
 		
 	<div class = 'play' ng-click="launchGame()">

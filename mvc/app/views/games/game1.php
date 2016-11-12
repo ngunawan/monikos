@@ -1,11 +1,12 @@
 <link rel="stylesheet" type="text/css" href="/mvc/public/css/style.css">
 
+<meta name='viewport' content="width=device-width, initial-scale=1" />
+   
 <body>
 
+    <script src="/mvc/public/js/matching.js"></script>
 
-    <script>
-
-		numOfCards = 0;
+	<script>		numOfCards = 0;
         var app = angular.module('myApp', []);
         app.controller('customersCtrl', function($scope, $http) {
         $scope.numClicked = 0;
@@ -24,9 +25,6 @@
         $scope.select =[];
         
         document.getElementById("tryagain").style.visibility="hidden";
-        
-
-
 
         //dcedits
         $scope.firstLoad = true;
@@ -61,11 +59,6 @@
         }
         //end dcedits
 
-
-
-
-
-        
             var url = "/db/get_drugs.php";
             $http.get(url)
             .then(function (response) {
@@ -258,81 +251,34 @@
             
 
         });
-        
-        
-	function gohome(){
-       window.location = window.location.origin + "/mvc/public/home/";
-   	}
-    
-    function gotoGamelist(){
-       window.location = window.location.origin + "/mvc/public/games/menu/" + <?=$data['lid']?>;
-   	}
-
-    function tryAgain(){
-            	//alert("test");
-            	document.getElementById("tryagain").style.visibility="hidden";
-            	//document.getElementById("nextButton").click();
-				var x = document.getElementsByClassName("BtnBlue");
-				x[0].click();		
-
-    }
-
-    </script>
-
-
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-
+	</script>
+	
+<!--HTML STUFF HERE-->
 <div class="container-fullwidth">
-     	<div id=app_header style="height:85px; z-index:10">
+     	<div id=app_header>
 
-	    <a onclick="gotoGamelist()" class="btn pull-left" ><button class = 'back'>&#x25c1;</button></a>
+	    <a onclick="gotoGamelist()"><button class = 'back'>&#x25c1;</button></a>
      
-       <a onclick="gohome()" class="btn pull-left"><button>M</button></a>
+       <a onclick="gohome()"><button class = 'home'>M</button></a>
 		
+       	<input onClick="tryAgain()" id = "tryagain" type= "button" value="Next">
 		
-		
-       	<input onClick="tryAgain()" id = "tryagain" type= "button" value="Next" style = "margin-right:37px; font-size:24px; border: 5px solid lightgray; background-color: #0099ff; height: 70px; width: 150px" > </input>
-		
-       	 <input type="button" class="btn pull-right" value="Play New Round!" style = "margin-right:12px; font-size:24px; border: 1px solid lightblue;" onClick="window.location.reload()">
+       	 <input id = 'new_round' type="button" class="btn pull-right" value="Play New Round!" onClick="window.location.reload()">
 		</div>
 		
 		
       </div>
 
-       <div id=app_content style="background-image: url(http://mj.unc.edu/sites/default/files/landing-pages/images/apply_unc-1.png);background-repeat: no-repeat">
+       <div id=app_content>
 
            <div ng-app="myApp" ng-controller="customersCtrl">
 
-
-
-         		<div id=app_body style="margin-top:-100px">
+         		<div id=app_body>
             <!--<button ng-click="getlid(<?=$data['lid']?>)">get list</button>-->
             <div ng-if="firstLoad">{{getlid(<?=$data['lid']?>)}}</div>
-              <!--{{getlid();}}-->
-            
-  <!--  <div id=app_body>
-     <div ng-if="numClicked < 2;">
-        <div ng-repeat="(index, value) in names" class="row">
-   			<div class="col-xs-6 col-sm-3" class="container-fluid"> <button class="btnBlue" ng-click="clicked(value.front);" ng-hide = "value.correct == 'Y'  "
-   				ng-style="{'background-color' : (value.clicked == 'Y') && (numClicked <=2) ? '#0099ff' : '#550000'}">{{value.front}}</button> </div><br ng:show="(index+1)%4==0" />	
-		 </div>
-     </div> -->
-
-<!--<div ng-if="numClicked < 2;">
-        <div ng-repeat="(index, value) in names" class="row">
-<div class="col-xs-3"  class="container-fluid"> <button class="btnBlue" ng-click="clicked(value.front);" ng-hide = "value.correct == 'Y'  "
-   				ng-style="{'background-color' : (value.clicked == 'Y') && (numClicked <=2) ? '#0099ff' : '#550000'}">{{value.front}}</button> </div><br ng:show="(index+1)%4==0"/>	
-
-	</div>
-</div> -->
-
-       <!--	<input onClick="" id = "nextButton" type= "button" style = "visibility: hidden" > </input>-->
+					
 			    <img id="finished" src="" style="margin-top: 25px; margin-left: 2%">
-
-
-	 
-	 
-	
+					
 
       <div ng-if="numClicked < 2" >
      <div ng-repeat="product in names" ng-if="$index % 4 == 0" class="row">
@@ -374,55 +320,10 @@
           ng-style="{'background-color' : (names[$index+3].clicked == 'Y') && (numClicked <=2) ? '#ff3300' : '#550000'}"  >{{names[$index+3].front}}</button></div>
   </div>
 </div>
-
-<!--
-<div ng-if="numClicked==2 && correct == 'Y' ">
-     <div ng-repeat="product in names" ng-if="$index % 4 == 0" class="row">	
-     	    <div class="col-xs-3"><button class="btnBlue"  ng-click="clicked(value.front);" ng-hide = "value.active == 'W' "
- 		  		ng-style="{'background-color' : (value.clicked == 'Y') ? '#88ff4d' : '#550000'}"  >{{names[$index].front}}</button></div>
-    <div class="col-xs-3" ng-if="names.length > ($index + 1)"><button class="btnBlue"  ng-click="clicked(value.front);" ng-hide = "value.active == 'W' "
- 		  		ng-style="{'background-color' : (value.clicked == 'Y') ? '#88ff4d' : '#550000'}">{{names[$index +1].front }}</button></div>
-    <div class="col-xs-3" ng-if="names.length > ($index + 2)"><button class="btnBlue"  ng-click="clicked(value.front);" ng-hide = "value.active == 'W' "
- 		  		ng-style="{'background-color' : (value.clicked == 'Y') ? '#88ff4d' : '#550000'}"  >{{names[$index+2].front}}</button></div>
-    <div class="col-xs-3" ng-if="names.length > ($index + 3)"><button class="btnBlue"  ng-click="clicked(value.front);" ng-hide = "value.active == 'W' "
- 		  		ng-style="{'background-color' : (value.clicked == 'Y') ? '#88ff4d' : '#550000'}"  >{{names[$index+3].front}}</button></div>
-     </div>
-</div>
--->
- 	<!--	<div ng-if="numClicked==2 && correct == 'Y' ">
- 		<div ng-repeat="(index, value) in names" class="row">
- 		  	<div class="col-xs-6 col-sm-3 class="container-fluid"> <button class="btnBlue"  ng-click="clicked(value.front);" ng-hide = "value.active == 'W' "
- 		  		ng-style="{'background-color' : (value.clicked == 'Y') ? '#88ff4d' : '#550000'}"  >{{value.front}}</button></div><br ng:show="(index+1)%4==0" />	
- 		 </div>
- 		</div>
-
-
-		<div ng-if="numClicked==2 && correct == 'N' ">
- 		<div ng-repeat="(index, value) in names" class="row">
- 		  	<div class="col-xs-6 col-sm-3" class="container-fluid"> <button class="btnBlue" ng-click="clicked(value.front);" ng-hide = "value.correct == 'Y' "
- 		  		ng-style="{'background-color' : (value.clicked == 'Y') ? '#ff3300' : '#550000'}">{{value.front}}</button></div><br ng:show="(index+1)%4==0" />	
- 		 </div>
- 		</div>
--->
-
-
    				 </div> <!-- /container -->
 			</div>
  		</div>
 
-<!--<<<<<<< HEAD
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug 
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> 
-
-
-=======
->>>>>>> a5c235513e4324ade795441496d289eb1746f8df -->
 </body>
 
 <!--</html>-->
