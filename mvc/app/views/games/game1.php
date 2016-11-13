@@ -36,7 +36,7 @@
         <a onclick="gotoGamelist()"><button class = 'back'>&#x25c1;</button></a>
 
         <a ng-click = 'home()'><button class = 'home'>M</button></a>
-        
+
         <div class="capsule-info"><img src="../../../public/images/pill_icon.png"> {{capsules[0].capsules}}</div>
 
     </div>
