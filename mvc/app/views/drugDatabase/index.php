@@ -98,6 +98,9 @@
             //var url = "http://testmonikos.us-east-1.elasticbeanstalk.com/sql_result.php"
             //var url = "http://danilachenchik.com/sql_result.php";
             var url = "/db/get_drugs.php";
+
+            $scope.loading = true;
+
             $http.get(url)
                 .then(function (response) {
                 console.log(response);
@@ -106,6 +109,7 @@
 
                 //                    $scope.names = $sce.trustAsHtml(response.data.records);
                 console.log($scope.names);
+                $scope.loading = false;
                 //alert($scope.names);
             });
 
@@ -175,32 +179,32 @@
 
                 var tempString = "plusone-like d" + id;
                 $scope.plusone_obj = document.getElementsByClassName(tempString)[0];
-//                $scope.plusone_obj = document.querySelectorAll(tempString);
+                //                $scope.plusone_obj = document.querySelectorAll(tempString);
                 $scope.plusone_obj.className += " plusone-animate";
 
                 //                $timeout($scope.removeAnimateLike(id), 5000);
 
-//                $scope.id = id;
+                //                $scope.id = id;
                 setTimeout(function(){
                     var i = id;
-//                    id = id.toString();
+                    //                    id = id.toString();
                     var tempString2 = "plusone-like d" + i + " plusone-animate";
-                  $scope.plusone_obj = document.getElementsByClassName(tempString2)[0];
-//                  $scope.plusone_obj = document.querySelectorAll(tempString2)
+                    $scope.plusone_obj = document.getElementsByClassName(tempString2)[0];
+                    //                  $scope.plusone_obj = document.querySelectorAll(tempString2)
                     $scope.plusone_obj.className = "plusone-like d" + i;
 
                 }, 500);
 
             }
 
-//            $scope.removeAnimateLike = function(id) {
-//                //                var i = id - 1;
-//                id = id.toString();
-//                //                var plusone_obj = document.getElementsByClassName('plusone-like')[i];
-//                plusone_obj.className = " plusone-like";
-//
-//
-//            }
+            //            $scope.removeAnimateLike = function(id) {
+            //                //                var i = id - 1;
+            //                id = id.toString();
+            //                //                var plusone_obj = document.getElementsByClassName('plusone-like')[i];
+            //                plusone_obj.className = " plusone-like";
+            //
+            //
+            //            }
 
 
 
@@ -242,18 +246,18 @@
 
                 var tempString = "plusone-dislike d" + id;
                 $scope.plusone_obj = document.getElementsByClassName(tempString)[0];
-//                $scope.plusone_obj = document.querySelectorAll(tempString);
+                //                $scope.plusone_obj = document.querySelectorAll(tempString);
                 $scope.plusone_obj.className += " plusone-animate";
 
                 //                $timeout($scope.removeAnimateLike(id), 5000);
 
-//                $scope.id = id;
+                //                $scope.id = id;
                 setTimeout(function(){
                     var i = id;
-//                    id = id.toString();
+                    //                    id = id.toString();
                     var tempString2 = "plusone-dislike d" + i + " plusone-animate";
-                  $scope.plusone_obj = document.getElementsByClassName(tempString2)[0];
-//                  $scope.plusone_obj = document.querySelectorAll(tempString2)
+                    $scope.plusone_obj = document.getElementsByClassName(tempString2)[0];
+                    //                  $scope.plusone_obj = document.querySelectorAll(tempString2)
                     $scope.plusone_obj.className = "plusone-dislike d" + i;
 
                 }, 500);
@@ -280,6 +284,7 @@
 
 
 
+<!--
         <div id="app_header">
             <button class=back-btn ng-click="home()">Back</button>
             <h1>Database
@@ -288,7 +293,24 @@
 
             <button ng-model="showSearch" ng-click="showSearch=!showSearch" class=search-btn><img src="/mvc/public/images/searchicon_white.png"></button>
         </div>
+-->
+        
+        <div id=app_header>
+	   		<a ng-click="home()"><button class = 'back'>&#x25c1;</button></a>
+     
+       		<a ng-click = 'home()'><button class = 'home'>M</button></a>
+		
+		</div>
+        
+        
         <div id="content_wrapper">
+
+            <div class="loadingDiv" ng-show="loading">
+                <p class="loadingText">LOADING...</p>
+                <img class="loadingGif" src="/mvc/public/images/loading.gif">
+
+            </div>
+
             <div ng-show="showSearch">
                 <div class="search-bar-wrapper">
                     <input class="search-bar" type=text ng-model=searchText[queryBy]>
