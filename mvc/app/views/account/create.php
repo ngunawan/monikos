@@ -1,4 +1,4 @@
-<body>
+<body id="usr_mng_module">
 	<script>
 	    var app = angular.module('myApp', []);
 	    app.controller('accountCtrl', function($scope, $http) {
@@ -46,9 +46,12 @@
             <input id="email" type="text" name="email" placeholder="email">
             <input id="pw" type="text" name="password" placeholder="password">
             <button ng-click="createAccount()">Create</button>
+<!--
             <p>username: {{response.data[0].username}}</p>
             <p>email: {{response.data[0].email}}</p>
+-->
+            <a class="sub-link" ng-click="login()">Back to Login</a>
+
         </div>
-        <button ng-click="login()">Back to Login</button>
     </div>
 </body>

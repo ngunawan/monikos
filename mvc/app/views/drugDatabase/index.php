@@ -85,6 +85,52 @@
 
 
         app.controller('customersCtrl', ['$scope','$sce', '$http', '$timeout', function($scope, $sce, $http, $timeout) {
+
+            //Nik's edits
+            function getCookie(cname) {
+                var name = cname + "=";
+                var ca = document.cookie.split(';');
+                for(var i = 0; i <ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0)==' ') {
+                        c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                        return c.substring(name.length,c.length);
+                    }
+                }
+                return "";
+            }
+
+            var id_cookie = getCookie("user_id");
+            console.log(id_cookie);
+
+            var data = $.param({
+                id : id_cookie
+            });
+
+            var config = {
+                headers : {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                }
+            };
+
+            var url = "/db/get_capsule_info.php";
+
+            $http.post(url, data, config)
+                .then(function (response) {
+                console.log(response);
+                //console.log(response);
+                //$scope.names = response.data.records;
+                $scope.capsules = response.data.records;
+                //console.log($scope.names);
+                //alert($scope.names);
+            }); 
+
+
+            //end NIk's edits
+
+
             $scope.queryBy = '$';
             //            $scope.modalShown = false;
             //            $scope.toggleModal = function() {
@@ -98,6 +144,9 @@
             //var url = "http://testmonikos.us-east-1.elasticbeanstalk.com/sql_result.php"
             //var url = "http://danilachenchik.com/sql_result.php";
             var url = "/db/get_drugs.php";
+
+            $scope.loading = true;
+
             $http.get(url)
                 .then(function (response) {
                 console.log(response);
@@ -106,6 +155,7 @@
 
                 //                    $scope.names = $sce.trustAsHtml(response.data.records);
                 console.log($scope.names);
+                $scope.loading = false;
                 //alert($scope.names);
             });
 
@@ -175,32 +225,32 @@
 
                 var tempString = "plusone-like d" + id;
                 $scope.plusone_obj = document.getElementsByClassName(tempString)[0];
-//                $scope.plusone_obj = document.querySelectorAll(tempString);
+                //                $scope.plusone_obj = document.querySelectorAll(tempString);
                 $scope.plusone_obj.className += " plusone-animate";
 
                 //                $timeout($scope.removeAnimateLike(id), 5000);
 
-//                $scope.id = id;
+                //                $scope.id = id;
                 setTimeout(function(){
                     var i = id;
-//                    id = id.toString();
+                    //                    id = id.toString();
                     var tempString2 = "plusone-like d" + i + " plusone-animate";
-                  $scope.plusone_obj = document.getElementsByClassName(tempString2)[0];
-//                  $scope.plusone_obj = document.querySelectorAll(tempString2)
+                    $scope.plusone_obj = document.getElementsByClassName(tempString2)[0];
+                    //                  $scope.plusone_obj = document.querySelectorAll(tempString2)
                     $scope.plusone_obj.className = "plusone-like d" + i;
 
                 }, 500);
 
             }
 
-//            $scope.removeAnimateLike = function(id) {
-//                //                var i = id - 1;
-//                id = id.toString();
-//                //                var plusone_obj = document.getElementsByClassName('plusone-like')[i];
-//                plusone_obj.className = " plusone-like";
-//
-//
-//            }
+            //            $scope.removeAnimateLike = function(id) {
+            //                //                var i = id - 1;
+            //                id = id.toString();
+            //                //                var plusone_obj = document.getElementsByClassName('plusone-like')[i];
+            //                plusone_obj.className = " plusone-like";
+            //
+            //
+            //            }
 
 
 
@@ -242,18 +292,18 @@
 
                 var tempString = "plusone-dislike d" + id;
                 $scope.plusone_obj = document.getElementsByClassName(tempString)[0];
-//                $scope.plusone_obj = document.querySelectorAll(tempString);
+                //                $scope.plusone_obj = document.querySelectorAll(tempString);
                 $scope.plusone_obj.className += " plusone-animate";
 
                 //                $timeout($scope.removeAnimateLike(id), 5000);
 
-//                $scope.id = id;
+                //                $scope.id = id;
                 setTimeout(function(){
                     var i = id;
-//                    id = id.toString();
+                    //                    id = id.toString();
                     var tempString2 = "plusone-dislike d" + i + " plusone-animate";
-                  $scope.plusone_obj = document.getElementsByClassName(tempString2)[0];
-//                  $scope.plusone_obj = document.querySelectorAll(tempString2)
+                    $scope.plusone_obj = document.getElementsByClassName(tempString2)[0];
+                    //                  $scope.plusone_obj = document.querySelectorAll(tempString2)
                     $scope.plusone_obj.className = "plusone-dislike d" + i;
 
                 }, 500);
@@ -280,15 +330,35 @@
 
 
 
-        <div id="app_header">
-            <button class=back-btn ng-click="home()">Back</button>
-            <h1>Database
-            </h1>
+        <!--
+<div id="app_header">
+<button class=back-btn ng-click="home()">Back</button>
+<h1>Database
+</h1>
 
 
-            <button ng-model="showSearch" ng-click="showSearch=!showSearch" class=search-btn><img src="/mvc/public/images/searchicon_white.png"></button>
+<button ng-model="showSearch" ng-click="showSearch=!showSearch" class=search-btn><img src="/mvc/public/images/searchicon_white.png"></button>
+</div>
+-->
+
+        <div id=app_header>
+            <a ng-click="home()"><button class = 'back'>&#x25c1;</button></a>
+
+            <a ng-click = 'home()'><button class = 'home'>M</button></a>
+            
+            <div class="capsule-info"><img src="/mvc/public/images/pill_icon.png"> {{capsules[0].capsules}}</div>
+
         </div>
+
+
         <div id="content_wrapper">
+
+            <div class="loadingDiv" ng-show="loading">
+                <p class="loadingText">LOADING...</p>
+                <img class="loadingGif" src="/mvc/public/images/loading.gif">
+
+            </div>
+
             <div ng-show="showSearch">
                 <div class="search-bar-wrapper">
                     <input class="search-bar" type=text ng-model=searchText[queryBy]>
@@ -395,7 +465,7 @@
                         <div class="drug-info-wrap"><label>Brand:</label> {{x.Brand}}<div  ng-click='$event.stopPropagation()' class=speaker-icon-wrapper><button ng-click="playAudio(x.Brand);$event.stopPropagation()" href=#><img src="/mvc/public/images/speaker.svg"></button></div></div>
                         <div class="drug-info-wrap"><label>Class:</label> {{x.Class}}</div>
                         <div class="drug-info-wrap"><label>Indication:</label> {{x.Indication}}</div>
-                        <div class="drug-info-wrap"><label>Side Effects:</label>{{ x['Side Effects'] }}</div>
+                        <!--                        <div class="drug-info-wrap"><label>Side Effects:</label>{{ x['Side Effects'] }}</div>-->
 
                         <div class="drug-info-wrap"><label>Black Box Warning:</label> {{ x['Black Box Warning'] }}</div>
 
