@@ -3,7 +3,7 @@
 
 <link rel="stylesheet" type="text/css" href="/mvc/public/css/home_style.css"/>
 
-<body id="main_app_module">
+<body id="home_page">
 
 	<script>
     var app = angular.module('myApp', []);

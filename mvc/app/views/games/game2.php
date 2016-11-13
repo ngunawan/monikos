@@ -6,8 +6,8 @@
 
 <script>
     function gotoGamelist(){
-       window.location = window.location.origin + "/mvc/public/games/menu/" + <?=$data['lid']?>;
-   	}
+        window.location = window.location.origin + "/mvc/public/games/menu/" + <?=$data['lid']?>;
+    }
 </script>
 	
 
@@ -18,6 +18,8 @@
 	   <a onclick="gotoGamelist()" ><button class = 'back'>&#x25c1;</button></a>
      
        <a ng-click='home()'><button>M</button></a>
+
+       <div class="capsule-info"><img src="/mvc/public/images/pill_icon.png"> {{capsules[0].capsules}}</div>
 		
 	</div>	
 
@@ -25,9 +27,14 @@
 		<!--dummy object for checking if in challenge mode-->
 		<p id="challengeFlag" style="display:none"><?=$data['challengeFlag']?></p>
 		<!---->
-		<div id="challengeInfoBar" ng-show="checkIfInChallengeMode()">
+		<div id="challengeInfoBar" ng-show="!checkIfBeingChallenged()">
 
 			<p id="user2Text" class="col-md-6 col-sm-6 col-xs-6 challengeInfoText">Challenging: <?=$data['user2']?></p>
+			<p id="betQuantityText" class="col-md-6 col-sm-6 col-xs-6 challengeInfoText">Bet Quantity: <?=$data['bet']?></p>
+		</div>
+		<div id="challengeInfoBar" ng-show="checkIfBeingChallenged()">
+
+			<p id="user2Text" class="col-md-6 col-sm-6 col-xs-6 challengeInfoText">Challenged By: <?=$data['user2']?></p>
 			<p id="betQuantityText" class="col-md-6 col-sm-6 col-xs-6 challengeInfoText">Bet Quantity: <?=$data['bet']?></p>
 		</div>
        	<div id=app_body>

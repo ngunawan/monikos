@@ -12,6 +12,7 @@ body {
 	 background-size:60vh 20vh;
 	 background-repeat: no-repeat;
 	 background-position: center;
+
 }
 
 /*****************HEADER******************/
@@ -40,7 +41,7 @@ button {
 
 #app_header button{
     background: transparent;
-    font-family: 'Raleway',sans-serif;
+    font-family: 'Raleway', 'sans-serif';
     font-weight: 500;
     font-size: 30px;
 	margin: 7px 0 0 0;
@@ -61,7 +62,23 @@ button {
 
 }
 
+body#game1 {
+    background:#8192a5;
+}
+
 /*************Content***************/
+
+body#game1 div#app_content {
+    padding:15px;
+    margin-top:70px;
+}
+
+div#app_content {
+    display:block;
+    position:absolute;
+    width:100vw;
+    text-align: center;
+}
 
 p {
     font-family: 'Raleway', sans-serif;
@@ -142,23 +159,54 @@ p#donedone {
 button.btnBlue  {
     background: #3071A9;
     color:white;
-    font-family: 'Raleway',sans-serif; 
+    font-family: 'Raleway', sans-serif; 
     font-weight: 600;
-    font-size: 12px;
-    width:20vw;
-   	height: 19vh; 
+    font-size: 14px;
+    width:23vw;
+   	height: 18vh; 
     text-align: center;   
 	text-overflow: ellipsis;
     white-space: initial;
     word-wrap: break-word;
     transition: all 0.3s ease 0s;
+    border-radius: 6px;
 }
 
+
+button#new_round {
+    
+}
+
+/*
 .drugGridCell {
     background-color: rgb(108, 122, 137);
 }
+*/
+
+.col-xs-3 {
+    padding:0;
+    margin:0;
+}
+
+.row {
+    margin-bottom:10px;
+}
 
 /**************Foooter************/
-.footer {
+#foot {
+    position:absolute;
+    bottom:0;
+    width:100vw;
+}
 
+#new_round {
+    font-family: 'Raleway';
+	width: 100%;
+	height:50px;
+	background-color: #ff3333;
+	color:white;
+	font-weight: 900;
+	box-shadow: 0 0 5px #444;
+    font-size: 28px;
+    width:100%;
 }

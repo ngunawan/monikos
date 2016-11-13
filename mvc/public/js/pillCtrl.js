@@ -11,10 +11,51 @@ var app = angular.module('myApp', []);
         $scope.result = "WRONG";
         console.log(" HEREEE 3")
         $scope.currentIndex = 1;
-		var cuIn = 1;
-		$scope.select = [];
-			
-		$scope.score = 0;
+    		var cuIn = 1;
+    		$scope.select = [];
+    			
+    		$scope.score = 0;
+            //Nik's edits
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for(var i = 0; i <ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0)==' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length,c.length);
+                }
+            }
+            return "";
+        }
+
+        var id_cookie = getCookie("user_id");
+        console.log(id_cookie);
+
+        var data = $.param({
+            id : id_cookie
+        });
+
+        var config = {
+            headers : {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+            }
+        };
+
+        var url = "/db/get_capsule_info.php";
+
+        $http.post(url, data, config)
+            .then(function (response) {
+            console.log(response);
+            //console.log(response);
+            //$scope.names = response.data.records;
+            $scope.capsules = response.data.records;
+            //console.log($scope.names);
+            //alert($scope.names);
+        }); 
+        //end NIk's edits
 
 
     //dcedits
@@ -41,27 +82,31 @@ var app = angular.module('myApp', []);
       $scope.firstLoad = false;
       
     }
-    //end dcedits
-        
-        
-        window.move = function() {
-            if($('#test').hasClass('moved')) {
-                $('#test').removeClass('moved');
-                $('#test2').removeClass('moved2');
-            }else{
-                $('#test').addClass('moved');
-                 $('#test2').addClass('moved2');
-            }
-        }
 
-        window.move1 = function() {
-            if($('#test2').hasClass('moved2')) {
-                $('#test2').removeClass('moved2');
-            }else{
-                $('#test2').addClass('moved2');
-            }
+    
+    //end dcedits
+
+
+    window.move = function() {
+        if($('#test').hasClass('moved')) {
+            $('#test').removeClass('moved');
+            $('#test2').removeClass('moved2');
+        }else{
+            $('#test').addClass('moved');
+            $('#test2').addClass('moved2');
         }
+    }
+
+    window.move1 = function() {
+        if($('#test2').hasClass('moved2')) {
+            $('#test2').removeClass('moved2');
+        }else{
+            $('#test2').addClass('moved2');
+        }
+    }
+
       $scope.getallTheDrugs = function(){
+
 
         
         var url = "/db/get_drugs.php";
@@ -175,13 +220,13 @@ var app = angular.module('myApp', []);
 			//document.getElementById("plus2").innerHTML="";
 			
 			document.getElementById("thePill").src = '/mvc/public/images/pill.png';
-			
+			alert("right here");
 			if (cuIn == $scope.finalList.length){
         //done with round here
 				window.move();
 				document.getElementById("result").remove();
 				document.getElementById("wrong").remove();	
-        if($scope.challengingFlag){
+        if($scope.checkIfInChallengeMode()){
           $scope.handleChallengeModeCompletion();
           document.getElementById("finished").innerHTML = 'COMPLETED ROUND CHALLENGE SENT';
         }else{
@@ -191,6 +236,7 @@ var app = angular.module('myApp', []);
 			}
 			
 			else{
+
 				
 			cuIn++;
 			document.getElementById("cid").innerHTML = cuIn + "/" + $scope.finalList.length + " Drugs";
@@ -210,7 +256,7 @@ var app = angular.module('myApp', []);
  					
  					$scope.result = "WRONG";
  				}
-			
+			 alert("this is the brand right now" + $scope.type);
 			 if ($scope.type == "Brand" ) {
 			
  			
@@ -218,6 +264,7 @@ var app = angular.module('myApp', []);
  				console.log($scope.names[$scope.index].Brand + " drug"); 
  				console.log(card.Brand + " card drug"); 
 				document.getElementById("p1").innerHTML = card.Brand;
+        console("THIS IS THE CARD BRAND " + card.Brand);
 				//document.getElementById("p2").innerHTML = card.Generic;
 
 
@@ -238,6 +285,34 @@ var app = angular.module('myApp', []);
 
 		}
 		
+    $scope.question = function(){
+      if ($scope.type == "Brand" ) {
+          
+          console.log($scope.index + " index beforeeee"); 
+          console.log($scope.names[$scope.index].Brand + " drug"); 
+          console.log(card.Brand + " card drug");
+
+          return card.Brand;
+          }
+          
+      if ($scope.type == "Generic" ) {
+          return card.Generic;
+      }
+   }
+
+   $scope.answer = function(){
+        if ($scope.type == "Brand" ) {
+            console.log($scope.index + " index beforeeee"); 
+            console.log($scope.names[$scope.index].Generic + " drug"); 
+            console.log(card.Generic + " card drug"); 
+            return card.Generic;
+        }
+            
+        if ($scope.type == "Generic" ) {
+            return card.Brand;
+        }
+     }
+
 		window.checkAnswer = function() {
 			var val= document.jojo.Answer.value;
 			console.log(val + " value of text box");
@@ -266,7 +341,7 @@ var app = angular.module('myApp', []);
  					
  					if (cuIn == $scope.finalList.length){
 						window.move();
-            if($scope.challengingFlag){
+            if($scope.checkIfInChallengeMode()){
               $scope.handleChallengeModeCompletion();
               document.getElementById("finished").innerHTML = 'COMPLETED ROUND CHALLENGE SENT';
             }else{
@@ -323,47 +398,6 @@ var app = angular.module('myApp', []);
  			}
 		
 		}
-          
-        var ci = 1;
-//         $scope.currentIndex = function(){
-//         	if (ci == 1) {
-//         		return "1/" + $scope.names.length;
-//         		ci++;
-//         		console.log("CIIIIIIIIIIIIIII " + ci);
-//         	}
-//         	else {
-//         	  ci++;
-//         	  return "hi";
-//         	}
-//         }  
-//         
-        $scope.question = function(){
- 		if ($scope.type == "Brand" ) {
- 			
- 			console.log($scope.index + " index beforeeee"); 
- 			console.log($scope.names[$scope.index].Brand + " drug"); 
- 			console.log(card.Brand + " card drug"); 
-
- 			return card.Brand;
- 			}
- 			
- 		if ($scope.type == "Generic" ) {
- 			return card.Generic;
- 			}
-	 	}
-	 	
-  	$scope.answer = function(){
-   		if ($scope.type == "Brand" ) {
-   			console.log($scope.index + " index beforeeee"); 
-   			console.log($scope.names[$scope.index].Generic + " drug"); 
-   			console.log(card.Generic + " card drug"); 
-   			return card.Generic;
-   		}
-   			
-   		if ($scope.type == "Generic" ) {
-   			return card.Brand;
-   		}
-  	}
 
     
   	 
@@ -377,8 +411,15 @@ var app = angular.module('myApp', []);
 
   $scope.checkIfInChallengeMode = function(){
     $scope.challengingFlag = true;
-    if($('#challengeFlag').html() == 'challenge'){
+    if($('#challengeFlag').html() == 'challenge' || $('#challengeFlag').html() == 'challenge'){
       return true
+    }
+    return false;
+  }
+
+  $scope.checkIfBeingChallenged = function(){
+    if($('#challengeFlag').html() == 'beingchallenge'){
+      return true;
     }
     return false;
   }
@@ -392,12 +433,15 @@ var app = angular.module('myApp', []);
       }
     }
 
+
+
     var senderUrl = urlArr.join("/");
+    alert("please sned this url to challengee" + senderUrl);
+
+
     
     
   }
 
 
-
-			
 });

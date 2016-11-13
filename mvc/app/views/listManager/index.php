@@ -7,6 +7,7 @@
     <div id='app_header'>
         <a href = '#' ng-click='home()'><button class = 'back'>&#x25c1;</button></a>
         <a href ="#" ng-click="home()"><button>M</button></a>
+        <div class="capsule-info"><img src="/mvc/public/images/pill_icon.png"> {{capsules[0].capsules}}</div>
     </div>
     
     <div id='app_content'>
