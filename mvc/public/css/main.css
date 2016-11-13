@@ -40,7 +40,19 @@ body#usr_mng_module .wrapper button {
     font-size:3vw;
     margin: 3vw 0 2vw 0;
     padding: 2vw 1vw 2vw 1vw;
+}
 
+body#usr_mng_module .wrapper a {
+    display:block;
+    color: #FF0018;
+    font-size: 4vw;
+    cursor: pointer;
+    
+}
+
+body#usr_mng_module .wrapper a:hover {
+    text-decoration:none;
+    
 }
 
 body#main_app_module {
