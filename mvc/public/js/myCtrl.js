@@ -1,6 +1,32 @@
 var app = angular.module('myApp', ['checklist-model']);
 
 app.controller('myCtrl', function($scope, $http) {
+    
+    //Nik's edits
+    function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length,c.length);
+            }
+        }
+        return "";
+    }
+
+    var id_cookie = getCookie("user_id");
+    var data = $.param({id : id_cookie});
+    var config = {headers : {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'}};
+    var url = "/db/get_capsule_info.php";
+    $http.post(url, data, config).then(function (response) {console.log(response);$scope.capsules = response.data.records;
+    }); 
+    //end NIk's edits
+    
+    
 	$scope.listId = [];
 	$scope.passedId = 0;
 	

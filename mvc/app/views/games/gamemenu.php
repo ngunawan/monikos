@@ -19,9 +19,55 @@
     }]);
 
     gameMenuApp.controller('gameMenuCtrl', ['$scope','$sce', '$http', '$timeout', function($scope, $sce, $http, $timeout) {
+
+        //Nik's edits
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for(var i = 0; i <ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0)==' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length,c.length);
+                }
+            }
+            return "";
+        }
+
+        var id_cookie = getCookie("user_id");
+        console.log(id_cookie);
+
+        var data = $.param({
+            id : id_cookie
+        });
+
+        var config = {
+            headers : {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+            }
+        };
+
+        var url = "/db/get_capsule_info.php";
+
+        $http.post(url, data, config)
+            .then(function (response) {
+            console.log(response);
+            //console.log(response);
+            //$scope.names = response.data.records;
+            $scope.capsules = response.data.records;
+            //console.log($scope.names);
+            //alert($scope.names);
+        }); 
+
+
+        //end NIk's edits
+
+
         $scope.queryBy = '$';
         $scope.trustAsHtml = $sce.trustAsHtml;
-    
+
         $scope.createChallenge = function(){    
             /*$http.get(url)
             .then(function (response) {
@@ -53,7 +99,7 @@
         }
 
 
-        
+
 
 
     }]);
@@ -63,28 +109,28 @@
         if(challenge == undefined){
             window.location = window.location.origin + "/mvc/public/games/game1/" + <?=$data['lid']?>;
         }else{
-        //challenge mode
+            //challenge mode
             angular.element(document.getElementById('main_app_module')).scope().createChallenge();
             window.location = window.location.origin + "/mvc/public/games/game1/" + <?=$data['lid']?> + "/" + challenge + "/" + challengeGame + "/" + challengeUser + "/" + challengeBet;
         }
     }
-	
-	function gotoGame2(challenge){
+
+    function gotoGame2(challenge){
         //normal play, not challenge mode
         if(challenge == undefined){
             window.location = window.location.origin + "/mvc/public/games/game2/" + <?=$data['lid']?>;
         }else{
-        //challenge mode
+            //challenge mode
             angular.element(document.getElementById('main_app_module')).scope().createChallenge();
             window.location = window.location.origin + "/mvc/public/games/game2/" + <?=$data['lid']?> + "/" + challenge + "/" + challengeGame + "/" + challengeUser + "/" + challengeBet;;
         }
     }
-	
-	function gohome(){
+
+    function gohome(){
         window.location = window.location.origin + "/mvc/public/home/";
     }
-	
-	function golistManager(){
+
+    function golistManager(){
         window.location = window.location.origin + "/mvc/public/home/listManager";
     }
 
@@ -162,8 +208,8 @@
         });
 
         $('.challengeButton').on('click', function(){
-                $(this).css({"background":"white","color":"#ff3333"});
-                
+            $(this).css({"background":"white","color":"#ff3333"});
+
         });
 
         $('.SelectChallengeGameButton').on('click', function(){
@@ -188,7 +234,7 @@
             }
         });
 
-        
+
     });
 
 
@@ -199,20 +245,21 @@
 <body id="main_app_module" ng-app="gameMenuApp" ng-controller="gameMenuCtrl">
 
     <div id='app_header'>
-		<a onclick="golistManager()" ><button class = 'back'>&#x25c1;</button></a>
-	 
+        <a onclick="golistManager()" ><button class = 'back'>&#x25c1;</button></a>
+
         <a onclick="gohome()"><button>M</button></a>
+         <div class="capsule-info"><img src="/mvc/public/images/pill_icon.png"> {{capsules[0].capsules}}</div>
     </div>
-	
+
     <div id = app_content>
         <div class = "game-wrapper">
-            
+
             <a href="#"><div class = "game-block game-red" id ='game_0'>FLASHCARD</div></a>
-			
+
             <a onclick="gotoGame1()"><div class = "game-block game-white" id ='game_1'>MATCHING</div></a>
-            
+
             <a onclick ="gotoGame2()"><div class = "game-block game-red" id ='game_2'>PILL GAME</div></a>
-            
+
             <a href='#'><div class = "game-block game-white" id ='game_3'>MULTIPLE CHOICE<br>QUIZ</div></a>
 
             <div class = "game-block game-red" id ='challenge-block'><span id='challengeText'>CHALLENGE A<br>FRIEND</span>
@@ -237,7 +284,7 @@
                 </div>
 
             </div>
-        
+
         </div>
     </div>
 

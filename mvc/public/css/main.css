@@ -84,6 +84,20 @@ button {
     left:10px;
 }
 
+.capsule-info {
+    position:fixed;
+    right:10px;
+    top: 19px;
+    color: #FFF;
+    font-family: 'Raleway';
+    font-size: 20px;
+}
+
+.capsule-info img {
+    width:25px;
+    margin-right:10px;
+}
+
 #app_header button{
     background: transparent;
     font-family: 'Raleway',sans-serif;
@@ -160,7 +174,7 @@ height:25px;
 */
 
 
-#app_footer {
+body#database_module #app_footer {
     display: block;
     position:absolute;
     bottom:0;
@@ -171,12 +185,12 @@ height:25px;
     text-align: center;
 }
 
-#app_content {
+body#database_module #app_content, body#main_app_module #app_content {
     display:block;
     position:absolute;
     height:80vh;
     width:100vw;
-    margin-top:10vh;
+    margin-top:9vh;
     text-align: center;
 }
 
@@ -529,6 +543,7 @@ padding: 10px 0;
     background:#FFF;
     padding: 30px 5px 0px 5px;
     font-weight:600;
+    margin-bottom:25px;
 
 }
 
@@ -549,7 +564,8 @@ padding: 10px 0;
 
 .key-terms {
     /*    color: #D00001;*/
-    color: #ff3333;
+/*    color: #3273ff;*/
+    color:black;
     display:inline-block;
 }
 
@@ -574,14 +590,14 @@ padding: 10px 0;
 
 .ng-modal-content-footer .likes-dislikes-wrapper .likes-count {
     /*    color: #254394;*/
-    color: #ff3333;
+        color: #3273ff;
     display:inline-block;
     width:45%;
 }
 
 .ng-modal-content-footer .likes-dislikes-wrapper .dislikes-count {
     /*    color: #D00001;*/
-    color: #8d99ae;
+    color: #ff3333;
     display:inline-block;
     width:45%;
 
@@ -604,29 +620,35 @@ padding: 10px 0;
 }
 
 .plusone-animate {
-    -webkit-animation: flickerAnimation 1.5s;
-    -moz-animation: flickerAnimation 1.5s;
-    -o-animation: flickerAnimation 1.5s;
-    animation: flickerAnimation 1.5s;
+    -webkit-animation: flickerAnimation 2s;
+    -moz-animation: flickerAnimation 2s;
+    -o-animation: flickerAnimation 2s;
+    animation: flickerAnimation 2s;
 
 }
 
 .plusone-like {
 /*    color: #254394;*/
-    color: #ff3333;
+    color: #3273ff;
 
 }
 
 .plusone-dislike {
 /*    color: #D00001;*/
     color: #8d99ae;
+        color: #ff3333;
+
 
 }
 
 @keyframes flickerAnimation {
-    0%   { opacity:0; margin-top:55px;}
-    50%  { opacity:1; margin-top:42px;}
-    100% { opacity:0; margin-top:30px;}
+    0%   { opacity:0; margin-top:-20px;}
+    12%  { opacity:0.25; margin-top:-25;}
+    25%  { opacity:0.5; margin-top:-30;}
+    50%  { opacity:1; margin-top:-35px;}
+    62%  { opacity:1.25; margin-top:-40px;}
+    75%  { opacity:1.5; margin-top:-45px;}
+    100% { opacity:0; margin-top:-50px;}
 }
 @-o-keyframes flickerAnimation{
     0%   { opacity:1; }
@@ -647,7 +669,7 @@ padding: 10px 0;
 .like-btn {
     display:inline-block;
     /*    background:#254394;*/
-    background: #ff3333;
+    background: #3273ff;
     border:0;
     border-radius: 4px;
     height:40px;
@@ -667,7 +689,7 @@ padding: 10px 0;
 .like-btn-shadow {
     display:inline-block;
     /*    background:#122C67;*/
-    background: #bf2626;
+    background: #2961d1;
     /*    background: #235723;*/
     border-radius: 4px;
     height:40px;
@@ -682,7 +704,7 @@ padding: 10px 0;
     display:inline-block;
     /*    background:#D00001;*/
     /*    background: #d96e03;*/
-    background: #8d99ae;
+    background: #ff3333;
     border:0;
     border-radius: 4px;
     height:40px;
@@ -703,7 +725,7 @@ padding: 10px 0;
     display:inline-block;
     /*    background:#930000;*/
     /*    background: #8f4402;*/
-    background: #707887;
+    background: #d82b2b;
     border-radius: 4px;
     height:40px;
     width:45%; 

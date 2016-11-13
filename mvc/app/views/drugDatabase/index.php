@@ -85,6 +85,52 @@
 
 
         app.controller('customersCtrl', ['$scope','$sce', '$http', '$timeout', function($scope, $sce, $http, $timeout) {
+
+            //Nik's edits
+            function getCookie(cname) {
+                var name = cname + "=";
+                var ca = document.cookie.split(';');
+                for(var i = 0; i <ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0)==' ') {
+                        c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                        return c.substring(name.length,c.length);
+                    }
+                }
+                return "";
+            }
+
+            var id_cookie = getCookie("user_id");
+            console.log(id_cookie);
+
+            var data = $.param({
+                id : id_cookie
+            });
+
+            var config = {
+                headers : {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                }
+            };
+
+            var url = "/db/get_capsule_info.php";
+
+            $http.post(url, data, config)
+                .then(function (response) {
+                console.log(response);
+                //console.log(response);
+                //$scope.names = response.data.records;
+                $scope.capsules = response.data.records;
+                //console.log($scope.names);
+                //alert($scope.names);
+            }); 
+
+
+            //end NIk's edits
+
+
             $scope.queryBy = '$';
             //            $scope.modalShown = false;
             //            $scope.toggleModal = function() {
@@ -284,25 +330,27 @@
 
 
 
-<!--
-        <div id="app_header">
-            <button class=back-btn ng-click="home()">Back</button>
-            <h1>Database
-            </h1>
+        <!--
+<div id="app_header">
+<button class=back-btn ng-click="home()">Back</button>
+<h1>Database
+</h1>
 
 
-            <button ng-model="showSearch" ng-click="showSearch=!showSearch" class=search-btn><img src="/mvc/public/images/searchicon_white.png"></button>
-        </div>
+<button ng-model="showSearch" ng-click="showSearch=!showSearch" class=search-btn><img src="/mvc/public/images/searchicon_white.png"></button>
+</div>
 -->
-        
+
         <div id=app_header>
-	   		<a ng-click="home()"><button class = 'back'>&#x25c1;</button></a>
-     
-       		<a ng-click = 'home()'><button class = 'home'>M</button></a>
-		
-		</div>
-        
-        
+            <a ng-click="home()"><button class = 'back'>&#x25c1;</button></a>
+
+            <a ng-click = 'home()'><button class = 'home'>M</button></a>
+            
+            <div class="capsule-info"><img src="/mvc/public/images/pill_icon.png"> {{capsules[0].capsules}}</div>
+
+        </div>
+
+
         <div id="content_wrapper">
 
             <div class="loadingDiv" ng-show="loading">
@@ -417,7 +465,7 @@
                         <div class="drug-info-wrap"><label>Brand:</label> {{x.Brand}}<div  ng-click='$event.stopPropagation()' class=speaker-icon-wrapper><button ng-click="playAudio(x.Brand);$event.stopPropagation()" href=#><img src="/mvc/public/images/speaker.svg"></button></div></div>
                         <div class="drug-info-wrap"><label>Class:</label> {{x.Class}}</div>
                         <div class="drug-info-wrap"><label>Indication:</label> {{x.Indication}}</div>
-                        <div class="drug-info-wrap"><label>Side Effects:</label>{{ x['Side Effects'] }}</div>
+                        <!--                        <div class="drug-info-wrap"><label>Side Effects:</label>{{ x['Side Effects'] }}</div>-->
 
                         <div class="drug-info-wrap"><label>Black Box Warning:</label> {{ x['Black Box Warning'] }}</div>
 
