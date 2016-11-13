@@ -65,7 +65,8 @@
     <div class = 'drug-container'>  
         <div class="form-group">
             <div class="searchable-container">
-                <div class="row">
+                
+				<div class= 'scrollableCreateDrugList'>
 
                 <div ng-repeat="drug in drugs">
                 <div class="item col-xs-6 col-sm-6">

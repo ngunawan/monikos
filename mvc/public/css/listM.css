@@ -116,6 +116,7 @@ label {
 	line-height: normal;
 	color: #464a53;
 	overflow-y: scroll;
+	max-height: 475px;
 }
 
 .list-collection-block-short{
@@ -155,12 +156,9 @@ label {
 
 #app_content {
     display:block;
-    position:fixed;
-    height:625px;
     width:100vw;
     text-align: center;
-    margin-top:70px;
-	margin-bottom: 50px;
+	margin-bottom: 10%;
 	overflow-y: hidden;
 	overflow-x: hidden;
 }
@@ -240,6 +238,7 @@ input#listname{
 	padding: 10px;
 	background-color: #777;
 	border-radius: 4px;
+	letter-spacing: 2px;
 }
 
 input[type=checkbox]{
@@ -250,21 +249,26 @@ input[type=checkbox]{
     background: #ff3333;
     border: 0;
     border-radius: 4px;
+	border-bottom: 2px solid #D10000;
     text-decoration: none;
     color: #FFF;
     font-size: 14px;
     font-family: 'Raleway';
     font-weight: 600;
     padding: 10px;
+	font-weight: 600;
+	letter-spacing: 2px;
 }
 
-.drug-container .row {
+.drug-container .scrollableCreateDrugList {
     height: 60%;
-    width: 100%;
+    width: 95%;
     overflow-y: scroll;
     overflow-wrap: normal;
-	padding: 10px;
-	margin: auto;
+    padding: 10px;
+    margin: auto;
+    border: 1px solid #777;
+	border-radius: 4px;
 }
 
 #addbtn {
