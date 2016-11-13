@@ -63,6 +63,7 @@ label {
 	color:#8d99ae;
     font-size: 13px;
     margin: 5px;
+	margin-top: 8px;
     padding: 10px;
 	width:auto;
 	line-height: 15px;
@@ -197,8 +198,9 @@ label {
 
 input#listname{
 	margin: 0;
-	border-radius: 10px;
+	border-radius: 4px;
     text-align: -webkit-center;
+	border-style: none;
 }
 
 .form-group input {
@@ -223,21 +225,21 @@ input#listname{
 }
 
 .searchable-container label.drug_name{
-	border:1px solid #efefef;
+	border:0;
 	margin:8px; 
-	box-shadow:2px 4px 4px 0 #ccc;
-	font-size: 12px;
+	font-size: 14px;
 	width: 150px;
 	color:white;
-	line-height: 12px;
+	line-height: 14px;
 	width:90%; 
 	text-align: center; 
-	max-width: 145px;
+	max-width: 150px;
 	word-wrap: break-word;
 	white-space: normal;
 	vertical-align: middle;
 	padding: 10px;
-	background-color: #8d99ae;
+	background-color: #777;
+	border-radius: 4px;
 }
 
 input[type=checkbox]{
@@ -245,13 +247,15 @@ input[type=checkbox]{
 }
 
 .checkboxes input[type=checkbox]:checked + .drug_name {
-    background-color: #ff3333; !important
-	color: white !important;
-	box-shadow:2px 4px 4px 0 #ccc;
-	font-size: 12px;
-	width: 150px;
-	border:1px solid #efefef;
-	border-radius: 5px;
+    background: #ff3333;
+    border: 0;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #FFF;
+    font-size: 14px;
+    font-family: 'Raleway';
+    font-weight: 600;
+    padding: 10px;
 }
 
 .drug-container .row {
@@ -259,18 +263,20 @@ input[type=checkbox]{
     width: 100%;
     overflow-y: scroll;
     overflow-wrap: normal;
-    border: solid aliceblue 2px;
-	padding: 5px 0px 10px 0;
+	padding: 10px;
 	margin: auto;
 }
 
 #addbtn {
-	background: white;
-	color: #777;
-    border-radius: 7px;
-    padding: 7px;
-    border: none;
-	box-shadow:2px 4px 4px 0 #ccc;
+    background: #ff3333;
+    border: 0;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #FFF;
+    font-size: 14px;
+    font-family: 'Raleway';
+    font-weight: 600;
+    padding: 5px 10px;
 }
 
 /***********OVERLAY CSS************/
@@ -304,4 +310,6 @@ input[type=checkbox]{
     top: 10px;
     right: 30px;
     font-size: 45px;
+	color: #ff3333;
+	font-family: 'Raleway',sans-serif;
 }
