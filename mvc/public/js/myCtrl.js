@@ -120,7 +120,6 @@ app.controller('myCtrl', function($scope, $http) {
         }
 	   
         $scope.home = function(){
-            //create new database controller
             window.location = window.location.origin + "/mvc/public/home/";
         }
 		

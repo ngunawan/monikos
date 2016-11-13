@@ -1,27 +1,67 @@
 @import 'https://fonts.googleapis.com/css?family=Raleway:300,500,900';
 
-button.btnBlue {
-    background: #3071A9;
-    color:white;
-    font-family: Sans-serif;
-    font-size: 24px;
-    width:26vw;
-   	height: 23vh; 
-    text-align: center;   
-	border-radius: 2px;
-	text-overflow: ellipsis;
-    white-space: initial;
-    word-wrap: break-word;
-    transition: all 0.3s ease 0s;
+* {
+	margin: 0;
+	padding: 0;
 }
 
 body {
-	background-color: lightgray; 
-	margin: 0;
-    padding: 0;
-    overflow-x: hidden;
+	overflow-x: hidden;
 	overflow-y: hidden;
+	background-image: url("/mvc/public/images/m_blur.png");
+	 background-size:60vh 20vh;
+	 background-repeat: no-repeat;
+	 background-position: center;
 }
+
+/*****************HEADER******************/
+
+button {
+	border:none;
+    background: transparent;
+}
+
+#app_header {
+    display: block;
+    position:fixed;
+    top:0;
+    width:100%;
+    height:65px;
+    background:#777;
+    text-align: center;
+    box-shadow: 0 0 5px #444;
+	z-index: 10;
+}
+
+.back{
+	position: fixed;
+	left:10px;
+}
+
+#app_header button{
+    background: transparent;
+    font-family: 'Raleway',sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+	margin: 7px 0 0 0;
+    color:white;
+    border: 1px lightblue solid;
+	width: 45px;
+    border-radius: 4px;
+	padding: 2px;
+}
+
+/*****************BODY*************/
+.app_content {
+	margin-top: 65px;
+	width: 100%;
+}
+
+#app_body{
+
+}
+
+/*************Content***************/
 
 p {
     font-family: 'Raleway', sans-serif;
@@ -29,6 +69,15 @@ p {
     font-size: 20px;
     letter-spacing: 2px;
 
+}
+
+p#donedone {
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: #2ECC71;
+    margin-top: 20vh;
 
 }
 
@@ -49,33 +98,6 @@ p {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
-/******Header********/	
-#app_header {
-    display: block;
-    position:fixed;
-    top:0;
-    width:100%;
-    height:10%;
-    background:#777;
-    text-align: center;
-    box-shadow: 0 0 5px #444;
-	z-index: 10;
-}
-
-#app_header button{
-    background: transparent;
-    font-family: 'Raleway',sans-serif;
-    font-weight: 500;
-    font-size: 30px;
-	margin: 7px 0 0 0;
-    color:white;
-    border: 1px lightblue solid;
-	width: 45px;
-    border-radius: 4px;
-	padding: 2px;
-}
-/******Header END********/
-
 .columns {
   columns: 3;
 }
@@ -84,9 +106,6 @@ p {
     background: yellow;
   }
 
-button:hover {
-  background: #3071A9
-}
 
 .active{background-color:red;}
 
@@ -119,36 +138,24 @@ button:hover {
   background: white;
 }
 
-/**Inside the app header***/
-#tryagain {
-	margin-right:37px; 
-	font-size:24px; 
-	border: 5px solid lightgray; 
-	background-color: #0099ff; 
-	height: 70px; 
-	width: 150px;
+
+button.btnBlue  {
+    background: #3071A9;
+    color:white;
+    font-family: 'Raleway',sans-serif; 
+    font-weight: 600;
+    font-size: 12px;
+    width:20vw;
+   	height: 19vh; 
+    text-align: center;   
+	text-overflow: ellipsis;
+    white-space: initial;
+    word-wrap: break-word;
+    transition: all 0.3s ease 0s;
 }
 
-#new_round {
-	font-size:14px; 
-	border: 1px solid lightblue;
-}
 
-.home{
-	position: relative;
-	z-index: 20;
-}
+/**************Foooter************/
+.footer {
 
-/**Inside the app header END***/
-
-#app_content {
-	background-image: url(http://mj.unc.edu/sites/default/files/landing-pages/images/apply_unc-1.png);
-	background-repeat: no-repeat;
-}
-
-#app_body {
-    margin-top: 10%;
-    margin-bottom: 10%;
-	height: 80%;
-	z-index: 2;
 }
