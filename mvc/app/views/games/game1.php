@@ -25,8 +25,9 @@
 				x[0].click();
             }
 		
-	function gotoGamelist(){
-       window.location = window.location.origin + "/mvc/public/games/menu/" + <?=$data['lid']?>;
+			function gotoGamelist(){
+		       window.location = window.location.origin + "/mvc/public/games/menu/" + <?=$data['lid']?>;
+		   }
 	</script>
 	
 <!--HTML STUFF HERE-->
