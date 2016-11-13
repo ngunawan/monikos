@@ -56,68 +56,109 @@ body#main_app_module {
 
 body#database_module {
     /*    background: #F8F8F8;*/
-    background: #BD0707;
+    /*    background: #BD0707;*/
     /*    background: #9e9e9e;*/
+    /*    background: #8d99ae;*/
+    background:#CCC;
+}
+
+button {
+    border:none;
+    background: transparent;
 }
 
 #app_header {
     display: block;
-    position:absolute;
+    position:fixed;
     top:0;
-    left:0;
-    width:100vw;
-    height:50px;
-    margin:0;
-    /*    background:#FF3D39;*/
-    background: #D10000;
-    /*    background: #383838;*/
-    color: #FFF;
+    width:100%;
+    height:65px;
+    background:#777;
     text-align: center;
-    /*    border-bottom: 1px solid #CCC;*/
-    box-shadow: 0vw 0vw 20px #7D0208;
-    /*    box-shadow: 0vw 0vw 20px #262626;*/
+    box-shadow: 0 0 5px #444;
+    z-index: 10;
 }
 
-#app_header button.back-btn {
-    display:inline-block;
-    background: #B21816;
-    /*    background: #292929;*/
-    position: absolute;
-    left:8px;
-    top:8px;
-    color:#FFF;
-    font-size: 14px;
+.back{
+    position: fixed;
+    left:10px;
+}
+
+#app_header button{
+    background: transparent;
+    font-family: 'Raleway',sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+    margin: 7px 0 0 0;
+    color:white;
+    border: 1px lightblue solid;
+    width: 45px;
     border-radius: 4px;
-    border:0;
-    height:35px;
-    padding:0 10px;
-    width: 55px;
+    padding: 2px;
 }
 
+/*
+
+#app_header {
+display: block;
+position:absolute;
+top:0;
+left:0;
+width:100vw;
+height:50px;
+margin:0;
+background:#FF3D39;
+background: #D10000;
+color: #FFF;
+text-align: center;
+box-shadow: 0vw 0vw 20px #7D0208;
+}
+*/
+
+/*
+#app_header button.back-btn {
+display:inline-block;
+background: #B21816;
+position: absolute;
+left:8px;
+top:8px;
+color:#FFF;
+font-size: 14px;
+border-radius: 4px;
+border:0;
+height:35px;
+padding:0 10px;
+width: 55px;
+}
+*/
+
+/*
 #app_header h1 {
-    display:inline-block;
-    /*    font-family: sans-serif;*/
-    font-family: 'Raleway';
-    margin:15px auto auto auto;
-    font-weight:600;
-    text-transform: uppercase;
-    font-size: 20px; 
-    letter-spacing: 1px;
+display:inline-block;
+font-family: sans-serif;
+font-family: 'Raleway';
+margin:15px auto auto auto;
+font-weight:600;
+text-transform: uppercase;
+font-size: 20px; 
+letter-spacing: 1px;
 }
 
 #app_header .search-btn {
-    display:inline-block;
-    position: absolute;
-    right:11px;
-    top:11px;
-    background: transparent;
-    border:none;
+display:inline-block;
+position: absolute;
+right:11px;
+top:11px;
+background: transparent;
+border:none;
 }
 
 #app_header .search-btn img {
-    width:25px;
-    height:25px;
+width:25px;
+height:25px;
 }
+*/
+
 
 #app_footer {
     display: block;
@@ -141,7 +182,8 @@ body#database_module {
 
 #content_wrapper {
     /*for database*/
-    margin-top: 65px;
+    margin-top: 67px;
+    padding:5px;
 }
 
 .showSearch {
@@ -234,7 +276,7 @@ font-size:12px;
     background:#FFF;
     width:100%;
     transition: background 0.5s;
-    border-radius: 5px;
+    border-radius: 4px;
 }
 
 .drug-block:active {
@@ -253,7 +295,8 @@ font-size:12px;
 
 .hint-info button{
     /*    background: #FF3D39;*/
-    background: #D10000;
+    /*    background: #D10000;*/
+    background: #ff3333;
     border:0;
     /*    border:1px solid #FF3D39;*/
     /*    border:1px solid #B21816;*/
@@ -271,7 +314,8 @@ font-size:12px;
 }
 
 .hint-info .button-shadow {
-    background: #930000;
+    /*    background: #930000;*/
+    background: #bf2626;
     border-radius: 4px;
     display:block;
     width:60px;
@@ -388,7 +432,7 @@ label.field-name {
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
 
-    border-radius: 5px;
+    border-radius: 4px;
     background-color: #fff;
     box-shadow: 4px 4px 80px #000;
     -webkit-box-shadow: 4px 4px 80px #000;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
@@ -411,7 +455,7 @@ label.field-name {
     -moz-transform: translate(-50%, -50%);
 
     border-radius: 20px;
-/*    background-color: #BD0707;*/
+    /*    background-color: #BD0707;*/
     background: #FFF;
     box-shadow: 4px 4px 80px #000;
     -webkit-box-shadow: 4px 4px 80px #000;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
@@ -504,7 +548,8 @@ padding: 10px 0;
 }
 
 .key-terms {
-    color: #D00001;
+    /*    color: #D00001;*/
+    color: #ff3333;
     display:inline-block;
 }
 
@@ -528,13 +573,15 @@ padding: 10px 0;
 }
 
 .ng-modal-content-footer .likes-dislikes-wrapper .likes-count {
-    color: #254394;
+    /*    color: #254394;*/
+    color: #ff3333;
     display:inline-block;
     width:45%;
 }
 
 .ng-modal-content-footer .likes-dislikes-wrapper .dislikes-count {
-    color: #D00001;
+    /*    color: #D00001;*/
+    color: #8d99ae;
     display:inline-block;
     width:45%;
 
@@ -557,19 +604,23 @@ padding: 10px 0;
 }
 
 .plusone-animate {
-    -webkit-animation: flickerAnimation 1s;
-    -moz-animation: flickerAnimation 1s;
-    -o-animation: flickerAnimation 1s;
-    animation: flickerAnimation 1s;
+    -webkit-animation: flickerAnimation 1.5s;
+    -moz-animation: flickerAnimation 1.5s;
+    -o-animation: flickerAnimation 1.5s;
+    animation: flickerAnimation 1.5s;
 
 }
 
 .plusone-like {
-    color: #254394;
+/*    color: #254394;*/
+    color: #ff3333;
+
 }
 
 .plusone-dislike {
-    color: #D00001;
+/*    color: #D00001;*/
+    color: #8d99ae;
+
 }
 
 @keyframes flickerAnimation {
@@ -595,8 +646,8 @@ padding: 10px 0;
 
 .like-btn {
     display:inline-block;
-    background:#254394;
-    /*    background: #3d8530;*/
+    /*    background:#254394;*/
+    background: #ff3333;
     border:0;
     border-radius: 4px;
     height:40px;
@@ -615,7 +666,8 @@ padding: 10px 0;
 
 .like-btn-shadow {
     display:inline-block;
-    background:#122C67;
+    /*    background:#122C67;*/
+    background: #bf2626;
     /*    background: #235723;*/
     border-radius: 4px;
     height:40px;
@@ -628,8 +680,9 @@ padding: 10px 0;
 
 .dislike-btn {
     display:inline-block;
-    background:#D00001;
+    /*    background:#D00001;*/
     /*    background: #d96e03;*/
+    background: #8d99ae;
     border:0;
     border-radius: 4px;
     height:40px;
@@ -648,8 +701,9 @@ padding: 10px 0;
 
 .dislike-btn-shadow {
     display:inline-block;
-    background:#930000;
+    /*    background:#930000;*/
     /*    background: #8f4402;*/
+    background: #707887;
     border-radius: 4px;
     height:40px;
     width:45%; 
@@ -759,13 +813,13 @@ font-weight: 600;
 }
 
 #mnemonic-form input[type="text"]:active {
- outline:none;   
+    outline:none;   
 }
 
 #mnemonic-form .drug-form-list {
     font-family: 'Raleway';
     font-size:16px;
-     -webkit-appearance: none;
+    -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     background:#FFF;
@@ -774,15 +828,15 @@ font-weight: 600;
     border: 1px solid #CCC;
     border-radius:4px;
     padding:3px 10px;
-   
-    
+
+
 }
 
 #mnemonic-form option {
     font-family: 'Raleway';
     font-size:16px;
     width:50vw;
-   
+
 }
 
 #mnemonic-form input[type=submit] {
@@ -887,26 +941,26 @@ body.email-page .back-btn {
 /* DCCODE */
 
 div#loginIconContainer {
-   text-align: center;
-   margin-bottom: 0px;
-   margin-top: 20px;
+    text-align: center;
+    margin-bottom: 0px;
+    margin-top: 20px;
 }
 
 .fb-login-button.fb_iframe_widget {
-   display: block;
+    display: block;
 }
 
 .loadingDiv {
-   position: fixed;
-   top: 0px;
-   right: 0px;
-   width: 100%;
-   height: 100%;
-   padding-top:150px;
-   background-color: rgba(102,102,102,0.6);
-   text-align: center;
-   z-index: 10;
-   filter: alpha(opacity=40);
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: 100%;
+    height: 100%;
+    padding-top:150px;
+    background-color: rgba(102,102,102,0.6);
+    text-align: center;
+    z-index: 10;
+    filter: alpha(opacity=40);
 }
 
 

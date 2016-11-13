@@ -46,7 +46,6 @@
         }
     });
     </script>
-    <div id=app_header></div>
 	
     <div id=app_content ng-app="myApp" ng-controller="customersCtrl">
         <a href="#" ng-click="drugDatabase()">
