@@ -154,6 +154,9 @@ button.btnBlue  {
     transition: all 0.3s ease 0s;
 }
 
+.drugGridCell {
+    background-color: rgb(108, 122, 137);
+}
 
 /**************Foooter************/
 .footer {
