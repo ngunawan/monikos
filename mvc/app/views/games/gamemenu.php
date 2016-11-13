@@ -11,12 +11,60 @@
     var showingSelectUser = false;
     var showingPlaceBet = false;
 
+    var gameMenuApp = angular.module('gameMenuApp', ['ngAnimate']);
+    gameMenuApp.filter("trustUrl", ['$sce', function ($sce) {
+        return function (recordingUrl) {
+            return $sce.trustAsResourceUrl(recordingUrl);
+        };
+    }]);
+
+    gameMenuApp.controller('gameMenuCtrl', ['$scope','$sce', '$http', '$timeout', function($scope, $sce, $http, $timeout) {
+        $scope.queryBy = '$';
+        $scope.trustAsHtml = $sce.trustAsHtml;
+    
+        $scope.createChallenge = function(){    
+            /*$http.get(url)
+            .then(function (response) {
+                console.log(response);
+            });*/
+
+            var url = "/db/create_challenge.php";
+            var usr1 = getCurrentUser();
+            var usr2 = challengeUser;
+            var data = $.param({
+                user1: usr1,
+                user2: usr2,
+                game: challengeGame,
+                bet: challengeBet
+            });
+            var config = {
+                headers : {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                }
+            };
+
+            $http.post(url, data, config)
+                .then(function (response) {
+                console.log(response);
+                $scope.response = response;
+            }); 
+
+
+        }
+
+
+        
+
+
+    }]);
+
     function gotoGame1(challenge){
         //normal play, not challenge mode
         if(challenge == undefined){
             window.location = window.location.origin + "/mvc/public/games/game1/" + <?=$data['lid']?>;
         }else{
         //challenge mode
+            angular.element(document.getElementById('main_app_module')).scope().createChallenge();
             window.location = window.location.origin + "/mvc/public/games/game1/" + <?=$data['lid']?> + "/" + challenge + "/" + challengeGame + "/" + challengeUser + "/" + challengeBet;
         }
     }
@@ -27,6 +75,7 @@
             window.location = window.location.origin + "/mvc/public/games/game2/" + <?=$data['lid']?>;
         }else{
         //challenge mode
+            angular.element(document.getElementById('main_app_module')).scope().createChallenge();
             window.location = window.location.origin + "/mvc/public/games/game2/" + <?=$data['lid']?> + "/" + challenge + "/" + challengeGame + "/" + challengeUser + "/" + challengeBet;;
         }
     }
@@ -41,6 +90,24 @@
 
     function listManager(){
         window.location = window.location.origin + "/mvc/public/home/listManager";
+    }
+
+    function getCurrentUser(){
+        return getCookie('username');
+    }
+    function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length,c.length);
+            }
+        }
+        return "";
     }
 
     function challenge(game){
@@ -129,7 +196,7 @@
 
 </script>
 
-<body id="main_app_module">
+<body id="main_app_module" ng-app="gameMenuApp" ng-controller="gameMenuCtrl">
 
     <div id='app_header'>
 		<a onclick="golistManager()" ><button class = 'back'>&#x25c1;</button></a>
