@@ -40,6 +40,7 @@
         <div class="capsule-info"><img src="../../../public/images/pill_icon.png"> {{capsules[0].capsules}}</div>
 
     </div>
+	
     <div id=app_content>
         <div id=app_body>
 
