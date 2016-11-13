@@ -184,3 +184,17 @@ p#wrong {
 	font-weight: 900;
 	box-shadow: 0 0 5px #444;
 }
+
+div#challengeInfoBar {
+    background: #22A7F0;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+.challengeInfoText {
+    font-family: raleway;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 0px;
+}

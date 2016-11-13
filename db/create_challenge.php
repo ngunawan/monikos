@@ -8,8 +8,11 @@ $sql = "INSERT INTO Challenge (challengeid, user1, user2, challengegame, bet)
 VALUES (NULL, '".$_POST["user1"]."', '".$_POST["user2"]."', '" . $_POST["game"]. "', '". $_POST["bet"]."')";
 
 if ($conn->query($sql) === TRUE) {
+
+	$last_id = $conn->insert_id;
     echo '[{
     "response": 200,
+    "challengeid": '.$last_id.',
     "user1": "'.$_POST["user1"].'",
     "user2": "'.$_POST["user2"].'",
     "game": "'.$_POST["game"].'",

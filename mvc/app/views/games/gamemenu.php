@@ -7,6 +7,7 @@
     var challengeGame;
     var challengeUser;
     var challengeBet;
+    var challengeId;
     var showingSelectGame = false;
     var showingSelectUser = false;
     var showingPlaceBet = false;
@@ -22,7 +23,7 @@
         $scope.queryBy = '$';
         $scope.trustAsHtml = $sce.trustAsHtml;
     
-        $scope.createChallenge = function(){    
+        $scope.createChallenge = function(dagame, challengeFlag){    
             /*$http.get(url)
             .then(function (response) {
                 console.log(response);
@@ -44,9 +45,11 @@
             };
 
             $http.post(url, data, config)
-                .then(function (response) {
+            .then(function (response) {
                 console.log(response);
                 $scope.response = response;
+                challengeId = response.data[0].challengeid;
+                window.location = window.location.origin + "/mvc/public/games/"+dagame+"/" + <?=$data['lid']?> + "/" + challengeFlag + "/" + challengeGame + "/" + challengeUser + "/" + challengeBet + "/" + challengeId;
             }); 
 
 
@@ -58,25 +61,25 @@
 
     }]);
 
-    function gotoGame1(challenge){
+    function gotoGame1(challengeFlag){
         //normal play, not challenge mode
-        if(challenge == undefined){
+        if(challengeFlag == undefined){
             window.location = window.location.origin + "/mvc/public/games/game1/" + <?=$data['lid']?>;
         }else{
         //challenge mode
-            angular.element(document.getElementById('main_app_module')).scope().createChallenge();
-            window.location = window.location.origin + "/mvc/public/games/game1/" + <?=$data['lid']?> + "/" + challenge + "/" + challengeGame + "/" + challengeUser + "/" + challengeBet;
+            angular.element(document.getElementById('main_app_module')).scope().createChallenge('game1', challengeFlag);
+            //window.location = window.location.origin + "/mvc/public/games/game1/" + <?=$data['lid']?> + "/" + challenge + "/" + challengeGame + "/" + challengeUser + "/" + challengeBet;
         }
     }
 	
-	function gotoGame2(challenge){
+	function gotoGame2(challengeFlag){
         //normal play, not challenge mode
-        if(challenge == undefined){
+        if(challengeFlag == undefined){
             window.location = window.location.origin + "/mvc/public/games/game2/" + <?=$data['lid']?>;
         }else{
         //challenge mode
-            angular.element(document.getElementById('main_app_module')).scope().createChallenge();
-            window.location = window.location.origin + "/mvc/public/games/game2/" + <?=$data['lid']?> + "/" + challenge + "/" + challengeGame + "/" + challengeUser + "/" + challengeBet;;
+            angular.element(document.getElementById('main_app_module')).scope().createChallenge('game2', challengeFlag);
+            //window.location = window.location.origin + "/mvc/public/games/game2/" + <?=$data['lid']?> + "/" + challenge + "/" + challengeGame + "/" + challengeUser + "/" + challengeBet;;
         }
     }
 	
@@ -139,17 +142,7 @@
         }else if(challengeGame == 'pill'){
             gotoGame2('challenge');
         }
-
-        //if(challengeGame == 'matching'){
-        //    gotoGame1('challenge');
-        //}else if(challengeGame == 'pill'){
-        //    gotoGame2('challenge');
-        //}
     }
-
-    //var showingSelectGame = false;
-    //var showingSelectUser = false;
-    //var showingPlaceBet = false;
 
     $(document).ready(function () {
         $('#challenge-block').on('click',function(){
