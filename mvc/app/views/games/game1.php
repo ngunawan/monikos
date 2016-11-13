@@ -23,7 +23,6 @@
             	//document.getElementById("nextButton").click();
 				var x = document.getElementsByClassName("BtnBlue");
 				x[0].click();
-
             }
 		
 	function gotoGamelist(){
@@ -32,22 +31,17 @@
 	
 <!--HTML STUFF HERE-->
      	<div id=app_header>
-
 	   		<a onclick="gotoGamelist()"><button class = 'back'>&#x25c1;</button></a>
      
        		<a ng-click = 'home()'><button class = 'home'>M</button></a>
 		
 		</div>
-
     <div id=app_content>
-
          	<div id=app_body>
 				
 				<div ng-if="firstLoad">{{getlid(<?=$data['lid']?>)}}</div>	
 				
 				<img id="finished" src="" style="margin-top: 25px; margin-left: 2%">
-
-
 				<div ng-if="numClicked < 2" >
 					<div ng-repeat="product in names" ng-if="$index % 4 == 0" class="row">
 						<div class="col-xs-3 drugGridCell"><button class="btnBlue"  ng-click="clicked(names[$index].front);" ng-hide = "names[$index].correct == 'Y' "
@@ -60,7 +54,6 @@
 							ng-style="{'background-color' : (names[$index+3].clicked == 'Y') && (numClicked <=2) ? '#0099ff' : '#6C7A89'}"  >{{names[$index+3].front}}</button></div>
 					</div>
 				</div>
-
 				<div ng-if="numClicked==2 && correct == 'Y' ">
 				  <div ng-repeat="product in names" ng-if="$index % 4 == 0" class="row">
 					<div class="col-xs-3 drugGridCell"><button class="btnBlue"  ng-click="clicked(names[$index].front);" ng-hide = "names[$index].active == 'W' "
@@ -73,7 +66,6 @@
 						ng-style="{'background-color' : (names[$index+3].clicked == 'Y') && (numClicked <=2) ? '#2ECC71' : '#6C7A89'}"  >{{names[$index+3].front}}</button></div>
 				  </div>
 				</div>
-
 				<div ng-if="numClicked==2 && correct == 'N' ">
 				  <div ng-repeat="product in names" ng-if="$index % 4 == 0" class="row">
 					<div class="col-xs-3 drugGridCell"><button class="btnBlue"  ng-click="clicked(names[$index].front);" ng-hide = "names[$index].active == 'W' "
@@ -100,10 +92,8 @@
 		<div ng-if="numClicked==2 && correct == 'Y' ">{{isGameFinished()}}</div>
 		
 		<button id ='new_round' onClick="window.location.reload()">PLAY NEW ROUND</button>
-
 		
 	</div>
 	
 </body>
-
 <!--</html>-->
