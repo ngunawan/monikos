@@ -106,10 +106,13 @@ input#f1 {
 
 .pill {
 	width: 100%;
+	text-align: center;
 }
 
 #thePill {
-	width: 100%;
+	max-width: 500px;
+    width: 100%;
+    height: auto;
 }
 
 p#wrong {

@@ -6,15 +6,15 @@ button.btnBlue  {
     font-family: 'Raleway'; 
     font-weight: 600;
     font-size: 12px;
-    width:27vw;
+    width:100%;
    	height: 19vh; 
     text-align: center;   
-	border-radius: 2px;
-	text-overflow: ellipsis;
+  	border-radius: 2px;
+  	text-overflow: ellipsis;
     white-space: initial;
     word-wrap: break-word;
     transition: all 0.3s ease 0s;
-    border-radius: 50px;
+    border-radius: 20px;
 }
 
 
@@ -24,7 +24,6 @@ body {
 	background-image: url('completed.png');
 /* 	background-repeat: no-repeat; */
 }
- */
 
 
 
@@ -69,7 +68,7 @@ p#donedone {
     position:fixed;
     top:0;
     width:100%;
-    height:10%;
+    height:65px;
     background:#777;
     text-align: center;
     box-shadow: 0 0 5px #444;
@@ -155,8 +154,12 @@ button:hover {
 }
 
 #new_round {
-	font-size:14px; 
-	border: 1px solid lightblue;
+	width: 100%;
+  height: 50px;
+  background-color: #ff3333;
+  color: white;
+  font-weight: 900;
+  box-shadow: 0 0 5px #444;
 }
 
 .home{
@@ -167,24 +170,15 @@ button:hover {
 /**Inside the app header END***/
 
 #app_content {
-/* 
-	background-image: url('completed.png');
- */
-	/*background-repeat: no-repeat;*/
-	 background-image: url("http://danaelhertani.com/images/6-19-16-png-monikos.png");
-	 background-size:60vh 20vh;
-	 background-repeat: no-repeat;
-	 background-position: center; 
+  min-height: 90%;
+  margin-top: 65px;
+  overflow-y: auto;
+  padding-top: 5px;
+  background-color: #ABB7B7;
 }
 
 #app_body {
-    margin-top: -10%;
-    /*margin-bottom: 10%;
-	/*height: 80%;*/
-	width: 90vw;
-    height: 50vh;
-	z-index: 2;
-	
+  
 }
 
 .footer {
@@ -198,8 +192,16 @@ button:hover {
 	font-family: 'Raleway',sans-serif;
 	font-size: 30px;
 	letter-spacing: 5px;
-	padding: 5px;
+	/*padding: 5px;*/
 	z-index: 25;
 	font-weight: 900;
 	box-shadow: 0 0 5px #444;
+}
+
+.row.drugGridRow {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.drugGridCell {
+    padding: 5px;
 }

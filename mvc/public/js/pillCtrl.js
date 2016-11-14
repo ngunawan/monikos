@@ -229,11 +229,11 @@ var app = angular.module('myApp', []);
 				document.getElementById("result").remove();
 				document.getElementById("wrong").remove();	
         if($scope.checkIfBeingChallenged()){
-          document.getElementById("finished").innerHTML = 'DETERMINING RESULTS...';
+          $scope.setOutcomeMessage("DETERMINING RESULTS...");
           $scope.handleBeingChallengedCompletion();
         }else if($scope.checkIfInChallengeMode()){
           $scope.handleChallengeModeCompletion();
-          document.getElementById("finished").innerHTML = 'CHALLENGE SENT';
+          $scope.setOutcomeMessage("CHALLENGE SENT");
         }else{
           document.getElementById("finished").innerHTML = 'COMPLETED ROUND';
         }
@@ -347,14 +347,12 @@ var app = angular.module('myApp', []);
  					if (cuIn == $scope.finalList.length){
 						window.move();
             if($scope.checkIfBeingChallenged()){
-              document.getElementById("finished").innerHTML = 'DETERMINING RESULTS...';
+              $scope.setOutcomeMessage("DETERMINING RESULTS...");
               $scope.handleBeingChallengedCompletion();
-
-              //if(winner){ document.getElementById("finished").innerHTML = 'CONGRADULATIONS YOU WON'; } else{ document.getElementById("finished").innerHTML = 'YOU LOST'; }
 
             }else if($scope.checkIfInChallengeMode()){
               $scope.handleChallengeModeCompletion();
-              document.getElementById("finished").innerHTML = 'CHALLENGE SENT';
+              $scope.setOutcomeMessage("CHALLENGE SENT");
             }else{
 			 			  document.getElementById("finished").innerHTML = 'COMPLETED ROUND';
 					  }
@@ -594,15 +592,23 @@ var app = angular.module('myApp', []);
       console.log("USER2 SCORE = " + usr2score);
       var score1 = parseInt(usr1score);
       var score2 = parseInt(usr2score);
+      document.getElementById("finished").innerHTML = '';
       if(score1 > score2){
-        document.getElementById("finished").innerHTML = 'YOU WON!\n' + thebet + " CAPSULES";
+        $scope.setOutcomeMessage("YOU WON " + thebet + " CAPSULES!");
       }else if(score1 < score2){
-        document.getElementById("finished").innerHTML = 'YOU LOST\n' + thebet + " CAPSULES";
+        $scope.setOutcomeMessage("YOU LOST " + thebet + " CAPSULES");
       }else{
-        document.getElementById("finished").innerHTML = 'YOU TIED';
+        $scope.setOutcomeMessage("YOU TIED");
       }
 
     });
+  }
+
+  $scope.setOutcomeMessage = function(message){
+    $('.betQuantityText').css({"display":"none"});
+    $('.userText').css({"display":"none"});
+    $('.outcomeMessage').css({"display":"block"});
+    $('.outcomeMessage').html(message);
   }
 
 

@@ -27,14 +27,15 @@
 		<!--dummy object for checking if in challenge mode-->
 		<p id="challengeFlag" style="display:none"><?=$data['challengeFlag']?></p>
 		<!---->
-		<div id="challengeInfoBar" ng-show="!checkIfBeingChallenged()">
-			<p id="user2Text" class="col-md-6 col-sm-6 col-xs-6 challengeInfoText">Challenging: <?=$data['user2']?></p>
-			<p id="betQuantityText" class="col-md-6 col-sm-6 col-xs-6 challengeInfoText">Bet Quantity: <?=$data['bet']?></p>
+		<div id="challengeInfoBar" ng-show="checkIfInChallengeMode() && !checkIfBeingChallenged()">
+			<p class="col-md-6 col-sm-6 col-xs-6 challengeInfoText userText">Challenging: <?=$data['user2']?></p>
+			<p class="col-md-6 col-sm-6 col-xs-6 challengeInfoText betQuantityText">Bet Quantity: <?=$data['bet']?></p>
+			<p style="display:none" class="col-md-12 col-sm-12 col-xs-12 challengeInfoText outcomeMessage"></p>
 		</div>
 		<div id="challengeInfoBar" ng-show="checkIfBeingChallenged()">
-
-			<p id="user2Text" class="col-md-6 col-sm-6 col-xs-6 challengeInfoText">Challenged By: <?=$data['user2']?></p>
-			<p id="betQuantityText" class="col-md-6 col-sm-6 col-xs-6 challengeInfoText">Bet Quantity: <?=$data['bet']?></p>
+			<p class="col-md-6 col-sm-6 col-xs-6 challengeInfoText userText">Challenged By: <?=$data['user1']?></p>
+			<p class="col-md-6 col-sm-6 col-xs-6 challengeInfoText betQuantityText">Bet Quantity: <?=$data['bet']?></p>
+			<p style="display:none" class="col-md-12 col-sm-12 col-xs-12 challengeInfoText outcomeMessage"></p>
 		</div>
        	<div id=app_body>
 	        <div ng-if="firstLoad">

@@ -11,6 +11,7 @@ app.controller('matchingCtrl', function($scope, $http) {
     $scope.right = 0;
     $scope.finishedGame = false;
     $scope.score = 0;
+    var shuffledObjects;
 
 
     $scope.selected =[]
@@ -177,7 +178,7 @@ app.controller('matchingCtrl', function($scope, $http) {
             console.log(objects);
 
 
-            var shuffledObjects = objects.slice();
+            shuffledObjects = objects.slice();
 
             var j, x, i;
             for (i = shuffledObjects.length; i; i--) {
@@ -193,108 +194,109 @@ app.controller('matchingCtrl', function($scope, $http) {
             $scope.names = shuffledObjects;
             numOfCards = shuffledObjects.length;
 
-
-            $('button.toggler').on("click",function(){  
-                //$('button').not(this).removeClass();
-                $(this).toggleClass('active');
-
-            });
-
-            $scope.clicked = function(front){
-                $scope.clear = false;
-
-                console.log("before " + front);
-                // console.log("before " +drug.drug.Brand);
-                console.log("numClicked before " + $scope.numClicked);
-
-
-                for(var i = 0; i < shuffledObjects.length;i++){
-                    if(front == shuffledObjects[i].front){
-                        if (shuffledObjects[i].clicked == "Y"){
-                            shuffledObjects[i].clicked = "N";
-                            $scope.numClicked--;
-
-                        } else{
-                            shuffledObjects[i].clicked = "Y";
-                            $scope.numClicked++;
-                            console.log("afterrr " +shuffledObjects[i].clicked);
-                        }
-                    }
-
-                }
-
-                if ($scope.numClicked > 2) {
-                    $scope.numClicked = 0;	
-
-                    for(var i = 0; i < shuffledObjects.length;i++){
-                        shuffledObjects[i].clicked = "N";
-                    }       		
-                }
-
-                if ($scope.numClicked == 2){
-                    document.getElementById("tryagain").style.visibility="visible";
-
-                    for(var i = 0; i < shuffledObjects.length;i++){
-                        if (shuffledObjects[i].clicked == "Y" && shuffledObjects[i].front == front){
-                            $scope.firstCard = shuffledObjects[i];
-
-                        } else if (shuffledObjects[i].clicked == "Y"){
-                            $scope.secondCard = shuffledObjects[i];
-                        } else {
-                            if (shuffledObjects[i].active == 'Y') {
-                                shuffledObjects[i].active = 'W';
-                            }
-                        }
-                    }
-                    console.log("first card " + $scope.firstCard.front);
-                    console.log("second card " + $scope.secondCard.front);
-
-                    if ($scope.firstCard.front == $scope.secondCard.drug.Brand || $scope.firstCard.front == $scope.secondCard.drug.Generic){
-                        $scope.correct = "Y";
-                        $scope.numCorrect +=2;
-                        $scope.right++;
-                        $scope.firstCard.correct = 'Y';
-                        $scope.secondCard.correct = 'Y';
-                        $scope.firstCard.active = 'Y';
-                        $scope.secondCard.active = 'Y';
-                        console.log($scope.numCorrect + " num right" );
-                        console.log($scope.names.length + " num length" );
-                        $scope.score +=2;
-                        $scope.$apply(function () {
-                            $scope.score = $scope.score +2; 
-                        });
-
-
-                        if ($scope.numCorrect == $scope.names.length){
-                            document.getElementById("tryagain").style.width = "30vh";
-                            document.getElementById("tryagain").onclick = function() { window.location.reload() };
-                            document.getElementById("tryagain").value = "Play New Round";
-                            document.getElementById("donedone").innerHTML = "Game completed! Well done!";
-
-                        }
-
-
-                    }
-                    else {
-                        $scope.correct = "N";
-
-
-                    }
-                }
-
-                console.log("numClicked after " + $scope.numClicked);
-                console.log("correct " + $scope.correct);
-
-
-            }
-
-
-            $scope.clearBoard = function(){
-                $scope.clear = true;
-            }
-
         });
     }
+
+    $('button.toggler').on("click",function(){  
+        //$('button').not(this).removeClass();
+        $(this).toggleClass('active');
+    });
+
+    $scope.clicked = function(front){
+        $scope.clear = false;
+
+        console.log("before " + front);
+        // console.log("before " +drug.drug.Brand);
+        console.log("numClicked before " + $scope.numClicked);
+
+
+        for(var i = 0; i < shuffledObjects.length;i++){
+            if(front == shuffledObjects[i].front){
+                if (shuffledObjects[i].clicked == "Y"){
+                    shuffledObjects[i].clicked = "N";
+                    $scope.numClicked--;
+
+                } else{
+                    shuffledObjects[i].clicked = "Y";
+                    $scope.numClicked++;
+                    console.log("afterrr " +shuffledObjects[i].clicked);
+                }
+            }
+
+        }
+
+        if ($scope.numClicked > 2) {
+            $scope.numClicked = 0;	
+
+            for(var i = 0; i < shuffledObjects.length;i++){
+                shuffledObjects[i].clicked = "N";
+            }       		
+        }
+
+        if ($scope.numClicked == 2){
+            //document.getElementById("tryagain").style.visibility="visible";
+
+            for(var i = 0; i < shuffledObjects.length;i++){
+                if (shuffledObjects[i].clicked == "Y" && shuffledObjects[i].front == front){
+                    $scope.firstCard = shuffledObjects[i];
+
+                } else if (shuffledObjects[i].clicked == "Y"){
+                    $scope.secondCard = shuffledObjects[i];
+                } else {
+                    if (shuffledObjects[i].active == 'Y') {
+                        shuffledObjects[i].active = 'W';
+                    }
+                }
+            }
+            console.log("first card " + $scope.firstCard.front);
+            console.log("second card " + $scope.secondCard.front);
+
+            if ($scope.firstCard.front == $scope.secondCard.drug.Brand || $scope.firstCard.front == $scope.secondCard.drug.Generic){
+                $scope.correct = "Y";
+                $scope.numCorrect +=2;
+                $scope.right++;
+                $scope.firstCard.correct = 'Y';
+                $scope.secondCard.correct = 'Y';
+                $scope.firstCard.active = 'Y';
+                $scope.secondCard.active = 'Y';
+                console.log($scope.numCorrect + " num right" );
+                console.log($scope.names.length + " num length" );
+                console.log("IM HERE 1");
+                $scope.score +=2;
+                console.log("IM HERE 2");
+                //$scope.$apply(function () {
+                //    console.log("IM HERE 3");
+                //    $scope.score = $scope.score +2; 
+                //});
+                $scope.score = $scope.score +2;
+                console.log("IM HERE 4");
+
+                console.log("IM HERE 5");
+
+
+                if ($scope.numCorrect == $scope.names.length){
+                    //document.getElementById("tryagain").style.width = "30vh";
+                    //document.getElementById("tryagain").onclick = function() { window.location.reload() };
+                    //document.getElementById("tryagain").value = "Play New Round";
+                    //document.getElementById("donedone").innerHTML = "Game completed! Well done!";
+                    alert("congratulations you completed the game, click 'play new round' to play another round.");
+                }
+                console.log("IM HERE 6");
+            }
+            else {
+                $scope.correct = "N";
+            }
+        }
+        console.log("numClicked after " + $scope.numClicked);
+        console.log("correct " + $scope.correct);
+    }
+
+
+    $scope.clearBoard = function(){
+        $scope.clear = true;
+    }
+
+    
 
     $scope.home = function(){
         window.location = window.location.origin + "/mvc/public/home/";

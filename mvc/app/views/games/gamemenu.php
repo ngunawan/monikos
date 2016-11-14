@@ -233,7 +233,7 @@
 <body id="main_app_module" ng-app="gameMenuApp" ng-controller="gameMenuCtrl">
 
     <div id='app_header'>
-        <a onclick="golistManager()" ><button class = 'back'>&#x25c1;</button></a>
+        <a onclick="golistManager()" ><button class = 'back'>Back</button></a>
 
         <a onclick="gohome()"><button>M</button></a>
          <div class="capsule-info"><img src="/mvc/public/images/pill_icon.png"> {{capsules[0].capsules}}</div>
