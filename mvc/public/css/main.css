@@ -47,12 +47,12 @@ body#usr_mng_module .wrapper a {
     color: #FF0018;
     font-size: 4vw;
     cursor: pointer;
-    
+
 }
 
 body#usr_mng_module .wrapper a:hover {
     text-decoration:none;
-    
+
 }
 
 body#main_app_module {
@@ -91,9 +91,15 @@ button {
     z-index: 10;
 }
 
-.back{
+#app_header button.back {
     position: fixed;
-    left:10px;
+    left: 10px;
+    font-size: 16px;
+    border: 0;
+    background: #606060;
+    height: 40px;
+    margin-top: 13px;
+    width: 60px;
 }
 
 .capsule-info {
@@ -208,9 +214,10 @@ body#database_module #app_content, body#main_app_module #app_content {
 
 #content_wrapper {
     /*for database*/
-    margin-top: 67px;
-    padding:5px;
+    padding:0 5px;
 }
+
+
 
 .showSearch {
     font-family:'Raleway';
@@ -235,11 +242,11 @@ width:100%;
 */
 
 .search-bar-wrapper {
-    width:100%;
-    margin:0;
-    margin-top:-15px;
-    height:45px;
-    background:rgba(31, 31, 31, 0.9);
+    width: 100%;
+    padding: 0 0 0 10px;
+    margin-top: 65px;
+    height: 45px;
+    background: rgba(31, 31, 31, 0.8);
     font-size: 16px;
 
 }
@@ -576,7 +583,7 @@ padding: 10px 0;
 
 .key-terms {
     /*    color: #D00001;*/
-/*    color: #3273ff;*/
+    /*    color: #3273ff;*/
     color:black;
     display:inline-block;
 }
@@ -602,7 +609,7 @@ padding: 10px 0;
 
 .ng-modal-content-footer .likes-dislikes-wrapper .likes-count {
     /*    color: #254394;*/
-        color: #3273ff;
+    color: #3273ff;
     display:inline-block;
     width:45%;
 }
@@ -640,15 +647,15 @@ padding: 10px 0;
 }
 
 .plusone-like {
-/*    color: #254394;*/
+    /*    color: #254394;*/
     color: #3273ff;
 
 }
 
 .plusone-dislike {
-/*    color: #D00001;*/
+    /*    color: #D00001;*/
     color: #8d99ae;
-        color: #ff3333;
+    color: #ff3333;
 
 
 }

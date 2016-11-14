@@ -155,9 +155,12 @@
 
                 //                    $scope.names = $sce.trustAsHtml(response.data.records);
                 console.log($scope.names);
-                $scope.loading = false;
+                            $scope.loading = false;
+
                 //alert($scope.names);
             });
+
+
 
             $scope.home = function(){
                 //create new database controller
@@ -342,25 +345,15 @@
 -->
 
         <div id=app_header>
-            <a ng-click="home()"><button class = 'back'>&#x25c1;</button></a>
+            <a ng-click="home()"><button class = 'back'>Back</button></a>
 
             <a ng-click = 'home()'><button class = 'home'>M</button></a>
-            
+
             <div class="capsule-info"><img src="/mvc/public/images/pill_icon.png"> {{capsules[0].capsules}}</div>
 
         </div>
 
-
-        <div id="content_wrapper">
-
-            <div class="loadingDiv" ng-show="loading">
-                <p class="loadingText">LOADING...</p>
-                <img class="loadingGif" src="/mvc/public/images/loading.gif">
-
-            </div>
-
-            <div ng-show="showSearch">
-                <div class="search-bar-wrapper">
+            <div class="search-bar-wrapper">
                     <input class="search-bar" type=text ng-model=searchText[queryBy]>
                     <div class="search-by-wrapper">
                         <select class="search-by-drop-down" ng-model="queryBy">
@@ -371,19 +364,29 @@
                         </select>  
                     </div>
                 </div>
-                <!--
-<div class="search-by-bar">
-<input type="radio" name="All" ng-model="queryBy" value="$"> <label>All</label>
-<input type="radio" name="Generic" ng-model="queryBy" value="generic">
-<label>Generic</label>
 
-<input type="radio" name="Brand" ng-model="queryBy" value="brand"> 
-<label>Brand</label>
-</div>
--->
+        <div id="content_wrapper">
 
+            <div class="loadingDiv" ng-show="loading">
+                <p class="loadingText">LOADING...</p>
+                <img class="loadingGif" src="/mvc/public/images/loading.gif">
 
             </div>
+
+<!--            <div ng-show="showSearch">-->
+            
+
+<!--
+                <div class="search-by-bar">
+                    <input type="radio" name="All" ng-model="queryBy" value="$"> <label>All</label>
+                    <input type="radio" name="Generic" ng-model="queryBy" value="generic">
+                    <label>Generic</label>
+
+                    <input type="radio" name="Brand" ng-model="queryBy" value="brand"> 
+                    <label>Brand</label>
+                </div>
+-->
+<!--            </div>-->
             <div class="drug-block" ng-model="collapsed" ng-click="collapsed=!collapsed" ng-repeat="x in names | filter:searchText" ng-controller='showCtrl'>
                 <div class=drug-content>
                     <div class="visible-info">
@@ -392,6 +395,7 @@
                             <audio id="{{'myAudio-' + x['Generic']}}">
                                 <source src="{{x['Generic Audio'] | trustUrl}}" type="audio/wav">
                             </audio>
+
 
                             <div class=speaker-icon-wrapper><button ng-click="playAudio(x.Generic);$event.stopPropagation()" href=#><img src="/mvc/public/images/speaker.svg"></button></div>
 
@@ -462,6 +466,10 @@
                         </modal-dialog>
                     </div>
                     <div class="expand-info" ng-show="collapsed">
+                        <audio id="{{'myAudio-' + x['Brand']}}">
+                            <source src="{{x['Brand Audio'] | trustUrl}}" type="audio/wav">
+                        </audio>
+
                         <div class="drug-info-wrap"><label>Brand:</label> {{x.Brand}}<div  ng-click='$event.stopPropagation()' class=speaker-icon-wrapper><button ng-click="playAudio(x.Brand);$event.stopPropagation()" href=#><img src="/mvc/public/images/speaker.svg"></button></div></div>
                         <div class="drug-info-wrap"><label>Class:</label> {{x.Class}}</div>
                         <div class="drug-info-wrap"><label>Indication:</label> {{x.Indication}}</div>

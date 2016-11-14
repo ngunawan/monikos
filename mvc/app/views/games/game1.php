@@ -33,7 +33,7 @@
 
     <!--HTML STUFF HERE-->
     <div id=app_header>
-        <a onclick="gotoGamelist()"><button class = 'back'>&#x25c1;</button></a>
+        <a onclick="gotoGamelist()"><button class = 'back'>Back</button></a>
 
         <a ng-click = 'home()'><button class = 'home'>M</button></a>
 
