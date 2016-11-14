@@ -76,9 +76,15 @@ p#donedone {
 	z-index: 10;
 }
 
-.back{
-	position: fixed;
-	left:10px;
+#app_header button.back {
+    position: fixed;
+    left: 10px;
+    font-size: 16px;
+    border: 0;
+    background: #606060;
+    height: 40px;
+    margin-top: 13px;
+    width: 60px;
 }
 
 #app_header button{

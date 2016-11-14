@@ -41,7 +41,7 @@ function clean($string) {
     //adds div class to Mnemonics
     $string = str_replace('(', '(<div class=key-terms>', $string); 
     $string = str_replace(')', '</div>)', $string);
-    
+
     return $string;
     //    return preg_replace(' ', '-', $string); // Removes special chars.
     //   return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
@@ -49,9 +49,9 @@ function clean($string) {
 
 function cleanPlus($string) {
     $string = str_replace('+', '', $string); 
-    
+
     return $string;
-    
+
 }
 
 //encodes string to utf8
@@ -80,9 +80,9 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
     if ($outp != "") {$outp .= ",";}
     //    $rs["Brand/Generic Hint"] = clean(json_decode($rs["Brand/Generic Hint"]));
     $rs["Brand/Generic Hint"] = clean($rs["Brand/Generic Hint"]);
-     $rs["Class"] = cleanPlus($rs["Class"]);
-     $rs["Indication"] = cleanPlus($rs["Indication"]);
-     $rs["Black Box Warning"] = cleanPlus($rs["Black Box Warning"]);
+    $rs["Class"] = cleanPlus($rs["Class"]);
+    $rs["Indication"] = cleanPlus($rs["Indication"]);
+    $rs["Black Box Warning"] = cleanPlus($rs["Black Box Warning"]);
     //    $rs["Side Effects"] = clean($rs["Side Effects"]);
 
     ////   
@@ -100,7 +100,8 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
     $rs["Side Effects"] = json_encode($rs["Side Effects"]);
     utf8_encode_deep($rs["Generic Audio"]);
     $rs["Generic Audio"] = json_encode($rs["Generic Audio"]);
-
+    utf8_encode_deep($rs["Brand Audio"]);
+    $rs["Brand Audio"] = json_encode($rs["Brand Audio"]);
 
     //    if(is_utf8($rs["Brand/Generic Hint"])) {
     //        $rs["Brand/Generic Hint"] = json_encode($rs["Brand/Generic Hint"]);
@@ -129,6 +130,7 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
     $outp .= '"Black Box Warning":'   . $rs["Black Box Warning"]        . ',';
     $outp .= '"Mnemonic":'. $rs["Brand/Generic Hint"]       . ',';
     $outp .= '"Generic Audio":'. $rs["Generic Audio"]       . ',';
+    $outp .= '"Brand Audio":'. $rs["Brand Audio"]       . ',';
     $outp .= '"HintLikes":"'   . $rs["HintLikes"]        . '",';
     //    $outp .= '"Indication":"'. $rs["Indication"]     . '"}';
     $outp .= '"HintDislikes":"'. $rs["HintDislikes"]     . '"}';

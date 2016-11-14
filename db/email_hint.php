@@ -34,7 +34,7 @@ Section: x
         $drug = $_POST['drug'];
         $mnemonic = $_POST['mnemonic'];
         $from = 'From: Monikos'; 
-        $to = 'nikkig2223@gmail.com'; 
+        $to = 'monikos.llc@gmail.com'; 
         $subject = 'New Mnemonic Suggestion';
 
         $body = "From: $name\n Message:\n $mnemonic Drug: $drug";
