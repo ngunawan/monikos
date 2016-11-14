@@ -279,7 +279,8 @@ app.controller('matchingCtrl', function($scope, $http) {
                     //document.getElementById("tryagain").onclick = function() { window.location.reload() };
                     //document.getElementById("tryagain").value = "Play New Round";
                     //document.getElementById("donedone").innerHTML = "Game completed! Well done!";
-                    alert("congratulations you completed the game, click 'play new round' to play another round.");
+                    //alert("congratulations you completed the game, click 'play new round' to play another round.");
+                    $('#completeMessage').slideDown('fast');
                 }
                 console.log("IM HERE 6");
             }

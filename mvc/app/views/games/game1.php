@@ -28,6 +28,10 @@
         function gotoGamelist(){
             window.location = window.location.origin + "/mvc/public/games/menu/" + <?=$data['lid']?>;
         }
+
+        $('#new_round').on('click', function(){
+            $('#completeMessage').slideUp('fast');
+        });
     </script>
     
 
@@ -43,6 +47,8 @@
 	
     <div id=app_content>
         <div id=app_body>
+
+            <div id="completeMessage" style="display:none">Congratulations, you finished this round. Click play "play new round" to play again.</div>
 
             <div ng-if="firstLoad">{{getlid(<?=$data['lid']?>)}}</div>	
 

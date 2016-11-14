@@ -205,3 +205,19 @@ button:hover {
 .drugGridCell {
     padding: 5px;
 }
+
+div#completeMessage {
+    position: fixed;
+    z-index: 5;
+    text-align: center;
+    width: 300px;
+    font-family: 'Raleway',sans-serif;
+    font-size: 20px;
+    background: #222;
+    padding: 30px;
+    color: white;
+    border-radius: 20px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
