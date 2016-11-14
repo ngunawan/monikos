@@ -28,7 +28,6 @@
 		<p id="challengeFlag" style="display:none"><?=$data['challengeFlag']?></p>
 		<!---->
 		<div id="challengeInfoBar" ng-show="!checkIfBeingChallenged()">
-
 			<p id="user2Text" class="col-md-6 col-sm-6 col-xs-6 challengeInfoText">Challenging: <?=$data['user2']?></p>
 			<p id="betQuantityText" class="col-md-6 col-sm-6 col-xs-6 challengeInfoText">Bet Quantity: <?=$data['bet']?></p>
 		</div>

@@ -44,7 +44,7 @@
         <div class="wrapper">
             <input id="un" type="text" name="username" placeholder="username">
             <input id="email" type="text" name="email" placeholder="email">
-            <input id="pw" type="text" name="password" placeholder="password">
+            <input id="pw" type="password" name="password" placeholder="password">
             <button ng-click="createAccount()">Create</button>
 <!--
             <p>username: {{response.data[0].username}}</p>

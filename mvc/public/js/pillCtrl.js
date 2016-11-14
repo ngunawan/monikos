@@ -1,6 +1,7 @@
 var app = angular.module('myApp', []);
         app.controller('pillCtrl', function($scope, $http) {
         $scope.challengingFlag = false;
+        $scope.initTime = (new Date).getTime()/1000;
         $scope.test = "Y";
         $scope.index = 0;
         $scope.word = null;
@@ -74,6 +75,7 @@ var app = angular.module('myApp', []);
       $http.post(listurl, data, config)
       .then(function (response) {
           console.log(response.data.drugnames);
+          console.log("ABOUT TO PRINT SCOPE SELECT");
           $scope.select = response.data.drugnames.split(",");
           console.log("SELCT " + $scope.select[0]);
           console.log("select list " + $scope.select.length);
@@ -226,9 +228,12 @@ var app = angular.module('myApp', []);
 				window.move();
 				document.getElementById("result").remove();
 				document.getElementById("wrong").remove();	
-        if($scope.checkIfInChallengeMode()){
+        if($scope.checkIfBeingChallenged()){
+          document.getElementById("finished").innerHTML = 'DETERMINING RESULTS...';
+          $scope.handleBeingChallengedCompletion();
+        }else if($scope.checkIfInChallengeMode()){
           $scope.handleChallengeModeCompletion();
-          document.getElementById("finished").innerHTML = 'COMPLETED ROUND CHALLENGE SENT';
+          document.getElementById("finished").innerHTML = 'CHALLENGE SENT';
         }else{
           document.getElementById("finished").innerHTML = 'COMPLETED ROUND';
         }
@@ -341,9 +346,15 @@ var app = angular.module('myApp', []);
  					
  					if (cuIn == $scope.finalList.length){
 						window.move();
-            if($scope.checkIfInChallengeMode()){
+            if($scope.checkIfBeingChallenged()){
+              document.getElementById("finished").innerHTML = 'DETERMINING RESULTS...';
+              $scope.handleBeingChallengedCompletion();
+
+              //if(winner){ document.getElementById("finished").innerHTML = 'CONGRADULATIONS YOU WON'; } else{ document.getElementById("finished").innerHTML = 'YOU LOST'; }
+
+            }else if($scope.checkIfInChallengeMode()){
               $scope.handleChallengeModeCompletion();
-              document.getElementById("finished").innerHTML = 'COMPLETED ROUND CHALLENGE SENT';
+              document.getElementById("finished").innerHTML = 'CHALLENGE SENT';
             }else{
 			 			  document.getElementById("finished").innerHTML = 'COMPLETED ROUND';
 					  }
@@ -418,29 +429,180 @@ var app = angular.module('myApp', []);
   }
 
   $scope.checkIfBeingChallenged = function(){
-    if($('#challengeFlag').html() == 'beingchallenge'){
+    if($('#challengeFlag').html() == 'beingchallenged'){
       return true;
     }
     return false;
   }
 
+  
+
   $scope.handleChallengeModeCompletion = function(){
     var curUrl = window.location.href;
     var urlArr = curUrl.split('/');
+    var challengeidUrlPosition = urlArr.length-1;
     for(var i in urlArr){
       if(urlArr[i] == "challenge"){
         urlArr[i] = "beingchallenged";
       }
     }
-
-
-
+    var challengeid = urlArr[challengeidUrlPosition];
     var senderUrl = urlArr.join("/");
-    alert("please sned this url to challengee" + senderUrl);
+    $scope.updateChallengeChallenging(challengeid, senderUrl);
+    console.log(senderUrl);
+  }
 
+  $scope.updateChallengeChallenging = function(id, senderUrl){
+    var finalScore = Math.ceil((((new Date).getTime()/1000) - $scope.initTime)*$scope.score);
+    var data = $.param({
+      challengeid : id,
+      user1score: finalScore
+    });
 
-    
-    
+    var config = {
+      headers : {
+        'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+      }
+    };
+
+    var url = "/db/update_challenge_challenging.php";
+    $http.post(url, data, config)
+    .then(function (response) {
+      console.log(response);
+      //window.open('mailto:danushac@gmail.com?subject=Monikos_Challenge&body=You have been challenged go to this url to access the challenge ' + senderUrl);
+      $scope.sendEmail(senderUrl);
+    }); 
+  }
+
+  $scope.sendEmail = function(senderUrl){
+    var curUrl = window.location.href;
+    var urlArr = curUrl.split('/');
+    var user2UrlPosition = urlArr.length-3;
+    var gameUrlPosition = urlArr.length-4;
+    var betUrlPosition = urlArr.length-2;
+    var challengeBet = urlArr[betUrlPosition];
+    var challengeGame = urlArr[gameUrlPosition];
+    var usr2 = urlArr[user2UrlPosition];
+    var usr1 = getCookie("username");
+
+    var data = $.param({
+      url: senderUrl,
+      user2: usr2,
+      user1: usr1,
+      bet: challengeBet,
+      game: challengeGame
+    });
+
+    var config = {
+      headers : {
+        'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+      }
+    };
+
+    var url = "/db/send_email_user2.php";
+    $http.post(url, data, config)
+    .then(function (response) {
+      console.log(response);
+      //window.open('mailto:danushac@gmail.com?subject=Monikos_Challenge&body=You have been challenged go to this url to access the challenge ' + senderUrl);
+      
+    }); 
+  }
+
+  $scope.handleBeingChallengedCompletion = function(){
+    var curUrl = window.location.href;
+    var urlArr = curUrl.split('/');
+    var challengeidUrlPosition = urlArr.length-1;
+
+    var challengeid = urlArr[challengeidUrlPosition];
+
+    $scope.updateChallengeBeingChallenged(challengeid);
+
+  }
+
+  $scope.updateChallengeBeingChallenged = function(id){
+    var finalScore = Math.ceil((((new Date).getTime()/1000) - $scope.initTime)*$scope.score);
+    console.log("final score user 2" + finalScore);
+    var data = $.param({
+      challengeid : id,
+      user2score: finalScore,
+
+    });
+
+    var config = {
+      headers : {
+        'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+      }
+    };
+    var winner;
+    var url = "/db/update_challenge_being_challenged.php";
+    $http.post(url, data, config)
+    .then(function (response) {
+      console.log(response);
+      winner = $scope.determineWinner(id);
+    });
+
+  }
+
+  $scope.determineWinner = function(id){
+    var data = $.param({
+      challengeid : id
+    });
+
+    var config = {
+      headers : {
+        'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+      }
+    };
+
+    var url = "/db/determine_winner.php";
+    $http.post(url, data, config)
+    .then(function (response) {
+      console.log(response);
+      var user1 = response.data.user1;
+      var user2 = response.data.user2;
+      var user1score = response.data.user1score;
+      var user2score = response.data.user2score;
+      var bet = response.data.bet;
+
+      $scope.updatecapsules(id, user1, user2, user1score, user2score, bet);
+
+    });
+  }
+
+  $scope.updatecapsules = function(id, usr1, usr2, usr1score, usr2score, thebet){
+    var data = $.param({
+      challengeid : id,
+      user1: usr1,
+      user2: usr2,
+      user1score: usr1score,
+      user2score: usr2score,
+      bet: thebet
+    });
+
+    var config = {
+      headers : {
+        'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+      }
+    };
+
+    var url = "/db/update_challenge_capsules.php";
+    $http.post(url, data, config)
+    .then(function (response) {
+      console.log("UPDATING CAPSULES....");
+      console.log(response);
+      console.log("USER1 SCORE = " + usr1score);
+      console.log("USER2 SCORE = " + usr2score);
+      var score1 = parseInt(usr1score);
+      var score2 = parseInt(usr2score);
+      if(score1 > score2){
+        document.getElementById("finished").innerHTML = 'YOU WON!\n' + thebet + " CAPSULES";
+      }else if(score1 < score2){
+        document.getElementById("finished").innerHTML = 'YOU LOST\n' + thebet + " CAPSULES";
+      }else{
+        document.getElementById("finished").innerHTML = 'YOU TIED';
+      }
+
+    });
   }
 
 
