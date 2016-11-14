@@ -63,6 +63,7 @@ label {
 	color:#8d99ae;
     font-size: 13px;
     margin: 5px;
+	margin-top: 8px;
     padding: 10px;
 	width:auto;
 	line-height: 15px;
@@ -115,6 +116,7 @@ label {
 	line-height: normal;
 	color: #464a53;
 	overflow-y: scroll;
+	max-height: 475px;
 }
 
 .list-collection-block-short{
@@ -154,12 +156,9 @@ label {
 
 #app_content {
     display:block;
-    position:fixed;
-    height:625px;
     width:100vw;
     text-align: center;
-    margin-top:70px;
-	margin-bottom: 50px;
+	margin-bottom: 10%;
 	overflow-y: hidden;
 	overflow-x: hidden;
 }
@@ -187,6 +186,21 @@ label {
 }
 
 /**********CREATOR************/
+.text-container {
+	display: block;
+}
+
+.field-name{
+	color: white;
+}
+
+input#listname{
+	margin: 0;
+	border-radius: 4px;
+    text-align: -webkit-center;
+	border-style: none;
+}
+
 .form-group input {
 	margin-bottom: 20px;
 }
@@ -209,20 +223,22 @@ label {
 }
 
 .searchable-container label.drug_name{
-	border:1px solid #efefef;
+	border:0;
 	margin:8px; 
-	box-shadow:2px 4px 4px 0 #ccc;
-	font-size: 12px;
+	font-size: 14px;
 	width: 150px;
-	color:#8d99ae;
-	line-height: 12px;
+	color:white;
+	line-height: 14px;
 	width:90%; 
 	text-align: center; 
-	max-width: 145px;
+	max-width: 150px;
 	word-wrap: break-word;
 	white-space: normal;
 	vertical-align: middle;
 	padding: 10px;
+	background-color: #777;
+	border-radius: 4px;
+	letter-spacing: 2px;
 }
 
 input[type=checkbox]{
@@ -230,21 +246,74 @@ input[type=checkbox]{
 }
 
 .checkboxes input[type=checkbox]:checked + .drug_name {
-    background-color: #ff3333; !important
-	color: white !important;
-	box-shadow:2px 4px 4px 0 #ccc;
-	font-size: 12px;
-	width: 150px;
-	border:1px solid #efefef;
-	border-radius: 5px;
+    background: #ff3333;
+    border: 0;
+    border-radius: 4px;
+	border-bottom: 2px solid #D10000;
+    text-decoration: none;
+    color: #FFF;
+    font-size: 14px;
+    font-family: 'Raleway';
+    font-weight: 600;
+    padding: 10px;
+	font-weight: 600;
+	letter-spacing: 2px;
 }
 
-.drug-container .row {
-    height: 25%;
-    width: 100%;
+.drug-container .scrollableCreateDrugList {
+    height: 60%;
+    width: 95%;
     overflow-y: scroll;
     overflow-wrap: normal;
-    border: solid aliceblue 2px;
-	padding: 5px 0px 10px 0;
-	margin: auto;
+    padding: 10px;
+    margin: auto;
+    border: 1px solid #777;
+	border-radius: 4px;
+}
+
+#addbtn {
+    background: #ff3333;
+    border: 0;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #FFF;
+    font-size: 14px;
+    font-family: 'Raleway';
+    font-weight: 600;
+    padding: 5px 10px;
+}
+
+/***********OVERLAY CSS************/
+/* The Overlay (background) */
+.overlay {
+    /* Height & width depends on how you want to reveal the overlay (see JS below) */    
+    height: 100%;
+    width: 0;
+    position: fixed; /* Stay in place */
+    z-index: 30; /* Sit on top */
+    left: 0;
+    top: 0;
+    background-color: rgb(0,0,0); /* Black fallback color */
+    background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+/* Position the content inside the overlay */
+.overlay-content {
+    position: relative;
+    top: 5%;
+    width: 100%; 
+    text-align: center; 
+    margin-top: 20px; 
+}
+
+/* Position the close button (top right corner) */
+.overlay .closebtn {
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    font-size: 45px;
+	color: #ff3333;
+	font-family: 'Raleway',sans-serif;
 }

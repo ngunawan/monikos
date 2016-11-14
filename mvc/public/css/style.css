@@ -1,84 +1,32 @@
 @import 'https://fonts.googleapis.com/css?family=Raleway:300,500,900';
 
-* {
-	margin: 0;
-	padding: 0;
+button.btnBlue  {
+    background: #3071A9;
+    color:white;
+    font-family: 'Raleway'; 
+    font-weight: 600;
+    font-size: 12px;
+    width:27vw;
+   	height: 19vh; 
+    text-align: center;   
+	border-radius: 2px;
+	text-overflow: ellipsis;
+    white-space: initial;
+    word-wrap: break-word;
+    transition: all 0.3s ease 0s;
+    border-radius: 50px;
 }
+
+
+/* 
 
 body {
-	overflow-x: hidden;
-	overflow-y: hidden;
-	background-image: url("/mvc/public/images/m_blur.png");
-	 background-size:60vh 20vh;
-	 background-repeat: no-repeat;
-	 background-position: center;
-
+	background-image: url('completed.png');
+/* 	background-repeat: no-repeat; */
 }
+ */
 
-/*****************HEADER******************/
 
-button {
-	border:none;
-    background: transparent;
-}
-
-#app_header {
-    display: block;
-    position:fixed;
-    top:0;
-    width:100%;
-    height:65px;
-    background:#777;
-    text-align: center;
-    box-shadow: 0 0 5px #444;
-	z-index: 10;
-}
-
-.back{
-	position: fixed;
-	left:10px;
-}
-
-#app_header button{
-    background: transparent;
-    font-family: 'Raleway', 'sans-serif';
-    font-weight: 500;
-    font-size: 30px;
-	margin: 7px 0 0 0;
-    color:white;
-    border: 1px lightblue solid;
-	width: 45px;
-    border-radius: 4px;
-	padding: 2px;
-}
-
-/*****************BODY*************/
-.app_content {
-	margin-top: 65px;
-	width: 100%;
-}
-
-#app_body{
-
-}
-
-body#game1 {
-    background:#8192a5;
-}
-
-/*************Content***************/
-
-body#game1 div#app_content {
-    padding:15px;
-    margin-top:70px;
-}
-
-div#app_content {
-    display:block;
-    position:absolute;
-    width:100vw;
-    text-align: center;
-}
 
 p {
     font-family: 'Raleway', sans-serif;
@@ -115,6 +63,38 @@ p#donedone {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
+/******Header********/	
+#app_header {
+    display: block;
+    position:fixed;
+    top:0;
+    width:100%;
+    height:10%;
+    background:#777;
+    text-align: center;
+    box-shadow: 0 0 5px #444;
+	z-index: 10;
+}
+
+.back{
+	position: fixed;
+	left:10px;
+}
+
+#app_header button{
+    background: transparent;
+    font-family: 'Raleway',sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+	margin: 7px 0 0 0;
+    color:white;
+    border: 1px lightblue solid;
+	width: 45px;
+    border-radius: 4px;
+	padding: 2px;
+}
+/******Header END********/
+
 .columns {
   columns: 3;
 }
@@ -123,6 +103,9 @@ p#donedone {
     background: yellow;
   }
 
+button:hover {
+  background: #3071A9
+}
 
 .active{background-color:red;}
 
@@ -155,58 +138,62 @@ p#donedone {
   background: white;
 }
 
-
-button.btnBlue  {
-    background: #3071A9;
-    color:white;
-    font-family: 'Raleway', sans-serif; 
-    font-weight: 600;
-    font-size: 14px;
-    width:23vw;
-   	height: 18vh; 
-    text-align: center;   
-	text-overflow: ellipsis;
-    white-space: initial;
-    word-wrap: break-word;
-    transition: all 0.3s ease 0s;
-    border-radius: 6px;
-}
-
-
-button#new_round {
-    
-}
-
-/*
-.drugGridCell {
-    background-color: rgb(108, 122, 137);
-}
-*/
-
-.col-xs-3 {
-    padding:0;
-    margin:0;
-}
-
-.row {
-    margin-bottom:10px;
-}
-
-/**************Foooter************/
-#foot {
-    position:absolute;
-    bottom:0;
-    width:100vw;
+/**Inside the app header***/
+#tryagain {
+	/**margin-left:10vh; **/
+	font-size:20px; 
+	border: 5px solid lightgray; 
+	background-color: #0099ff; 
+	height: 6vh; 
+	width: 17vh;
 }
 
 #new_round {
-    font-family: 'Raleway';
+	font-size:14px; 
+	border: 1px solid lightblue;
+}
+
+.home{
+	position: relative;
+	z-index: 20;
+}
+
+/**Inside the app header END***/
+
+#app_content {
+/* 
+	background-image: url('completed.png');
+ */
+	/*background-repeat: no-repeat;*/
+	 background-image: url("http://danaelhertani.com/images/6-19-16-png-monikos.png");
+	 background-size:60vh 20vh;
+	 background-repeat: no-repeat;
+	 background-position: center; 
+}
+
+#app_body {
+    margin-top: -10%;
+    /*margin-bottom: 10%;
+	/*height: 80%;*/
+	width: 90vw;
+    height: 50vh;
+	z-index: 2;
+	
+}
+
+.footer {
+	text-align: center;
+	position: fixed;
+	bottom:0;
 	width: 100%;
-	height:50px;
-	background-color: #ff3333;
+	height:7vh;
+	background-color: #777;
 	color:white;
+	font-family: 'Raleway',sans-serif;
+	font-size: 30px;
+	letter-spacing: 5px;
+	padding: 5px;
+	z-index: 25;
 	font-weight: 900;
 	box-shadow: 0 0 5px #444;
-    font-size: 28px;
-    width:100%;
 }

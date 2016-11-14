@@ -13,7 +13,9 @@
     <div id='app_content'>
 
         <div class='add-list-block'>
-            <button id="addListButton" ng-click="showCreator = true">
+			<!--create new list button go here -->
+			
+            <button onclick="openNav()">
                 <label>CREATE NEW LIST</label>
             </button>
         </div>
@@ -38,14 +40,21 @@
             </div>
                         
         </div>
+		
+<!-------LIST CREATOR--------->  
+		
+<!-- The overlay -->
+<div id="createList_overlay" class="overlay">
 
-        <div ng-show="showCreator" class=list-creator>
-            <div class ='text-container'>
+  <!-- Button to close the overlay navigation -->
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+  <!-- Overlay content -->
+  <div class="overlay-content"> 
+   		<div class ='text-container'>
                 <div class=field-name>LIST TITLE: </div>
-                <br>
-                <input id = 'listName' ng-model=listform.name type="text" required>
-            </div>
-            
+                <input id = 'listName' ng-model=listform.name type="text" required>	
+           </div>
 <!-------LIST CREATOR--------->         
 <div class="list-container">        
     <div class="form-group">
@@ -56,7 +65,8 @@
     <div class = 'drug-container'>  
         <div class="form-group">
             <div class="searchable-container">
-                <div class="row">
+                
+				<div class= 'scrollableCreateDrugList'>
 
                 <div ng-repeat="drug in drugs">
                 <div class="item col-xs-6 col-sm-6">
@@ -74,9 +84,15 @@
         </div>
     </div>  
     </div>
-         <button ng-click=addList()>Add List</button>
-        </div>
-    </div>      
+         <button id ='addbtn' ng-click=addList()>Add List</button>
+
+  </div> <!--overlay content end-->
+
+</div><!--overlay end-->
+
+<!-------LIST CREATOR END--------->  
+   
+	</div>
         
     <div class = 'play' ng-click="launchGame()">
         <p>PLAY</p>
@@ -87,6 +103,17 @@
 
 
 <script> 
+	
+		/* Open when someone clicks on the span element */
+	function openNav() {
+		document.getElementById("createList_overlay").style.width = "100%";
+	}
+
+	/* Close when someone clicks on the "x" symbol inside the overlay */
+	function closeNav() {
+		document.getElementById("createList_overlay").style.width = "0%";
+	}
+	
     $(document).ready(function () {
         $('.list-collection-block').on('click', '.list-block',function(){
             //$(this).next('.list-block .list-info-block').slideToggle();
@@ -115,41 +142,3 @@
 });
 
 </script>
-
-
-    
-
-
-
-<!--<body ng-app="myApp" ng-controller="myCtrl" id="main_app_module">
-    
-    
-    <div id=app_content>
-               
-        <div class=add-list-block>
-            <button ng-click="showCreator = true"><label>CREATE NEW LIST</label></button></div>
-        
-        <div ng-show="showCreator" class=list-creator>
-            <label class=field-name>Name: </label><br><input id = 'listName' ng-model=listform.name type=text>
-            <br>
-            <label id='drugList' class=field-name>Drugs: </label>
-            <div ng-repeat="drug in drugs">
-                <input type=checkbox checklist-model="listform.drugs" checklist-value="drug.Brand"> <label>{{drug.Brand}}</label>
-            </div>
-            <br>
-            <button ng-click=addList()>Add List</button>
-        </div>
-        
-        <div class=list-collection-block>
-            
-            <div class=list-block ng-repeat="list in lists"><h1>{{list.name}}</h1>
-            
-                <div class=list-info-block>
-                    <div class=list-drugs>
-                        <label>Drugs:</label>{{list.drugs}}           
-                    </div>
-                </div>
-            </div>
-        </div>
-
-</body>-->
