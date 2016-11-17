@@ -142,7 +142,9 @@ app.controller('myCtrl', function($scope, $http) {
             });
 		   
             $scope.listform = {name: "",
-                               drugs: []};    
+                               drugs: []};
+            closeNav();
+            window.location.reload(); 
         }
 	   
         $scope.home = function(){

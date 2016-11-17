@@ -63,6 +63,17 @@
 		    <div id="result"></div>
 		   <div id = 'finished'></div>
 
+		   <div id="challengeCompleteMessage" style="display:none">
+		   		<img id="challengeCompleteLogo" src="/mvc/public/images/white_logo.png">
+
+		   		<p class="challengeCompleteText" ng-show="checkIfInChallengeMode() && !checkIfBeingChallenged()">Your challenge has been sent to <?=$data['user2']?>. Once they answer it, you'll either lose or win <?=$data['bet']?> capsules. Click the button below to return to the game menu.</p>
+
+		   		<p class="challengeCompleteText" ng-show="checkIfBeingChallenged()"></p>
+
+		   		<div id='challenge_complete_btn'><button class = "button button5" onclick="gotoGamelist()" >Game Menu</button></div>
+
+		   </div>
+
 	 	</div> <!-- /app_body -->
 		
 		<div class = 'btn_footer'>

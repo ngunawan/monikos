@@ -91,7 +91,7 @@
                 console.log(response);
                 $scope.response = response;
                 challengeId = response.data[0].challengeid;
-                window.location = window.location.origin + "/mvc/public/games/"+dagame+"/" + <?=$data['lid']?> + "/" + challengeFlag + "/" + challengeGame + "/" + challengeUser + "/" + challengeBet + "/" + challengeId;
+                window.location = window.location.origin + "/mvc/public/games/"+dagame+"/" + <?=$data['lid']?> + "/" + challengeFlag + "/" + challengeGame + "/" + usr1 + "/" + challengeUser + "/" + challengeBet + "/" + challengeId;
             }); 
 
 

@@ -32,12 +32,12 @@ class Games extends Controller {
 		$this->view('games/gamemenu', ['lid'=> $lid]);	
 	} 
 
-	public function game1($lid = '', $challengeFlag = '', $game = '', $user2 = '', $bet = '', $challengeid = ''){
-		$this->view('games/game1',['lid'=> $lid, 'challengeFlag'=> $challengeFlag, 'game'=> $game,'user2'=> $user2,'bet'=> $bet, 'challengeid'=> $challengeid]);
+	public function game1($lid = '', $challengeFlag = '', $game = '', $user1 = '', $user2 = '', $bet = '', $challengeid = ''){
+		$this->view('games/game1',['lid'=> $lid, 'challengeFlag'=> $challengeFlag, 'game'=> $game,'user1'=> $user1, 'user2'=> $user2,'bet'=> $bet, 'challengeid'=> $challengeid]);
 	}
 	
-	public function game2($lid = '', $challengeFlag = '', $game = '', $user2 = '', $bet = '', $challengeid = ''){
-		$this->view('games/game2',['lid'=> $lid, 'challengeFlag'=> $challengeFlag, 'game'=> $game,'user2'=> $user2,'bet'=> $bet, 'challengeid'=> $challengeid]);
+	public function game2($lid = '', $challengeFlag = '', $game = '', $user1 = '', $user2 = '', $bet = '', $challengeid = ''){
+		$this->view('games/game2',['lid'=> $lid, 'challengeFlag'=> $challengeFlag, 'game'=> $game, 'user1'=> $user1, 'user2'=> $user2,'bet'=> $bet, 'challengeid'=> $challengeid]);
 	} 
 }
 
