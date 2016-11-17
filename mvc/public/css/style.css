@@ -269,6 +269,21 @@ img#challengeCompleteLogo {
     width: 150px;
     margin-bottom: 20px;
 }
+button#inner_challenge_complete_btn {
+    background: inherit;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+}
+
+button#inner_challenge_complete_btn:focus {
+    background: rgb(108, 122, 137);
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+}
 
 #cssload-pgloading {
   transition: opacity .25s ease-in-out;

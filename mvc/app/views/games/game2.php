@@ -72,7 +72,7 @@
 
 		   		<p class="challengeCompleteText" ng-show="checkIfBeingChallenged()"></p>
 
-		   		<div id='challenge_complete_btn'><button class = "button button5" onclick="gotoGamelist()" >Game Menu</button></div>
+		   		<div id='challenge_complete_btn'><button id="inner_challenge_complete_btn" class="button button5" onclick="gotoGamelist()" >Game Menu</button></div>
 
 		   </div>
 

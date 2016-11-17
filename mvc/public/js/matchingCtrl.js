@@ -19,6 +19,14 @@ app.controller('matchingCtrl', function($scope, $http) {
 
     $scope.select =[];
 
+    function setRequestConfig(){
+        return {
+          headers : {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+          }
+        };    
+    }
+
     function challengeComplete(){
       $('#challengeCompleteMessage').slideDown('fast');
     }
@@ -380,12 +388,16 @@ app.controller('matchingCtrl', function($scope, $http) {
                 $scope.secondCard.active = 'Y';
                 console.log($scope.numCorrect + " num right" );
                 console.log($scope.names.length + " num length" );
-                $scope.score +=2;
+                //$scope.score +=2;
                 //$scope.$apply(function () {
                 //    console.log("IM HERE 3");
                 //    $scope.score = $scope.score +2; 
                 //});
                 $scope.score = $scope.score +2;
+                if(!$scope.checkIfInChallengeMode()){
+                    $scope.increaseCapules(2);
+                }
+
 
                 if ($scope.numCorrect == $scope.names.length){
                     if($scope.checkIfBeingChallenged()){
@@ -591,6 +603,42 @@ app.controller('matchingCtrl', function($scope, $http) {
     $('.userText').css({"display":"none"});
     $('.outcomeMessage').css({"display":"block"});
     $('.outcomeMessage').html(message);
+  }
+
+  $scope.increaseCapules = function(caps){
+    //we are only updating capsules per click on single player
+    var curUser = getCookie('username');
+    var curUserId = getCookie('user_id');
+
+    console.log("CURRENT USER"+curUser);
+
+    var data = $.param({
+      capsules: caps,
+      id: curUserId,
+      user: curUser
+    });
+
+    var config = setRequestConfig();
+
+    var url = "/db/update_capsules.php";
+    $http.post(url, data, config)
+    .then(function (response) {
+      console.log(response);
+      if(response.data.records != undefined){
+        $scope.capsules = response.data.records;
+        $scope.flashPills();
+      }else{
+        alert("there was an error processing the request");
+      }
+      
+      //alert('updated capsules');
+    });
+  }
+
+  $scope.flashPills = function(){
+    $(".capsule-info").fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
+    $("#updated-capsules-indicator").css({'color':'rgb(46, 204, 113)'});
+    $("#updated-capsules-indicator").fadeIn(800).fadeOut(800);
   }
 
 

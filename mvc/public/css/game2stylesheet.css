@@ -144,7 +144,10 @@ p#wrong {
 }
 
 /************Buttons**********/
-
+#inner_challenge_complete_btn:focus {
+    outline: none;
+    background: inherit;
+}
 .btn_footer {
 	position: fixed;
 	bottom:0;
