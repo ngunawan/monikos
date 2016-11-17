@@ -19,9 +19,161 @@ app.controller('matchingCtrl', function($scope, $http) {
 
     $scope.select =[];
 
+    function challengeComplete(){
+      $('#challengeCompleteMessage').slideDown('fast');
+    }
+
+    $scope.checkIfBeingChallenged = function(){
+      if($('#challengeFlag').html() == 'beingchallenged'){
+        return true;
+      }
+      return false;
+    }
+
+    $scope.checkIfInChallengeMode = function(){
+        //$scope.challengingFlag = true;
+        if($('#challengeFlag').html() == 'challenge' || $('#challengeFlag').html() == 'challenge'){
+            return true;
+        }
+        return false;
+    }
+
+    $scope.getUser2 = function(){
+      var curUrl = window.location.href;
+      var urlArr = curUrl.split('/');
+      return urlArr[urlArr.length-3];
+    }
+    $scope.getUser1 = function(){
+      var curUrl = window.location.href;
+      var urlArr = curUrl.split('/');
+      return urlArr[urlArr.length-4];
+    }
+
+    function startTimer(duration, display) {
+        var timer = duration, minutes, seconds;
+        setInterval(function () {
+            minutes = parseInt(timer / 60, 10)
+            seconds = parseInt(timer % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            display.text(minutes + ":" + seconds);
+
+            if (++timer < 0) {
+                timer = duration;
+            }
+        }, 1000);
+    }
+
+     //Nik's edits
+    function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length,c.length);
+            }
+        }
+        return "";
+    }
+
+    $scope.checkIfChangedUser = function(){
+
+      if($scope.checkIfInChallengeMode()){
+        //check if being challenged
+        //if yes, see if there's a cookie present for "username" and "user_id"
+        //if the "username" cookie is the same as getUser2();
+        //do nothing, and call niks code
+        //otherwise
+        //, clear those, and do a login with just the username in the backend
+        //on the response, get the new username and user_id cookie info
+        //set the cookies to that
+        if(getCookie("username") == $scope.getUser2()){
+          updateCookieFrontEnd();
+        } else {
+
+          $scope.logout();
+          var usr2 = $scope.getUser2();
+          $scope.loginWithChallengedUser(usr2);
+        }
+      }else{
+        updateCookieFrontEnd();
+      }
+    }
+
+    $scope.logout = function(){
+      if(document.cookie.indexOf("user_id") > 0){   
+        document.cookie = "user_id=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/";
+      }
+      if(document.cookie.indexOf("username") > 0){  
+        document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/";
+      }
+    }
+
+    $scope.loginWithChallengedUser = function(usr2){
+      var url = "/db/do_username_login.php";
+        
+      var data = $.param({
+          username: usr2
+      });
+      var config = {
+          headers : {
+              'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+          }
+      };
+
+      $http.post(url, data, config)
+      .then(
+          function (response) {
+            //success
+            console.log(response);
+            document.cookie = "user_id="+response.data[0].user_id+"; expires="+(Date.now()+(86400 * 30))+"; path=/";
+            document.cookie = "username="+response.data[0].username+"; expires="+(Date.now()+(86400 * 30))+"; path=/";
+            updateCookieFrontEnd();
+          },function(response){
+            //failure
+            handleLoginFailure(response);
+      });  
+    }
+
+    function handleLoginFailure(){
+      alert("sorry we couldn't log you in");
+    }
+
+    function updateCookieFrontEnd(){
+
+      var id_cookie = getCookie("user_id");
+      console.log(id_cookie);
+
+      var data = $.param({
+          id : id_cookie
+      });
+
+      var config = {
+          headers : {
+              'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+          }
+      };
+
+      var url = "/db/get_capsule_info.php";
+      $http.post(url, data, config)
+          .then(function (response) {
+          console.log(response);
+          $scope.capsules = response.data.records;
+          console.log("THESE ARE THE CAPSULES" + $scope.capsules);
+      }); 
+      //end NIk's edits
+    }
+
+    $scope.checkIfChangedUser();
+
     //        document.getElementById("tryagain").style.visibility="hidden";
 
-    //dcedits
     $scope.firstLoad = true;
     $scope.getlid = function(lid){
         var config = {
@@ -49,45 +201,7 @@ app.controller('matchingCtrl', function($scope, $http) {
     }
     //end dcedits
 
-    //Nik's edits
-    function getCookie(cname) {
-        var name = cname + "=";
-        var ca = document.cookie.split(';');
-        for(var i = 0; i <ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0)==' ') {
-                c = c.substring(1);
-            }
-            if (c.indexOf(name) == 0) {
-                return c.substring(name.length,c.length);
-            }
-        }
-        return "";
-    }
-
-    var id_cookie = getCookie("user_id");
-    console.log(id_cookie);
-
-    var data = $.param({
-        id : id_cookie
-    });
-    
-    var config = {
-        headers : {
-            'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-        }
-    };
-    
-    var url = "/db/get_capsule_info.php";
-
-    $http.post(url, data, config)
-        .then(function (response) {
-        console.log(response);
-        $scope.capsules = response.data.records;
-    }); 
-
-
-    //end NIk's edits
+   
     $scope.getAllTheDrugs = function(){
         var url = "/db/get_drugs.php";
         $http.get(url)
@@ -194,6 +308,11 @@ app.controller('matchingCtrl', function($scope, $http) {
             $scope.names = shuffledObjects;
             numOfCards = shuffledObjects.length;
 
+            $('#cssload-pgloading').css({'opacity':'0.0'});
+            var fiveMinutes = 60 * 5;
+            var display = $('.timerText');
+            startTimer(0, display);
+
         });
     }
 
@@ -261,28 +380,26 @@ app.controller('matchingCtrl', function($scope, $http) {
                 $scope.secondCard.active = 'Y';
                 console.log($scope.numCorrect + " num right" );
                 console.log($scope.names.length + " num length" );
-                console.log("IM HERE 1");
                 $scope.score +=2;
-                console.log("IM HERE 2");
                 //$scope.$apply(function () {
                 //    console.log("IM HERE 3");
                 //    $scope.score = $scope.score +2; 
                 //});
                 $scope.score = $scope.score +2;
-                console.log("IM HERE 4");
-
-                console.log("IM HERE 5");
-
 
                 if ($scope.numCorrect == $scope.names.length){
-                    //document.getElementById("tryagain").style.width = "30vh";
-                    //document.getElementById("tryagain").onclick = function() { window.location.reload() };
-                    //document.getElementById("tryagain").value = "Play New Round";
-                    //document.getElementById("donedone").innerHTML = "Game completed! Well done!";
-                    //alert("congratulations you completed the game, click 'play new round' to play another round.");
-                    $('#completeMessage').slideDown('fast');
+                    if($scope.checkIfBeingChallenged()){
+                      $scope.setOutcomeMessage("DETERMINING RESULTS...");
+                      $scope.handleBeingChallengedCompletion();
+
+                    }else if($scope.checkIfInChallengeMode()){
+                      $scope.handleChallengeModeCompletion();
+                      challengeComplete();
+                    }else{
+                      $('#completeMessage').slideDown('fast');
+                    }
+                    
                 }
-                console.log("IM HERE 6");
             }
             else {
                 $scope.correct = "N";
@@ -297,11 +414,185 @@ app.controller('matchingCtrl', function($scope, $http) {
         $scope.clear = true;
     }
 
-    
-
     $scope.home = function(){
         window.location = window.location.origin + "/mvc/public/home/";
     }
+
+  $scope.handleChallengeModeCompletion = function(){
+    var curUrl = window.location.href;
+    var urlArr = curUrl.split('/');
+    var challengeidUrlPosition = urlArr.length-1;
+    for(var i in urlArr){
+      if(urlArr[i] == "challenge"){
+        urlArr[i] = "beingchallenged";
+      }
+    }
+    var challengeid = urlArr[challengeidUrlPosition];
+    var senderUrl = urlArr.join("/");
+    $scope.updateChallengeChallenging(challengeid, senderUrl);
+    console.log(senderUrl);
+  }
+
+  $scope.updateChallengeChallenging = function(id, senderUrl){
+    var finalScore = Math.ceil((((new Date).getTime()/1000) - $scope.initTime)*$scope.score);
+    var data = $.param({
+      challengeid : id,
+      user1score: finalScore
+    });
+
+    var config = {
+      headers : {
+        'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+      }
+    };
+
+    var url = "/db/update_challenge_challenging.php";
+    $http.post(url, data, config)
+    .then(function (response) {
+      console.log(response);
+      //window.open('mailto:danushac@gmail.com?subject=Monikos_Challenge&body=You have been challenged go to this url to access the challenge ' + senderUrl);
+      $scope.sendEmail(senderUrl);
+    }); 
+  }
+
+  $scope.sendEmail = function(senderUrl){
+    var curUrl = window.location.href;
+    var urlArr = curUrl.split('/');
+    var gameUrlPosition = urlArr.length-5;
+    var betUrlPosition = urlArr.length-2;
+    var challengeBet = urlArr[betUrlPosition];
+    var challengeGame = urlArr[gameUrlPosition];
+    var usr2 = $scope.getUser2();
+    var usr1 = $scope.getUser1();
+
+    var data = $.param({
+      url: senderUrl,
+      user2: usr2,
+      user1: usr1,
+      bet: challengeBet,
+      game: challengeGame
+    });
+
+    var config = {
+      headers : {
+        'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+      }
+    };
+
+    var url = "/db/send_email_user2.php";
+    $http.post(url, data, config)
+    .then(function (response) {
+      console.log(response);      
+    }); 
+  }
+
+  $scope.handleBeingChallengedCompletion = function(){
+    var curUrl = window.location.href;
+    var urlArr = curUrl.split('/');
+    var challengeidUrlPosition = urlArr.length-1;
+
+    var challengeid = urlArr[challengeidUrlPosition];
+
+    $scope.updateChallengeBeingChallenged(challengeid);
+
+  }
+
+  $scope.updateChallengeBeingChallenged = function(id){
+    var finalScore = Math.ceil((((new Date).getTime()/1000) - $scope.initTime)*$scope.score);
+    console.log("final score user 2" + finalScore);
+    var data = $.param({
+      challengeid : id,
+      user2score: finalScore,
+
+    });
+
+    var config = {
+      headers : {
+        'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+      }
+    };
+    var winner;
+    var url = "/db/update_challenge_being_challenged.php";
+    $http.post(url, data, config)
+    .then(function (response) {
+      console.log(response);
+      winner = $scope.determineWinner(id);
+    });
+
+  }
+
+  $scope.determineWinner = function(id){
+    var data = $.param({
+      challengeid : id
+    });
+
+    var config = {
+      headers : {
+        'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+      }
+    };
+
+    var url = "/db/determine_winner.php";
+    $http.post(url, data, config)
+    .then(function (response) {
+      console.log(response);
+      var user1 = response.data.user1;
+      var user2 = response.data.user2;
+      var user1score = response.data.user1score;
+      var user2score = response.data.user2score;
+      var bet = response.data.bet;
+
+      $scope.updatecapsules(id, user1, user2, user1score, user2score, bet);
+
+    });
+  }
+
+  $scope.updatecapsules = function(id, usr1, usr2, usr1score, usr2score, thebet){
+    var data = $.param({
+      challengeid : id,
+      user1: usr1,
+      user2: usr2,
+      user1score: usr1score,
+      user2score: usr2score,
+      bet: thebet
+    });
+
+    var config = {
+      headers : {
+        'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+      }
+    };
+
+    var url = "/db/update_challenge_capsules.php";
+    $http.post(url, data, config)
+    .then(function (response) {
+      console.log("UPDATING CAPSULES....");
+      console.log(response);
+      console.log("USER1 SCORE = " + usr1score);
+      console.log("USER2 SCORE = " + usr2score);
+      var score1 = parseInt(usr1score);
+      var score2 = parseInt(usr2score);
+      document.getElementById("finished").innerHTML = '';
+      if(score1 > score2){
+        $('.challengeCompleteText').html("YOU WON " + thebet + " CAPSULES! Looks like you're quicker than "+$scope.getUser1()+". Click the button below to return to the game menu.");
+      }else if(score1 < score2){
+        $('.challengeCompleteText').html("You lost " + thebet + " capsules against "+$scope.getUser1()+". Click the button below to return to the game menu.");
+      }else{
+        $('.challengeCompleteText').html("You tied.\nNeither you or "+$scope.getUser1()+" are awarded any capsules for this challenge. Click the button below to return to the game menu.");
+      }
+      challengeComplete();
+
+    });
+  }
+
+  //keeping this, maybbe they ont like the pop up
+  $scope.setOutcomeMessage = function(message){
+    $('.betQuantityText').css({"display":"none"});
+    $('.userText').css({"display":"none"});
+    $('.outcomeMessage').css({"display":"block"});
+    $('.outcomeMessage').html(message);
+  }
+
 
 });
 

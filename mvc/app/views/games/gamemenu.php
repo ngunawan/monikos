@@ -235,7 +235,7 @@
     <div id='app_header'>
         <a onclick="golistManager()" ><button class = 'back'>Back</button></a>
 
-        <a onclick="gohome()"><button>M</button></a>
+        <a onclick="gohome()"><img id="toplogo" src="/mvc/public/images/logo_without_words_version_1.png"></a>
          <div class="capsule-info"><img src="/mvc/public/images/pill_icon.png"> {{capsules[0].capsules}}</div>
     </div>
 

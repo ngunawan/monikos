@@ -17,7 +17,7 @@
 	
 	   <a onclick="gotoGamelist()" ><button class = 'back'>Back</button></a>
      
-       <a ng-click='home()'><button>M</button></a>
+       <a ng-click='home()'><img id="toplogo" src="/mvc/public/images/logo_without_words_version_1.png"></a>
 
        <div class="capsule-info"><img src="/mvc/public/images/pill_icon.png"> {{capsules[0].capsules}}</div>
 		
@@ -28,13 +28,15 @@
 		<p id="challengeFlag" style="display:none"><?=$data['challengeFlag']?></p>
 		<!---->
 		<div id="challengeInfoBar" ng-show="checkIfInChallengeMode() && !checkIfBeingChallenged()">
-			<p class="col-md-6 col-sm-6 col-xs-6 challengeInfoText userText">Challenging: <?=$data['user2']?></p>
-			<p class="col-md-6 col-sm-6 col-xs-6 challengeInfoText betQuantityText">Bet Quantity: <?=$data['bet']?></p>
+			<p class="col-md-4 col-sm-4 col-xs-4 challengeInfoText userText">Challenging: <?=$data['user2']?></p>
+            <p class="col-md-4 col-sm-4 col-xs-4 challengeInfoText timerText"></p>
+            <p class="col-md-4 col-sm-4 col-xs-4 challengeInfoText betQuantityText">Bet Quantity: <?=$data['bet']?></p>
 			<p style="display:none" class="col-md-12 col-sm-12 col-xs-12 challengeInfoText outcomeMessage"></p>
 		</div>
 		<div id="challengeInfoBar" ng-show="checkIfBeingChallenged()">
-			<p class="col-md-6 col-sm-6 col-xs-6 challengeInfoText userText">Challenged By: <?=$data['user1']?></p>
-			<p class="col-md-6 col-sm-6 col-xs-6 challengeInfoText betQuantityText">Bet Quantity: <?=$data['bet']?></p>
+			<p class="col-md-4 col-sm-4 col-xs-4 challengeInfoText userText">Challenged By: <?=$data['user1']?></p>
+            <p class="col-md-4 col-sm-4 col-xs-4 challengeInfoText timerText"></p>
+            <p class="col-md-4 col-sm-4 col-xs-4 challengeInfoText betQuantityText">Bet Quantity: <?=$data['bet']?></p>
 			<p style="display:none" class="col-md-12 col-sm-12 col-xs-12 challengeInfoText outcomeMessage"></p>
 		</div>
        	<div id=app_body>

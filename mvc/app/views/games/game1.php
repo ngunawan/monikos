@@ -39,18 +39,55 @@
     <div id=app_header>
         <a onclick="gotoGamelist()"><button class = 'back'>Back</button></a>
 
-        <a ng-click = 'home()'><button class = 'home'>M</button></a>
+        <a ng-click = 'home()'><img id="toplogo" src="/mvc/public/images/logo_without_words_version_1.png"></a>
 
-        <div class="capsule-info"><img src="../../../public/images/pill_icon.png"> {{capsules[0].capsules}}</div>
+        <div class="capsule-info"><img src="/mvc/public/images/pill_icon.png"> {{capsules[0].capsules}}</div>
 
     </div>
 	
     <div id=app_content>
+        <div id="completeMessage" style="display:none">Congratulations, you finished this round. Click play "play new round" to play again.</div>
+        <p id="challengeFlag" style="display:none"><?=$data['challengeFlag']?></p>
+        
+        <div id="challengeInfoBar" ng-show="checkIfInChallengeMode() && !checkIfBeingChallenged()">
+            <p class="col-md-4 col-sm-4 col-xs-4 challengeInfoText userText">Challenging: <?=$data['user2']?></p>
+            <p class="col-md-4 col-sm-4 col-xs-4 challengeInfoText timerText"></p>
+            <p class="col-md-4 col-sm-4 col-xs-4 challengeInfoText betQuantityText">Bet Quantity: <?=$data['bet']?></p>
+            <p style="display:none" class="col-md-12 col-sm-12 col-xs-12 challengeInfoText outcomeMessage"></p>
+        </div>
+        <div id="challengeInfoBar" ng-show="checkIfBeingChallenged()">
+            <p class="col-md-4 col-sm-4 col-xs-4 challengeInfoText userText">Challenged By: <?=$data['user1']?></p>
+            <p class="col-md-4 col-sm-4 col-xs-4 challengeInfoText timerText"></p>
+            <p class="col-md-4 col-sm-4 col-xs-4 challengeInfoText betQuantityText">Bet Quantity: <?=$data['bet']?></p>
+            <p style="display:none" class="col-md-12 col-sm-12 col-xs-12 challengeInfoText outcomeMessage"></p>
+        </div>
+
         <div id=app_body>
+            <div id="cssload-pgloading">
+                <div class="cssload-loadingwrap">
+                    <ul class="cssload-bokeh">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
 
-            <div id="completeMessage" style="display:none">Congratulations, you finished this round. Click play "play new round" to play again.</div>
+            
 
-            <div ng-if="firstLoad">{{getlid(<?=$data['lid']?>)}}</div>	
+            <div ng-if="firstLoad">{{getlid(<?=$data['lid']?>)}}</div>
+
+            <div id="challengeCompleteMessage" style="display:none">
+                <img id="challengeCompleteLogo" src="/mvc/public/images/white_logo.png">
+
+                <p class="challengeCompleteText" ng-show="checkIfInChallengeMode() && !checkIfBeingChallenged()">Your challenge has been sent to <?=$data['user2']?>. Once they answer it, you'll either lose or win <?=$data['bet']?> capsules. Click the button below to return to the game menu.</p>
+
+                <p class="challengeCompleteText" ng-show="checkIfBeingChallenged()"></p>
+
+                <div id='challenge_complete_btn'><button class = "button button5" onclick="gotoGamelist()" >Game Menu</button></div>
+
+           </div>	
 
             <img id="finished" src="" style="margin-top: 25px; margin-left: 2%">
             <div ng-if="numClicked < 2" >

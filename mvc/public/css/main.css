@@ -1011,4 +1011,9 @@ div#loginIconContainer {
     color:white;
 }
 
+img#toplogo {
+    width: 80px;
+    padding-top: 12px;
+}
+
 

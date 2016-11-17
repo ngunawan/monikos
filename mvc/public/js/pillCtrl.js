@@ -28,6 +28,13 @@ var app = angular.module('myApp', []);
       return false;
     }
 
+    $scope.checkIfInChallengeMode = function(){
+      if($('#challengeFlag').html() == 'challenge' || $('#challengeFlag').html() == 'challenge'){
+        return true;
+      }
+      return false;
+    }
+
     $scope.getUser2 = function(){
       var curUrl = window.location.href;
       var urlArr = curUrl.split('/');
@@ -37,6 +44,23 @@ var app = angular.module('myApp', []);
       var curUrl = window.location.href;
       var urlArr = curUrl.split('/');
       return urlArr[urlArr.length-4];
+    }
+
+    function startTimer(duration, display) {
+        var timer = duration, minutes, seconds;
+        setInterval(function () {
+            minutes = parseInt(timer / 60, 10)
+            seconds = parseInt(timer % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            display.text(minutes + ":" + seconds);
+
+            if (++timer < 0) {
+                timer = duration;
+            }
+        }, 1000);
     }
         //Nik's edits
     function getCookie(cname) {
@@ -55,7 +79,7 @@ var app = angular.module('myApp', []);
     }
 
     $scope.checkIfChangedUser = function(){
-      if($scope.checkIfBeingChallenged()){
+      if($scope.checkIfInChallengeMode()){
         
         //check if being challenged
         //if yes, see if there's a cookie present for "username" and "user_id"
@@ -72,6 +96,8 @@ var app = angular.module('myApp', []);
           var usr2 = $scope.getUser2();
           $scope.loginWithChallengedUser(usr2);
         }
+      }else{
+        updateCookieFrontEnd();
       }
     }
 
@@ -274,6 +300,9 @@ var app = angular.module('myApp', []);
   					console.log(shuffledObjects);
 
   					$scope.names = shuffledObjects;
+            var fiveMinutes = 60 * 5;
+            var display = $('.timerText');
+            startTimer(0, display);
         
 					
 		function makeIterator(array){
@@ -505,14 +534,6 @@ var app = angular.module('myApp', []);
  	});
   
   }//end to the giant get request
-
-  $scope.checkIfInChallengeMode = function(){
-    //$scope.challengingFlag = true;
-    if($('#challengeFlag').html() == 'challenge' || $('#challengeFlag').html() == 'challenge'){
-      return true
-    }
-    return false;
-  }
 
   $scope.handleChallengeModeCompletion = function(){
     var curUrl = window.location.href;
