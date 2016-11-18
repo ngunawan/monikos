@@ -163,7 +163,7 @@ app.controller('myCtrl', function($scope, $http) {
 
 		$scope.list_block = "list-block";
 		
-		$scope.selectlist = function(index, thisElem){
+		$scope.selectList = function(index, thisElem){
             $scope.passedId = $scope.listId[index]['list_id'];
 	       	console.log($scope.passedId);
 
