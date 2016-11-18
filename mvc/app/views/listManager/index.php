@@ -50,9 +50,9 @@
                 </div>
 
                 <!--<button class ='select' ng-click='selectlist($index, this)'>SELECT</button>-->
-                <button class ='selectList' ng-click='selectlist($index)'>SELECT</button>
+                <button class ='selectList' ng-click='selectList($index)'>SELECT</button>
 
-                <button class = 'deleteList'>DELETE LIST</button>
+                <button class='deleteList' ng-click='deleteList($index)'>DELETE LIST</button>
             </div>
 
         </div>

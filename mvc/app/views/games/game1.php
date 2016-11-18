@@ -41,6 +41,13 @@
         $('#new_round').on('click', function(){
             $('#completeMessage').slideUp('fast');
         });
+
+        $( document ).ready(function() {
+            $('.completeButton').on('click', function(){
+                $(this).css({"background":"#777"});
+            });
+        });
+
     </script>
     
 
@@ -69,7 +76,11 @@
     </div>
 	
     <div id=app_content>
-        <div id="completeMessage" style="display:none">Congratulations, you finished this round. Click play "play new round" to play again.</div>
+        <div id="completeMessage" style="display:none">
+            <p id="completeMessageText">Congratulations, you finished this round. </p>
+            <div class="completeButton" id="finishedPlayNewRoundButton" onclick="window.location.reload()">NEW ROUND</div>
+            <div class="completeButton" id="finishedBackToMenuButton" onclick="gotoGamelist()">MENU</div>
+        </div>
         <p id="challengeFlag" style="display:none"><?=$data['challengeFlag']?></p>
         
         <div id="challengeInfoBar" ng-show="checkIfInChallengeMode() && !checkIfBeingChallenged()">
@@ -166,6 +177,8 @@
         <button id ='new_round' onClick="window.location.reload()">PLAY NEW ROUND</button>
 
     </div>
+
+   
 
 </body>
 <!--</html>-->

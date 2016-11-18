@@ -285,6 +285,36 @@ button#inner_challenge_complete_btn:focus {
     width: 100%;
 }
 
+div#finishedPlayNewRoundButton:focus {
+    outline: none;
+    border: none;
+    background: #777;
+}
+div#finishedPlayNewRoundButton:hover {
+    cursor: pointer;
+}
+div#finishedPlayNewRoundButton {
+    background: #22A7F0;
+    padding: 5px;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+
+div#finishedBackToMenuButton:focus {
+    outline: none;
+    border: none;
+    background: #777;
+}
+div#finishedBackToMenuButton:hover {
+    cursor: pointer;
+}
+div#finishedBackToMenuButton {
+    background: #22A7F0;
+    padding: 5px;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+
 #cssload-pgloading {
   transition: opacity .25s ease-in-out;
   -moz-transition: opacity .25s ease-in-out;

@@ -169,6 +169,28 @@ app.controller('myCtrl', function($scope, $http) {
 
 		}
 
+        $scope.deleteList = function(index){
+            $scope.passedId = $scope.listId[index]['list_id'];
+            
+            var url = "/db/delete_list.php";
+            
+            var data = $.param({
+                lid: $scope.passedId
+            });
+
+            var config = {
+                headers : {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                }
+            };
+
+            $http.post(url, data, config)
+            .then(function (response) {
+                console.log(response);
+                
+            }); 
+        }
+
 });
 
 $( document ).ready(function() {
@@ -185,5 +207,9 @@ $( document ).ready(function() {
 
     $('#addListButton').on('click', function(){
         $('.list-collection-block').addClass('list-collection-block-short');
+    });
+
+    $('.list-collection-block').on('click', '.list_block .deleteList',function(){
+        $(this).parent().remove();
     });
 });
