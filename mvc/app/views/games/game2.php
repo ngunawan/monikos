@@ -3,6 +3,14 @@
 <meta name='viewport' content="width=device-width, initial-scale=1" />
 
 <script src = '/mvc/public/js/pillCtrl.js'></script>
+<script> function toggleMenuNav() {
+        if($('#menu-popup').css('opacity') == 0) {
+            document.getElementById("menu-popup").style.opacity = "1";
+        } else {
+            document.getElementById("menu-popup").style.opacity = "0";
+
+        }
+    }</script>
 
 <script>
     function gotoGamelist(){
@@ -19,7 +27,19 @@
      
        <a ng-click='home()'><img id="toplogo" src="/mvc/public/images/logo_without_words_version_1.png"></a>
 
-       <div class="capsule-info"><img src="/mvc/public/images/pill_icon.png"> {{capsules[0].capsules}}</div>
+        <div onclick="toggleMenuNav()" class=menu-info><img src=/mvc/public/images/man-user.png></div>
+        <div id='menu-popup' class='menu-popup'>
+            <div class=notif-info>
+                <h2>Notifications</h2>
+                <p>There are no notifications at this moment.</p>
+            </div>
+            <div class=user-info>
+                <img src="/mvc/public/images/user_icon.png">
+                <div class=username-info>{{capsules[0].username}}</div>
+                <div class=email-info>({{capsules[0].email}})</div>
+                <div class=capsule-info>{{capsules[0].capsules}} Capsules</div>
+            </div>
+        </div>
 		
 	</div>	
 
