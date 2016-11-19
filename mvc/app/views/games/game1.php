@@ -59,7 +59,10 @@
 
 <!--        <div class="capsule-info"><span style="display:none" id="updated-capsules-indicator">+2</span> <img src="/mvc/public/images/pill_icon.png">{{capsules[0].capsules}}</div>-->
         
-         <div onclick="toggleMenuNav()" class=menu-info><img src=/mvc/public/images/man-user.png></div>
+        <div onclick="toggleMenuNav()" class=menu-info>
+            <span id="updated-capsules-indicator" style="display:none;float:left"></span><img src=/mvc/public/images/man-user.png>
+            
+        </div>
         <div id='menu-popup' class='menu-popup'>
             <div class=notif-info>
                 <h2>Notifications</h2>

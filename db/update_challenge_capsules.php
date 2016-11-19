@@ -7,6 +7,7 @@ require_once 'db_creds.php';
 if($_POST['user1score'] < $_POST['user2score']){
 
 	$output = "";
+	
 	$sql = "UPDATE Users SET capsules = capsules - " .$_POST['bet']. " WHERE username LIKE '" .$_POST['user2'] . "'";
 	if ($conn->query($sql) === TRUE) {
 	    $output .= '[{

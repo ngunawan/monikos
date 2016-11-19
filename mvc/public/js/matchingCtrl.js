@@ -12,7 +12,7 @@ app.controller('matchingCtrl', function($scope, $http) {
     $scope.finishedGame = false;
     $scope.score = 0;
     var shuffledObjects;
-
+    $scope.initTime = ((new Date).getTime()/1000);
 
     $scope.selected =[]
     $scope.clear = false;
@@ -91,8 +91,7 @@ app.controller('matchingCtrl', function($scope, $http) {
     }
 
     $scope.checkIfChangedUser = function(){
-
-      if($scope.checkIfInChallengeMode()){
+      if($scope.checkIfBeingChallenged()){
         //check if being challenged
         //if yes, see if there's a cookie present for "username" and "user_id"
         //if the "username" cookie is the same as getUser2();
@@ -156,7 +155,6 @@ app.controller('matchingCtrl', function($scope, $http) {
     function updateCookieFrontEnd(){
 
       var id_cookie = getCookie("user_id");
-      console.log(id_cookie);
 
       var data = $.param({
           id : id_cookie
@@ -173,7 +171,7 @@ app.controller('matchingCtrl', function($scope, $http) {
           .then(function (response) {
           console.log(response);
           $scope.capsules = response.data.records;
-          console.log("THESE ARE THE CAPSULES" + $scope.capsules);
+          //console.log("THESE ARE THE CAPSULES" + $scope.capsules);
       }); 
       //end NIk's edits
     }
@@ -199,9 +197,9 @@ app.controller('matchingCtrl', function($scope, $http) {
 
         $http.post(listurl, data, config)
             .then(function (response) {
-            console.log(response.data.drugnames);
+            //console.log(response.data.drugnames);
             $scope.select = response.data.drugnames.split(",");
-            console.log("SELCT " + $scope.select[0]);
+            //console.log("SELCT " + $scope.select[0]);
             $scope.getAllTheDrugs();
         });
         $scope.firstLoad = false;
@@ -216,23 +214,23 @@ app.controller('matchingCtrl', function($scope, $http) {
             .then(function (response) {
             console.log(response);
             //console.log(response);
-            console.log("IS SELECT STILL THE SAME " + $scope.select);
+            //console.log("IS SELECT STILL THE SAME " + $scope.select);
             $scope.names = response.data.records.slice(1,30);
             $scope.allDrugs = response.data.records;
-            console.log($scope.names);
-            console.log($scope.allDrugs);
-            console.log($scope.allDrugs[0].Brand)
+            //console.log($scope.names);
+            //console.log($scope.allDrugs);
+            //console.log($scope.allDrugs[0].Brand)
 
             if($scope.select[0][0].toUpperCase() == $scope.select[0][0]) {
                 var d;
                 for (d=0; d < $scope.select.length; d++){
-                    console.log("before if statement " + $scope.select[d]);
+                    //console.log("before if statement " + $scope.select[d]);
                     for(var x = 0; x < $scope.allDrugs.length; x++) {
                         if ($scope.allDrugs[x].Brand == $scope.select[d]){
-                            console.log("after if statement " + $scope.allDrugs[x].Generic);
+                            //console.log("after if statement " + $scope.allDrugs[x].Generic);
                             var a = $scope.allDrugs[x];
                             $scope.finalList.push($scope.allDrugs[x]);
-                            console.log("final list " + $scope.finalList.length);
+                            //console.log("final list " + $scope.finalList.length);
                         }
 
                     }
@@ -241,13 +239,13 @@ app.controller('matchingCtrl', function($scope, $http) {
             }
             else {
                 for (d=0; d < $scope.select.length; d++){
-                    console.log("before if statement " + $scope.select[d]);
+                    //console.log("before if statement " + $scope.select[d]);
                     for(var x = 0; x < $scope.allDrugs.length; x++) {
                         if ($scope.allDrugs[x].Generic == $scope.select[d]){
-                            console.log("after if statement " + $scope.allDrugs[x].Generic);
+                            //console.log("after if statement " + $scope.allDrugs[x].Generic);
                             var a = $scope.allDrugs[x];
                             $scope.finalList.push($scope.allDrugs[x]);
-                            console.log("final list " + $scope.finalList.length);
+                            //console.log("final list " + $scope.finalList.length);
                         }
 
                     }
@@ -257,12 +255,12 @@ app.controller('matchingCtrl', function($scope, $http) {
 
 
 
-            console.log("final list " + $scope.finalList[0]);
+            //console.log("final list " + $scope.finalList[0]);
 
             $scope.names = $scope.finalList;
 
 
-            console.log("length of names " + $scope.names.length);
+            //console.log("length of names " + $scope.names.length);
 
 
 
@@ -294,10 +292,10 @@ app.controller('matchingCtrl', function($scope, $http) {
                 }
             }
 
-            console.log("length of names - " + $scope.names.length);
-            console.log("length of objects- " + objects.length);
+            //console.log("length of names - " + $scope.names.length);
+            //console.log("length of objects- " + objects.length);
 
-            console.log(objects);
+            //console.log(objects);
 
 
             shuffledObjects = objects.slice();
@@ -310,8 +308,8 @@ app.controller('matchingCtrl', function($scope, $http) {
                 shuffledObjects[j] = x;
             }
 
-            console.log("length of shuffled objects----- " + shuffledObjects.length);
-            console.log(shuffledObjects);
+            //console.log("length of shuffled objects----- " + shuffledObjects.length);
+            //console.log(shuffledObjects);
 
             $scope.names = shuffledObjects;
             numOfCards = shuffledObjects.length;
@@ -332,9 +330,9 @@ app.controller('matchingCtrl', function($scope, $http) {
     $scope.clicked = function(front){
         $scope.clear = false;
 
-        console.log("before " + front);
+        //console.log("before " + front);
         // console.log("before " +drug.drug.Brand);
-        console.log("numClicked before " + $scope.numClicked);
+        //console.log("numClicked before " + $scope.numClicked);
 
 
         for(var i = 0; i < shuffledObjects.length;i++){
@@ -346,7 +344,7 @@ app.controller('matchingCtrl', function($scope, $http) {
                 } else{
                     shuffledObjects[i].clicked = "Y";
                     $scope.numClicked++;
-                    console.log("afterrr " +shuffledObjects[i].clicked);
+                    //console.log("afterrr " +shuffledObjects[i].clicked);
                 }
             }
 
@@ -375,8 +373,8 @@ app.controller('matchingCtrl', function($scope, $http) {
                     }
                 }
             }
-            console.log("first card " + $scope.firstCard.front);
-            console.log("second card " + $scope.secondCard.front);
+            //console.log("first card " + $scope.firstCard.front);
+            //console.log("second card " + $scope.secondCard.front);
 
             if ($scope.firstCard.front == $scope.secondCard.drug.Brand || $scope.firstCard.front == $scope.secondCard.drug.Generic){
                 $scope.correct = "Y";
@@ -386,15 +384,15 @@ app.controller('matchingCtrl', function($scope, $http) {
                 $scope.secondCard.correct = 'Y';
                 $scope.firstCard.active = 'Y';
                 $scope.secondCard.active = 'Y';
-                console.log($scope.numCorrect + " num right" );
-                console.log($scope.names.length + " num length" );
+                //console.log($scope.numCorrect + " num right" );
+                //console.log($scope.names.length + " num length" );
                 //$scope.score +=2;
                 //$scope.$apply(function () {
                 //    console.log("IM HERE 3");
                 //    $scope.score = $scope.score +2; 
                 //});
                 $scope.score = $scope.score +2;
-                if(!$scope.checkIfInChallengeMode()){
+                if(!($scope.checkIfInChallengeMode() || $scope.checkIfBeingChallenged())){
                     $scope.increaseCapules(2);
                 }
 
@@ -417,8 +415,8 @@ app.controller('matchingCtrl', function($scope, $http) {
                 $scope.correct = "N";
             }
         }
-        console.log("numClicked after " + $scope.numClicked);
-        console.log("correct " + $scope.correct);
+        //console.log("numClicked after " + $scope.numClicked);
+        //console.log("correct " + $scope.correct);
     }
 
 
@@ -446,7 +444,9 @@ app.controller('matchingCtrl', function($scope, $http) {
   }
 
   $scope.updateChallengeChallenging = function(id, senderUrl){
-    var finalScore = Math.ceil((((new Date).getTime()/1000) - $scope.initTime)*$scope.score);
+    console.log("INIT TIME " + $scope.initTime);
+    var finalScore = Math.ceil(((new Date).getTime()/1000) - $scope.initTime);
+    console.log("THIS IS THE FINAL SCORE " + finalScore);
     var data = $.param({
       challengeid : id,
       user1score: finalScore
@@ -510,7 +510,7 @@ app.controller('matchingCtrl', function($scope, $http) {
   }
 
   $scope.updateChallengeBeingChallenged = function(id){
-    var finalScore = Math.ceil((((new Date).getTime()/1000) - $scope.initTime)*$scope.score);
+    var finalScore = Math.ceil(((new Date).getTime()/1000) - $scope.initTime);
     console.log("final score user 2" + finalScore);
     var data = $.param({
       challengeid : id,
@@ -610,8 +610,6 @@ app.controller('matchingCtrl', function($scope, $http) {
     var curUser = getCookie('username');
     var curUserId = getCookie('user_id');
 
-    console.log("CURRENT USER"+curUser);
-
     var data = $.param({
       capsules: caps,
       id: curUserId,
@@ -626,7 +624,7 @@ app.controller('matchingCtrl', function($scope, $http) {
       console.log(response);
       if(response.data.records != undefined){
         $scope.capsules = response.data.records;
-        $scope.flashPills();
+        $scope.flashPills(caps);
       }else{
         alert("there was an error processing the request");
       }
@@ -635,8 +633,9 @@ app.controller('matchingCtrl', function($scope, $http) {
     });
   }
 
-  $scope.flashPills = function(){
-    $(".capsule-info").fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
+  $scope.flashPills = function(caps){
+    $(".menu-info").fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
+    $("#updated-capsules-indicator").html("+"+caps+" ");
     $("#updated-capsules-indicator").css({'color':'rgb(46, 204, 113)'});
     $("#updated-capsules-indicator").fadeIn(800).fadeOut(800);
   }

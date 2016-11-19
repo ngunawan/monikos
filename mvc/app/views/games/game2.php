@@ -27,7 +27,10 @@
      
        <a ng-click='home()'><img id="toplogo" src="/mvc/public/images/logo_without_words_version_1.png"></a>
 
-        <div onclick="toggleMenuNav()" class=menu-info><img src=/mvc/public/images/man-user.png></div>
+        <div onclick="toggleMenuNav()" class=menu-info>
+        	<span id="updated-capsules-indicator" style="display:none;float:left"></span>
+        	<img src=/mvc/public/images/man-user.png>
+        </div>
         <div id='menu-popup' class='menu-popup'>
             <div class=notif-info>
                 <h2>Notifications</h2>

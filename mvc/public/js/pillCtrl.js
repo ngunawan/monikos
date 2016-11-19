@@ -17,6 +17,14 @@ var app = angular.module('myApp', []);
 			
 		$scope.score = 0;
 
+    function setRequestConfig(){
+        return {
+          headers : {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+          }
+        };    
+    }
+
     function challengeComplete(){
       $('#challengeCompleteMessage').slideDown('fast');
     }
@@ -454,6 +462,9 @@ var app = angular.module('myApp', []);
 				 	$scope.$apply(function () {
 					$scope.score = $scope.score +2; 
 					});	
+          if(!($scope.checkIfInChallengeMode() || $scope.checkIfBeingChallenged())){
+            $scope.increaseCapules(2);
+          }
 					document.getElementById("thePill").src = '/mvc/public/images/pill_done.gif';
 					
 					console.log("Current score: " + $scope.score);
@@ -504,6 +515,9 @@ var app = angular.module('myApp', []);
 				 	$scope.$apply(function () {
 					$scope.score = $scope.score +2; 
 					});	
+          if(!($scope.checkIfInChallengeMode() || $scope.checkIfBeingChallenged())){
+              $scope.increaseCapules(2);
+          }
 					
 					document.getElementById("thePill").src = '/mvc/public/images/pill_done.gif';
 					
@@ -708,6 +722,41 @@ var app = angular.module('myApp', []);
     $('.userText').css({"display":"none"});
     $('.outcomeMessage').css({"display":"block"});
     $('.outcomeMessage').html(message);
+  }
+
+  $scope.increaseCapules = function(caps){
+    //we are only updating capsules per click on single player
+    var curUser = getCookie('username');
+    var curUserId = getCookie('user_id');
+
+    var data = $.param({
+      capsules: caps,
+      id: curUserId,
+      user: curUser
+    });
+
+    var config = setRequestConfig();
+
+    var url = "/db/update_capsules.php";
+    $http.post(url, data, config)
+    .then(function (response) {
+      console.log(response);
+      if(response.data.records != undefined){
+        $scope.capsules = response.data.records;
+        $scope.flashPills(caps);
+      }else{
+        alert("there was an error processing the request");
+      }
+      
+      //alert('updated capsules');
+    });
+  }
+
+  $scope.flashPills = function(caps){
+    $(".menu-info").fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
+    $("#updated-capsules-indicator").html("+"+caps+" ");
+    $("#updated-capsules-indicator").css({'color':'rgb(46, 204, 113)'});
+    $("#updated-capsules-indicator").fadeIn(800).fadeOut(800);
   }
 
 
