@@ -36,6 +36,11 @@
             </button>
         </div>
 
+         <div id="errorMessage" style="display:none">
+            <p id="errorMessageText">You haven't selected a list.</p>
+            <div class="errorButton" id="errorButton">OKAY</div>
+        </div>
+
         <div class='list-collection-block'>   
             <div ng-class="list_block" class="list_block" ng-repeat="list in lists track by $index">
 

@@ -28,7 +28,7 @@ app.controller('myCtrl', function($scope, $http) {
     
     
 	$scope.listId = [];
-	$scope.passedId = 0;
+	$scope.passedId = undefined;
 	
     $scope.lists = [];
     
@@ -151,8 +151,13 @@ app.controller('myCtrl', function($scope, $http) {
             window.location = window.location.origin + "/mvc/public/home/";
         }
 		
-        $scope.launchGame = function(){  
-			window.location = window.location.origin + "/mvc/public/games/menu/" + $scope.passedId;
+        $scope.launchGame = function(){
+            if($scope.passedId != undefined){  
+			    window.location = window.location.origin + "/mvc/public/games/menu/" + $scope.passedId;
+            }else{
+                $('#errorMessage').slideDown();
+            }
+
 		}
 
 		$scope.listManager = function(){
@@ -166,7 +171,6 @@ app.controller('myCtrl', function($scope, $http) {
 		$scope.selectList = function(index, thisElem){
             $scope.passedId = $scope.listId[index]['list_id'];
 	       	console.log($scope.passedId);
-
 		}
 
         $scope.deleteList = function(index){
@@ -187,7 +191,7 @@ app.controller('myCtrl', function($scope, $http) {
             $http.post(url, data, config)
             .then(function (response) {
                 console.log(response);
-                
+                $scope.passedId = undefined;
             }); 
         }
 
@@ -212,4 +216,12 @@ $( document ).ready(function() {
     $('.list-collection-block').on('click', '.list_block .deleteList',function(){
         $(this).parent().remove();
     });
+
+    $('#errorButton').on('click', function(){
+        $('#errorMessage').slideUp();   
+    });
+
+    function removePopup(){
+        $('#errorMessage').slideUp();
+    }
 });
