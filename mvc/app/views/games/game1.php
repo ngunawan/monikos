@@ -7,14 +7,6 @@
 <body id="game1" ng-app="myApp" ng-controller="matchingCtrl" >
 
     <script>	
-         function toggleMenuNav() {
-        if($('#menu-popup').css('opacity') == 0) {
-            document.getElementById("menu-popup").style.opacity = "1";
-        } else {
-            document.getElementById("menu-popup").style.opacity = "0";
-
-        }
-    }
         
         numOfCards = 0; 
 

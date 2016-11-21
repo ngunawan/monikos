@@ -1,6 +1,6 @@
 <body id="database_module">
     <script>
-
+      
         
         var app = angular.module('myApp', ['ngAnimate']);
 

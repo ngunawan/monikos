@@ -3,14 +3,7 @@
 <meta name='viewport' content="width=device-width, initial-scale=1" />
 
 <script src = '/mvc/public/js/pillCtrl.js'></script>
-<script> function toggleMenuNav() {
-        if($('#menu-popup').css('opacity') == 0) {
-            document.getElementById("menu-popup").style.opacity = "1";
-        } else {
-            document.getElementById("menu-popup").style.opacity = "0";
 
-        }
-    }</script>
 
 <script>
     function gotoGamelist(){

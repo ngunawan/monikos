@@ -156,6 +156,7 @@ margin-right:10px;
     opacity:0;
     transition: 0.2s;  
     padding:2px 5px;
+    visibility:hidden;
 }
 
 .notif-info {

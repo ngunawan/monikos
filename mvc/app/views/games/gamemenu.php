@@ -4,14 +4,7 @@
 
 <script type = 'text/javascript'>
     
-     function toggleMenuNav() {
-        if($('#menu-popup').css('opacity') == 0) {
-            document.getElementById("menu-popup").style.opacity = "1";
-        } else {
-            document.getElementById("menu-popup").style.opacity = "0";
 
-        }
-    }
 
     var challengeGame;
     var challengeUser;
