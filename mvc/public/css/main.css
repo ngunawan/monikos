@@ -585,6 +585,18 @@ label.field-name {
     opacity: 0.85;
 }
 
+.ng-modal-overlay2 {
+    /* A dark translucent div that covers the whole screen */
+    position:fixed;
+    z-index:10001;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    background-color:#000000;
+    opacity: 0.85;
+}
+
 .mnemonic-modal-overlay {
     opacity: 0.95;
 }
@@ -671,6 +683,7 @@ label.field-name {
     display: inline-block;
     font-weight: bold;
     font-family: 'Arial','sans-serif';
+        z-index: 999999;
 
     /*
     border-radius: 50%;
@@ -960,11 +973,36 @@ font-weight: 600;
 
 /**MNEMONIC FORM**/
 
+.suggestion-popup {
+    display: block;
+    background: #FFF;
+    border-radius: 10px;
+    width: 90vw;
+     position: fixed;
+    z-index:99999;
+
+    /* Center the dialog */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+
+    -webkit-box-shadow: 4px 4px 80px #000;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+    -moz-box-shadow:    4px 4px 80px #000;  /* Firefox 3.5 - 3.6 */
+    box-shadow:         4px 4px 80px #000;
+    visibility: hidden;
+
+}
+
 #mnemonic-form {
     font-family: 'Raleway';
     font-size:16px;
     text-align: left;
     padding:10px 15px 5px 15px;
+    position:relative;
+   z-index: 99999;
+ 
 }
 
 #mnemonic-form label {
