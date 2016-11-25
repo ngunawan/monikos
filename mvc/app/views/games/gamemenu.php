@@ -67,6 +67,54 @@
 
         //end NIk's edits
 
+        function gotoChallenge(url){
+            window.location = url;
+        }
+
+        $scope.getNotifications = function(){
+            var username = getCookie('username');
+
+            var data = $.param({
+                user : username
+            });
+
+            var config = {
+                headers : {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                }
+            };
+
+            var url = "/db/get_notifications.php";
+
+            $http.post(url, data, config)
+                .then(function (response) {
+                console.log(response);
+
+                $('#notificationIndicator').html(response.data.records.length);
+                //if theres no challenges dont show anything
+                if(!response.data.records.length){
+                    $('#notificationIndicator').css({'display':'none'});
+                }else{
+                    $('#noNotificationsText').css({'display':'none'});
+                    $('#notificationsBlock').css({'display':'block'});
+                    for(var notif in response.data.records){
+                        var _url = response.data.records[notif]['url'];
+                        var elemm = document.createElement('p');
+                        elemm.innerHTML = 'challenge:' + response.data.records[notif]['challengegame'] + ', bet:'+ response.data.records[notif]['bet'] + ', who:' + response.data.records[notif]['user1'];
+                        elemm.className = 'notificationText';
+                        elemm.onclick = function() { 
+                            window.location = _url 
+                        };
+                        document.getElementById("notificationsBlock").appendChild(elemm);
+                    }
+                }
+            }); 
+
+        }
+        $scope.getNotifications();
+
+
+
 
         $scope.queryBy = '$';
         $scope.trustAsHtml = $sce.trustAsHtml;
@@ -187,6 +235,11 @@
         }
     }
 
+    function toggleMenuNav(){
+        //$('#menu-popup').css({'visibility':'visible','opacity':'1.0'});
+        $('#menu-popup').toggleClass('navOpen');
+    }
+
     $(document).ready(function () {
         $('#challenge-block').on('click',function(){
             if(!showingSelectGame){
@@ -224,6 +277,10 @@
             }
         });
 
+        function openChallenge(url){
+            alert(url);
+        }
+
 
     });
 
@@ -238,11 +295,18 @@
         <a onclick="golistManager()" ><button class = 'back'>Back</button></a>
 
         <a onclick="gohome()"><img id="toplogo" src="/mvc/public/images/logo_without_words_version_1.png"></a>
-          <div onclick="toggleMenuNav()" class=menu-info><img src=/mvc/public/images/man-user.png></div>
+          
+          <div onclick="toggleMenuNav()" class=menu-info>
+            <span id="notificationIndicator"></span>
+            <img src=/mvc/public/images/man-user.png>
+          </div>
         <div id='menu-popup' class='menu-popup'>
             <div class=notif-info>
                 <h2>Notifications</h2>
-                <p>There are no notifications at this moment.</p>
+                <p id="noNotificationsText">There are no notifications at this moment.</p>
+                <div style="display:none" id="notificationsBlock">
+                    <!--append notifications in here-->
+                </div>
             </div>
             <div class=user-info>
                 <img src="/mvc/public/images/user_icon.png">

@@ -449,7 +449,8 @@ app.controller('matchingCtrl', function($scope, $http) {
     console.log("THIS IS THE FINAL SCORE " + finalScore);
     var data = $.param({
       challengeid : id,
-      user1score: finalScore
+      user1score: finalScore,
+      url: senderUrl
     });
 
     var config = {
@@ -584,6 +585,26 @@ app.controller('matchingCtrl', function($scope, $http) {
       console.log("USER2 SCORE = " + usr2score);
       var score1 = parseInt(usr1score);
       var score2 = parseInt(usr2score);
+      $scope.deleteChallenge(id, usr1, usr2, usr1score, usr2score, thebet, score1, score2);
+
+    });
+  }
+
+  $scope.deleteChallenge = function(id, usr1, usr2, usr1score, usr2score, thebet, score1, score2){
+    var data = $.param({
+      challengeid : id
+    });
+
+    var config = {
+      headers : {
+        'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+      }
+    };
+
+    var url = "/db/delete_challenge.php";
+    $http.post(url, data, config)
+    .then(function (response) {
+      console.log(response);
       document.getElementById("finished").innerHTML = '';
       if(score1 > score2){
         $('.challengeCompleteText').html("YOU WON " + thebet + " CAPSULES! Looks like you're quicker than "+$scope.getUser1()+". Click the button below to return to the game menu.");
@@ -592,8 +613,7 @@ app.controller('matchingCtrl', function($scope, $http) {
       }else{
         $('.challengeCompleteText').html("You tied.\nNeither you or "+$scope.getUser1()+" are awarded any capsules for this challenge. Click the button below to return to the game menu.");
       }
-      challengeComplete();
-
+      challengeComplete();    
     });
   }
 

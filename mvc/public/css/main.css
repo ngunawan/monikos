@@ -1192,4 +1192,23 @@ img#toplogo {
     padding-top: 12px;
 }
 
+.navOpen{
+    visibility:visible;
+    opacity:1.0;
+}
 
+p.notificationText {
+    background: #22A7F0;
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+p.notificationText:hover {
+    cursor:pointer;
+}
+
+div#notificationsBlock {
+    height: 100px;
+    overflow: auto;
+}
