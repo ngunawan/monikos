@@ -22,8 +22,8 @@ if ($conn->connect_error) {
 require_once 'db_creds.php';
  
 
-$sql = "INSERT INTO Users (id, username, email, password)
-VALUES (NULL, '".$_POST["username"]."', '".$_POST["email"]."', '".$_POST["password"]."')";
+$sql = "INSERT INTO Users (id, username, email, password, schoolid, schoolname)
+VALUES (NULL, '".$_POST["username"]."', '".$_POST["email"]."', '".$_POST["password"]."', '".$_POST["schoolid"]."', '".$_POST["schoolname"]."')";
 
 if ($conn->query($sql) === TRUE) {
     echo '[{

@@ -19,16 +19,30 @@ body#usr_mng_module .wrapper h1 {
     font-size:4vw;
 }
 
-body#usr_mng_module .wrapper input[type=text], body#usr_mng_module .wrapper input[type=password] {
+body#usr_mng_module .wrapper input[type=text], body#usr_mng_module .wrapper input[type=password], body#usr_mng_module .wrapper select {
     width:80%;
     font-size:3vw;
     padding:2vw 2vw 2vw 2vw;
     margin: 2vw 0 2vw 0;
     border: 0;
-    background:#f2f2f2;
+    background-color:#f2f2f2;
 }
 
-body#usr_mng_module .wrapper input[type=text]:focus, body#usr_mng_module .wrapper input[type=password]:focus {
+body#usr_mng_module .wrapper select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    color: #A9A9A9;
+    border-radius:0;
+
+}
+
+
+body#usr_mng_module .wrapper select option {
+    color: #FFF;
+}
+
+body#usr_mng_module .wrapper input[type=text]:focus, body#usr_mng_module .wrapper input[type=password]:focus, body#usr_mng_module .wrapper select:focus {
     outline:none;
 }
 
@@ -683,7 +697,7 @@ label.field-name {
     display: inline-block;
     font-weight: bold;
     font-family: 'Arial','sans-serif';
-        z-index: 999999;
+    z-index: 999999;
 
     /*
     border-radius: 50%;
@@ -978,7 +992,7 @@ font-weight: 600;
     background: #FFF;
     border-radius: 10px;
     width: 90vw;
-     position: fixed;
+    position: fixed;
     z-index:99999;
 
     /* Center the dialog */
@@ -1001,8 +1015,8 @@ font-weight: 600;
     text-align: left;
     padding:10px 15px 5px 15px;
     position:relative;
-   z-index: 99999;
- 
+    z-index: 99999;
+
 }
 
 #mnemonic-form label {
@@ -1113,13 +1127,13 @@ font-weight: 600;
         font-size:8vw;
     }
 
-    body#usr_mng_module .wrapper input[type=text], body#usr_mng_module .wrapper input[type=password] {
+    body#usr_mng_module .wrapper input[type=text], body#usr_mng_module .wrapper input[type=password], body#usr_mng_module .wrapper select {
         font-size:6vw;
         padding:4vw 3vw 4vw 3vw;
         margin: 2vw 0 2vw 0;
     }
 
-    body#usr_mng_module .wrapper input[type=text]:focus, body#usr_mng_module .wrapper input[type=password]:focus {
+    body#usr_mng_module .wrapper input[type=text]:focus, body#usr_mng_module .wrapper input[type=password]:focus, body#usr_mng_module .wrapper select:focus {
         outline:none;
     }
 
