@@ -7,7 +7,7 @@
     <div id='app_header'>
         <a href = '#' ng-click='home()'><button class = 'back'>Back</button></a>
         <a href ="#" ng-click="home()"><img id="toplogo" src="/mvc/public/images/logo_without_words_version_1.png"></a>
-        
+
         <div onclick="toggleMenuNav()" class=menu-info><img src=/mvc/public/images/man-user.png></div>
         <div id='menu-popup' class='menu-popup'>
             <div class=notif-info>
@@ -16,14 +16,16 @@
             </div>
             <div class=user-info>
                 <img src="/mvc/public/images/user_icon.png">
-                <div class=username-info>{{capsules[0].username}}</div>
-                <div class=email-info>({{capsules[0].email}})</div>
-                <div class=capsule-info>{{capsules[0].capsules}} Capsules</div>
+                <div class=user-info-sub>
+                    <div class=username-info>{{capsules[0].username}}</div>
+                    <div class=email-info>({{capsules[0].email}})</div>
+                    <div class=capsule-info>{{capsules[0].capsules}} Capsules</div>
+                </div>
             </div>
         </div>
     </div>
 
-   
+
 
 
     <div id='app_content'>
@@ -36,11 +38,12 @@
             </button>
         </div>
 
-         <div id="errorMessage" style="display:none">
+        <div id="errorMessage" style="display:none">
             <p id="errorMessageText">You haven't selected a list.</p>
             <div class="errorButton" id="errorButton">OKAY</div>
         </div>
 
+        <h1 class="list-m-header your-list">Your List</h1>
         <div class='list-collection-block'>   
             <div ng-class="list_block" class="list_block" ng-repeat="list in lists track by $index">
 
@@ -58,6 +61,29 @@
                 <button class ='selectList' ng-click='selectList($index)'>SELECT</button>
 
                 <button class='deleteList' ng-click='deleteList($index)'>DELETE LIST</button>
+            </div>
+
+        </div>
+
+        <h1 class="list-m-header school-list">School's List</h1>
+
+        <div class='list-collection-block'> 
+
+            <div ng-class="list_block" class="list_block" ng-repeat="list2 in school_lists track by $index">
+
+                <h1 class = "list_name_header">
+                    {{list2.name}}</h1>
+
+                <div class='list-info-block' >
+                    <div class='list-drugs'>
+                        {{list2.drugs}}
+                        <br>        
+                    </div>      
+                </div>
+
+                <!--<button class ='select' ng-click='selectlist($index, this)'>SELECT</button>-->
+                <button class ='selectList' ng-click='selectList($index)'>SELECT</button>
+
             </div>
 
         </div>

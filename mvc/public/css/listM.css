@@ -107,6 +107,27 @@ label {
 	outline: none;
 }
 
+h1.list-m-header {
+    position:relative;
+    width:100%;
+    color:#8d99ae;
+    font-family: 'Raleway',sans-serif;
+    text-transform: uppercase;
+    font-size: 16px !important;
+    letter-spacing: 2px;
+
+}
+
+h1.school-list {
+        margin-top: 40px !important;
+}
+
+h1.your-list {
+        margin-top: 15px !important;
+}
+
+
+
 .list-collection-block {
     margin: 5px;
     padding:5px;
@@ -115,7 +136,7 @@ label {
 	font-family: 'Raleway',sans-serif;
 	line-height: normal;
 	color: #464a53;
-	overflow-y: scroll;
+/*	overflow-y: scroll;*/
 	max-height: 475px;
 }
 

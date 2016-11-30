@@ -249,24 +249,27 @@
                     //alert($scope.names);
                 }); 
 
+                //                $('.plusone-like').addClass("plusone-animate");
+                $('.plusone-like').fadeIn(800).css({"-webkit-transform":"translate(0,-10px)"}).fadeOut(100);
 
-                var tempString = "plusone-like d" + id;
-                $scope.plusone_obj = document.getElementsByClassName(tempString)[0];
-                //                $scope.plusone_obj = document.querySelectorAll(tempString);
-                $scope.plusone_obj.className += " plusone-animate";
 
-                //                $timeout($scope.removeAnimateLike(id), 5000);
-
-                //                $scope.id = id;
-                setTimeout(function(){
-                    var i = id;
-                    //                    id = id.toString();
-                    var tempString2 = "plusone-like d" + i + " plusone-animate";
-                    $scope.plusone_obj = document.getElementsByClassName(tempString2)[0];
-                    //                  $scope.plusone_obj = document.querySelectorAll(tempString2)
-                    $scope.plusone_obj.className = "plusone-like d" + i;
-
-                }, 500);
+                //                var tempString = "plusone-like d" + id;
+                //                $scope.plusone_obj = document.getElementsByClassName(tempString)[0];
+                //                //                $scope.plusone_obj = document.querySelectorAll(tempString);
+                //                $scope.plusone_obj.className += " plusone-animate";
+                //
+                //                //                $timeout($scope.removeAnimateLike(id), 5000);
+                //
+                //                //                $scope.id = id;
+                //                setTimeout(function(){
+                //                    var i = id;
+                //                    //                    id = id.toString();
+                //                    var tempString2 = "plusone-like d" + i + " plusone-animate";
+                //                    $scope.plusone_obj = document.getElementsByClassName(tempString2)[0];
+                //                    //                  $scope.plusone_obj = document.querySelectorAll(tempString2)
+                //                    $scope.plusone_obj.className = "plusone-like d" + i;
+                //
+                //                }, 1000);
 
             }
 
@@ -317,23 +320,18 @@
                     //alert($scope.names);
                 }); 
 
-                var tempString = "plusone-dislike d" + id;
-                $scope.plusone_obj = document.getElementsByClassName(tempString)[0];
-                //                $scope.plusone_obj = document.querySelectorAll(tempString);
-                $scope.plusone_obj.className += " plusone-animate";
-
-                //                $timeout($scope.removeAnimateLike(id), 5000);
-
-                //                $scope.id = id;
-                setTimeout(function(){
-                    var i = id;
-                    //                    id = id.toString();
-                    var tempString2 = "plusone-dislike d" + i + " plusone-animate";
-                    $scope.plusone_obj = document.getElementsByClassName(tempString2)[0];
-                    //                  $scope.plusone_obj = document.querySelectorAll(tempString2)
-                    $scope.plusone_obj.className = "plusone-dislike d" + i;
-
-                }, 500);
+                //                var tempString = "plusone-dislike d" + id;
+                //                $scope.plusone_obj = document.getElementsByClassName(tempString)[0];
+                //                $scope.plusone_obj.className += " plusone-animate";
+                //
+                //                setTimeout(function(){
+                //                    var i = id;
+                //                    var tempString2 = "plusone-dislike d" + i + " plusone-animate";
+                //                    $scope.plusone_obj = document.getElementsByClassName(tempString2)[0];
+                //                    $scope.plusone_obj.className = "plusone-dislike d" + i;
+                //
+                //                }, 1000);
+                $('.plusone-dislike').fadeIn(800).css({"-webkit-transform":"translate(0,-10px)"}).fadeOut(100);
 
             }
 
@@ -377,9 +375,11 @@
                 </div>
                 <div class=user-info>
                     <img src="/mvc/public/images/user_icon.png">
-                    <div class=username-info>{{capsules[0].username}}</div>
-                    <div class=email-info>({{capsules[0].email}})</div>
-                    <div class=capsule-info>{{capsules[0].capsules}} Capsules</div>
+                    <div class=user-info-sub>
+                        <div class=username-info>{{capsules[0].username}}</div>
+                        <div class=email-info>({{capsules[0].email}})</div>
+                        <div class=capsule-info>{{capsules[0].capsules}} Capsules</div>
+                    </div>
                 </div>
             </div>
 
@@ -443,7 +443,7 @@
 
                         <div style="visibility:hidden;" class='ng-modal show-{{x.DrugId}}'>
                             <div class='ng-modal-overlay' ng-click='$event.stopPropagation()'></div>
-                            <div class='ng-modal-dialog' style="width:90vw;">
+                            <div ng-click="$event.stopPropagation()" class='ng-modal-dialog' style="width:90vw;">
                                 <div class='ng-modal-close' ng-click='hideModal(x.DrugId);$event.stopPropagation()'>X</div>
                                 <div class='ng-modal-dialog-content'>
 
@@ -454,11 +454,11 @@
                                     <!--                            <div class="sub-message">Do you have a better hint? <a href=mnemonics-form.php>Earn 200 Capsules</a></div>-->
                                     <div class=ng-modal-content-footer>
                                         <div class=plusone-wrapper>
-                                            <div class="plusone-like d{{x.DrugId}}">+1</div>
-                                            <div class="plusone-dislike d{{x.DrugId}}">+1</div>
+                                            <div style="display:none;" class="plusone-like d{{x.DrugId}}">+1</div>
+                                            <div style="display:none;" class="plusone-dislike d{{x.DrugId}}">+1</div>
 
                                         </div>
-                                        <div class=btn-wrapper>
+                                        <div class=btn-wrapper ng-click="$event.stopPropagation()">
                                             <button ng-click="updateLikes(x.HintLikes, x.HintDislikes, x.DrugId);$event.stopPropagation()" class=like-btn><img src=/mvc/public/images/thumb-up-button.png> Like</button> <button ng-click="updateDislikes(x.HintLikes, x.HintDislikes, x.DrugId);$event.stopPropagation()" class=dislike-btn><img src=/mvc/public/images/thumb-down-button.png>Dislike</button>
                                         </div>
                                         <div class=btn-shadow-wrapper>

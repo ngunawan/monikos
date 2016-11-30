@@ -1,7 +1,7 @@
 var app = angular.module('myApp', ['checklist-model']);
 
 app.controller('myCtrl', function($scope, $http) {
-    
+
     //Nik's edits
     function getCookie(cname) {
         var name = cname + "=";
@@ -21,17 +21,47 @@ app.controller('myCtrl', function($scope, $http) {
     var id_cookie = getCookie("user_id");
     var data = $.param({id : id_cookie});
     var config = {headers : {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'}};
+
     var url = "/db/get_capsule_info.php";
-    $http.post(url, data, config).then(function (response) {console.log(response);$scope.capsules = response.data.records;
+    $http.post(url, data, config).then(function (response) {
+        console.log(response);$scope.capsules = response.data.records;
     }); 
+
+    var url_getschools = "/db/get_schools_list.php";
+//    $http.post(url_getschools, data, config).then(function (response) {
+//        console.log(response);$scope.school_list = response.data.records;
+//    }); 
+
+    $scope.school_lists = [];
+    $http.post(url_getschools, data, config)
+        .then(function (response) {
+        console.log(response); 
+
+        $scope.school_listId = response.data.records;
+
+        if(response.data.records.length < 1){
+            $(".list-collection-block").append('<p id="noListsMessage">This school does not have any lists.</p>');
+        }else{
+            for(var i in response.data.records){
+                $scope.school_lists.push({
+                    name: response.data.records[i].list_name.toString(),
+                    drugs: response.data.records[i].drugnames.toString().split(",")
+                });
+            }
+        }
+
+    });
+
+
+
     //end NIk's edits
-    
-    
-	$scope.listId = [];
-	$scope.passedId = undefined;
-	
+
+
+    $scope.listId = [];
+    $scope.passedId = undefined;
+
     $scope.lists = [];
-    
+
     $scope.getCookie = function(cname) {
         var name = cname + "=";
         var ca = document.cookie.split(';');
@@ -61,22 +91,22 @@ app.controller('myCtrl', function($scope, $http) {
     //var getListsUrl = "http://monikos.xpyapvzutk.us-east-1.elasticbeanstalk.com/get_lists.php";
     var getListsUrl = "/db/get_lists.php";
     var getListsConfig = {
-                headers : {
-                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-                }
+        headers : {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+        }
     };
 
-    
+
     var getListsData = $.param({
-            user_id: $scope.getCookie("user_id")
+        user_id: $scope.getCookie("user_id")
     });
 
-     $http.post(getListsUrl, getListsData, getListsConfig)
+    $http.post(getListsUrl, getListsData, getListsConfig)
         .then(function (response) {
         console.log(response); 
-		
-		 $scope.listId = response.data.records
-		 
+
+        $scope.listId = response.data.records
+
         if(response.data.records.length < 1){
             $(".list-collection-block").append('<p id="noListsMessage">Please create a list</p>');
         }else{
@@ -92,108 +122,113 @@ app.controller('myCtrl', function($scope, $http) {
         //alert($scope.names);
     });
 
-    
+
+
+
+
+
+
     /*$scope.tempdrugs = [{Brand: "tylenol",
                         Generic: "tylenolgeneric"},
                        {Brand: "advil",
                         Generic: "advilgeneric"}];
     */
-     $scope.listform = {name: "",
-                               drugs: []};
-    
-     
-       $scope.addList = function() {
-           console.log($scope.listform);
-            $scope.lists.push($scope.listform);
-            
-
-            var createListUrl = "http://monikos.xpyapvzutk.us-east-1.elasticbeanstalk.com/create_list.php";
-            var createListUrl = "/db/create_list.php";
-            var config = {
-                        headers : {
-                            'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-                        }
-            };
-
-            
-            var listData = $.param({
-                    name: $scope.listform.name,
-                    drugs: $scope.listform.drugs,
-                    user_id: $scope.getCookie("user_id")
-            });
+    $scope.listform = {name: "",
+                       drugs: []};
 
 
-            $scope.listform.drugs;
-            $http.post(createListUrl, listData, config)
-            .then(function (response) {
-                console.log(response);
+    $scope.addList = function() {
+        console.log($scope.listform);
+        $scope.lists.push($scope.listform);
 
-                //console.log(response);
-                //$scope.names = response.data.records;
-                //$scope.response = response;
-                if(response.data[0].response == 200){
-                //    window.location = window.location.origin + "/mvc/public/account/login";
-                    $("#noListsMessage").remove();
-                }
-                //    alert("error in creating account");
-                //}
-                //console.log($scope.names);
-                //alert($scope.names);
-            });
-		   
-            $scope.listform = {name: "",
-                               drugs: []};
-            closeNav();
-            window.location.reload(); 
-        }
-	   
-        $scope.home = function(){
-            window.location = window.location.origin + "/mvc/public/home/";
-        }
-		
-        $scope.launchGame = function(){
-            if($scope.passedId != undefined){  
-			    window.location = window.location.origin + "/mvc/public/games/menu/" + $scope.passedId;
-            }else{
-                $('#errorMessage').slideDown();
+
+        var createListUrl = "http://monikos.xpyapvzutk.us-east-1.elasticbeanstalk.com/create_list.php";
+        var createListUrl = "/db/create_list.php";
+        var config = {
+            headers : {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
             }
+        };
 
-		}
 
-		$scope.listManager = function(){
-            window.location = window.location.origin + "/mvc/public/home/listManager/";
-        }
-		
-/***SELECT LIST ID*********/
+        var listData = $.param({
+            name: $scope.listform.name,
+            drugs: $scope.listform.drugs,
+            user_id: $scope.getCookie("user_id")
+        });
 
-		$scope.list_block = "list-block";
-		
-		$scope.selectList = function(index, thisElem){
-            $scope.passedId = $scope.listId[index]['list_id'];
-	       	console.log($scope.passedId);
-		}
 
-        $scope.deleteList = function(index){
-            $scope.passedId = $scope.listId[index]['list_id'];
-            
-            var url = "/db/delete_list.php";
-            
-            var data = $.param({
-                lid: $scope.passedId
-            });
-
-            var config = {
-                headers : {
-                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-                }
-            };
-
-            $http.post(url, data, config)
+        $scope.listform.drugs;
+        $http.post(createListUrl, listData, config)
             .then(function (response) {
-                console.log(response);
-                $scope.passedId = undefined;
-            }); 
+            console.log(response);
+
+            //console.log(response);
+            //$scope.names = response.data.records;
+            //$scope.response = response;
+            if(response.data[0].response == 200){
+                //    window.location = window.location.origin + "/mvc/public/account/login";
+                $("#noListsMessage").remove();
+            }
+            //    alert("error in creating account");
+            //}
+            //console.log($scope.names);
+            //alert($scope.names);
+        });
+
+        $scope.listform = {name: "",
+                           drugs: []};
+        closeNav();
+        window.location.reload(); 
+    }
+
+    $scope.home = function(){
+        window.location = window.location.origin + "/mvc/public/home/";
+    }
+
+    $scope.launchGame = function(){
+        if($scope.passedId != undefined){  
+            window.location = window.location.origin + "/mvc/public/games/menu/" + $scope.passedId;
+        }else{
+            $('#errorMessage').slideDown();
         }
+
+    }
+
+    $scope.listManager = function(){
+        window.location = window.location.origin + "/mvc/public/home/listManager/";
+    }
+
+    /***SELECT LIST ID*********/
+
+    $scope.list_block = "list-block";
+
+    $scope.selectList = function(index, thisElem){
+        $scope.passedId = $scope.listId[index]['list_id'];
+        console.log($scope.passedId);
+    }
+
+    $scope.deleteList = function(index){
+        $scope.passedId = $scope.listId[index]['list_id'];
+
+        var url = "/db/delete_list.php";
+
+        var data = $.param({
+            lid: $scope.passedId
+        });
+
+        var config = {
+            headers : {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+            }
+        };
+
+        $http.post(url, data, config)
+            .then(function (response) {
+            console.log(response);
+            $scope.passedId = undefined;
+        }); 
+    }
 
 });
 

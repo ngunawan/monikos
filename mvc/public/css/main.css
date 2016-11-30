@@ -217,12 +217,27 @@ margin-right:10px;
 }
 
 .user-info .email-info {
+    font-size: 10px;
+    color:#CCC;
 }
 
 .user-info .capsule-info {
     font-family: 'Raleway';
-    font-size: 12px;
-    color: #CCC;
+    font-size: 10px;
+    font-weight:600;
+/*    color: #FF3D39;*/
+/*    color: #6c7a89;*/
+    background: #FF3D39;
+    color: white;
+    padding: 3px;
+    border-radius: 4px;
+    margin-top:5px;
+
+}
+
+.user-info-sub {
+    width:60%;
+    margin-left:40%;
 }
 
 .menu-info img {
@@ -355,7 +370,7 @@ body#database_module #app_footer {
     text-align: center;
 }
 
-body#database_module #app_content, body#main_app_module #app_content {
+body#database_module #app_content {
     display:block;
     position:absolute;
     height:80vh;
@@ -363,6 +378,16 @@ body#database_module #app_content, body#main_app_module #app_content {
     margin-top:10vh;
     text-align: center;
 }
+
+body#main_app_module #app_content {
+    display:block;
+    position:absolute;
+    width:100vw;
+    margin-top:10vh;
+    text-align: center;
+}
+
+
 
 #content_wrapper {
     /*for database*/
@@ -792,15 +817,18 @@ padding: 10px 0;
     display: inline-block;
     position: absolute;
     width:45%;
-    opacity:0;
+    z-index:999999;
+    transition: ease-in .4s;
+/*    display:none;*/
+/*    opacity:0;*/
 }
 
 .plusone-like {
     margin-left:-45%;
-    margin-top:-50px;}
+    margin-top:-18px;}
 
 .plusone-dislike {
-    margin-top: -20px;
+    margin-top: -18px;
 }
 
 .plusone-animate {

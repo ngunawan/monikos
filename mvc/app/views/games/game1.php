@@ -62,9 +62,11 @@
             </div>
             <div class=user-info>
                 <img src="/mvc/public/images/user_icon.png">
-                <div class=username-info>{{capsules[0].username}}</div>
-                <div class=email-info>({{capsules[0].email}})</div>
-                <div class=capsule-info>{{capsules[0].capsules}} Capsules</div>
+                <div class=user-info-sub>
+                    <div class=username-info>{{capsules[0].username}}</div>
+                    <div class=email-info>({{capsules[0].email}})</div>
+                    <div class=capsule-info>{{capsules[0].capsules}} Capsules</div>
+                </div>
             </div>
         </div>
 
