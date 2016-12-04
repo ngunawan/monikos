@@ -82,7 +82,7 @@
                 </div>
 
                 <!--<button class ='select' ng-click='selectlist($index, this)'>SELECT</button>-->
-                <button class ='selectList' ng-click='selectList($index)'>SELECT</button>
+                <button class ='selectList' ng-click='selectSchoolList($index)'>SELECT</button>
 
             </div>
 

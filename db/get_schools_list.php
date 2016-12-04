@@ -31,6 +31,7 @@ $outp = "";
 while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
     if ($outp != "") {$outp .= ",";}
     $outp .= '{"list_id":"'  . $rs["lid"] . '",';
+    $outp .= '"school_list_id":"'  . $rs["slid"] . '",';
     $outp .= '"list_name":"'   . $rs["name"]        . '",';
     $outp .= '"drugnames":"'. $rs["drugnames"]     . '"}';
 

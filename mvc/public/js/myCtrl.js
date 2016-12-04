@@ -31,7 +31,8 @@ app.controller('myCtrl', function($scope, $http) {
 //    $http.post(url_getschools, data, config).then(function (response) {
 //        console.log(response);$scope.school_list = response.data.records;
 //    }); 
-
+    
+    $scope.school_listId = [];
     $scope.school_lists = [];
     $http.post(url_getschools, data, config)
         .then(function (response) {
@@ -205,6 +206,11 @@ app.controller('myCtrl', function($scope, $http) {
 
     $scope.selectList = function(index, thisElem){
         $scope.passedId = $scope.listId[index]['list_id'];
+        console.log($scope.passedId);
+    }
+    
+    $scope.selectSchoolList = function(index, thisElem){
+        $scope.passedId = $scope.school_listId[index]['list_id'];
         console.log($scope.passedId);
     }
 

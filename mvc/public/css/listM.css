@@ -137,7 +137,7 @@ h1.your-list {
 	line-height: normal;
 	color: #464a53;
 /*	overflow-y: scroll;*/
-	max-height: 475px;
+/*	max-height: 475px;*/
 }
 
 .list-collection-block-short{
