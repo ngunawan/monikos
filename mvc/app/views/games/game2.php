@@ -9,15 +9,24 @@
     function gotoGamelist(){
         window.location = window.location.origin + "/mvc/public/games/menu/" + <?=$data['lid']?>;
     }
-</script>
-	
 
-<body ng-app="myApp" ng-controller="pillCtrl" id="main_app_module">	
-	
+    $(document).ready(function(){
+    $('#f1').keypress(function(e){
+      if(e.keyCode==13)
+      $('#submit_button').click();
+    });
+
+});
+
+</script>
+
+
+<body ng-app="myApp" ng-controller="pillCtrl" id="main_app_module">
+
 	<div id=app_header>
-	
+
 	   <a onclick="gotoGamelist()" ><button class = 'back'>Back</button></a>
-     
+
        <a ng-click='home()'><img id="toplogo" src="/mvc/public/images/logo_without_words_version_1.png"></a>
 
         <div onclick="toggleMenuNav()" class=menu-info>
@@ -38,8 +47,8 @@
                 </div>
             </div>
         </div>
-		
-	</div>	
+
+	</div>
 
 	<div class = 'app_content'>
 		<!--dummy object for checking if in challenge mode-->
@@ -61,25 +70,27 @@
 	        <div ng-if="firstLoad">
 				{{getlid(<?=$data['lid']?>)}}
 			</div>
-			
-			 
+
+
 		   	<div class = 'question'>
 				<p2 id="p1">{{question()}}</p2>
 				<div id='points'>SCORE: {{score}}</div>
 			   	<p2 id = "cid"></p2>
 		   	</div>
-			   
-			<form class = 'answer' id = 'answer_input' name = "jojo">
-				<input type="text" id="f1" name="Answer" placeholder="Answer:" ><br>
-			</form>
 
-			
+      <div id = 'answer_field'>
+			<form class = 'answer' id = 'answer_input' name = "jojo">
+				<input type="text" id="f1" name="Answer" placeholder="Answer:" >
+			</form>
+      <div class='submit_btn'><button id ='submit_button' class = "button button5" onclick="checkAnswer();" ><img src = '/mvc/public/images/green-check.png'/></button></div>
+      </div>
+
 			<p id="wrong"></p>
 
 		   <div class ='pill_wrap'>
 				<div class="pill" id="pill"><img id ='thePill' src="/mvc/public/images/pill.png"></div>
 		   </div>
-		   
+
 		    <div id="result"></div>
 		   <div id = 'finished'></div>
 
@@ -94,15 +105,14 @@
 
 		   </div>
 
-	 	</div> <!-- /app_body -->
-		
+	 	</div>
+    <!-- /app_body -->
+
 		<div class = 'btn_footer'>
 			<div class='btn_wrap'>
-				<div class='submit_btn'><button class = "button button5" onclick="checkAnswer();" >Submit</button></div>
-
-				<div class='next_btn'><button id="nextBtn" class = "button button5" onclick="nextCard();">Next</button></div>
+				<div class='next_btn'><button id="nextBtn" class = "button button5" onclick="nextCard();">Next</button> </div>
 			</div>
-			
+
 			<button id ='new_round' onClick="window.location.reload()">PLAY NEW ROUND</button>
 
 		</div>

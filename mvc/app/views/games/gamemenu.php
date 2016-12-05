@@ -3,7 +3,7 @@
 <meta name='viewport' content="width=device-width, initial-scale=1" />
 
 <script type = 'text/javascript'>
-    
+
 
 
     var challengeGame;
@@ -62,7 +62,7 @@
             $scope.capsules = response.data.records;
             //console.log($scope.names);
             //alert($scope.names);
-        }); 
+        });
 
 
         //end NIk's edits
@@ -102,13 +102,13 @@
                         var elemm = document.createElement('p');
                         elemm.innerHTML = 'challenge:' + response.data.records[notif]['challengegame'] + ', bet:'+ response.data.records[notif]['bet'] + ', who:' + response.data.records[notif]['user1'];
                         elemm.className = 'notificationText';
-                        elemm.onclick = function() { 
-                            window.location = _url 
+                        elemm.onclick = function() {
+                            window.location = _url
                         };
                         document.getElementById("notificationsBlock").appendChild(elemm);
                     }
                 }
-            }); 
+            });
 
         }
         $scope.getNotifications();
@@ -118,8 +118,8 @@
 
         $scope.queryBy = '$';
         $scope.trustAsHtml = $sce.trustAsHtml;
-    
-        $scope.createChallenge = function(dagame, challengeFlag){    
+
+        $scope.createChallenge = function(dagame, challengeFlag){
 
             var url = "/db/create_challenge.php";
             var usr1 = getCurrentUser();
@@ -142,7 +142,7 @@
                 $scope.response = response;
                 challengeId = response.data[0].challengeid;
                 window.location = window.location.origin + "/mvc/public/games/"+dagame+"/" + <?=$data['lid']?> + "/" + challengeFlag + "/" + challengeGame + "/" + usr1 + "/" + challengeUser + "/" + challengeBet + "/" + challengeId;
-            }); 
+            });
 
 
         }
@@ -162,7 +162,7 @@
             angular.element(document.getElementById('main_app_module')).scope().createChallenge('game1', challengeFlag);
         }
     }
-	
+
 
     function gotoGame2(challengeFlag){
         //normal play, not challenge mode
@@ -171,6 +171,16 @@
         }else{
         //challenge mode
             angular.element(document.getElementById('main_app_module')).scope().createChallenge('game2', challengeFlag);
+        }
+    }
+
+    function gotoFlashcard(challengeFlag){
+        //normal play, not challenge mode
+        if(challengeFlag == undefined){
+            window.location = window.location.origin + "/mvc/public/games/flashcard/" + <?=$data['lid']?>;
+        }else{
+        //challenge mode
+            angular.element(document.getElementById('main_app_module')).scope().createChallenge('flashcard', challengeFlag);
         }
     }
 
@@ -270,7 +280,7 @@
         });
 
         $('#challengeSubmit').on('click', function(){
-            if(!showingPlaceBet){ 
+            if(!showingPlaceBet){
                 $('#innerChallengePlaceBet').slideUp("fast");
                 $('#innerChallengeLoading').slideDown("fast");
                 showingPlaceBet = true;
@@ -295,7 +305,7 @@
         <a onclick="golistManager()" ><button class = 'back'>Back</button></a>
 
         <a onclick="gohome()"><img id="toplogo" src="/mvc/public/images/logo_without_words_version_1.png"></a>
-          
+
           <div onclick="toggleMenuNav()" class=menu-info>
             <span id="notificationIndicator"></span>
             <img src=/mvc/public/images/man-user.png>
@@ -322,7 +332,7 @@
     <div id = app_content>
         <div class = "game-wrapper">
 
-            <a href="#"><div class = "game-block game-red" id ='game_0'>FLASHCARD</div></a>
+            <a onclick="gotoFlashcard()"><div class = "game-block game-red" id ='game_0'>FLASHCARD</div></a>
 
             <a onclick="gotoGame1()"><div class = "game-block game-white" id ='game_1'>MATCHING</div></a>
 
