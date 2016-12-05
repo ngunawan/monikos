@@ -86,7 +86,7 @@
 			<form class = 'answer' id = 'answer_input' name = "jojo">
 				<input type="text" id="f1" name="Answer" placeholder="Answer:" >
 			</form>
-      <div class='submit_btn'><button id ='submit_button' class = "button button5" onclick="checkAnswer();" ><img src = '/mvc/public/images/green-check.png'/></button></div>
+      <div class='submit_btn'><button id ='submit_button' class = "button button5" onclick="checkAnswer();" ><span class = 'glyphicon glyphicon-ok-circle'/></button></div>
       </div>
 
 			<p id="wrong"></p>

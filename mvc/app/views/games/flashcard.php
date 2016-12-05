@@ -1,9 +1,7 @@
-<!doctype html>
-
-<html lang="en">
 <head>
   <meta charset="utf-8">
-
+	<meta name='viewport' content="width=device-width, initial-scale=1" />
+	
     <script src = '/mvc/public/js/flashCtrl.js'></script>
 
    <title>Flashcard</title>
@@ -79,14 +77,12 @@
   <div class="flashcard">
     <div class="front">
       <p id = "front" >{{front}}</p>
-
-
     </div>
+	  
     <div class="back">
       <p id = "back" >{{back}}</p>
-
-
     </div>
+	  
   </div>  
 </div>
 
@@ -99,8 +95,5 @@
 		<div class='next_btn'><button id="nextBtn" class = "button button5" onclick="nextCard();">Next</button></div>
 	</div>
 </div>
-</div>
-  
   
 </body>
-</html>

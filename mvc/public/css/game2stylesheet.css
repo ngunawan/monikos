@@ -115,16 +115,16 @@ input#f1 {
 }
 
 .submit_btn {
-	width:50px;
-	height:50px;
 	vertical-align: middle;
+	align-items: center;
 }
 
 
-.submit_btn img{
-	height: 100%;
-	width: 100%;
+.submit_btn span{
+	font-size: 50px;
 	text-align: -webkit center;
+	align-items: center;
+	color: white;
 }
 
 /************Pills************/

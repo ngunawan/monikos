@@ -338,14 +338,19 @@
 
             <a onclick ="gotoGame2()"><div class = "game-block game-red" id ='game_2'>PILL GAME</div></a>
 
-            <a href='#'><div class = "game-block game-white" id ='game_3'>MULTIPLE CHOICE<br>QUIZ</div></a>
+<!--           <a href='#'><div class = "game-block game-white" id ='game_3'>MULTIPLE CHOICE<br>QUIZ</div></a>-->
 
-            <div class = "game-block game-red" id ='challenge-block'><span id='challengeText'>CHALLENGE A<br>FRIEND</span>
+            <div class = "game-block game-white" id ='challenge-block'><span id='challengeText'>CHALLENGE A<br>FRIEND</span>
                 <div id="innerChallenge" style="display:none">
                     <p id="selectGameText">Select a Game</p>
                     <div id="#challenge-matching" class="challengeButton SelectChallengeGameButton" onclick="selectChallengeGame('matching')">MATCHING</div>
-                    <div id="#challenge-pill" class="challengeButton SelectChallengeGameButton" onclick="selectChallengeGame('pill')">PILL GAME</div>
+                   
+					<div id="#challenge-pill" class="challengeButton SelectChallengeGameButton" onclick="selectChallengeGame('pill')">PILL GAME</div>
+<!--
+
                     <div id="#challenge-quiz" class="challengeButton SelectChallengeGameButton" onclick="selectChallengeGame('quiz')">QUIZ</div>
+-->
+
                 </div>
                 <div id="innerChallengeFindFriend" style="display:none">
                     <p id="selectUserText">Select a User</p>
