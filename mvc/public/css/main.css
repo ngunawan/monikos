@@ -795,6 +795,7 @@ padding: 10px 0;
 
 .ng-modal-content-footer .plusone-wrapper {
     width:100%;
+    position:absolute;
 }
 
 .ng-modal-content-footer .likes-dislikes-wrapper .likes-count {
@@ -813,22 +814,32 @@ padding: 10px 0;
 
 }
 
-.plusone-like, .plusone-dislike {
-    display: inline-block;
+.plusone-like {
+    display: block;
     position: absolute;
     width:45%;
-    z-index:999999;
+    z-index:9999999;
     transition: ease-in .4s;
-/*    display:none;*/
-/*    opacity:0;*/
+
+}
+
+.plusone-dislike {
+    display: block;
+    position: absolute;
+    width:45%;
+    z-index:9999999;
+    transition: ease-in .4s;
+
 }
 
 .plusone-like {
-    margin-left:-45%;
-    margin-top:-18px;}
+    margin-left:5vw;
+    margin-top:-20px;
+}
 
 .plusone-dislike {
-    margin-top: -18px;
+    margin-left:46vw;
+    margin-top: -20px;
 }
 
 .plusone-animate {
@@ -1253,4 +1264,44 @@ p.notificationText:hover {
 div#notificationsBlock {
     height: 100px;
     overflow: auto;
+}
+
+div#errorMessage {
+    position: fixed;
+    z-index: 5;
+    text-align: center;
+    width: 300px;
+    font-family: 'Raleway',sans-serif;
+    font-size: 20px;
+    background: #333;
+    padding: 30px;
+    color: white;
+    border-radius: 20px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+div#errorBtn {
+    background: #22A7F0;
+    padding: 5px;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+
+img#errorLogo {
+    width: 150px;
+}
+
+span#notificationIndicator {
+    background: #22A7F0;
+    border-radius: 16px;
+    padding: 2px;
+    font-size: 13px;
+    /* float: left; */
+    /* margin-bottom: -3px; */
+    position: fixed;
+    width: 21px;
+    top: 8px;
+    right: 29px;
 }

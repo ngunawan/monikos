@@ -88,6 +88,53 @@
 
         app.controller('customersCtrl', ['$scope','$sce', '$http', '$timeout', function($scope, $sce, $http, $timeout) {
 
+
+            function gotoChallenge(url){
+                window.location = url;
+            }
+
+            $scope.getNotifications = function(){
+                var username = getCookie('username');
+
+                var data = $.param({
+                    user : username
+                });
+
+                var config = {
+                    headers : {
+                        'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                    }
+                };
+
+                var url = "/db/get_notifications.php";
+
+                $http.post(url, data, config)
+                    .then(function (response) {
+                    console.log(response);
+
+                    $('#notificationIndicator').html(response.data.records.length);
+                    //if theres no challenges dont show anything
+                    if(!response.data.records.length){
+                        $('#notificationIndicator').css({'display':'none'});
+                    }else{
+                        $('#noNotificationsText').css({'display':'none'});
+                        $('#notificationsBlock').css({'display':'block'});
+                        for(var notif in response.data.records){
+                            var _url = response.data.records[notif]['url'];
+                            var elemm = document.createElement('p');
+                            elemm.innerHTML = 'challenge:' + response.data.records[notif]['challengegame'] + ', bet:'+ response.data.records[notif]['bet'] + ', who:' + response.data.records[notif]['user1'];
+                            elemm.className = 'notificationText';
+                            elemm.onclick = function() { 
+                                window.location = _url 
+                            };
+                            document.getElementById("notificationsBlock").appendChild(elemm);
+                        }
+                    }
+                }); 
+
+            }
+            $scope.getNotifications();
+
             $scope.showPopup = function(x) {
                 var y = x.toString();
                 var temp_name = "show-" + y;
@@ -210,6 +257,8 @@
             }
 
             $scope.updateLikes = function(likeCount, dislikeCount, id){
+                
+                       $('.plusone-like').fadeIn(800).css({"-webkit-transform":"translate(0,-5px)"}).fadeOut(100);
 
                 var url = "/db/update_drugs.php";
                 var likes = parseInt(likeCount, 10);
@@ -250,7 +299,7 @@
                 }); 
 
                 //                $('.plusone-like').addClass("plusone-animate");
-                $('.plusone-like').fadeIn(800).css({"-webkit-transform":"translate(0,-10px)"}).fadeOut(100);
+         
 
 
                 //                var tempString = "plusone-like d" + id;
@@ -285,6 +334,8 @@
 
 
             $scope.updateDislikes = function(likeCount, dislikeCount, id){
+                
+                  $('.plusone-dislike').fadeIn(800).css({"-webkit-transform":"translate(0,-5px)"}).fadeOut(100);
 
                 var url = "/db/update_drugs.php";
                 var likes = parseInt(likeCount, 10);
@@ -331,7 +382,7 @@
                 //                    $scope.plusone_obj.className = "plusone-dislike d" + i;
                 //
                 //                }, 1000);
-                $('.plusone-dislike').fadeIn(800).css({"-webkit-transform":"translate(0,-10px)"}).fadeOut(100);
+              
 
             }
 
@@ -367,11 +418,17 @@
 
             <a ng-click = 'home()'><img id="toplogo" src="/mvc/public/images/logo_without_words_version_1.png"></a>
 
-            <div onclick="toggleMenuNav()" class=menu-info><img src=/mvc/public/images/man-user.png></div>
+            <div onclick="toggleMenuNav()" class=menu-info>
+                <span id="notificationIndicator"></span>
+                <img src=/mvc/public/images/man-user.png>
+            </div>
             <div id='menu-popup' class='menu-popup'>
                 <div class=notif-info>
                     <h2>Notifications</h2>
-                    <p>There are no notifications at this moment.</p>
+                    <p id="noNotificationsText">There are no notifications at this moment.</p>
+                    <div style="display:none" id="notificationsBlock">
+                        <!--append notifications in here-->
+                    </div>
                 </div>
                 <div class=user-info>
                     <img src="/mvc/public/images/user_icon.png">

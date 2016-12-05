@@ -8,11 +8,17 @@
         <a href = '#' ng-click='home()'><button class = 'back'>Back</button></a>
         <a href ="#" ng-click="home()"><img id="toplogo" src="/mvc/public/images/logo_without_words_version_1.png"></a>
 
-        <div onclick="toggleMenuNav()" class=menu-info><img src=/mvc/public/images/man-user.png></div>
+        <div onclick="toggleMenuNav()" class=menu-info>
+            <span id="notificationIndicator"></span>
+            <img src=/mvc/public/images/man-user.png>
+        </div>
         <div id='menu-popup' class='menu-popup'>
             <div class=notif-info>
                 <h2>Notifications</h2>
-                <p>There are no notifications at this moment.</p>
+                <p id="noNotificationsText">There are no notifications at this moment.</p>
+                <div style="display:none" id="notificationsBlock">
+                    <!--append notifications in here-->
+                </div>
             </div>
             <div class=user-info>
                 <img src="/mvc/public/images/user_icon.png">
@@ -82,7 +88,7 @@
                 </div>
 
                 <!--<button class ='select' ng-click='selectlist($index, this)'>SELECT</button>-->
-                <button class ='selectList' ng-click='selectList($index)'>SELECT</button>
+                <button class ='selectList' ng-click='selectSchoolList($index)'>SELECT</button>
 
             </div>
 
