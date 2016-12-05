@@ -258,7 +258,9 @@
 
             $scope.updateLikes = function(likeCount, dislikeCount, id){
 
-                $('.plusone-like').fadeIn(800).css({"-webkit-transform":"translate(0,-5px)"}).fadeOut(100);
+//                $('.plusone-like').fadeIn(400).css({"-webkit-transform":"translate(0,-8px)"}).fadeOut(400);
+//                
+                 $('.plusone-like').fadeIn(400).fadeOut(400);
 
                 var url = "/db/update_drugs.php";
                 var likes = parseInt(likeCount, 10);
@@ -291,11 +293,8 @@
                 $http.post(url, data, config)
                     .then(function (response) {
                     console.log(response);
-                    //console.log(response);
-                    //$scope.names = response.data.records;
                     $scope.response = response;
-                    //console.log($scope.names);
-                    //alert($scope.names);
+
                 }); 
 
                 //                $('.plusone-like').addClass("plusone-animate");
@@ -335,7 +334,8 @@
 
             $scope.updateDislikes = function(likeCount, dislikeCount, id){
 
-                $('.plusone-dislike').fadeIn(800).css({"-webkit-transform":"translate(0,-5px)"}).fadeOut(100);
+//                $('.plusone-dislike').fadeIn(800).css({"-webkit-transform":"translate(0,-5px)"}).fadeOut(100);
+                  $('.plusone-dislike').fadeIn(400).fadeOut(400);
 
                 var url = "/db/update_drugs.php";
                 var likes = parseInt(likeCount, 10);
@@ -518,7 +518,7 @@
 
                                         </div>
                                         <div class=btn-wrapper ng-click="$event.stopPropagation()">
-                                            <button ng-click="updateLikes(x.HintLikes, x.HintDislikes, x.DrugId);$event.stopPropagation()" class=like-btn><img src=/mvc/public/images/thumb-up-button.png> Like</button> <button ng-click="updateDislikes(x.HintLikes, x.HintDislikes, x.DrugId);$event.stopPropagation()" class=dislike-btn><img src=/mvc/public/images/thumb-down-button.png>Dislike</button>
+                                            <button ng-click="updateLikes(x.HintLikes, x.HintDislikes, x.DrugId);$event.stopPropagation()" class=like-btn><div class="link-wrap"><img src=/mvc/public/images/thumb-up-button.png> Like</div></button> <button ng-click="updateDislikes(x.HintLikes, x.HintDislikes, x.DrugId);$event.stopPropagation()" class=dislike-btn><div class="link-wrap"><img src=/mvc/public/images/thumb-down-button.png>Dislike</div></button>
                                         </div>
                                         <div class=btn-shadow-wrapper>
                                             <div class=like-btn-shadow></div> <div class=dislike-btn-shadow></div>
