@@ -7,7 +7,7 @@
 <body id="game1" ng-app="myApp" ng-controller="matchingCtrl" >
 
     <script>	
-        
+
         numOfCards = 0; 
 
         function isGameFinished(){
@@ -41,7 +41,7 @@
         });
 
     </script>
-    
+
 
     <!--HTML STUFF HERE-->
     <div id=app_header>
@@ -49,13 +49,13 @@
 
         <a ng-click = 'home()'><img id="toplogo" src="/mvc/public/images/logo_without_words_version_1.png"></a>
 
-<!--        <div class="capsule-info"><span style="display:none" id="updated-capsules-indicator">+2</span> <img src="/mvc/public/images/pill_icon.png">{{capsules[0].capsules}}</div>-->
-        
+        <!--        <div class="capsule-info"><span style="display:none" id="updated-capsules-indicator">+2</span> <img src="/mvc/public/images/pill_icon.png">{{capsules[0].capsules}}</div>-->
+
         <div onclick="toggleMenuNav()" class=menu-info>
             <span id="updated-capsules-indicator" style="display:none;float:left"></span>
             <span id="notificationIndicator"></span>
             <img src=/mvc/public/images/man-user.png>
-            
+
         </div>
         <div id='menu-popup' class='menu-popup'>
             <div class=notif-info>
@@ -71,12 +71,14 @@
                     <div class=username-info>{{capsules[0].username}}</div>
                     <div class=email-info>({{capsules[0].email}})</div>
                     <div class=capsule-info>{{capsules[0].capsules}} Capsules</div>
+                    <a href="#" onclick="logout()"><div class=logout-btn>logout</div></a>
+
                 </div>
             </div>
         </div>
 
     </div>
-	
+
     <div id=app_content>
         <div id="completeMessage" style="display:none">
             <p id="completeMessageText">Congratulations, you finished this round. </p>
@@ -84,7 +86,7 @@
             <div class="completeButton" id="finishedBackToMenuButton" onclick="gotoGamelist()">MENU</div>
         </div>
         <p id="challengeFlag" style="display:none"><?=$data['challengeFlag']?></p>
-        
+
         <div id="challengeInfoBar" ng-show="checkIfInChallengeMode() && !checkIfBeingChallenged()">
             <p class="col-md-4 col-sm-4 col-xs-4 challengeInfoText userText">Challenging: <?=$data['user2']?></p>
             <p class="col-md-4 col-sm-4 col-xs-4 challengeInfoText timerText"></p>
@@ -110,7 +112,7 @@
                 </div>
             </div>
 
-            
+
 
             <div ng-if="firstLoad">{{getlid(<?=$data['lid']?>)}}</div>
 
@@ -123,7 +125,7 @@
 
                 <div id='challenge_complete_btn'><button id="inner_challenge_complete_btn" class = "button button5" onclick="gotoGamelist()" >Game Menu</button></div>
 
-           </div>	
+            </div>	
 
             <img id="finished" src="" style="margin-top: 25px; margin-left: 2%">
             <div ng-if="numClicked < 2" >
@@ -168,7 +170,7 @@
         </div> <!-- /app_body -->
     </div>
 
-    
+
 
     <div id = "foot" class = 'footer'>
 
@@ -180,7 +182,7 @@
 
     </div>
 
-   
+
 
 </body>
 <!--</html>-->

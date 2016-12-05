@@ -137,7 +137,7 @@
             };
 
             $http.post(url, data, config)
-            .then(function (response) {
+                .then(function (response) {
                 console.log(response);
                 $scope.response = response;
                 challengeId = response.data[0].challengeid;
@@ -158,7 +158,7 @@
         if(challengeFlag == undefined){
             window.location = window.location.origin + "/mvc/public/games/game1/" + <?=$data['lid']?>;
         }else{
-        //challenge mode
+            //challenge mode
             angular.element(document.getElementById('main_app_module')).scope().createChallenge('game1', challengeFlag);
         }
     }
@@ -169,7 +169,7 @@
         if(challengeFlag == undefined){
             window.location = window.location.origin + "/mvc/public/games/game2/" + <?=$data['lid']?>;
         }else{
-        //challenge mode
+            //challenge mode
             angular.element(document.getElementById('main_app_module')).scope().createChallenge('game2', challengeFlag);
         }
     }
@@ -179,7 +179,7 @@
         if(challengeFlag == undefined){
             window.location = window.location.origin + "/mvc/public/games/flashcard/" + <?=$data['lid']?>;
         }else{
-        //challenge mode
+            //challenge mode
             angular.element(document.getElementById('main_app_module')).scope().createChallenge('flashcard', challengeFlag);
         }
     }
@@ -306,10 +306,10 @@
 
         <a onclick="gohome()"><img id="toplogo" src="/mvc/public/images/logo_without_words_version_1.png"></a>
 
-          <div onclick="toggleMenuNav()" class=menu-info>
+        <div onclick="toggleMenuNav()" class=menu-info>
             <span id="notificationIndicator"></span>
             <img src=/mvc/public/images/man-user.png>
-          </div>
+        </div>
         <div id='menu-popup' class='menu-popup'>
             <div class=notif-info>
                 <h2>Notifications</h2>
@@ -320,10 +320,12 @@
             </div>
             <div class=user-info>
                 <img src="/mvc/public/images/user_icon.png">
-               <div class=user-info-sub>
+                <div class=user-info-sub>
                     <div class=username-info>{{capsules[0].username}}</div>
                     <div class=email-info>({{capsules[0].email}})</div>
                     <div class=capsule-info>{{capsules[0].capsules}} Capsules</div>
+                    <a href="#" onclick="logout()"><div class=logout-btn>logout</div></a>
+
                 </div>
             </div>
         </div>

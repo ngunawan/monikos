@@ -26,6 +26,7 @@
                     <div class=username-info>{{capsules[0].username}}</div>
                     <div class=email-info>({{capsules[0].email}})</div>
                     <div class=capsule-info>{{capsules[0].capsules}} Capsules</div>
+                    <a href="#" onclick="logout()"><div class=logout-btn>logout</div></a>
                 </div>
             </div>
         </div>
