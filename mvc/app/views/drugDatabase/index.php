@@ -257,8 +257,8 @@
             }
 
             $scope.updateLikes = function(likeCount, dislikeCount, id){
-                
-                       $('.plusone-like').fadeIn(800).css({"-webkit-transform":"translate(0,-5px)"}).fadeOut(100);
+
+                $('.plusone-like').fadeIn(800).css({"-webkit-transform":"translate(0,-5px)"}).fadeOut(100);
 
                 var url = "/db/update_drugs.php";
                 var likes = parseInt(likeCount, 10);
@@ -299,7 +299,7 @@
                 }); 
 
                 //                $('.plusone-like').addClass("plusone-animate");
-         
+
 
 
                 //                var tempString = "plusone-like d" + id;
@@ -334,8 +334,8 @@
 
 
             $scope.updateDislikes = function(likeCount, dislikeCount, id){
-                
-                  $('.plusone-dislike').fadeIn(800).css({"-webkit-transform":"translate(0,-5px)"}).fadeOut(100);
+
+                $('.plusone-dislike').fadeIn(800).css({"-webkit-transform":"translate(0,-5px)"}).fadeOut(100);
 
                 var url = "/db/update_drugs.php";
                 var likes = parseInt(likeCount, 10);
@@ -382,7 +382,7 @@
                 //                    $scope.plusone_obj.className = "plusone-dislike d" + i;
                 //
                 //                }, 1000);
-              
+
 
             }
 
@@ -436,6 +436,8 @@
                         <div class=username-info>{{capsules[0].username}}</div>
                         <div class=email-info>({{capsules[0].email}})</div>
                         <div class=capsule-info>{{capsules[0].capsules}} Capsules</div>
+                        <a href="#" onclick="logout()"><div class=logout-btn>logout</div></a>
+
                     </div>
                 </div>
             </div>

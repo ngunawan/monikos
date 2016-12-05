@@ -116,6 +116,13 @@ button {
     width: 60px;
 }
 
+#app_header .logout-btn {
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 12px;
+    margin-top:5px;
+}
+
 /*
 .capsule-info {
 position:fixed;
@@ -204,7 +211,7 @@ margin-right:10px;
 .user-info img {
     width:55px;
     float:left;
-    margin-top:-4px;
+    margin-top:0px;
 }
 
 .user-info .username-info {
