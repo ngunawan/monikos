@@ -21,13 +21,17 @@
        <a ng-click='home()'><img id="toplogo" src="/mvc/public/images/logo_without_words_version_1.png"></a>
 
         <div onclick="toggleMenuNav()" class=menu-info>
+        	<span id="notificationIndicator"></span>
         	<span id="updated-capsules-indicator" style="display:none;float:left"></span>
         	<img src=/mvc/public/images/man-user.png>
         </div>
         <div id='menu-popup' class='menu-popup'>
             <div class=notif-info>
                 <h2>Notifications</h2>
-                <p>There are no notifications at this moment.</p>
+                <p id="noNotificationsText">There are no notifications at this moment.</p>
+                <div style="display:none" id="notificationsBlock">
+                    <!--append notifications in here-->
+                </div>
             </div>
             <div class=user-info>
                 <img src="/mvc/public/images/user_icon.png">

@@ -17,6 +17,53 @@ var app = angular.module('myApp', []);
 			
 		$scope.score = 0;
 
+
+    function gotoChallenge(url){
+        window.location = url;
+    }
+
+    $scope.getNotifications = function(){
+        var username = getCookie('username');
+
+        var data = $.param({
+            user : username
+        });
+
+        var config = {
+            headers : {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+            }
+        };
+
+        var url = "/db/get_notifications.php";
+
+        $http.post(url, data, config)
+            .then(function (response) {
+            console.log(response);
+
+            $('#notificationIndicator').html(response.data.records.length);
+            //if theres no challenges dont show anything
+            if(!response.data.records.length){
+                $('#notificationIndicator').css({'display':'none'});
+            }else{
+                $('#noNotificationsText').css({'display':'none'});
+                $('#notificationsBlock').css({'display':'block'});
+                for(var notif in response.data.records){
+                    var _url = response.data.records[notif]['url'];
+                    var elemm = document.createElement('p');
+                    elemm.innerHTML = 'challenge:' + response.data.records[notif]['challengegame'] + ', bet:'+ response.data.records[notif]['bet'] + ', who:' + response.data.records[notif]['user1'];
+                    elemm.className = 'notificationText';
+                    elemm.onclick = function() { 
+                        window.location = _url 
+                    };
+                    document.getElementById("notificationsBlock").appendChild(elemm);
+                }
+            }
+        }); 
+
+    }
+    $scope.getNotifications();
+
     function setRequestConfig(){
         return {
           headers : {
@@ -87,7 +134,7 @@ var app = angular.module('myApp', []);
     }
 
     $scope.checkIfChangedUser = function(){
-      if($scope.checkIfInChallengeMode()){
+      if($scope.checkIfBeingChallenged()){
         
         //check if being challenged
         //if yes, see if there's a cookie present for "username" and "user_id"
@@ -190,7 +237,6 @@ var app = angular.module('myApp', []);
       $http.post(listurl, data, config)
       .then(function (response) {
           console.log(response.data.drugnames);
-          console.log("ABOUT TO PRINT SCOPE SELECT");
           $scope.select = response.data.drugnames.split(",");
           console.log("SELCT " + $scope.select[0]);
           console.log("select list " + $scope.select.length);
