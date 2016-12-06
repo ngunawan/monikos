@@ -261,7 +261,7 @@
         });
 
         $('.challengeButton').on('click', function(){
-            $(this).css({"background":"white","color":"#ff3333"});
+            $(this).css({"background":"#8d99ae","color":"white"});
 
         });
 
@@ -272,7 +272,7 @@
 
         $('#challengeUserButton').on('click', function(){
             if(!showingSelectUser){
-                $(this).css({"background":"white","color":"#ff3333"});
+                $(this).css({"background":"#8d99ae","color":"white"});
                 $('#innerChallengePlaceBet').slideDown('fast');
                 $('#innerChallengeFindFriend').slideUp("fast");
                 showingSelectUser = true;

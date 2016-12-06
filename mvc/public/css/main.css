@@ -382,7 +382,7 @@ body#database_module #app_content {
     position:absolute;
     height:80vh;
     width:100vw;
-    margin-top:10vh;
+    margin-top:65px;
     text-align: center;
 }
 
@@ -390,7 +390,7 @@ body#main_app_module #app_content {
     display:block;
     position:absolute;
     width:100vw;
-    margin-top:9vh;
+    margin-top:65px;
     text-align: center;
 }
 
