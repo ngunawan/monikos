@@ -269,6 +269,7 @@ var app = angular.module('myApp', []);
     }
 
       $scope.getallTheDrugs = function(){
+                      $('#completeMessage').slideDown('fast');
 
 
         

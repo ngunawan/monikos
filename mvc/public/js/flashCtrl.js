@@ -32,8 +32,11 @@ var app = angular.module('myApp', []);
           $scope.select = response.data.drugnames.split(",");
           console.log("SELCT " + $scope.select[0]);
           console.log("select list " + $scope.select.length);
-          $scope.percent = Math.ceil((1/$scope.select.length)*100) + "%";
-          document.getElementById("pb").style.width=$scope.percent;
+          $scope.percent =  index + "/" + $scope.select.length;
+          $scope.percentSign = Math.ceil((index/$scope.select.length)*100) + "%";
+          document.getElementById("pb").style.width=$scope.percentSign;
+          		console.log($scope.percentSign);
+
           $scope.getallTheDrugs();
       });
       $scope.firstLoad = false;
@@ -87,7 +90,7 @@ var app = angular.module('myApp', []);
 
 	nextCard = function(){
 		console.log
-		$('.flashcard').toggleClass('flipped');
+// 		$('.flashcard').toggleClass('flipped');
 		tempFront = "";
 		tempBack = "";
 		console.log($scope.finalList[index-1].Class);
@@ -130,8 +133,10 @@ var app = angular.module('myApp', []);
 
 		document.getElementById("front").innerHTML=tempFront;
 		document.getElementById("back").innerHTML= tempBack;
-		$scope.percent = (index/$scope.select.length)*100 + "%";
-		document.getElementById("pb").style.width=$scope.percent;
+		$scope.percent = index + "/" + $scope.select.length;
+        $scope.percentSign = Math.ceil((index/$scope.select.length)*100) + "%";
+		document.getElementById("pb").style.width=$scope.percentSign;
+		console.log($scope.percentSign);
 
 		document.getElementById("percentpb").innerHTML=$scope.percent;
 
@@ -141,8 +146,10 @@ var app = angular.module('myApp', []);
 	 index = 1;
 	 tempBack ="";
 	 tempFront = "";
-	 $scope.percent = (index/$scope.select.length)*100 + "%";
-	 		document.getElementById("pb").style.width=$scope.percent;
+	 $scope.percent =  index + "/" + $scope.select.length;
+     $scope.percentSign = Math.ceil((index/$scope.select.length)*100) + "%";
+	 
+	 	document.getElementById("pb").style.width=$scope.percentSign;
 		document.getElementById("percentpb").innerHTML=$scope.percent;
 		if (document.getElementById('fBrand').checked){
 			tempFront += "Brand: " + $scope.finalList[index-1].Brand + "<br />"
@@ -180,6 +187,8 @@ var app = angular.module('myApp', []);
 
 		document.getElementById("front").innerHTML=tempFront;
 		document.getElementById("back").innerHTML= tempBack;
+		
+		document.getElementById("toggle").click(); 
 
 	}
 
@@ -226,8 +235,10 @@ var app = angular.module('myApp', []);
 
 		document.getElementById("front").innerHTML=tempFront;
 		document.getElementById("back").innerHTML= tempBack;
-		$scope.percent = (index/$scope.select.length)*100 + "%";
-		document.getElementById("pb").style.width=$scope.percent;
+		$scope.percent =  index + "/" + $scope.select.length;
+		$scope.percentSign = Math.ceil((index/$scope.select.length)*100) + "%";
+		document.getElementById("pb").style.width=$scope.percentSign;
+		console.log($scope.percentSign);
 		document.getElementById("percentpb").innerHTML=$scope.percent;
 	}
 	}

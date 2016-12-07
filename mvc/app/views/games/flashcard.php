@@ -28,7 +28,7 @@
 
 
 		
-        <div onclick="toggleMenuNav()" class=menu-info>
+        <div id = "toggle" onclick="toggleMenuNav()" class=menu-info>
         	<span id="updated-capsules-indicator" style="display:none;float:left"></span>
         	<img src=/mvc/public/images/Settings.png>
         </div>
@@ -63,6 +63,10 @@
 	</div>
 	
 	
+        <div id="completeMessage" style="display:none">
+            <p id="completeMessageText">Congratulations, you finished this round. </p>
+            
+        </div>	
 
 
 <div class="container" style = "margin-top: 80px">
