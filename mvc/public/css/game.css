@@ -3,6 +3,7 @@
 body {
     margin: 0;
     padding: 0;    
+    background: #FF3D39;
 }
 
 #app_header {
@@ -72,20 +73,21 @@ a {
 }
 .game-white{
     color: #8d99ae;
+    background: white;
 }
 
 /*DCEDITS*/
 
 .challengeButton {
-    border: 1px solid white;
+    border: 1px solid #8d99ae;
     border-radius: 5px;
     margin-bottom: 10px;
     padding: 5px;
 }
 
 input#findUser {
-    color: #AAA;
-    border: 0px solid white;
+    color: #8d99ae;
+    border: 1px solid #8d99ae;
     margin-bottom: 15px;
     padding: 5px;
     border-radius: 5px;
@@ -96,8 +98,8 @@ input#findUser:focus {
 }
 
 input#capsulesQuantity {
-    color: #AAA;
-    border: 0px solid white;
+    color: #8d99ae;
+    border: 1px solid #8d99ae;
     margin-bottom: 15px;
     padding: 5px;
     border-radius: 5px;
@@ -118,4 +120,19 @@ span#notificationIndicator {
     width: 21px;
     top: 8px;
     right: 29px;
+}
+
+::-webkit-input-placeholder { /* Chrome */
+  color: #8d99ae;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #8d99ae;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #8d99ae;
+  opacity: 1;
+}
+:-moz-placeholder { /* Firefox 4 - 18 */
+  color: #8d99ae;
+  opacity: 1;
 }

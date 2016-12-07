@@ -232,8 +232,8 @@ margin-right:10px;
     font-family: 'Raleway';
     font-size: 10px;
     font-weight:600;
-/*    color: #FF3D39;*/
-/*    color: #6c7a89;*/
+    /*    color: #FF3D39;*/
+    /*    color: #6c7a89;*/
     background: #FF3D39;
     color: white;
     padding: 3px;
@@ -382,7 +382,7 @@ body#database_module #app_content {
     position:absolute;
     height:80vh;
     width:100vw;
-    margin-top:10vh;
+    margin-top:65px;
     text-align: center;
 }
 
@@ -390,7 +390,7 @@ body#main_app_module #app_content {
     display:block;
     position:absolute;
     width:100vw;
-    margin-top:9vh;
+    margin-top:65px;
     text-align: center;
 }
 
@@ -840,12 +840,12 @@ padding: 10px 0;
 
 .plusone-like {
     margin-left:5vw;
-    margin-top:-20px;
+    margin-top:-24px;
 }
 
 .plusone-dislike {
     margin-left:46vw;
-    margin-top: -20px;
+    margin-top: -24px;
 }
 
 .plusone-animate {
@@ -893,6 +893,17 @@ padding: 10px 0;
     0%   { opacity:0; margin-top:15px;}
     50%  { opacity:1; margin-top:5px;}
     100% { opacity:0; margin-top:0px;}
+}
+
+.link-wrap {
+    position: relative;
+    height: 45px;
+    margin-top: 5px;
+}
+
+
+button.like-btn:active, button.dislike-btn:active, button.like-btn:focus, button.dislike-btn:focus {
+    outline:none;
 }
 
 .like-btn {
