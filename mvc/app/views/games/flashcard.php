@@ -30,7 +30,7 @@
 		
         <div onclick="toggleMenuNav()" class=menu-info>
         	<span id="updated-capsules-indicator" style="display:none;float:left"></span>
-        	<img src=/mvc/public/images/Settings.png>
+        	<img src=/mvc/public/images/dc_settings.png>
         </div>
         <div id='menu-popup' class='menu-popup'>
             <div class=notif-info>
