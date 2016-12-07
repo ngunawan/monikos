@@ -51,7 +51,7 @@
         </div>
 
         <h1 class="list-m-header your-list">Your List</h1>
-        <div class='list-collection-block'>   
+        <div class='list-collection-block'>
             <div ng-class="list_block" class="list_block" ng-repeat="list in lists track by $index">
 
                 <h1 class = "list_name_header">
@@ -60,8 +60,8 @@
                 <div class='list-info-block' >
                     <div class='list-drugs'>
                         {{list.drugs}}
-                        <br>        
-                    </div>      
+                        <br>
+                    </div>
                 </div>
 
                 <!--<button class ='select' ng-click='selectlist($index, this)'>SELECT</button>-->
@@ -74,7 +74,7 @@
 
         <h1 class="list-m-header school-list">School's List</h1>
 
-        <div class='list-collection-block'> 
+        <div class='list-collection-block'>
 
             <div ng-class="list_block" class="list_block" ng-repeat="list2 in school_lists track by $index">
 
@@ -84,18 +84,18 @@
                 <div class='list-info-block' >
                     <div class='list-drugs'>
                         {{list2.drugs}}
-                        <br>        
-                    </div>      
+                        <br>
+                    </div>
                 </div>
 
                 <!--<button class ='select' ng-click='selectlist($index, this)'>SELECT</button>-->
-                <button class ='selectList' ng-click='selectSchoolList($index)'>SELECT</button>
+              <button class ='selectList' ng-click='selectSchoolList($index)'>SELECT</button>
 
             </div>
 
         </div>
 
-        <!-------LIST CREATOR--------->  
+        <!-------LIST CREATOR--------->
 
         <!-- The overlay -->
         <div id="createList_overlay" class="overlay">
@@ -104,19 +104,19 @@
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
             <!-- Overlay content -->
-            <div class="overlay-content"> 
+            <div class="overlay-content">
                 <div class ='text-container'>
                     <div class=field-name>LIST TITLE: </div>
-                    <input id = 'listName' ng-model=listform.name type="text" required>	
+                    <input id = 'listName' ng-model=listform.name type="text" required>
                 </div>
-                <!-------LIST CREATOR--------->         
-                <div class="list-container">        
+                <!-------LIST CREATOR--------->
+                <div class="list-container">
                     <div class="form-group">
                         <div class="col-xs-8 col-sm-8 col-xs-offset-2 col-sm-offset-2">
                             <input type="search" class="form-control" id="search" placeholder="Search for your drug..">
                         </div>
                     </div>
-                    <div class = 'drug-container'>  
+                    <div class = 'drug-container'>
                         <div class="form-group">
                             <div class="searchable-container">
 
@@ -136,7 +136,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>  
+                    </div>
                 </div>
                 <button id ='addbtn' ng-click=addList()>Add List</button>
 
@@ -144,7 +144,7 @@
 
         </div><!--overlay end-->
 
-        <!-------LIST CREATOR END--------->  
+        <!-------LIST CREATOR END--------->
 
     </div>
 
@@ -156,7 +156,7 @@
 
 
 
-<script> 
+<script>
 
     /* Open when someone clicks on the span element */
     function openNav() {
