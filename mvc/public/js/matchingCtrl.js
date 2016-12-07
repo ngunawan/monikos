@@ -369,20 +369,17 @@ app.controller('matchingCtrl', function($scope, $http) {
     }
 
     $('button.toggler').on("click",function(){  
-        //$('button').not(this).removeClass();
         $(this).toggleClass('active');
     });
 
     $scope.clicked = function(front){
         $scope.clear = false;
-
-        //console.log("before " + front);
-        // console.log("before " +drug.drug.Brand);
-        //console.log("numClicked before " + $scope.numClicked);
+       // console.log( $scope.numClicked);
 
 
         for(var i = 0; i < shuffledObjects.length;i++){
             if(front == shuffledObjects[i].front){
+            	console.log(shuffledObjects[i].clicked);
                 if (shuffledObjects[i].clicked == "Y"){
                     shuffledObjects[i].clicked = "N";
                     $scope.numClicked--;
@@ -395,17 +392,49 @@ app.controller('matchingCtrl', function($scope, $http) {
             }
 
         }
+        
+                console.log( $scope.numClicked);
+
+		if ($scope.numClicked == 1){
+		    console.log("here3");
+			for(var i = 0; i < shuffledObjects.length;i++){
+            if(front == shuffledObjects[i].front){
+            	shuffledObjects[i].clicked = "Y"
+            	console.log(front);
+            	console.log(shuffledObjects[i].clicked);
+				console.log(shuffledObjects[i].active);
+            }
+            else {
+            	shuffledObjects[i].clicked = "N"
+
+            }
+
+        	}
+		}
 
         if ($scope.numClicked > 2) {
-            $scope.numClicked = 0;	
+            $scope.numClicked = 1;	
+            console.log("here1");
 
             for(var i = 0; i < shuffledObjects.length;i++){
+            	 if (shuffledObjects[i].clicked == "Y" && shuffledObjects[i].front == front){
+                     $scope.firstCard = shuffledObjects[i];
+           			 $scope.numClicked = 1;	
+           			 shuffledObjects[i].clicked = "Y";
+
+
+                } 
+                else{
+            
                 shuffledObjects[i].clicked = "N";
+                
+                }
             }       		
         }
 
         if ($scope.numClicked == 2){
             //document.getElementById("tryagain").style.visibility="visible";
+            console.log("here2");
 
             for(var i = 0; i < shuffledObjects.length;i++){
                 if (shuffledObjects[i].clicked == "Y" && shuffledObjects[i].front == front){
@@ -430,13 +459,7 @@ app.controller('matchingCtrl', function($scope, $http) {
                 $scope.secondCard.correct = 'Y';
                 $scope.firstCard.active = 'Y';
                 $scope.secondCard.active = 'Y';
-                //console.log($scope.numCorrect + " num right" );
-                //console.log($scope.names.length + " num length" );
-                //$scope.score +=2;
-                //$scope.$apply(function () {
-                //    console.log("IM HERE 3");
-                //    $scope.score = $scope.score +2; 
-                //});
+                
                 $scope.score = $scope.score +2;
                 if(!($scope.checkIfInChallengeMode() || $scope.checkIfBeingChallenged())){
                     $scope.increaseCapules(2);
@@ -460,6 +483,8 @@ app.controller('matchingCtrl', function($scope, $http) {
             else {
                 $scope.correct = "N";
             }
+            
+            setTimeout(function(){ $scope.numClicked==0 ; }, 1050);
         }
         //console.log("numClicked after " + $scope.numClicked);
         //console.log("correct " + $scope.correct);
