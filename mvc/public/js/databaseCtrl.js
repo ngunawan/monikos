@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ngAnimate']);
+var app = angular.module('databaseApp', ['ngAnimate']);
 
 //filter to validate audio file path
 app.filter("trustUrl", ['$sce', function ($sce) {

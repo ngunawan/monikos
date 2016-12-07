@@ -1,6 +1,6 @@
 <body id="database_module">
 
-    <div ng-app="myApp" ng-controller="databaseCtrl">
+    <div ng-app="databaseApp" ng-controller="databaseCtrl">
 
         <!-----------------------HEADER------------------------------->
         <div id=app_header>

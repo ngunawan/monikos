@@ -68,7 +68,7 @@ app.controller('myCtrl', function($scope, $http) {
     var data = $.param({id : id_cookie});
     var config = {headers : {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'}};
 
-    var url = "/db/get_capsule_info.php";
+    var url = "/db/get_user_profile.php";
     $http.post(url, data, config).then(function (response) {
         console.log(response);$scope.capsules = response.data.records;
     }); 

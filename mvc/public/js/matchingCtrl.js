@@ -212,7 +212,7 @@ app.controller('matchingCtrl', function($scope, $http) {
           }
       };
 
-      var url = "/db/get_capsule_info.php";
+      var url = "/db/get_user_profile.php";
       $http.post(url, data, config)
           .then(function (response) {
           console.log(response);
