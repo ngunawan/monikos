@@ -4,12 +4,11 @@
 
 <script src = '/mvc/public/js/games/pillCtrl.js'></script>
 
-
 <body ng-app="myApp" ng-controller="pillCtrl" id="main_app_module">
 
 	<div id=app_header>
 
-	   <a onclick="gotoGamelist()" ><button class = 'back'>Back</button></a>
+	   <a onclick="gotoGamelist(<?=$data['lid']?>)" ><button class = 'back'>Back</button></a>
 
        <a ng-click='home()'><img id="toplogo" src="/mvc/public/images/logo_without_words_version_1.png"></a>
 
@@ -41,11 +40,14 @@
 	</div>
 
 	<div class = 'app_content'>
-		<div id="completeMessage" style="display:none">
+	
+		<!--<div id="completeMessage" style="display:none">
             <p id="completeMessageText">Congratulations, you finished this round. </p>
-        </div>
+        </div> -->
 
 		<!--dummy object for checking if in challenge mode-->
+		
+		
 		<p id="challengeFlag" style="display:none"><?=$data['challengeFlag']?></p>
 		<!---->
 		<div id="challengeInfoBar" ng-show="checkIfInChallengeMode() && !checkIfBeingChallenged()">
@@ -103,9 +105,9 @@
     <!-- /app_body -->
 
 		<div class = 'btn_footer'>
-			<div class='btn_wrap'>
+			<!-- <div class='btn_wrap'>
 				<div class='next_btn'><button id="nextBtn" class = "button button5" onclick="nextCard();">Next</button> </div>
-			</div>
+			</div> -->
 
 			<button id ='new_round' onClick="window.location.reload()">PLAY NEW ROUND</button>
 

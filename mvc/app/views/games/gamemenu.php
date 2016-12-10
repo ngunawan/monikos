@@ -2,9 +2,9 @@
 
 <meta name='viewport' content="width=device-width, initial-scale=1" />
 
-<script src="/mvc/public/js/games/gameMenuCtrl.js"></script>
-
 <body id="main_app_module" ng-app="gameMenuApp" ng-controller="gameMenuCtrl">
+
+  <script src="/mvc/public/js/games/gameMenuCtrl.js"></script>
 
     <div id='app_header'>
         <a onclick="golistManager()" ><button class = 'back'>Back</button></a>

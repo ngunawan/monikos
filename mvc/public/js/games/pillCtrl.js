@@ -378,7 +378,7 @@ var app = angular.module('myApp', []);
 
 
 
-		window.nextCard = function(){
+		function nextCard() {
 // 			$scope.currentIndex++;
 // 			console.log("current index " + $scope.currentIndex);
 			console.log("cuIn " + cuIn);
@@ -497,13 +497,10 @@ var app = angular.module('myApp', []);
 			card.Generic = card.Generic.replace(/-/g, ' ');
 			card.Brand = card.Brand.replace(/-/g, ' ');
 
-
-
 			 if ($scope.type == "Brand" ) {
  				if (card.Generic.toLowerCase() === val.toLowerCase()) {
  					//document.getElementById("plus2").innerHTML="+2!";
-
- 					console.log("RIGHT");
+	        console.log("RIGHT");
  					$scope.result = "RIGHT";
 
 				 	$scope.$apply(function () {
@@ -538,14 +535,15 @@ var app = angular.module('myApp', []);
 						document.getElementById("result").innerHTML = "CORRECT!";
 						document.getElementById("thePill").src = '/mvc/public/images/pill_done.gif';
 
- 						document.getElementById("nextBtn").disabled = false;
+ 						//document.getElementById("nextBtn").disabled = false;
 					}
+            setTimeout(nextCard, 1500);
  				}
  				else {
  					console.log ("WRONG");
  					$scope.result = "WRONG";
 				document.getElementById("wrong").innerHTML = "Incorrect, please type: " + card.Generic;
-				document.getElementById("nextBtn").disabled = true;
+				//document.getElementById("nextBtn").disabled = true;
 				$scope.names.push(card.value);
 
  				}
@@ -571,15 +569,15 @@ var app = angular.module('myApp', []);
 					console.log("Current score: " + $scope.score);
 
  				document.getElementById("result").innerHTML = "CORRECT!";
-				document.getElementById("nextBtn").disabled = false;
+				//document.getElementById("nextBtn").disabled = false;
 
-
+          setTimeout(nextCard, 1500);
  				}
  				else {
  					console.log("WRONG");
  					$scope.result = "WRONG";
 				document.getElementById("wrong").innerHTML = "Incorrect, please type: " + card.Generic;
-				document.getElementById("nextBtn").disabled = true;
+				//document.getElementById("nextBtn").disabled = true;
 				$scope.names.push(card.value);
  				}
  			}
@@ -825,9 +823,11 @@ var app = angular.module('myApp', []);
     $("#updated-capsules-indicator").fadeIn(800).fadeOut(800);
   }
 
-  function gotoGamelist(){
-      window.location = window.location.origin + "/mvc/public/games/menu/" + <?=$data['lid']?>;
+  function gotoGamelist(lid){
+    var lid = lid;
+    window.location = window.location.origin + "/mvc/public/games/menu/" + lid;
   }
+
 
   $(document).ready(function(){
   $('#f1').keypress(function(e){
