@@ -2,46 +2,9 @@
 
 <meta name='viewport' content="width=device-width, initial-scale=1" />
 
-<script src="/mvc/public/js/matchingCtrl.js"></script>
+<script src="/mvc/public/js/games/matchingCtrl.js"></script>
 
 <body id="game1" ng-app="myApp" ng-controller="matchingCtrl" >
-
-    <script>
-
-        numOfCards = 0;
-
-        function isGameFinished(){
-            if($scope.right >= $scope.names.length){
-                $scope.finishedGame = true;
-                alert("done");
-                console.log("done");
-            }
-        }
-
-        function tryAgain(){
-            //alert("test");
-            document.getElementById("tryagain").style.visibility="hidden";
-            document.getElementById("nextButton").click();
-            var x = document.getElementsByClassName("BtnBlue");
-            x[0].click();
-        }
-
-        function gotoGamelist(){
-            window.location = window.location.origin + "/mvc/public/games/menu/" + <?=$data['lid']?>;
-        }
-
-        $('#new_round').on('click', function(){
-            $('#completeMessage').slideUp('fast');
-        });
-
-        $( document ).ready(function() {
-            $('.completeButton').on('click', function(){
-                $(this).css({"background":"#777"});
-            });
-        });
-
-    </script>
-
 
     <!--HTML STUFF HERE-->
     <div id=app_header>

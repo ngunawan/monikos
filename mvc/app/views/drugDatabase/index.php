@@ -47,7 +47,7 @@
                     <option value="$">All</option>
                     <option value="Generic">Generic</option>
                     <option value="Brand">Brand</option>
-                </select>  
+                </select>
             </div>
         </div>
 
@@ -77,7 +77,7 @@
                         <div class="hint-info">
                             <button ng-click='showPopup(x.DrugId);$event.stopPropagation()'>Hint</button>
                             <div class="button-shadow"></div>
-                        </div> 
+                        </div>
 
 
                         <!--HINT POPUP INFO-->
@@ -158,12 +158,6 @@
             </form>
         </div>
 
-
-
     </div>
-
-
-
-
 
 </body>

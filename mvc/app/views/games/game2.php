@@ -2,23 +2,7 @@
 
 <meta name='viewport' content="width=device-width, initial-scale=1" />
 
-<script src = '/mvc/public/js/pillCtrl.js'></script>
-
-
-<script>
-    function gotoGamelist(){
-        window.location = window.location.origin + "/mvc/public/games/menu/" + <?=$data['lid']?>;
-    }
-
-    $(document).ready(function(){
-    $('#f1').keypress(function(e){
-      if(e.keyCode==13)
-      $('#submit_button').click();
-    });
-
-});
-
-</script>
+<script src = '/mvc/public/js/games/pillCtrl.js'></script>
 
 
 <body ng-app="myApp" ng-controller="pillCtrl" id="main_app_module">
@@ -51,16 +35,16 @@
                 </div>
             </div>
         </div>
-        
-        
+
+
 
 	</div>
 
 	<div class = 'app_content'>
 		<div id="completeMessage" style="display:none">
             <p id="completeMessageText">Congratulations, you finished this round. </p>
-        </div>	
-        
+        </div>
+
 		<!--dummy object for checking if in challenge mode-->
 		<p id="challengeFlag" style="display:none"><?=$data['challengeFlag']?></p>
 		<!---->
