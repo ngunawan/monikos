@@ -4,8 +4,6 @@
 
 <body id="main_app_module" ng-app="gameMenuApp" ng-controller="gameMenuCtrl">
 
-  <script src="/mvc/public/js/games/gameMenuCtrl.js"></script>
-
     <div id='app_header'>
         <a onclick="golistManager()" ><button class = 'back'>Back</button></a>
 
@@ -15,6 +13,7 @@
             <span id="notificationIndicator"></span>
             <img src=/mvc/public/images/man-user.png>
         </div>
+        <p id="datalid" style="display:none"><?=$data['lid']?></p>
         <div id='menu-popup' class='menu-popup'>
             <div class=notif-info>
                 <h2>Notifications</h2>
@@ -79,3 +78,5 @@
     </div>
 
 </body>
+
+<script src="/mvc/public/js/games/gameMenuCtrl.js"></script>

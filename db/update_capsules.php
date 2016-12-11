@@ -1,4 +1,7 @@
 <?php
+
+/*Created by Danila Chenchik Monikos LLC*/
+
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
@@ -7,10 +10,7 @@ require_once 'db_creds.php';
 $output = "";
 $sql = "UPDATE Users SET capsules = capsules + " .$_POST['capsules']. " WHERE id = '" .$_POST['id'] . "'";
 if ($conn->query($sql) === TRUE) {
-    //$output .= '[{
-    //"response": 200,
-    //"user": "'.$_POST["user"].'",
-    //"capsuleincrease": "'.$_POST["capsules"].'"},';
+
     $result = $conn->query("SELECT id,username,capsules FROM Users WHERE id = " .$_POST['id']);
 
 	$outp = "";
@@ -23,10 +23,7 @@ if ($conn->query($sql) === TRUE) {
 
 	    $outp .= '{"id":'  . $rs["id"] . ',';
 	    $outp .= '"capsules":'. $rs["capsules"]     . '}';
-	    //$outp .= '{"username":"'. $rs["username"] . '",';
-	    //$outp .= '"email":"'. $rs["email"]     . '"}';
-
-
+	   
 	}
 	$outp ='{"records":['.$outp.']}';
 	echo $outp;

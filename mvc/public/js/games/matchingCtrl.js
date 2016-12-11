@@ -1,3 +1,6 @@
+//dcc variables
+var datalid = document.getElementById('datalid').innerHTML;
+
 var app = angular.module('myApp', []);
 app.controller('matchingCtrl', function($scope, $http) {
     $scope.numClicked = 0;
@@ -750,9 +753,7 @@ app.controller('matchingCtrl', function($scope, $http) {
       x[0].click();
   }
 
-  function gotoGamelist(){
-      window.location = window.location.origin + "/mvc/public/games/menu/" + <?=$data['lid']?>;
-  }
+  
 
   $('#new_round').on('click', function(){
       $('#completeMessage').slideUp('fast');
@@ -766,3 +767,7 @@ app.controller('matchingCtrl', function($scope, $http) {
 
 
 });
+
+function gotoGamelist(){
+    window.location = window.location.origin + "/mvc/public/games/menu/" + datalid;
+}

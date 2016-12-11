@@ -10,7 +10,6 @@ require_once 'db_creds.php';
 
 $result = $conn->query("SELECT id,capsules,email,username FROM Users WHERE id = '" .$_POST['id']. "'");
 
-//encode to utf8 for json
 function utf8_encode_deep(&$input) {
     if (is_string($input)) {
         $input = utf8_encode($input);
@@ -41,10 +40,13 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
     $rs["capsules"] = json_encode($rs["capsules"]);
     $rs["email"] = json_encode($rs["email"]);
 
+
     $outp .= '{"id":'  . $rs["id"] . ',';
     $outp .= '"username":'  . $rs["username"] . ',';
     $outp .= '"email":'  . $rs["email"] . ',';
     $outp .= '"capsules":'. $rs["capsules"]     . '}';
+    //$outp .= '{"username":"'. $rs["username"] . '",';
+    //$outp .= '"email":"'. $rs["email"]     . '"}';
 
 
 }

@@ -182,6 +182,7 @@ h1.your-list {
 	margin-bottom: 10%;
 	overflow-y: hidden;
 	overflow-x: hidden;
+    margin-top: 65px;
 }
 
 .red {

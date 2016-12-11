@@ -2,8 +2,6 @@
 
 <meta name='viewport' content="width=device-width, initial-scale=1" />
 
-<script src="/mvc/public/js/games/matchingCtrl.js"></script>
-
 <body id="game1" ng-app="myApp" ng-controller="matchingCtrl" >
 
     <!--HTML STUFF HERE-->
@@ -47,6 +45,7 @@
             <div class="completeButton" id="finishedBackToMenuButton" onclick="gotoGamelist()">MENU</div>
         </div>
         <p id="challengeFlag" style="display:none"><?=$data['challengeFlag']?></p>
+        <p id="datalid" style="display:none"><?=$data['lid']?></p>
 
         <div id="challengeInfoBar" ng-show="checkIfInChallengeMode() && !checkIfBeingChallenged()">
             <p class="col-md-4 col-sm-4 col-xs-4 challengeInfoText userText">Challenging: <?=$data['user2']?></p>
@@ -147,3 +146,5 @@
 
 </body>
 <!--</html>-->
+
+<script src="/mvc/public/js/games/matchingCtrl.js"></script>

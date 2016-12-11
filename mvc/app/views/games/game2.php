@@ -2,8 +2,6 @@
 
 <meta name='viewport' content="width=device-width, initial-scale=1" />
 
-<script src = '/mvc/public/js/games/pillCtrl.js'></script>
-
 <body ng-app="myApp" ng-controller="pillCtrl" id="main_app_module">
 
 	<div id=app_header>
@@ -97,7 +95,7 @@
 
 		   		<p class="challengeCompleteText" ng-show="checkIfBeingChallenged()"></p>
 
-		   		<div id='challenge_complete_btn'><button id="inner_challenge_complete_btn" class="button button5" onclick="gotoGamelist()" >Game Menu</button></div>
+		   		<div id='challenge_complete_btn'><button id="inner_challenge_complete_btn" class="button button5" onclick="gotoGamelist(<?=$data['lid']?>)" >Game Menu</button></div>
 
 		   </div>
 
@@ -118,3 +116,4 @@
 
 
 <!--</html>-->
+<script src = '/mvc/public/js/games/pillCtrl.js'></script>

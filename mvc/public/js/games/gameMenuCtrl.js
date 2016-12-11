@@ -6,6 +6,8 @@ var challengeId;
 var showingSelectGame = false;
 var showingSelectUser = false;
 var showingPlaceBet = false;
+//DC variables
+var datalid = document.getElementById('datalid').innerHTML;
 
 var gameMenuApp = angular.module('gameMenuApp', ['ngAnimate']);
 gameMenuApp.filter("trustUrl", ['$sce', function ($sce) {
@@ -16,6 +18,7 @@ gameMenuApp.filter("trustUrl", ['$sce', function ($sce) {
 
 gameMenuApp.controller('gameMenuCtrl', ['$scope','$sce', '$http', '$timeout', function($scope, $sce, $http, $timeout) {
 
+    
     //Nik's edits
     function getCookie(cname) {
         var name = cname + "=";
@@ -134,7 +137,7 @@ gameMenuApp.controller('gameMenuCtrl', ['$scope','$sce', '$http', '$timeout', fu
             console.log(response);
             $scope.response = response;
             challengeId = response.data[0].challengeid;
-            window.location = window.location.origin + "/mvc/public/games/"+dagame+"/" + <?=$data['lid']?> + "/" + challengeFlag + "/" + challengeGame + "/" + usr1 + "/" + challengeUser + "/" + challengeBet + "/" + challengeId;
+            window.location = window.location.origin + "/mvc/public/games/"+dagame+"/" + datalid + "/" + challengeFlag + "/" + challengeGame + "/" + usr1 + "/" + challengeUser + "/" + challengeBet + "/" + challengeId;
         });
 
     }
@@ -144,7 +147,7 @@ gameMenuApp.controller('gameMenuCtrl', ['$scope','$sce', '$http', '$timeout', fu
 function gotoGame1(challengeFlag){
     //normal play, not challenge mode
     if(challengeFlag == undefined){
-        window.location = window.location.origin + "/mvc/public/games/game1/" + <?=$data['lid']?>;
+        window.location = window.location.origin + "/mvc/public/games/game1/" + datalid;
     }else{
         //challenge mode
         angular.element(document.getElementById('main_app_module')).scope().createChallenge('game1', challengeFlag);
@@ -155,7 +158,7 @@ function gotoGame1(challengeFlag){
 function gotoGame2(challengeFlag){
     //normal play, not challenge mode
     if(challengeFlag == undefined){
-        window.location = window.location.origin + "/mvc/public/games/game2/" + <?=$data['lid']?>;
+        window.location = window.location.origin + "/mvc/public/games/game2/" + datalid;
     }else{
         //challenge mode
         angular.element(document.getElementById('main_app_module')).scope().createChallenge('game2', challengeFlag);
@@ -165,7 +168,7 @@ function gotoGame2(challengeFlag){
 function gotoFlashcard(challengeFlag){
     //normal play, not challenge mode
     if(challengeFlag == undefined){
-        window.location = window.location.origin + "/mvc/public/games/flashcard/" + <?=$data['lid']?>;
+        window.location = window.location.origin + "/mvc/public/games/flashcard/" + datalid;
     }else{
         //challenge mode
         angular.element(document.getElementById('main_app_module')).scope().createChallenge('flashcard', challengeFlag);

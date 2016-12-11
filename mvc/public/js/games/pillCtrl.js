@@ -823,11 +823,6 @@ var app = angular.module('myApp', []);
     $("#updated-capsules-indicator").fadeIn(800).fadeOut(800);
   }
 
-  function gotoGamelist(lid){
-    var lid = lid;
-    window.location = window.location.origin + "/mvc/public/games/menu/" + lid;
-  }
-
 
   $(document).ready(function(){
   $('#f1').keypress(function(e){
@@ -839,3 +834,8 @@ var app = angular.module('myApp', []);
 
 
 });
+
+function gotoGamelist(lid){
+  var lid = lid;
+  window.location = window.location.origin + "/mvc/public/games/menu/" + lid;
+}

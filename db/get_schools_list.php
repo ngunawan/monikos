@@ -1,4 +1,7 @@
 <?php
+
+/*Created by Danila Chenchik Monikos LLC*/
+
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
@@ -21,9 +24,6 @@ if(empty($_POST["id"])) {
     $sql = "SELECT * FROM SchoolLists WHERE schoolid LIKE '".$outp_getid."'";
 
 }
-
-
-//$sql = "SELECT * FROM SchoolLists WHERE schoolid = '".$_POST["school_id"]."'";
 
 $result = $conn->query($sql);
 

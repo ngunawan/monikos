@@ -6,14 +6,14 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
 require_once 'db_creds.php';
- 
 
-$sql = "UPDATE Drug SET HintLikes = '" .$_POST['likes']. "'WHERE DrugId = '" .$_POST['drugid']. "'";
 
+$sql = "UPDATE Drug SET HintLikes = '" .$_POST['likes']. "', HintDislikes = '" .$_POST['dislikes']. "' WHERE DrugId = '" .$_POST['drugid']. "'";
 
 if ($conn->query($sql) === TRUE) {
     echo '[{
     "response": 200,
+    "likes": "'.$_POST["likes"].'",
     "id": "'.$_POST["drugid"].'",
     "dislikes": "'.$_POST["dislikes"].'"}]';
 } else {
