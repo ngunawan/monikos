@@ -1,20 +1,20 @@
+<!--Nik Gunawan-->
+
 <body id="database_module">
+    <script src="/mvc/public/js/drugDatabase/databaseCtrl.js"></script>
 
     <div ng-app="databaseApp" ng-controller="databaseCtrl">
 
-        <!-----------------------HEADER------------------------------->
         <div id=app_header>
-
-            <!--LEFT SIDE HEADER-->
             <a ng-click="home()"><button class = 'back'>Back</button></a>
-            <!--MIDDLE SIDE HEADER-->
+
             <a ng-click = 'home()'><img id="toplogo" src="/mvc/public/images/logo_without_words_version_1.png"></a>
-            <!--RIGHT SIDE HEADER-->
+
             <div onclick="toggleMenuNav()" class=menu-info>
                 <span id="notificationIndicator"></span>
                 <img src=/mvc/public/images/man-user.png>
             </div>
-            <!--POP UP HEADER-->
+
             <div id='menu-popup' class='menu-popup'>
                 <div class=notif-info>
                     <h2>Notifications</h2>
@@ -33,11 +33,8 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
-
-        <!-----------------------SEARCH BAR------------------------------->
 
         <div class="search-bar-wrapper">
             <input class="search-bar" type=text ng-model=searchText[queryBy]>
@@ -52,7 +49,7 @@
         </div>
 
 
-        <!-----------------------CONTENT------------------------------->
+        <!--------------------------------CONTENT------------------------------------->
 
         <div id="content_wrapper">
 
@@ -62,57 +59,58 @@
                 <img class="loadingGif" src="/mvc/public/images/loading.gif">
             </div>
 
-            <!--repeated drug block-->
-            <div class="drug-block" ng-model="collapsed" ng-click="collapsed=!collapsed" ng-repeat="x in names | filter:searchText">
+            <div class="drug-block" ng-model="collapsed"
+                 ng-click="collapsed=!collapsed"
+                 ng-repeat="x in names | filter:searchText">
+
                 <div class=drug-content>
                     <div class="visible-info">
-                        <!--GENERIC LINE-->
                         <div class="drug-generic">
                             {{x.Generic}}
-                            <audio id="{{'myAudio-' + x['Generic']}}"><source src="{{x['Generic Audio'] | trustUrl}}" type="audio/wav"></audio>
-                            <div class=speaker-icon-wrapper><button ng-click="playAudio(x.Generic);$event.stopPropagation()" href=#><img src="/mvc/public/images/speaker.svg"></button></div>
+                            <audio id="{{'myAudio-' + x['Generic']}}">
+                                <source src="{{x['Generic Audio'] | trustUrl}}" type="audio/wav">
+                            </audio>
+                            <div class=speaker-icon-wrapper>
+                                <button ng-click="playAudio(x.Generic);$event.stopPropagation()" href=#><img src="/mvc/public/images/speaker.svg"></button>
+                            </div>
                         </div>
 
-                        <!--HINT BUTTON-->
                         <div class="hint-info">
                             <button ng-click='showPopup(x.DrugId);$event.stopPropagation()'>Hint</button>
                             <div class="button-shadow"></div>
                         </div>
 
 
-                        <!--HINT POPUP INFO-->
                         <div style="visibility:hidden;" class='ng-modal show-{{x.DrugId}}'>
+                            <div class='ng-modal-overlay'
+                                 ng-click='$event.stopPropagation()'>
+                                <!--creates black background overlay--></div> 
+                            <div class='ng-modal-dialog'
+                                 ng-click="$event.stopPropagation()"><div class='ng-modal-close' ng-click='hidePopup(x.DrugId);$event.stopPropagation()'>X</div>
 
-                            <div class='ng-modal-overlay' ng-click='$event.stopPropagation()'></div> <!--black background overlay-->
-                            <div ng-click="$event.stopPropagation()" class='ng-modal-dialog' style="width:90vw;"><div class='ng-modal-close' ng-click='hidePopup(x.DrugId);$event.stopPropagation()'>X</div>
-
-                                <!--POPUP: HINT-->
                                 <div class='ng-modal-dialog-content'>
                                     <div class=hint-message>
-                                        <!--trustAsHtml because mnemonic had html-->
+                                        <!--need trustAsHtml because mnemonic has html-->
                                         <div ng-bind-html="trustAsHtml(x.Mnemonic)"></div>
                                     </div>
-                                    <!--POPUP: FOOTER-->
                                     <div class=ng-modal-content-footer>
                                         <div class=plusone-wrapper> <!--for plus one animation-->
                                             <div style="display:none;" class="plusone-like d{{x.DrugId}}">+1</div>
                                             <div style="display:none;" class="plusone-dislike d{{x.DrugId}}">+1</div>
                                         </div>
-                                        <!--POPUP: FOOTER: BUTTONS-->
+
                                         <div class=btn-wrapper ng-click="$event.stopPropagation()">
-                                            <button ng-click="updateLikes(x.HintLikes, x.HintDislikes, x.DrugId);$event.stopPropagation()" class=like-btn><div class="link-wrap"><img src=/mvc/public/images/thumb-up-button.png> Like</div></button> <button ng-click="updateDislikes(x.HintLikes, x.HintDislikes, x.DrugId);$event.stopPropagation()" class=dislike-btn><div class="link-wrap"><img src=/mvc/public/images/thumb-down-button.png>Dislike</div></button>
+                                            <button class=like-btn ng-click="updateLikes(x.HintLikes, x.DrugId);$event.stopPropagation()"><div class="link-wrap"><img src=/mvc/public/images/thumb-up-button.png> Like</div></button> <button ng-click="updateDislikes(x.HintDislikes, x.DrugId);$event.stopPropagation()" class=dislike-btn><div class="link-wrap"><img src=/mvc/public/images/thumb-down-button.png>Dislike</div></button>
                                         </div>
                                         <div class=btn-shadow-wrapper> <!--button shadow effect-->
                                             <div class=like-btn-shadow></div> <div class=dislike-btn-shadow></div>
                                         </div>
-                                        <!--POPUP: FOOTER: LIKES DISLIKES-->
                                         <div class=likes-dislikes-wrapper>
                                             <div class=likes-count>{{x.HintLikes}}</div>
                                             <div class=dislikes-count>{{x.HintDislikes}}</div>
                                         </div>
                                     </div>
 
-                                    <!--POPUP: FOOTER-BAR-->
                                     <div class=ng-modal-content-footer-bar>
                                         Do you have a better hint? <a class="earn200link" ng-click="showPopup2();$event.stopPropagation()">Earn 200 Capsules</a>
                                     </div>
@@ -125,7 +123,7 @@
 
                     </div>
 
-                    <!--EXANDED DRUG INFO-->
+                    
                     <div class="expand-info" ng-show="collapsed">
 
                         <audio id="{{'myAudio-' + x['Brand']}}"> <source src="{{x['Brand Audio'] | trustUrl}}" type="audio/wav"></audio>
@@ -144,7 +142,7 @@
 
         <!-------------------SUGGESTION POPUP FORM--------------------->
         <div class="suggestion-popup show2">
-            <div class='ng-modal-close-two' ng-click='hidePopup2()'>X</div>
+            <div class='ng-modal-close ng-modal-close-suggestion' ng-click='hidePopup2()'>X</div>
             <form method="post" action="../../../db/email_hint.php" id="mnemonic-form">
                 <label>Name:</label><input name='name' type="text">
                 <label>Drug:                           </label>

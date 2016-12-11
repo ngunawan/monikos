@@ -8,7 +8,7 @@
         <div class="wrapper">
             <input id="un" type="text" placeholder="username">
             <input id="pw" type="password" placeholder="password">
-            <div class="fb-login-button" data-scope="public_profile,email" onlogin="checkLoginState();"></div>
+<!--            <div class="fb-login-button" data-scope="public_profile,email" onlogin="checkLoginState();"></div>-->
             <button ng-click="login()">Login</button>
             <a class=sub-link ng-click="create()">Create Account</a>
         </div>

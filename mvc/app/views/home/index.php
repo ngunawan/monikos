@@ -6,7 +6,7 @@
 
 	<script src = '/mvc/public/js/home/homeCtrl.js'></script>
 
-    <div id=app_content ng-app="myApp" ng-controller="customersCtrl">
+    <div id=app_content ng-app="myApp" ng-controller="homeCtrl">
 			<a href="#" ng-click="drugDatabase()"> <div class="top-block">
 				<div class="database-block"> <!--<a href=database.html>Database</a>-->
     <!--<button ng-click="drugDatabase()">Database</button>--> DATA<br>BASE

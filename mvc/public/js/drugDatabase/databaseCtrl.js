@@ -1,3 +1,5 @@
+//Nik Gunawan, Danusha Chenchick
+
 var app = angular.module('databaseApp', ['ngAnimate']);
 
 //filter to validate audio file path
@@ -183,7 +185,7 @@ app.controller('databaseCtrl', ['$scope','$sce', '$http', '$timeout', function($
 
 
 
-    $scope.updateDislikes = function(likeCount, dislikeCount, id){
+    $scope.updateDislikes = function(dislikeCount, id){
         //plus one animation
         $('.plusone-dislike').fadeIn(400).fadeOut(400);
 
@@ -192,7 +194,6 @@ app.controller('databaseCtrl', ['$scope','$sce', '$http', '$timeout', function($
         var dislikes = parseInt(dislikeCount, 10);
         dislikes = dislikes + 1;
         dislikes = dislikes.toString();
-        likes = likes.toString();
 
         //id is index of drug in get_drugs json: also drugid
         //update like count in view

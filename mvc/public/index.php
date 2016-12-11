@@ -8,7 +8,6 @@
 	<script src="/mvc/public/js/myCtrl.js"></script>
     <script src="/mvc/public/js/checklist-model.js"></script>
     <script src="/mvc/public/js/global-script.js"></script>
-	<script src="/mvc/public/js/databaseCtrl.js"></script>
     
  
 

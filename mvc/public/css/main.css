@@ -1,4 +1,10 @@
+/**Nik Gunawan, Danusha Chenchick**/
+
 @import 'https://fonts.googleapis.com/css?family=Raleway:300,500,700,900';
+
+/**-------------------------------------------------------------------------------------------**/
+/**--------------------------------LOGIN AND REGISTER CODE------------------------------------**/
+/**-------------------------------------------------------------------------------------------**/
 
 body#usr_mng_module {
     /*    background: #888;*/
@@ -37,7 +43,6 @@ body#usr_mng_module .wrapper select {
 
 }
 
-
 body#usr_mng_module .wrapper select option {
     color: #FFF;
 }
@@ -73,18 +78,11 @@ body#main_app_module {
     margin:0;
 }
 
-/** START NIK'S CODE--------------------------------------------------------------------- **/
-/**-------------------------------------------------------------------------------------- **/
-/**-------------------------------------------------------------------------------------- **/
-/**-------------------------------------------------------------------------------------- **/
-/**-------------------------------------------------------------------------------------- **/
-
+/**-------------------------------------------------------------------------------------------**/
+/**--------------------------------------DATABASE CODE----------------------------------------**/
+/**-------------------------------------------------------------------------------------------**/
 
 body#database_module {
-    /*    background: #F8F8F8;*/
-    /*    background: #BD0707;*/
-    /*    background: #9e9e9e;*/
-    /*    background: #8d99ae;*/
     background:#CCC;
 }
 
@@ -92,6 +90,13 @@ button {
     border:none;
     background: transparent;
 }
+
+#content_wrapper {
+    /*for database*/
+    padding:0 5px;
+}
+
+/**-----------------------------------------HEADER------------------------------------------**/
 
 #app_header {
     display: block;
@@ -123,37 +128,21 @@ button {
     margin-top:5px;
 }
 
-/*
-.capsule-info {
-position:fixed;
-right:10px;
-top: 19px;
-color: #FFF;
-font-family: 'Raleway';
-font-size: 20px;
+#app_header button{
+    background: transparent;
+    font-family: 'Raleway',sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+    margin: 7px 0 0 0;
+    color:white;
+    border: 1px lightblue solid;
+    width: 45px;
+    border-radius: 4px;
+    padding: 2px;
 }
 
-.capsule-info img {
-width:25px;
-margin-right:10px;
-}
-*/
+/**--------------------------------------HEADER USER POPUP----------------------------------------**/
 
-.menu-overlay {
-    /* Height & width depends on how you want to reveal the overlay (see JS below) */
-    height: 100%;
-    width: 0;
-    position: fixed; /* Stay in place */
-    z-index: 30 ; /* Sit on top */
-    right: 0;
-    top: 0;
-    /*    background-color: rgb(0,0,0);  Black fallback color */
-    background-color: #4c5660; /* Black w/opacity */
-    box-shadow: 0 0 15px #444;
-    overflow-x: hidden; /* Disable horizontal scroll */
-    transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
-
-}
 
 .menu-info {
     position:fixed;
@@ -232,8 +221,6 @@ margin-right:10px;
     font-family: 'Raleway';
     font-size: 10px;
     font-weight:600;
-    /*    color: #FF3D39;*/
-    /*    color: #6c7a89;*/
     background: #FF3D39;
     color: white;
     padding: 3px;
@@ -250,179 +237,9 @@ margin-right:10px;
 .menu-info img {
     width:30px;
 }
-/*
-
-.menu-overlay .menu-notifications {
-width:100%;
-background-color: #4c5660;
-top:0;
-padding:10px;
-margin-top:-10px;
-
-}
-
-.menu-overlay h2 {
-font-family: 'Raleway';
-font-size: 12px;
-color: #FFF;
-text-transform: uppercase;
-font-weight: 600;
-}
-
-.menu-overlay p {
-font-family: 'Raleway';
-font-size: 12px;
-color: #6c7a89;
-font-weight: 600;
-}
-
-.profile-info {
-padding:10px;
-}
-
-.menu-info {
-position:fixed;
-right:15px;
-top: 13px;
-color: #FFF;
-font-family: 'Raleway';
-font-size: 28px;
-}
-*/
-
-#app_header button{
-    background: transparent;
-    font-family: 'Raleway',sans-serif;
-    font-weight: 500;
-    font-size: 30px;
-    margin: 7px 0 0 0;
-    color:white;
-    border: 1px lightblue solid;
-    width: 45px;
-    border-radius: 4px;
-    padding: 2px;
-}
-
-/*
-
-#app_header {
-display: block;
-position:absolute;
-top:0;
-left:0;
-width:100vw;
-height:50px;
-margin:0;
-background:#FF3D39;
-background: #D10000;
-color: #FFF;
-text-align: center;
-box-shadow: 0vw 0vw 20px #7D0208;
-}
-*/
-
-/*
-#app_header button.back-btn {
-display:inline-block;
-background: #B21816;
-position: absolute;
-left:8px;
-top:8px;
-color:#FFF;
-font-size: 14px;
-border-radius: 4px;
-border:0;
-height:35px;
-padding:0 10px;
-width: 55px;
-}
-*/
-
-/*
-#app_header h1 {
-display:inline-block;
-font-family: sans-serif;
-font-family: 'Raleway';
-margin:15px auto auto auto;
-font-weight:600;
-text-transform: uppercase;
-font-size: 20px;
-letter-spacing: 1px;
-}
-
-#app_header .search-btn {
-display:inline-block;
-position: absolute;
-right:11px;
-top:11px;
-background: transparent;
-border:none;
-}
-
-#app_header .search-btn img {
-width:25px;
-height:25px;
-}
-*/
 
 
-body#database_module #app_footer {
-    display: block;
-    position:absolute;
-    bottom:0;
-    width:100vw;
-    height:10vh;
-    margin:0;
-    background:transparent;
-    text-align: center;
-}
-
-body#database_module #app_content {
-    display:block;
-    position:absolute;
-    height:80vh;
-    width:100vw;
-    margin-top:65px;
-    text-align: center;
-}
-
-body#main_app_module #app_content {
-    display:block;
-    position:absolute;
-    width:100vw;
-    margin-top:65px;
-    text-align: center;
-}
-
-
-#content_wrapper {
-    /*for database*/
-    padding:0 5px;
-}
-
-
-
-.showSearch {
-    font-family:'Raleway';
-}
-
-/*
-VERSION 1
-.search-bar {
-box-sizing:border-box;
-background: #FFF;
-height:35px;
-display: block;
-margin: 15px auto 15px auto;
-padding:0 10px 0 10px;
-border: 0;
-border-radius:40px;
-border-bottom: 1px solid #CCC;
-box-shadow: 0vw 0vw 3px #888888;
-font-size: 14px;
-width:100%;
-}
-*/
+/**--------------------------------------SEARCH BAR----------------------------------------**/
 
 .search-bar-wrapper {
     width: 100%;
@@ -473,15 +290,8 @@ width:100%;
     padding-right:23px;
 }
 
-/*
-VERSION 1
-.search-by-bar {
-margin-top:-8px;
-color:#FFF;
-font-family: 'Raleway';
-font-size:12px;
-}
-*/
+/**--------------------------------------CONTENT----------------------------------------**/
+
 
 .drug-block {
     font-family: sans-serif;
@@ -495,10 +305,6 @@ font-size:12px;
     border-radius: 4px;
 }
 
-.drug-block:active {
-    /*    background: #F7FF62;*/
-}
-
 .visible-info {
     font-size:18px;
     font-weight:600;
@@ -510,27 +316,20 @@ font-size:12px;
 }
 
 .hint-info button{
-    /*    background: #FF3D39;*/
-    /*    background: #D10000;*/
     background: #ff3333;
     border:0;
-    /*    border:1px solid #FF3D39;*/
-    /*    border:1px solid #B21816;*/
     border-radius: 4px;
     text-decoration: none;
     color: #FFF;
     font-size:14px;
-    /*    text-transform: uppercase;*/
     font-family: 'Raleway';
     font-weight: 600;
-    /*    padding:5px 10px;*/
     width:60px;
     height:25px;
     margin-top:-3px;
 }
 
 .hint-info .button-shadow {
-    /*    background: #930000;*/
     background: #bf2626;
     border-radius: 4px;
     display:block;
@@ -538,7 +337,6 @@ font-size:12px;
     height:25px;;
     margin-top:-22px;
 }
-
 
 
 .hidden {
@@ -592,14 +390,6 @@ label.field-name {
     margin-top:5vh;
 }
 
-
-/**-------------------------------------------------------------------------------------- **/
-/**-------------------------------------------------------------------------------------- **/
-/**-------------------------------------------------------------------------------------- **/
-/**-------------------------------------------------------------------------------------- **/
-/** END NIK'S CODE----------------------------------------------------------------------- **/
-
-
 .speaker-icon-wrapper {
     display:inline-block;
     padding:0;
@@ -615,8 +405,7 @@ label.field-name {
     border:0;
 }
 
-
-/** MODAL CODE----------------------------------------------------------------------- **/
+/**--------------------------------------MODAL DIALOG----------------------------------------**/
 
 .ng-modal-overlay {
     /* A dark translucent div that covers the whole screen */
@@ -630,28 +419,15 @@ label.field-name {
     opacity: 0.85;
 }
 
-.ng-modal-overlay2 {
-    /* A dark translucent div that covers the whole screen */
-    position:fixed;
-    z-index:10001;
-    top:0;
-    left:0;
-    width:100vw;
-    height:100vh;
-    background-color:#000000;
-    opacity: 0.85;
-}
-
 .mnemonic-modal-overlay {
     opacity: 0.95;
 }
-
 
 .ng-modal-dialog {
     /* A centered div above the overlay with a box shadow. */
     z-index:10000;
     position: fixed;
-    width: 50%; /* Default */
+    width: 90vw; /* Default */
 
     /* Center the dialog */
     top: 50%;
@@ -663,39 +439,16 @@ label.field-name {
     border-radius: 4px;
     background-color: #fff;
     box-shadow: 4px 4px 80px #000;
-    -webkit-box-shadow: 4px 4px 80px #000;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-    -moz-box-shadow:    4px 4px 80px #000;  /* Firefox 3.5 - 3.6 */
+    -webkit-box-shadow: 4px 4px 80px #000;
+    -moz-box-shadow:    4px 4px 80px #000;  
     box-shadow:         4px 4px 80px #000;
 
 }
-
-.ng-modal-dialog-two {
-    /* A centered div above the overlay with a box shadow. */
-    z-index:10000;
-    position: fixed;
-    width: 40%; /* Default */
-
-    /* Center the dialog */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-
-    border-radius: 20px;
-    /*    background-color: #BD0707;*/
-    background: #FFF;
-    box-shadow: 4px 4px 80px #000;
-    -webkit-box-shadow: 4px 4px 80px #000;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-    -moz-box-shadow:    4px 4px 80px #000;  /* Firefox 3.5 - 3.6 */
-    box-shadow:         4px 4px 80px #000;
-
-}
-
 
 .ng-modal-dialog-content {
     text-align: center;
 }
+
 .ng-modal-close {
     position: absolute;
     top: 3px;
@@ -706,51 +459,14 @@ label.field-name {
     display: inline-block;
     font-weight: bold;
     font-family: 'Arial','sans-serif';
-
-    /*
-    border-radius: 50%;
-    width: 10px;
-    height: 10px;
-    background: #eaeaea;
-    border:2px solid #CCC;
-    */
     color: #CCC;
 
 }
 
-.ng-modal-close-two {
-    position: absolute;
-    top: 3px;
-    right: 8px;
-    padding: 5px;
-    cursor: pointer;
+.ng-modal-close-suggestion {
     font-size: 130%;
-    display: inline-block;
-    font-weight: bold;
-    font-family: 'Arial','sans-serif';
     z-index: 999999;
-
-    /*
-    border-radius: 50%;
-    width: 10px;
-    height: 10px;
-    background: #eaeaea;
-    border:2px solid #CCC;
-    */
-    color: #CCC;
-
 }
-
-/*
-.ng-modal-content-head {
-border-top-left-radius: 4px;
-border-top-right-radius: 4px;
-border-bottom: 1px solid #CCC;
-background: #eaeaea;
-padding: 10px 0;
-
-}
-*/
 
 .hint-message {
     border-top-left-radius: 4px;
@@ -759,7 +475,6 @@ padding: 10px 0;
     padding: 30px 5px 0px 5px;
     font-weight:600;
     margin-bottom:25px;
-
 }
 
 .like-count {
@@ -778,8 +493,6 @@ padding: 10px 0;
 }
 
 .key-terms {
-    /*    color: #D00001;*/
-    /*    color: #3273ff;*/
     color:black;
     display:inline-block;
 }
@@ -805,94 +518,35 @@ padding: 10px 0;
 }
 
 .ng-modal-content-footer .likes-dislikes-wrapper .likes-count {
-    /*    color: #254394;*/
     color: #3273ff;
     display:inline-block;
     width:45%;
 }
 
 .ng-modal-content-footer .likes-dislikes-wrapper .dislikes-count {
-    /*    color: #D00001;*/
     color: #ff3333;
     display:inline-block;
     width:45%;
-
-
 }
 
-.plusone-like {
+.plusone-like, .plusone-dislike {
     display: block;
     position: absolute;
     width:45%;
     z-index:9999999;
     transition: ease-in .4s;
-
-}
-
-.plusone-dislike {
-    display: block;
-    position: absolute;
-    width:45%;
-    z-index:9999999;
-    transition: ease-in .4s;
-
 }
 
 .plusone-like {
     margin-left:5vw;
     margin-top:-24px;
+    color: #3273ff;
 }
 
 .plusone-dislike {
     margin-left:46vw;
     margin-top: -24px;
-}
-
-.plusone-animate {
-    -webkit-animation: flickerAnimation 2s;
-    -moz-animation: flickerAnimation 2s;
-    -o-animation: flickerAnimation 2s;
-    animation: flickerAnimation 2s;
-
-}
-
-.plusone-like {
-    /*    color: #254394;*/
-    color: #3273ff;
-
-}
-
-.plusone-dislike {
-    /*    color: #D00001;*/
-    color: #8d99ae;
     color: #ff3333;
-
-
-}
-
-@keyframes flickerAnimation {
-    0%   { opacity:0; margin-top:-20px;}
-    12%  { opacity:0.25; margin-top:-25;}
-    25%  { opacity:0.5; margin-top:-30;}
-    50%  { opacity:1; margin-top:-35px;}
-    62%  { opacity:1.25; margin-top:-40px;}
-    75%  { opacity:1.5; margin-top:-45px;}
-    100% { opacity:0; margin-top:-50px;}
-}
-@-o-keyframes flickerAnimation{
-    0%   { opacity:1; }
-    50%  { opacity:0; }
-    100% { opacity:1; }
-}
-@-moz-keyframes flickerAnimation{
-    0%   { opacity:1; }
-    50%  { opacity:0; }
-    100% { opacity:1; }
-}
-@-webkit-keyframes flickerAnimation{
-    0%   { opacity:0; margin-top:15px;}
-    50%  { opacity:1; margin-top:5px;}
-    100% { opacity:0; margin-top:0px;}
 }
 
 .link-wrap {
@@ -901,23 +555,19 @@ padding: 10px 0;
     margin-top: 5px;
 }
 
-
 button.like-btn:active, button.dislike-btn:active, button.like-btn:focus, button.dislike-btn:focus {
     outline:none;
 }
 
 .like-btn {
     display:inline-block;
-    /*    background:#254394;*/
     background: #3273ff;
     border:0;
     border-radius: 4px;
     height:40px;
     width:45%;
-    /*    margin:0 10px;*/
     color: #FFF;
     font-weight: 700;
-
 }
 
 .like-btn img {
@@ -928,22 +578,16 @@ button.like-btn:active, button.dislike-btn:active, button.like-btn:focus, button
 
 .like-btn-shadow {
     display:inline-block;
-    /*    background:#122C67;*/
     background: #2961d1;
-    /*    background: #235723;*/
     border-radius: 4px;
     height:40px;
     width:45%;
-    /*    margin-left:-80px;*/
     z-index:-999;
     position:relative;
-
 }
 
 .dislike-btn {
     display:inline-block;
-    /*    background:#D00001;*/
-    /*    background: #d96e03;*/
     background: #ff3333;
     border:0;
     border-radius: 4px;
@@ -951,8 +595,6 @@ button.like-btn:active, button.dislike-btn:active, button.like-btn:focus, button
     width:45%;
     color: #FFF;
     font-weight: 700;
-    /*        margin:0 10px;*/
-
 }
 
 .dislike-btn img {
@@ -963,23 +605,18 @@ button.like-btn:active, button.dislike-btn:active, button.like-btn:focus, button
 
 .dislike-btn-shadow {
     display:inline-block;
-    /*    background:#930000;*/
-    /*    background: #8f4402;*/
     background: #d82b2b;
     border-radius: 4px;
     height:40px;
     width:45%;
-    /*    margin-left:-80px;*/
     z-index:-999;
     position:relative;
-
 }
 
 .ng-modal-content-footer {
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
     margin-top:10px;
-
 }
 
 .ng-modal-content-footer-bar {
@@ -1005,43 +642,7 @@ button.like-btn:active, button.dislike-btn:active, button.like-btn:focus, button
     color: #4d4d4d;
 }
 
-/*
-.ng-modal-content-footer .like-btn {
-display:inline-block;
-width:50%;
-background:#2F3F73;
-color:#FFF;
-padding:15px 0px;
-margin:0;
-border:0;
-font-size:16px;
-font-weight: 600;
-border-bottom-left-radius: 4px;
-
-}
-*/
-
-/*
-.ng-modal-content-footer .dislike-btn {
-display:inline-block;
-width:50%;
-background:#FF3D39;
-color:#FFF;
-padding:15px 0px;
-border-bottom-right-radius: 4px;
-
-
-height:100%;
-margin:0;
-border:0;
-font-size:16px;
-font-weight: 600;
-}
-*/
-
-/** MODAL CODE----------------------------------------------------------------------- **/
-
-/**MNEMONIC FORM**/
+/**--------------------------------------SUGGESTION FORM----------------------------------------**/
 
 .suggestion-popup {
     display: block;
@@ -1058,8 +659,8 @@ font-weight: 600;
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
 
-    -webkit-box-shadow: 4px 4px 80px #000;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-    -moz-box-shadow:    4px 4px 80px #000;  /* Firefox 3.5 - 3.6 */
+    -webkit-box-shadow: 4px 4px 80px #000; 
+    -moz-box-shadow:    4px 4px 80px #000;  
     box-shadow:         4px 4px 80px #000;
     visibility: hidden;
 
@@ -1165,11 +766,32 @@ font-weight: 600;
     padding: 5px 10px;
 }
 
+/**-------------------------------SUGGESTION CONFIRMATION PAGE-------------------------------**/
 
 
-/**END MNEMONIC FORM**/
+body.email-page {
+    background: #458f29;
+    color:#FFF;
+    font-family: 'Raleway';
+    font-size:36px;
+    font-weight:800;
+    letter-spacing: 2px;
+    text-align: center;
+    padding: 50% 15px;
+}
 
-
+body.email-page .back-btn {
+    margin:auto;
+    display:block;
+    width:150px;
+    padding:10px;
+    border-radius: 4px;
+    background: #347021;
+    font-weight:500;
+    font-size:20px;
+    text-decoration: none;
+    color: #FFF;
+}
 
 @media only screen and (max-width:518px) {
     body#usr_mng_module .wrapper {
@@ -1199,30 +821,6 @@ font-weight: 600;
         padding: 4vw 2vw 4vw 2vw;
 
     }
-}
-
-body.email-page {
-    background: #458f29;
-    color:#FFF;
-    font-family: 'Raleway';
-    font-size:36px;
-    font-weight:800;
-    letter-spacing: 2px;
-    text-align: center;
-    padding: 50% 15px;
-}
-
-body.email-page .back-btn {
-    margin:auto;
-    display:block;
-    width:150px;
-    padding:10px;
-    border-radius: 4px;
-    background: #347021;
-    font-weight:500;
-    font-size:20px;
-    text-decoration: none;
-    color: #FFF;
 }
 
 /* DCCODE */
