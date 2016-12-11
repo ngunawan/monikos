@@ -1,4 +1,4 @@
-<img src="monikos_logo_readme.png" align="right" width="100px"/>
+<img src="monikos_logo_readme.png" align="right"/>
 # Monikos
 
 Monikos is a mobile/web-based study app for pharmacy school students built on AngularJS.
