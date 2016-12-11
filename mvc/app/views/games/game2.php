@@ -1,3 +1,5 @@
+<!-- Created by Dana Elhertani, Nik Gunawan, Danila Chenchik Monikos LLC -->
+
 <link rel="stylesheet" type="text/css" href="/mvc/public/css/game2stylesheet.css">
 
 <meta name='viewport' content="width=device-width, initial-scale=1" />
@@ -39,9 +41,6 @@
 
 	<div class = 'app_content'>
 	
-		<!--<div id="completeMessage" style="display:none">
-            <p id="completeMessageText">Congratulations, you finished this round. </p>
-        </div> -->
 
 		<!--dummy object for checking if in challenge mode-->
 		
@@ -103,9 +102,6 @@
     <!-- /app_body -->
 
 		<div class = 'btn_footer'>
-			<!-- <div class='btn_wrap'>
-				<div class='next_btn'><button id="nextBtn" class = "button button5" onclick="nextCard();">Next</button> </div>
-			</div> -->
 
 			<button id ='new_round' onClick="window.location.reload()">PLAY NEW ROUND</button>
 

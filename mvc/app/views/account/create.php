@@ -1,3 +1,5 @@
+<!-- Created by Danila Chenchik, Jenny Zhang Monikos LLC -->
+
 <body id="usr_mng_module">
     <script src = '/mvc/public/js/account/accountCtrl.js'></script>
 
@@ -11,10 +13,7 @@
                 <option id="a{{x.schoolid}}" value="{{x.schoolid}}">{{x.schoolname}}</option>
             </select>
             <button ng-click="checkUsername()">Create</button>
-            <!--
-<p>username: {{response.data[0].username}}</p>
-<p>email: {{response.data[0].email}}</p>
--->
+
             <a class="sub-link" ng-click="login()">Back to Login</a>
 
         </div>

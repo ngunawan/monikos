@@ -1,3 +1,5 @@
+<!-- Created by Dana Elhertani, Nik Gunawan, Danila Chenchik Monikos LLC -->
+
 <link rel="stylesheet" type="text/css" href="/mvc/public/css/style.css">
 
 <meta name='viewport' content="width=device-width, initial-scale=1" />
@@ -9,8 +11,6 @@
         <a onclick="gotoGamelist()"><button class = 'back'>Back</button></a>
 
         <a ng-click = 'home()'><img id="toplogo" src="/mvc/public/images/logo_without_words_version_1.png"></a>
-
-<!--        <div class="capsule-info"><span style="display:none" id="updated-capsules-indicator">+2</span> <img src="/mvc/public/images/pill_icon.png">{{capsules[0].capsules}}</div>-->
 
         <div onclick="toggleMenuNav()" class=menu-info>
             <span id="updated-capsules-indicator" style="display:none;float:left"></span>

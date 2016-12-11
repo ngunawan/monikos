@@ -1,4 +1,7 @@
 <?php  
+
+/* Created by Danila Chenchik Monikos LLC  */
+
 //namespacing
 use Illuminate\Database\Capsule\Manager as Capsule;
 

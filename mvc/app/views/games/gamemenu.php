@@ -1,3 +1,5 @@
+<!-- Created by Dana Elhertani, Danila Chenchik Monikos LLC -->
+
 <link rel="stylesheet" type="text/css" href="/mvc/public/css/game.css"/>
 
 <meta name='viewport' content="width=device-width, initial-scale=1" />

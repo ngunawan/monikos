@@ -1,5 +1,7 @@
 <?php
 
+/* Created by Danila Chenchik Monikos LLC  */
+
 class Games extends Controller {
 
 	protected $user;
@@ -20,7 +22,6 @@ class Games extends Controller {
 
 
 		//directory path
-		//$this->view('games/names', ['name' => $user->name]);
 		$this->view('games/gamemenu');
 	}
 

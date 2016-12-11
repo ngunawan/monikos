@@ -1,5 +1,7 @@
-//dcc variables
+//dc variables
 var datalid = document.getElementById('datalid').innerHTML;
+
+//Created by Dana Elhertani, Danila Chenchik Monikos LLC
 
 var app = angular.module('myApp', []);
 app.controller('matchingCtrl', function($scope, $http) {
@@ -139,6 +141,8 @@ app.controller('matchingCtrl', function($scope, $http) {
         return "";
     }
 
+    //Begin dc edits
+
     $scope.checkIfChangedUser = function(){
       if($scope.checkIfBeingChallenged()){
         //check if being challenged
@@ -222,12 +226,12 @@ app.controller('matchingCtrl', function($scope, $http) {
           $scope.capsules = response.data.records;
           //console.log("THESE ARE THE CAPSULES" + $scope.capsules);
       });
-      //end NIk's edits
     }
 
     $scope.checkIfChangedUser();
 
-    //        document.getElementById("tryagain").style.visibility="hidden";
+    //end dc edits
+
 
     $scope.firstLoad = true;
     $scope.getlid = function(lid){
@@ -501,6 +505,8 @@ app.controller('matchingCtrl', function($scope, $http) {
     $scope.home = function(){
         window.location = window.location.origin + "/mvc/public/home/";
     }
+
+  //begin danila chenchik code
 
   $scope.handleChallengeModeCompletion = function(){
     var curUrl = window.location.href;

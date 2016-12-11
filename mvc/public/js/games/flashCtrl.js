@@ -1,3 +1,5 @@
+//Created by Dana Elhertani Monikos LLC
+
 var app = angular.module('myApp', []);
     app.controller('flashCtrl', function($scope, $http) {
    var nextIndex;
@@ -90,7 +92,6 @@ var app = angular.module('myApp', []);
 
 	nextCard = function(){
 		console.log
-// 		$('.flashcard').toggleClass('flipped');
 		tempFront = "";
 		tempBack = "";
 		console.log($scope.finalList[index-1].Class);

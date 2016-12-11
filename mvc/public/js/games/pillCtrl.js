@@ -1,3 +1,5 @@
+//Created by Dana Elhertani, Danila Chenchik Monikos LLC
+
 var app = angular.module('myApp', []);
     app.controller('pillCtrl', function($scope, $http) {
     //$scope.challengingFlag = false;
@@ -594,6 +596,8 @@ var app = angular.module('myApp', []);
 
   }//end to the giant get request
 
+  //start Danila Chenchik code
+
   $scope.handleChallengeModeCompletion = function(){
     var curUrl = window.location.href;
     var urlArr = curUrl.split('/');
@@ -627,7 +631,6 @@ var app = angular.module('myApp', []);
     $http.post(url, data, config)
     .then(function (response) {
       console.log(response);
-      //window.open('mailto:danushac@gmail.com?subject=Monikos_Challenge&body=You have been challenged go to this url to access the challenge ' + senderUrl);
       $scope.sendEmail(senderUrl);
     });
   }
@@ -811,8 +814,6 @@ var app = angular.module('myApp', []);
       }else{
         alert("there was an error processing the request");
       }
-
-      //alert('updated capsules');
     });
   }
 

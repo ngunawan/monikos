@@ -1,3 +1,5 @@
+//Created by Danila Chenchik Monikos LLC
+
 var app = angular.module('loginApp', []);
 app.controller('loginCtrl', function($scope, $http, $location) {
     $scope.login = function(){
@@ -15,11 +17,9 @@ app.controller('loginCtrl', function($scope, $http, $location) {
     }
 
     function handleOnlineLogin(){
-        //console.log("whatwhat");
         var un = document.getElementById('un').value;
         var pw = document.getElementById('pw').value;
 
-        //var url = "http://monikos.xpyapvzutk.us-east-1.elasticbeanstalk.com/do_login.php";
         var url = "/db/do_login.php";
 
         var data = $.param({

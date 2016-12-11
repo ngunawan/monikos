@@ -1,3 +1,5 @@
+//Created by Danila Chenchik Monikos LLC
+
 var app = angular.module('myApp', []);
 app.controller('accountCtrl', function($scope, $http) {
 
@@ -10,8 +12,7 @@ app.controller('accountCtrl', function($scope, $http) {
     });
 
     $scope.closeError = function(){
-        //alert('yo');
-        //$('#errorMessage').slideUp('fast');
+
     }
 
     function showError(str){
@@ -139,16 +140,12 @@ app.controller('accountCtrl', function($scope, $http) {
         $http.post(url, data, config)
             .then(function (response) {
             console.log(response);
-            //console.log(response);
-            //$scope.names = response.data.records;
             $scope.response = response;
             if(response.data[0].response == 200){
                 window.location = window.location.origin + "/mvc/public/account/login";
             }else{
                 alert("error in creating account");
             }
-            //console.log($scope.names);
-            //alert($scope.names);
         });
     }
     $scope.login = function(){

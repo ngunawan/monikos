@@ -1,3 +1,4 @@
+//Created by Dana Elhertani, Danila Chenchik Monikos LLC
 
 var challengeGame;
 var challengeUser;

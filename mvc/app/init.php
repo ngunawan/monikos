@@ -1,5 +1,7 @@
 <?php 
 
+/* Created by Danila Chenchik Monikos LLC  */
+
 define('INC_ROOT', dirname(__DIR__));
 
 require_once INC_ROOT . '/vendor/autoload.php';
