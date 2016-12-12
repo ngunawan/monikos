@@ -1,54 +1,30 @@
-<body>
-	<script>
-	    var app = angular.module('myApp', []);
-	    app.controller('accountCtrl', function($scope, $http) {
-	        $scope.createAccount = function(){
-	            //console.log("whatwhat");
-	            var un = document.getElementById('un').value;
-	            var email = document.getElementById('email').value;
-	            var pw = document.getElementById('pw').value;
+<!-- Created by Danila Chenchik, Jenny Zhang Monikos LLC -->
 
-	            var url = "http://monikos.xpyapvzutk.us-east-1.elasticbeanstalk.com/create_account.php";
-	        
-	            var data = $.param({
-	                username: un,
-	                password: pw,
-	                email: email
-	            });
-	            var config = {
-	                    headers : {
-	                        'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-	                    }
-	                };
-	            $http.post(url, data, config)
-	            .then(function (response) {
-	                console.log(response);
-	                //console.log(response);
-	                //$scope.names = response.data.records;
-	                $scope.response = response;
-	                if(response.data[0].response == 200){
-	                	window.location = window.location.origin + "/mvc/public/account/login";
-	                }else{
-	                	alert("error in creating account");
-	                }
-	                //console.log($scope.names);
-	                //alert($scope.names);
-	            });    
-	        }
-	        $scope.login = function(){
-            	window.location = window.location.origin + "/mvc/public/account/login";
-	        }
-	    });
-    </script>
-     <div ng-app="myApp" ng-controller="accountCtrl" id="usr_mng_module"> 
+<body id="usr_mng_module">
+    <script src = '/mvc/public/js/account/accountCtrl.js'></script>
+
+    <div ng-app="myApp" ng-controller="accountCtrl" id="usr_mng_module">
         <div class="wrapper">
             <input id="un" type="text" name="username" placeholder="username">
             <input id="email" type="text" name="email" placeholder="email">
-            <input id="pw" type="text" name="password" placeholder="password">
-            <button ng-click="createAccount()">Create</button>
-            <p>username: {{response.data[0].username}}</p>
-            <p>email: {{response.data[0].email}}</p>
+            <input id="pw" type="password" name="password" placeholder="password">
+            <select id="school" ng-repeat="x in schoolnames">
+                <option selected disabled>select a school</option>
+                <option id="a{{x.schoolid}}" value="{{x.schoolid}}">{{x.schoolname}}</option>
+            </select>
+            <button ng-click="checkUsername()">Create</button>
+
+            <a class="sub-link" ng-click="login()">Back to Login</a>
+
         </div>
-        <button ng-click="login()">Back to Login</button>
     </div>
+
+    <div id="errorMessage" style="display:none">
+        <img id="errorLogo" src="/mvc/public/images/white_logo.png">
+
+        <p class="errorText"></p>
+
+        <div id='errorBtn'><button id="innerErrorBtn" class = "button button5">Okay</button></div>
+
+   </div>
 </body>

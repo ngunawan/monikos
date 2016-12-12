@@ -1,5 +1,7 @@
 <?php
 
+/*Created by Danila Chenchik Monikos LLC*/
+
 $host = "mysql.danilachenchik.com";
 $dbuser = "mnksdbun";
 $pass = "mnksdbpw";

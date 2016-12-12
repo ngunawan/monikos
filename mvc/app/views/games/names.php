@@ -1,3 +1,5 @@
+<!-- Created by Dana Elhertani Monikos LLC -->
+
 <link rel="stylesheet" type="text/css" href="/mvc/public/css/names.css">
 
 <body>
@@ -7,7 +9,8 @@
         app.controller('customersCtrl', function($scope, $http) {
         
         
-            var url = "http://monikos.xpyapvzutk.us-east-1.elasticbeanstalk.com/sql_result.php";
+            //var url = "http://monikos.xpyapvzutk.us-east-1.elasticbeanstalk.com/sql_result.php";
+            var url = "/db/get_drugs.php";
             $http.get(url)
             .then(function (response) {
                 console.log(response);

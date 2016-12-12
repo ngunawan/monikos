@@ -1,5 +1,7 @@
 <?php 
 
+/* Created by Danila Chenchik Monikos LLC  */
+
 class Home extends Controller {
 
 	protected $user;
@@ -17,8 +19,6 @@ class Home extends Controller {
 		//creates the user
 		$user = $this->model('User');
 		$user->name = $name;
-		//echo "\n echoing user name " . $user->name;
-
 
 		//directory path
 		$this->view('home/index', ['name' => $user->name]);
